@@ -1,79 +1,100 @@
 import type { Metadata } from "next";
-import Script from "next/script";
-import type { LanguageType } from "@/lib/translation";
-import { t } from "@/lib/translation";
-import { generateFAQSchema } from "@/lib/utils";
-import JSONFormatterClient from "./JSONFormatterClient";
+import { JsonFormatterTool } from "@/components/tools/json-formatter-tool";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: LanguageType }>;
-}): Promise<Metadata> {
-  const { lang } = await params;
+export const metadata: Metadata = {
+  title: "JSON Formatter & Validator Online - Free JSON Beautifier Tool",
+  description:
+    "Free online JSON formatter, validator and beautifier. Format, validate, minify and beautify JSON data instantly. No signup required, works offline in your browser.",
+  keywords: [
+    "JSON formatter",
+    "JSON validator",
+    "JSON beautifier",
+    "JSON parser",
+    "format JSON online",
+    "validate JSON",
+    "pretty print JSON",
+    "JSON minifier",
+    "JSON tool",
+  ],
+  openGraph: {
+    title: "JSON Formatter & Validator - Free Online Tool",
+    description:
+      "Format, validate and beautify JSON data instantly. Free, fast, no signup required.",
+    url: "https://devtools.app/tools/json-formatter",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://devtools.app/tools/json-formatter",
+  },
+};
 
-  const title = t("jsonFormatter.metadata.title", lang);
-  const description = t("jsonFormatter.metadata.description", lang);
-  const keywords = t("jsonFormatter.metadata.keywords", lang);
-
-  return {
-    title,
-    description,
-    keywords,
-    alternates: {
-      canonical: `/${lang}/tool/json-formatter`,
-    },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      locale: lang,
-    },
-  };
-}
-
-export default async function JSONFormatterPage({
-  params,
-}: {
-  params: Promise<{ lang: LanguageType }>;
-}) {
-  const { lang } = await params;
-
-  const jsonFAQ = [
-    {
-      question: t("faq.json.secure.question", lang),
-      answer: t("faq.json.secure.answer", lang),
-    },
-    {
-      question: t("faq.json.format.question", lang),
-      answer: t("faq.json.format.answer", lang),
-    },
-    {
-      question: t("faq.json.minify.question", lang),
-      answer: t("faq.json.minify.answer", lang),
-    },
-    {
-      question: t("faq.json.validate.question", lang),
-      answer: t("faq.json.validate.answer", lang),
-    },
-    {
-      question: t("faq.json.large.question", lang),
-      answer: t("faq.json.large.answer", lang),
-    },
-  ];
-
-  const faqSchema = generateFAQSchema(jsonFAQ, lang);
-
+export default function JsonFormatterPage() {
   return (
     <>
-      <Script
-        id="faq-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema),
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "JSON Formatter & Validator",
+            description:
+              "Free online JSON formatter, validator and beautifier tool",
+            url: "https://devtools.app/tools/json-formatter",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Any",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+            },
+            featureList: [
+              "Format JSON",
+              "Validate JSON",
+              "Minify JSON",
+              "Beautify JSON",
+              "Syntax highlighting",
+              "Error detection",
+            ],
+          }),
         }}
       />
-      <JSONFormatterClient lang={lang} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is a JSON formatter?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "A JSON formatter is a tool that takes raw JSON data and formats it with proper indentation and syntax highlighting, making it easier to read and debug.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is this JSON formatter free to use?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes, this JSON formatter is completely free to use. No signup or registration required. Your data is processed locally in your browser for maximum privacy.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Does this tool validate JSON?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes, our JSON formatter automatically validates your JSON and highlights any syntax errors with detailed error messages to help you fix issues quickly.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
+      <JsonFormatterTool />
     </>
   );
 }
