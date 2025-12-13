@@ -209,6 +209,8 @@ export function FallingItem({ id, type, initialX }: FallingItemProps) {
     x: number;
     y: number;
   } | null>(null);
+  const feedTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const moodTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleItemClick = () => {
     if (!isFlying) {
@@ -238,15 +240,17 @@ export function FallingItem({ id, type, initialX }: FallingItemProps) {
     }
 
     // 在飞行动画完成后添加物品到库存
-    setTimeout(() => {
+    const feedTimeout = setTimeout(() => {
       // 只添加物品到库存，不触发表情变化
       feedCat(id);
     }, 5500); // 动画完成后执行
+    feedTimerRef.current = feedTimeout;
 
     // 让小猫恢复原样
-    setTimeout(() => {
+    const moodTimeout = setTimeout(() => {
       setMood("idle");
     }, 4500);
+    moodTimerRef.current = moodTimeout;
   };
 
   useEffect(() => {
@@ -259,6 +263,12 @@ export function FallingItem({ id, type, initialX }: FallingItemProps) {
 
     return () => {
       clearTimeout(timer);
+      if (feedTimerRef.current) {
+        clearTimeout(feedTimerRef.current);
+      }
+      if (moodTimerRef.current) {
+        clearTimeout(moodTimerRef.current);
+      }
     };
   }, [id, isFlying]);
 
