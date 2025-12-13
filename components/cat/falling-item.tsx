@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { type CatItemType, useCat } from "@/context/cat-context";
 
 const GhibliIcons: Record<CatItemType, React.ReactNode> = {
@@ -194,16 +194,6 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
   ),
 };
 
-const itemNames: Record<CatItemType, string> = {
-  fish: "Forest Fish",
-  yarn: "Leaf Yarn",
-  book: "Wisdom Book",
-  keyboard: "Nature Keys",
-  coffee: "Herb Tea",
-  cookie: "Acorn Cookie",
-  star: "Forest Star",
-};
-
 interface FallingItemProps {
   id: string;
   type: CatItemType;
@@ -211,120 +201,177 @@ interface FallingItemProps {
 }
 
 export function FallingItem({ id, type, initialX }: FallingItemProps) {
-  const { feedCat, removeItem } = useCat();
+  const { feedCat, setMood } = useCat();
   const itemRef = useRef<HTMLDivElement>(null);
-  const constraintsRef = useRef<HTMLDivElement>(null);
+  const [isFlying, setIsFlying] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [targetPosition, setTargetPosition] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
 
-  const checkCatCollision = () => {
-    const item = itemRef.current;
-    const cat = document.querySelector("[data-cat-mascot]") as HTMLElement;
-    if (!item || !cat) return false;
-
-    const itemRect = item.getBoundingClientRect();
-    const catRect = cat.getBoundingClientRect();
-
-    const padding = 20;
-    return !(
-      itemRect.right < catRect.left - padding ||
-      itemRect.left > catRect.right + padding ||
-      itemRect.bottom < catRect.top - padding ||
-      itemRect.top > catRect.bottom + padding
-    );
-  };
-
-  const handleDragEnd = () => {
-    if (checkCatCollision()) {
-      feedCat(id);
+  const handleItemClick = () => {
+    if (!isFlying) {
+      triggerFlyToHome();
     }
   };
 
+  const triggerFlyToHome = () => {
+    if (isFlying) return;
+
+    setIsFlying(true);
+
+    // 让小猫开心，表示收到物品了
+    setMood("happy");
+
+    // 找到网站图标位置
+    const logoElement = document.querySelector("#site-logo");
+    if (logoElement && typeof window !== "undefined") {
+      const logoRect = logoElement.getBoundingClientRect();
+      const itemRect = itemRef.current?.getBoundingClientRect();
+      if (itemRect) {
+        const targetX = logoRect.left + logoRect.width / 2 - itemRect.width / 2;
+        const targetY =
+          logoRect.top + logoRect.height / 2 - itemRect.height / 2;
+        setTargetPosition({ x: targetX, y: targetY });
+      }
+    }
+
+    // 在飞行动画完成后添加物品到库存
+    setTimeout(() => {
+      // 只添加物品到库存，不触发表情变化
+      feedCat(id);
+    }, 5500); // 动画完成后执行
+
+    // 让小猫恢复原样
+    setTimeout(() => {
+      setMood("idle");
+    }, 4500);
+  };
+
   useEffect(() => {
+    // 10秒后自动飞入小猫的家里
     const timer = setTimeout(() => {
-      removeItem(id);
-    }, 30000);
-    return () => clearTimeout(timer);
-  }, [id, removeItem]);
+      if (!isFlying) {
+        triggerFlyToHome();
+      }
+    }, 10000); // 掉落时间
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [id, isFlying]);
 
   return (
-    <>
-      <div
-        ref={constraintsRef}
-        className="fixed inset-0 pointer-events-none z-30"
-      />
+    <motion.div
+      ref={itemRef}
+      onClick={handleItemClick}
+      initial={{ x: `${initialX}vw`, y: -100, opacity: 0, rotate: -20 }}
+      animate={{
+        y:
+          isFlying && targetPosition
+            ? targetPosition.y
+            : typeof window !== "undefined"
+              ? window.innerHeight - 150
+              : 500,
+        x: isFlying && targetPosition ? targetPosition.x : undefined,
+        scale: isFlying ? 0.3 : 1,
+        opacity: isFlying ? 0.8 : 1,
+        rotate: 0, // 不旋转
+      }}
+      exit={{ scale: 0, opacity: 0 }}
+      transition={{
+        type: "spring",
+        damping: 15,
+        stiffness: 100,
+        duration: isFlying ? 5 : 1.5, // 飞行动画时长
+      }}
+      whileHover={{ scale: 1.0 }} // 保持原大小，不放大
+      whileTap={{ scale: 0.9 }}
+      className="fixed z-40 cursor-pointer pointer-events-auto"
+      onHoverStart={() => setShowTooltip(true)}
+      onHoverEnd={() => setShowTooltip(false)}
+    >
+      <div className="relative group">
+        <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-      <motion.div
-        ref={itemRef}
-        drag
-        dragConstraints={constraintsRef}
-        dragElastic={0.1}
-        onDragEnd={handleDragEnd}
-        initial={{ x: `${initialX}vw`, y: -100, opacity: 0, rotate: -20 }}
-        animate={{
-          y: typeof window !== "undefined" ? window.innerHeight - 150 : 500,
-          opacity: 1,
-          rotate: 0,
-        }}
-        exit={{ scale: 0, opacity: 0 }}
-        transition={{
-          type: "spring",
-          damping: 15,
-          stiffness: 100,
-          duration: 1.5,
-        }}
-        whileHover={{ scale: 1.2 }}
-        whileDrag={{ scale: 1.3, zIndex: 100 }}
-        className="fixed z-40 cursor-grab active:cursor-grabbing pointer-events-auto"
-      >
-        <div className="relative group">
-          <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <motion.div
+          animate={{ y: [0, -5, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+          className="relative bg-card border-2 border-primary/40 rounded-2xl p-3 shadow-lg"
+          style={{ boxShadow: "3px 3px 0 0 var(--primary)" }}
+        >
+          {GhibliIcons[type]}
 
-          <motion.div
-            animate={{ y: [0, -5, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-            }}
-            className="relative bg-card border-2 border-primary/40 rounded-2xl p-3 shadow-lg"
-            style={{ boxShadow: "3px 3px 0 0 var(--primary)" }}
+          {/* Flying effect particles */}
+          {isFlying && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: [0, 1, 0], scale: [0, 1, 0], x: [-10, -20] }}
+              transition={{ duration: 0.6, repeat: Number.POSITIVE_INFINITY }}
+              className="absolute -left-2 top-1/2 -translate-y-1/2 text-primary/60"
+            >
+              ✦
+            </motion.div>
+          )}
+
+          {/* Flying effect particles 2 */}
+          {isFlying && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: [0, 1, 0], scale: [0, 1, 0], x: [10, 20] }}
+              transition={{
+                duration: 0.6,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: 0.2,
+              }}
+              className="absolute -right-2 top-1/2 -translate-y-1/2 text-primary/60"
+            >
+              ✦
+            </motion.div>
+          )}
+
+          {/* Tooltip */}
+          <div
+            className="absolute -top-10 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-lg transition-opacity whitespace-nowrap"
+            style={{ opacity: showTooltip ? 1 : 0 }}
           >
-            {GhibliIcons[type]}
+            点击物品飞入小猫的家里！
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-primary" />
+          </div>
+        </motion.div>
 
-            {/* Tooltip */}
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-              {itemNames[type]}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-primary" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }}
-            transition={{
-              duration: 2,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-            }}
-            className="absolute -top-1 -right-1 text-primary"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16">
-              <ellipse
-                cx="8"
-                cy="8"
-                rx="3"
-                ry="6"
-                fill="currentColor"
-                transform="rotate(-30 8 8)"
-              />
-              <path
-                d="M8 2 Q10 8 8 14"
-                stroke="hsl(155, 50%, 30%)"
-                strokeWidth="0.5"
-                fill="none"
-              />
-            </svg>
-          </motion.div>
-        </div>
-      </motion.div>
-    </>
+        <motion.div
+          animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+          className="absolute -top-1 -right-1 text-primary"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16">
+            <ellipse
+              cx="8"
+              cy="8"
+              rx="3"
+              ry="6"
+              fill="currentColor"
+              transform="rotate(-30 8 8)"
+            />
+            <path
+              d="M8 2 Q10 8 8 14"
+              stroke="hsl(155, 50%, 30%)"
+              strokeWidth="0.5"
+              fill="none"
+            />
+          </svg>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }

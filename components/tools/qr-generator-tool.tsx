@@ -191,7 +191,7 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
 
       const url = await QRCode.toDataURL(input, options);
       setQrCodeUrl(url);
-    } catch (err) {
+    } catch (_err) {
       setError(t("qrGenerator.error.generation"));
       setQrCodeUrl("");
     } finally {
@@ -220,7 +220,7 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
     link.click();
   }, [qrCodeUrl]);
 
-  const loadExample = useCallback((data: string, type: string) => {
+  const loadExample = useCallback((data: string, _type: string) => {
     setInput(data);
     setError(null);
     setActiveTab("create");
@@ -492,7 +492,9 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
                       <div className="flex gap-2 items-center">
                         <ColorPicker
                           value={qrSettings.colorDark}
-                          onChange={(color) => updateSetting("colorDark", color)}
+                          onChange={(color) =>
+                            updateSetting("colorDark", color)
+                          }
                         />
                         <span className="text-sm text-muted-foreground font-mono">
                           {qrSettings.colorDark}
@@ -505,7 +507,9 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
                       <div className="flex gap-2 items-center">
                         <ColorPicker
                           value={qrSettings.colorLight}
-                          onChange={(color) => updateSetting("colorLight", color)}
+                          onChange={(color) =>
+                            updateSetting("colorLight", color)
+                          }
                         />
                         <span className="text-sm text-muted-foreground font-mono">
                           {qrSettings.colorLight}

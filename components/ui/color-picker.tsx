@@ -21,10 +21,7 @@ export function ColorPicker({ value, onChange, className }: ColorPickerProps) {
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className={cn(
-            "w-12 h-10 p-1 rounded-lg border-2",
-            className,
-          )}
+          className={cn("w-12 h-10 p-1 rounded-lg border-2", className)}
         >
           <div
             className="w-full h-full rounded-md border"

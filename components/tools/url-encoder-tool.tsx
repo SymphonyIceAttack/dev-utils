@@ -17,7 +17,7 @@ import { CodeHighlighter } from "@/components/ui/code-highlighter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useCat } from "@/context/cat-context";
-import { t, type LanguageType } from "@/lib/translations";
+import { type LanguageType, t } from "@/lib/translations";
 
 const exampleUrlData = [
   {
