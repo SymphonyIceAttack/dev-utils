@@ -2,13 +2,11 @@
 
 import { motion } from "framer-motion";
 import {
-  FileJson,
+  FileText,
   Hash,
   Key,
+  KeyRound,
   Link as LinkIcon,
-  Palette,
-  QrCode,
-  Shuffle,
   Search,
 } from "lucide-react";
 import Link from "next/link";
@@ -25,26 +23,10 @@ import type { LanguageType } from "@/lib/translations";
 
 const allTools = [
   {
-    titleKey: "jsonFormatter.title",
-    descriptionKey: "jsonFormatter.description",
-    icon: FileJson,
-    href: "/tools/json-formatter",
-    color: "text-yellow-500",
-    category: "tools.category.data",
-  },
-  {
-    titleKey: "regexTester.title",
-    descriptionKey: "regexTester.description",
-    icon: Search,
-    href: "/tools/regex-tester",
-    color: "text-orange-500",
-    category: "tools.category.data",
-  },
-  {
     titleKey: "urlEncoder.title",
     descriptionKey: "urlEncoder.description",
     icon: LinkIcon,
-    href: "/",
+    href: "/tools/url-encoder",
     color: "text-blue-500",
     category: "tools.category.encoding",
   },
@@ -57,44 +39,34 @@ const allTools = [
     category: "tools.category.encoding",
   },
   {
-    titleKey: "hashGenerator.title",
-    descriptionKey: "hashGenerator.description",
+    titleKey: "md5Generator.title",
+    descriptionKey: "md5Generator.description",
     icon: Hash,
-    href: "/tools/hash-generator",
+    href: "/tools/md5-generator",
     color: "text-purple-500",
     category: "tools.category.encoding",
   },
   {
-    titleKey: "qrGenerator.title",
-    descriptionKey: "qrGenerator.description",
-    icon: QrCode,
-    href: "/tools/qr-generator",
+    titleKey: "encodingConverter.title",
+    descriptionKey: "encodingConverter.description",
+    icon: FileText,
+    href: "/tools/encoding-converter",
+    color: "text-orange-500",
+    category: "tools.category.encoding",
+  },
+  {
+    titleKey: "passwordGenerator.title",
+    descriptionKey: "passwordGenerator.description",
+    icon: KeyRound,
+    href: "/tools/password-generator",
     color: "text-pink-500",
-    category: "tools.category.data",
-  },
-  {
-    titleKey: "uuidGenerator.title",
-    descriptionKey: "uuidGenerator.description",
-    icon: Shuffle,
-    href: "/tools/uuid-generator",
-    color: "text-indigo-500",
-    category: "tools.category.data",
-  },
-  {
-    titleKey: "colorConverter.title",
-    descriptionKey: "colorConverter.description",
-    icon: Palette,
-    href: "/tools/color-converter",
-    color: "text-red-500",
-    category: "tools.category.design",
+    category: "tools.category.encoding",
   },
 ];
 
 const categories = [
   { key: "tools.category.all", value: "all" },
-  { key: "tools.category.data", value: "tools.category.data" },
   { key: "tools.category.encoding", value: "tools.category.encoding" },
-  { key: "tools.category.design", value: "tools.category.design" },
 ];
 
 interface ToolsPageClientProps {
@@ -130,13 +102,16 @@ export function ToolsPageClient({ lang }: ToolsPageClientProps) {
 
       {/* Search and Filter */}
       <div className="mb-8 space-y-4">
-        <input
-          type="text"
-          placeholder={t("tools.search")}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full max-w-md mx-auto block px-4 py-2 border border-border rounded-lg bg-background text-foreground"
-        />
+        <div className="relative max-w-md mx-auto">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder={t("tools.search")}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background text-foreground"
+          />
+        </div>
 
         <div className="flex flex-wrap justify-center gap-2">
           {categories.map((category) => (

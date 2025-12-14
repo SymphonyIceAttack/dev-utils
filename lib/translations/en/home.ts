@@ -1,21 +1,21 @@
 export const home = {
   // App
-  "app.title": "DevTools - Free Online Developer Utilities",
+  "app.title": "KittyEncode - Coding Tools with a Feline Touch",
   "app.description":
-    "A collection of free online developer tools for JSON, URL encoding, Base64, and more. Fast, secure, and works offline.",
-  "app.hero.title": "Developer Tools",
+    "A collection of free online coding utilities with a cute programming cat theme. Fast, secure, and works offline.",
+  "app.hero.title": "Coding Tools",
   "app.hero.subtitle":
-    "A collection of useful tools for developers. Fast, free, and privacy-first.",
+    "Purr-fect developer utilities with a feline touch. Fast, free, and privacy-first.",
 
   // Hero Section
   "hero.badge": "100% Free & Open Source",
-  "hero.title1": "Essential Developer",
-  "hero.title2": "Tools",
+  "hero.title1": "KittyEncode",
+  "hero.title2": "Coding Tools",
   "hero.description":
     "Free, fast, and privacy-focused utilities that work entirely in your browser. No data ever leaves your device.",
   "hero.viewAllTools": "View All Tools",
   "hero.learnMore": "Learn More",
-  "hero.stats.tools": "Developer Tools",
+  "hero.stats.tools": "Coding Tools",
   "hero.stats.privacy": "Privacy Focused",
   "hero.stats.data": "Data Sent to Server",
   "hero.stats.limit": "Usage Limit",
@@ -50,9 +50,9 @@ export const home = {
     "Convert between Unix timestamps and human readable dates",
 
   // Features Section
-  "featuresSection.title": "Why DevTools?",
+  "featuresSection.title": "Why Choose KittyEncode?",
   "featuresSection.subtitle":
-    "Built for developers who value speed, privacy, and simplicity",
+    "Built for developers who value speed, privacy, and a touch of feline charm",
   "featuresSection.fast.title": "Lightning Fast",
   "featuresSection.fast.description":
     "All tools run locally in your browser with zero latency. No waiting for server responses.",

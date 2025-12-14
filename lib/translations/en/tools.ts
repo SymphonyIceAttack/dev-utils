@@ -1,7 +1,7 @@
 export const tools = {
   // Tools Page
-  "tools.title": "Developer Tools",
-  "tools.subtitle": "A collection of useful tools for developers",
+  "tools.title": "KittyEncode Tools",
+  "tools.subtitle": "Purr-fect coding utilities crafted for developers",
   "tools.search": "Search tools...",
   "tools.category.all": "All",
   "tools.category.data": "Data",

@@ -1,10 +1,10 @@
 import { base64Encoder } from "./base64-encoder";
 import { common } from "./common";
-import { hashGenerator } from "./hash-generator";
+import { encodingConverter } from "./encoding-converter";
 import { home } from "./home";
-import { jsonFormatter } from "./json-formatter";
 import { layout } from "./layout";
-import { qrGenerator } from "./qr-generator";
+import { md5Generator } from "./md5-generator";
+import { passwordGenerator } from "./password-generator";
 import { tools } from "./tools";
 import { urlEncoder } from "./url-encoder";
 
@@ -13,11 +13,11 @@ export const translations_en: { [key: string]: string } = {
   ...home,
   ...layout,
   ...tools,
-  ...jsonFormatter,
   ...urlEncoder,
   ...base64Encoder,
-  ...hashGenerator,
-  ...qrGenerator,
+  ...md5Generator,
+  ...encodingConverter,
+  ...passwordGenerator,
 };
 
 export default translations_en;

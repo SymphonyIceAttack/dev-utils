@@ -157,12 +157,12 @@ export default function BlogPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            name: "DevTools Developer Blog",
+            name: "KittyEncode Developer Blog",
             description: "Development tips, tutorials, and tool guides",
             url: "https://devtools.app/blog",
             publisher: {
               "@type": "Organization",
-              name: "DevTools",
+              name: "KittyEncode",
               url: "https://devtools.app",
             },
           }),

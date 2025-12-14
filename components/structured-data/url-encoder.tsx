@@ -6,7 +6,7 @@ export function StructuredDataScripts() {
   const websiteSchema: WithContext<WebSite> = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "DevTools",
+    name: "KittyEncode",
     description:
       "Free online developer tools for JSON, Base64, Hash, UUID and more",
     url: "https://devtools.app",

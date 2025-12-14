@@ -22,48 +22,16 @@ const navLinks = [
   { href: "/blog", label: "Blog" },
 ];
 
-function PixelHouseLogo() {
+function KittyEncodeLogo() {
   return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 16 16"
-      className="text-primary"
+    <img
+      src="/base-logo.png"
+      alt="KittyEncode"
+      width={32}
+      height={32}
+      className="rounded-lg"
       style={{ imageRendering: "pixelated" }}
-    >
-      <rect x="7" y="1" width="2" height="1" fill="currentColor" />
-      <rect x="5" y="2" width="6" height="1" fill="currentColor" />
-      <rect x="3" y="3" width="10" height="1" fill="currentColor" />
-      <rect x="2" y="4" width="12" height="1" fill="currentColor" />
-      <rect
-        x="3"
-        y="5"
-        width="10"
-        height="8"
-        fill="currentColor"
-        opacity="0.8"
-      />
-      <rect x="7" y="9" width="2" height="4" fill="var(--ghibli-earth)" />
-      <rect x="4" y="7" width="2" height="2" fill="var(--ghibli-sky)" />
-      <rect x="10" y="7" width="2" height="2" fill="var(--ghibli-sky)" />
-      <rect x="11" y="2" width="2" height="3" fill="var(--ghibli-earth)" />
-      <rect
-        x="12"
-        y="0"
-        width="1"
-        height="1"
-        fill="currentColor"
-        opacity="0.3"
-      />
-      <rect
-        x="13"
-        y="1"
-        width="1"
-        height="1"
-        fill="currentColor"
-        opacity="0.2"
-      />
-    </svg>
+    />
   );
 }
 
@@ -133,7 +101,7 @@ export function Navbar({ lang }: NavbarProps) {
                 ease: "easeInOut",
               }}
             >
-              <PixelHouseLogo />
+              <KittyEncodeLogo />
             </motion.div>
 
             <AnimatePresence>
@@ -192,7 +160,7 @@ export function Navbar({ lang }: NavbarProps) {
           </motion.div>
 
           <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tight">DevTools</span>
+            <span className="text-xl font-bold tracking-tight">KittyEncode</span>
             <AnimatePresence>
               {isCatDragging && (
                 <motion.span

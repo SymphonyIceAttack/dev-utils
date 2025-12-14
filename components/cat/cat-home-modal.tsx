@@ -340,40 +340,14 @@ function ItemSlot({
 
 function GhibliHomeIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32">
-      {/* Roof */}
-      <path
-        d="M16 4 L4 14 L8 14 L8 26 L24 26 L24 14 L28 14 Z"
-        fill="hsl(155, 35%, 45%)"
-      />
-      {/* Wall */}
-      <rect x="10" y="14" width="12" height="12" fill="hsl(45, 50%, 85%)" />
-      {/* Door */}
-      <rect
-        x="14"
-        y="18"
-        width="4"
-        height="8"
-        rx="1"
-        fill="hsl(35, 45%, 50%)"
-      />
-      {/* Window */}
-      <rect
-        x="11"
-        y="16"
-        width="4"
-        height="4"
-        rx="0.5"
-        fill="hsl(200, 60%, 70%)"
-      />
-      <path
-        d="M13 16 L13 20 M11 18 L15 18"
-        stroke="hsl(45, 40%, 75%)"
-        strokeWidth="0.5"
-      />
-      {/* Chimney */}
-      <rect x="20" y="8" width="3" height="6" fill="hsl(20, 40%, 50%)" />
-    </svg>
+    <img
+      src="/base-logo.png"
+      alt="Forest Cat's Home"
+      width={32}
+      height={32}
+      className="rounded-lg"
+      style={{ imageRendering: "pixelated" }}
+    />
   );
 }
 
