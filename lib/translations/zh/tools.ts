@@ -8,6 +8,7 @@ export const tools = {
   "tools.category.encoding": "编码转换",
   "tools.category.text": "文本处理",
   "tools.category.crypto": "加密",
+  "tools.category.design": "设计",
   "tools.noResults": "没有找到符合条件的工具。",
 
   // Base64
@@ -29,4 +30,12 @@ export const tools = {
   "uuidGenerator.generateBtn": "生成 UUID",
   "uuidGenerator.generateMultiple": "批量生成",
   "uuidGenerator.count": "数量",
+
+  // Regex Tester
+  "regexTester.title": "正则表达式测试器",
+  "regexTester.description": "实时测试正则表达式的匹配结果",
+
+  // Color Converter
+  "colorConverter.title": "颜色转换器",
+  "colorConverter.description": "在 HEX、RGB、HSL 等颜色格式之间转换",
 };

@@ -53,4 +53,43 @@ export const urlEncoder = {
   "urlEncoder.faq.q3": "Is my data secure?",
   "urlEncoder.faq.a3":
     "Yes, all encoding and decoding happens entirely in your browser. Your data is never sent to any server.",
+
+  // Real-World Scenarios
+  "urlEncoder.scenarios.title": "Real-World Scenarios",
+  "urlEncoder.scenarios.scenario1.title": "Building API Query Strings",
+  "urlEncoder.scenarios.scenario1.desc":
+    "You're building an e-commerce search feature and need to create URL query parameters from user input.",
+  "urlEncoder.scenarios.scenario1.problem": "Problematic URL:",
+  "urlEncoder.scenarios.scenario1.solution": "Correctly Encoded URL:",
+  "urlEncoder.scenarios.scenario1.result":
+    "Use URL encoding to handle spaces, apostrophes, and ampersands properly.",
+  "urlEncoder.scenarios.scenario2.title": "International Character Support",
+  "urlEncoder.scenarios.scenario2.desc":
+    "Your web app needs to handle user searches containing Chinese, Japanese, or other Unicode characters.",
+  "urlEncoder.scenarios.scenario2.original": "Original Search Term:",
+  "urlEncoder.scenarios.scenario2.encoded": "URL Encoded:",
+  "urlEncoder.scenarios.scenario2.result":
+    "Encode Unicode characters to ensure they're properly transmitted in URLs.",
+  "urlEncoder.scenarios.scenario3.title": "Social Media Sharing",
+  "urlEncoder.scenarios.scenario3.desc":
+    "Creating shareable links for social media posts that include dynamic content.",
+  "urlEncoder.scenarios.scenario3.dynamic": "Dynamic Share URL:",
+  "urlEncoder.scenarios.scenario3.ready": "Social Media Ready:",
+  "urlEncoder.scenarios.scenario3.result":
+    "Encode parameters to prevent URL breaking and ensure proper social media integration.",
+
+  // Step-by-Step Guide
+  "urlEncoder.guide.title": "How to Use URL Encoding",
+  "urlEncoder.guide.step1.title": "Enter Your URL or Text",
+  "urlEncoder.guide.step1.desc":
+    "Paste your URL or enter the text that needs encoding/decoding in the input field above.",
+  "urlEncoder.guide.step2.title": "Choose Encode or Decode",
+  "urlEncoder.guide.step2.desc":
+    "Select 'Encode' to convert special characters, or 'Decode' to convert encoded URLs back to readable format.",
+  "urlEncoder.guide.step3.title": "Click Convert",
+  "urlEncoder.guide.step3.desc":
+    "Click the convert button to instantly see the encoded or decoded result in the output field.",
+  "urlEncoder.guide.step4.title": "Copy and Use",
+  "urlEncoder.guide.step4.desc":
+    "Copy the result and use it in your web applications, API calls, or documentation.",
 };

@@ -68,4 +68,43 @@ export const qrGenerator = {
   "qrGenerator.faq.q4": "Can I customize the appearance of my QR codes?",
   "qrGenerator.faq.a4":
     "Yes, you can customize the size, colors (foreground and background), error correction level, and margin of your QR codes. You can also download them as PNG images.",
+
+  // Real-World Scenarios
+  "qrGenerator.scenarios.title": "Real-World Scenarios",
+  "qrGenerator.scenarios.scenario1.title": "Restaurant Digital Menu",
+  "qrGenerator.scenarios.scenario1.desc":
+    "A restaurant wants to replace physical menus with contactless digital versions during the pandemic.",
+  "qrGenerator.scenarios.scenario1.challenge": "🎯 Business Challenge:",
+  "qrGenerator.scenarios.scenario1.solution": "📱 QR Code Solution:",
+  "qrGenerator.scenarios.scenario1.result":
+    "Customers scan QR code with their phones to instantly access the digital menu.",
+  "qrGenerator.scenarios.scenario2.title": "WiFi Access for Guests",
+  "qrGenerator.scenarios.scenario2.desc":
+    "Hotel or coffee shop needs to share WiFi credentials with guests easily and securely.",
+  "qrGenerator.scenarios.scenario2.traditional": "🔐 Traditional Method:",
+  "qrGenerator.scenarios.scenario2.qrSolution": "📱 QR Code Solution:",
+  "qrGenerator.scenarios.scenario2.result":
+    "Guests scan QR code and automatically connect to WiFi without typing credentials.",
+  "qrGenerator.scenarios.scenario3.title": "Business Card Digital Integration",
+  "qrGenerator.scenarios.scenario3.desc":
+    "Sales professional wants to make networking more efficient by adding QR codes to business cards.",
+  "qrGenerator.scenarios.scenario3.static": "👤 Static Information:",
+  "qrGenerator.scenarios.scenario3.enhancement": "📱 QR Code Enhancement:",
+  "qrGenerator.scenarios.scenario3.result":
+    "Prospects scan QR code to access complete digital profile and connect instantly.",
+
+  // Step-by-Step Guide
+  "qrGenerator.guide.title": "How to Generate QR Codes",
+  "qrGenerator.guide.step1.title": "Enter Your Data",
+  "qrGenerator.guide.step1.desc":
+    "Type the URL, text, phone number, or WiFi credentials you want to encode in the QR code.",
+  "qrGenerator.guide.step2.title": "Customize Appearance",
+  "qrGenerator.guide.step2.desc":
+    "Choose colors, error correction level, and size to match your brand and scanning environment.",
+  "qrGenerator.guide.step3.title": "Generate & Preview",
+  "qrGenerator.guide.step3.desc":
+    "Click generate to create your QR code and preview it in real-time.",
+  "qrGenerator.guide.step4.title": "Download & Use",
+  "qrGenerator.guide.step4.desc":
+    "Download the high-quality PNG file and use it in print materials, websites, or digital displays.",
 };

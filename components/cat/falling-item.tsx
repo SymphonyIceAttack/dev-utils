@@ -194,6 +194,34 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
       <circle cx="16" cy="14" r="3" fill="hsl(50, 90%, 75%)" />
     </svg>
   ),
+  qr: (
+    <svg width="32" height="32" viewBox="0 0 32 32">
+      <rect x="6" y="6" width="8" height="8" fill="hsl(180, 30%, 30%)" />
+      <rect x="18" y="6" width="8" height="8" fill="hsl(180, 30%, 30%)" />
+      <rect x="6" y="18" width="8" height="8" fill="hsl(180, 30%, 30%)" />
+      <rect x="16" y="16" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="20" y="16" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="24" y="16" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="16" y="20" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="20" y="20" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="24" y="20" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="16" y="24" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="20" y="24" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="24" y="24" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+    </svg>
+  ),
+  sparkles: (
+    <svg width="32" height="32" viewBox="0 0 32 32">
+      <path
+        d="M16 6 L18 12 L24 14 L18 16 L16 22 L14 16 L8 14 L14 12 Z"
+        fill="hsl(45, 90%, 70%)"
+      />
+      <circle cx="12" cy="8" r="1.5" fill="hsl(45, 90%, 80%)" />
+      <circle cx="20" cy="8" r="1" fill="hsl(45, 90%, 80%)" />
+      <circle cx="8" cy="20" r="1" fill="hsl(45, 90%, 80%)" />
+      <circle cx="24" cy="20" r="1.5" fill="hsl(45, 90%, 80%)" />
+    </svg>
+  ),
 };
 
 interface FallingItemProps {

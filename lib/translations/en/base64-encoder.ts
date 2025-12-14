@@ -60,4 +60,45 @@ export const base64Encoder = {
   "base64Encoder.faq.q4": "Is my data secure when using this tool?",
   "base64Encoder.faq.a4":
     "Absolutely. All Base64 encoding and decoding happens locally in your browser. Your data is never sent to any server or stored anywhere, ensuring complete privacy and security.",
+
+  // Real-World Scenarios
+  "base64Encoder.scenarios.title": "Real-World Scenarios",
+  "base64Encoder.scenarios.scenario1.title": "Email Attachment Replacement",
+  "base64Encoder.scenarios.scenario1.desc":
+    "Developer needs to include a small icon in an email but wants to avoid attachment limitations.",
+  "base64Encoder.scenarios.scenario1.problem": "📧 Problem:",
+  "base64Encoder.scenarios.scenario1.solution": "🔧 Base64 Solution:",
+  "base64Encoder.scenarios.scenario1.result":
+    "Email displays the icon without requiring external file attachments.",
+  "base64Encoder.scenarios.scenario2.title": "API Authentication Token",
+  "base64Encoder.scenarios.scenario2.desc":
+    "Mobile app developer needs to encode user credentials for Basic Authentication in API requests.",
+  "base64Encoder.scenarios.scenario2.credentials": "🔐 User Credentials:",
+  "base64Encoder.scenarios.scenario2.encoded": "🔑 Base64 Encoded:",
+  "base64Encoder.scenarios.scenario2.header": "📡 API Request Header:",
+  "base64Encoder.scenarios.scenario2.result":
+    "Credentials are safely encoded for HTTP Basic Authentication.",
+  "base64Encoder.scenarios.scenario3.title": "JSON Data with Binary Content",
+  "base64Encoder.scenarios.scenario3.desc":
+    "Backend developer needs to store a small PDF file in a JSON database field.",
+  "base64Encoder.scenarios.scenario3.binary": "📄 Binary Data:",
+  "base64Encoder.scenarios.scenario3.encoding": "🔄 Base64 Encoding:",
+  "base64Encoder.scenarios.scenario3.storage": "💾 JSON Storage:",
+  "base64Encoder.scenarios.scenario3.result":
+    "Binary PDF content is now stored as text in the JSON database field.",
+
+  // Step-by-Step Guide
+  "base64Encoder.guide.title": "How to Use Base64 Encoding",
+  "base64Encoder.guide.step1.title": "Choose Encode or Decode",
+  "base64Encoder.guide.step1.desc":
+    "Select 'Encode' to convert text/binary to Base64, or 'Decode' to convert Base64 back to original format.",
+  "base64Encoder.guide.step2.title": "Enter Your Data",
+  "base64Encoder.guide.step2.desc":
+    "Type text or upload a file (images, documents) that you want to encode or decode.",
+  "base64Encoder.guide.step3.title": "Generate Result",
+  "base64Encoder.guide.step3.desc":
+    "Click the convert button to instantly see the Base64 encoded or decoded result.",
+  "base64Encoder.guide.step4.title": "Copy & Implement",
+  "base64Encoder.guide.step4.desc":
+    "Copy the result for use in your applications, APIs, email templates, or data storage.",
 };

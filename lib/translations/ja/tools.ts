@@ -7,6 +7,7 @@ export const tools = {
   "tools.category.encoding": "エンコード",
   "tools.category.text": "テキスト",
   "tools.category.crypto": "暗号化",
+  "tools.category.design": "デザイン",
   "tools.noResults": "条件に一致するツールが見つかりません。",
   "base64.title": "Base64エンコーダー/デコーダー",
   "base64.description": "Base64文字列のエンコード・デコード",
@@ -17,9 +18,17 @@ export const tools = {
   "hashGenerator.description": "MD5、SHA-1、SHA-256などのハッシュを生成",
   "hashGenerator.inputPlaceholder": "ハッシュ化するテキストを入力...",
   "hashGenerator.algorithm": "アルゴリズム",
-  "uuidGenerator.title": "UUID生成ツール",
-  "uuidGenerator.description": "ランダムUUID（v4）を生成",
-  "uuidGenerator.generateBtn": "UUID生成",
-  "uuidGenerator.generateMultiple": "複数生成",
-  "uuidGenerator.count": "数量",
+  "uuidGenerator.title": "UUID ジェネレーター",
+  "uuidGenerator.description": "ランダムUUID（v4）生成",
+  "uuidGenerator.generateBtn": "UUIDを生成",
+  "uuidGenerator.generateMultiple": "一括生成",
+  "uuidGenerator.count": "数",
+
+  // Regex Tester
+  "regexTester.title": "正規表現テスター",
+  "regexTester.description": "正規表現をリアルタイムでテスト",
+
+  // Color Converter
+  "colorConverter.title": "カラーコンバーター",
+  "colorConverter.description": "HEX、RGB、HSLなどのカラー形式間で変換",
 };

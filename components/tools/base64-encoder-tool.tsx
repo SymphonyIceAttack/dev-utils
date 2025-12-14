@@ -22,6 +22,7 @@ import {
 import { CodeHighlighter } from "@/components/ui/code-highlighter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
 
@@ -72,6 +73,18 @@ const exampleData: ExampleData[] = [
 
 export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
   const { t } = useTranslation(lang);
+  const { spawnItem } = useCat();
+  const [lastSpawnTime, setLastSpawnTime] = useState(0);
+  const COOLDOWN_DURATION = 3000; // 3秒冷却时间
+
+  const shouldSpawnItem = useCallback(() => {
+    const now = Date.now();
+    if (now - lastSpawnTime >= COOLDOWN_DURATION) {
+      setLastSpawnTime(now);
+      return true;
+    }
+    return false;
+  }, [lastSpawnTime]);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
@@ -81,13 +94,6 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
   const [activeTab, setActiveTab] = useState("convert");
 
   const toolSectionRef = useRef<HTMLDivElement>(null);
-
-  const faqs = [
-    { qKey: "base64Encoder.faq.q1", aKey: "base64Encoder.faq.a1" },
-    { qKey: "base64Encoder.faq.q2", aKey: "base64Encoder.faq.a2" },
-    { qKey: "base64Encoder.faq.q3", aKey: "base64Encoder.faq.a3" },
-    { qKey: "base64Encoder.faq.q4", aKey: "base64Encoder.faq.a4" },
-  ];
 
   const encodeBase64 = useCallback(
     (text: string) => {
@@ -99,12 +105,16 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
           ),
         );
         setOutput(encoded);
+        // 成功编码时生成书本物品，只有在冷却时间结束后才生成
+        if (text.trim() && shouldSpawnItem()) {
+          spawnItem("book");
+        }
       } catch {
         setError(t("base64Encoder.error.encoding"));
         setOutput("");
       }
     },
-    [t],
+    [t, spawnItem, shouldSpawnItem],
   );
 
   const decodeBase64 = useCallback(
@@ -122,12 +132,16 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             .join(""),
         );
         setOutput(decoded);
+        // 成功解码时生成书本物品，只有在冷却时间结束后才生成
+        if (base64.trim() && shouldSpawnItem()) {
+          spawnItem("book");
+        }
       } catch {
         setError(t("base64Encoder.error.decoding"));
         setOutput("");
       }
     },
-    [t],
+    [t, spawnItem, shouldSpawnItem],
   );
 
   const handleConvert = useCallback(() => {
@@ -608,16 +622,210 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             </motion.li>
           ))}
         </motion.ul>
+
+        {/* Real-World Scenarios */}
+        <motion.section
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+            Real-World Scenarios
+          </motion.h3>
+
+          {/* Scenario 1 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                1
+              </span>
+              Email Attachment Replacement
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Developer needs to include a small icon in an email but wants to
+              avoid attachment limitations.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">📧 Problem:</div>
+                <div className="mb-3">
+                  Email server blocks attachments or recipient has size
+                  limitations
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  🔧 Base64 Solution:
+                </div>
+                <div className="mb-3">
+                  Convert small icon (logo.png) to Base64 and embed in HTML
+                  email
+                </div>
+                <div className="text-green-600 text-xs">
+                  &lt;img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAB..."
+                  /&gt;
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Email displays the icon without requiring
+              external file attachments.
+            </p>
+          </motion.div>
+
+          {/* Scenario 2 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                2
+              </span>
+              API Authentication Token
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Mobile app developer needs to encode user credentials for Basic
+              Authentication in API requests.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  🔐 User Credentials:
+                </div>
+                <div className="mb-3 font-mono">username: password123</div>
+                <div className="text-muted-foreground mb-2">
+                  🔑 Base64 Encoded:
+                </div>
+                <div className="mb-3 font-mono text-green-600">
+                  dXNlcm5hbWU6cGFzc3dvcmQxMjM=
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  📡 API Request Header:
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQxMjM=
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Credentials are safely encoded for HTTP
+              Basic Authentication.
+            </p>
+          </motion.div>
+
+          {/* Scenario 3 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                3
+              </span>
+              JSON Data with Binary Content
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Backend developer needs to store a small PDF file in a JSON
+              database field.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  📄 Binary Data:
+                </div>
+                <div className="mb-3">
+                  document.pdf (45 KB) - binary format not JSON-compatible
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  🔄 Base64 Encoding:
+                </div>
+                <div className="mb-3 font-mono text-green-600">
+                  JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4K...
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  💾 JSON Storage:
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {
+                    '{id: 1, document: "JVBERi0xLjQK...", filename: "document.pdf"}'
+                  }
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Binary PDF content is now stored as text
+              in the JSON database field.
+            </p>
+          </motion.div>
+        </motion.section>
+
+        {/* Step-by-Step Guide */}
+        <motion.section
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+            How to Use Base64 Encoding
+          </motion.h3>
+
+          <motion.div className="space-y-4" variants={containerVariants}>
+            {[
+              {
+                step: "1",
+                title: "Choose Encode or Decode",
+                desc: "Select 'Encode' to convert text/binary to Base64, or 'Decode' to convert Base64 back to original format.",
+              },
+              {
+                step: "2",
+                title: "Enter Your Data",
+                desc: "Type text or upload a file (images, documents) that you want to encode or decode.",
+              },
+              {
+                step: "3",
+                title: "Generate Result",
+                desc: "Click the convert button to instantly see the Base64 encoded or decoded result.",
+              },
+              {
+                step: "4",
+                title: "Copy & Implement",
+                desc: "Copy the result for use in your applications, APIs, email templates, or data storage.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.step}
+                className="flex items-start gap-4 p-4 bg-muted/10 rounded-lg"
+                variants={itemVariants}
+                whileHover={{ x: 4 }}
+              >
+                <span className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                  {item.step}
+                </span>
+                <div>
+                  <h4 className="font-semibold mb-1">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
       </motion.section>
 
+      {/* FAQ Section */}
       <motion.section className="mb-12" variants={itemVariants}>
         <motion.button
           onClick={() => setShowFaq(!showFaq)}
-          className="flex items-center justify-between w-full text-left py-4 border-t rounded-xl px-2 hover:bg-muted/30 transition-colors"
-          whileHover={{ x: 4 }}
-          whileTap={{ scale: 0.99 }}
+          className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
+          whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-xl font-semibold">{t("common.faq")}</h2>
+          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -629,37 +837,138 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
         <AnimatePresence>
           {showFaq && (
             <motion.div
-              className="space-y-4 pt-4"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="space-y-4 pt-6 overflow-hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              {faqs.map((faq, index) => (
+              {[
+                {
+                  q: "What is Base64 encoding?",
+                  a: "Base64 is a binary-to-text encoding scheme that converts binary data into ASCII string format. It's commonly used to embed image files or other binary data in text-based formats like JSON, XML, or HTML.",
+                },
+                {
+                  q: "When should I use Base64 encoding?",
+                  a: "Use Base64 when you need to include binary data in text-based formats, send data through systems that only support text, or store binary data in databases that aren't designed for binary storage.",
+                },
+                {
+                  q: "Is Base64 encryption?",
+                  a: "No, Base64 is not encryption or security measure. It's simply an encoding scheme that makes binary data text-safe. The encoded data can be easily decoded back to its original form.",
+                },
+              ].map((faq, index) => (
                 <motion.div
-                  key={faq.qKey}
+                  key={faq.q}
+                  className="pixel-card p-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 24,
-                  }}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="bg-muted/30 rounded-xl">
-                    <CardContent className="p-4">
-                      <h3 className="font-medium mb-2">{t(faq.qKey)}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {t(faq.aKey)}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
+                  <p className="text-sm text-muted-foreground">{faq.a}</p>
                 </motion.div>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
+      </motion.section>
+
+      {/* Information Section */}
+      <motion.section className="mb-12" variants={itemVariants}>
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* What is */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">What is Base64 Encoding?</h2>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p>
+                Base64 is a binary-to-text encoding scheme that converts binary data into ASCII string format.
+                It uses a set of 64 different ASCII characters to represent binary data, making it safe for
+                transmission over systems that only support text.
+              </p>
+              <p>
+                This encoding method is widely used in web development, email systems, and data storage
+                where binary data needs to be embedded in text-based formats like JSON, XML, or HTML.
+              </p>
+            </div>
+          </div>
+
+          {/* Key Features */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Key Features</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Bidirectional encoding and decoding between text and Base64</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Support for UTF-8 text encoding and international characters</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Real-time conversion with instant feedback</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>One-click copy functionality for encoded output</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Pre-built examples for common use cases</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Common Use Cases */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Common Use Cases</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Embedding images in HTML/CSS using data URIs</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Including binary files in JSON API responses</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Encoding email attachments for text-based transmission</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Storing binary data in databases that only support text</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Creating URL-safe data for web applications</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Real-World Scenarios */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Real-World Scenarios</h2>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <div>
+                <strong className="text-foreground">Email Systems:</strong>
+                <p>Base64 encoding is used in email protocols like SMTP to send binary attachments as text-safe content.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Web Development:</strong>
+                <p>Embedding small images directly in CSS or HTML using data:image/png;base64,... syntax to reduce HTTP requests.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">API Development:</strong>
+                <p>Including file uploads, images, or other binary data in JSON responses for RESTful APIs.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Authentication Systems:</strong>
+                <p>Encoding user credentials or tokens for transmission in HTTP headers (though not for security).</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.section>
     </motion.div>
   );

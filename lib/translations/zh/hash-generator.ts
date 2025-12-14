@@ -52,4 +52,45 @@ export const hashGenerator = {
   "hashGenerator.faq.q4": "使用此工具时我的数据安全吗？",
   "hashGenerator.faq.a4":
     "绝对安全。所有哈希生成都在您的浏览器中本地进行。您的数据永远不会发送到任何服务器或存储在任何地方，确保完全的隐私和安全。",
+
+  // Real-World Scenarios
+  "hashGenerator.scenarios.title": "真实场景应用",
+  "hashGenerator.scenarios.scenario1.title": "文件完整性验证",
+  "hashGenerator.scenarios.scenario1.desc":
+    "软件开发人员下载一个大文件，需要验证它在下载过程中没有被损坏。",
+  "hashGenerator.scenarios.scenario1.file": "📥 下载的文件：",
+  "hashGenerator.scenarios.scenario1.expected": "🔐 预期哈希 (SHA-256)：",
+  "hashGenerator.scenarios.scenario1.actual": "✅ 实际生成的哈希：",
+  "hashGenerator.scenarios.scenario1.result":
+    "哈希匹配 - 文件是真实且未损坏的。",
+  "hashGenerator.scenarios.scenario2.title": "密码存储系统",
+  "hashGenerator.scenarios.scenario2.desc":
+    "Web应用程序需要安全地存储用户密码，而不存储实际的密码文本。",
+  "hashGenerator.scenarios.scenario2.password": "🔑 用户密码：",
+  "hashGenerator.scenarios.scenario2.storage": "🗄️ 数据库存储：",
+  "hashGenerator.scenarios.scenario2.login": "🔒 登录验证：",
+  "hashGenerator.scenarios.scenario2.result":
+    "即使数据库受到威胁，由于单向哈希，密码仍然安全。",
+  "hashGenerator.scenarios.scenario3.title": "数字文档验证",
+  "hashGenerator.scenarios.scenario3.desc":
+    "法律文档需要证明自创建以来没有被修改过。",
+  "hashGenerator.scenarios.scenario3.document": "📄 原始文档：",
+  "hashGenerator.scenarios.scenario3.hash": "🔐 文档哈希 (SHA-256)：",
+  "hashGenerator.scenarios.scenario3.verification": "✅ 后续验证：",
+  "hashGenerator.scenarios.scenario3.result":
+    "对文档的任何修改都会产生完全不同的哈希值。",
+
+  // Step-by-Step Guide
+  "hashGenerator.guide.title": "如何生成哈希",
+  "hashGenerator.guide.step1.title": "选择哈希算法",
+  "hashGenerator.guide.step1.desc":
+    "选择合适的哈希算法（SHA-256推荐用于安全性，MD5用于兼容性）。",
+  "hashGenerator.guide.step2.title": "输入您的数据",
+  "hashGenerator.guide.step2.desc":
+    "在输入字段中键入或粘贴您想要哈希的文本、文件内容或数据。",
+  "hashGenerator.guide.step3.title": "生成哈希",
+  "hashGenerator.guide.step3.desc": "点击生成以使用所选算法即时创建哈希值。",
+  "hashGenerator.guide.step4.title": "复制和使用",
+  "hashGenerator.guide.step4.desc":
+    "复制哈希值用于您的应用程序、验证过程或安全实现。",
 };

@@ -1,7 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileJson, Hash, Key, Link as LinkIcon, QrCode } from "lucide-react";
+import {
+  FileJson,
+  Hash,
+  Key,
+  Link as LinkIcon,
+  Palette,
+  QrCode,
+  Shuffle,
+  Search,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -21,6 +30,14 @@ const allTools = [
     icon: FileJson,
     href: "/tools/json-formatter",
     color: "text-yellow-500",
+    category: "tools.category.data",
+  },
+  {
+    titleKey: "regexTester.title",
+    descriptionKey: "regexTester.description",
+    icon: Search,
+    href: "/tools/regex-tester",
+    color: "text-orange-500",
     category: "tools.category.data",
   },
   {
@@ -55,12 +72,29 @@ const allTools = [
     color: "text-pink-500",
     category: "tools.category.data",
   },
+  {
+    titleKey: "uuidGenerator.title",
+    descriptionKey: "uuidGenerator.description",
+    icon: Shuffle,
+    href: "/tools/uuid-generator",
+    color: "text-indigo-500",
+    category: "tools.category.data",
+  },
+  {
+    titleKey: "colorConverter.title",
+    descriptionKey: "colorConverter.description",
+    icon: Palette,
+    href: "/tools/color-converter",
+    color: "text-red-500",
+    category: "tools.category.design",
+  },
 ];
 
 const categories = [
   { key: "tools.category.all", value: "all" },
   { key: "tools.category.data", value: "tools.category.data" },
   { key: "tools.category.encoding", value: "tools.category.encoding" },
+  { key: "tools.category.design", value: "tools.category.design" },
 ];
 
 interface ToolsPageClientProps {

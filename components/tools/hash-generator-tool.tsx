@@ -22,6 +22,7 @@ import {
 import { CodeHighlighter } from "@/components/ui/code-highlighter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
 
@@ -78,6 +79,7 @@ interface HashResult {
 
 export function HashGeneratorTool({ lang }: HashGeneratorToolProps) {
   const { t } = useTranslation(lang);
+  const { spawnItem } = useCat();
   const [input, setInput] = useState("");
   const [hashResults, setHashResults] = useState<HashResult[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -86,13 +88,6 @@ export function HashGeneratorTool({ lang }: HashGeneratorToolProps) {
   const [activeTab, setActiveTab] = useState("generate");
 
   const toolSectionRef = useRef<HTMLDivElement>(null);
-
-  const faqs = [
-    { qKey: "hashGenerator.faq.q1", aKey: "hashGenerator.faq.a1" },
-    { qKey: "hashGenerator.faq.q2", aKey: "hashGenerator.faq.a2" },
-    { qKey: "hashGenerator.faq.q3", aKey: "hashGenerator.faq.a3" },
-    { qKey: "hashGenerator.faq.q4", aKey: "hashGenerator.faq.a4" },
-  ];
 
   // Simple hash functions implementation
   const md5 = (str: string): string => {
@@ -163,11 +158,15 @@ export function HashGeneratorTool({ lang }: HashGeneratorToolProps) {
       });
 
       setHashResults(results);
+      // 成功生成哈希时生成键盘物品
+      if (results.length > 0) {
+        spawnItem("keyboard");
+      }
     } catch {
       setError(t("hashGenerator.error.generation"));
       setHashResults([]);
     }
-  }, [input, t]);
+  }, [input, t, spawnItem]);
 
   const copyToClipboard = useCallback(
     async (text: string, algorithm: string) => {
@@ -599,16 +598,205 @@ export function HashGeneratorTool({ lang }: HashGeneratorToolProps) {
             </motion.li>
           ))}
         </motion.ul>
+
+        {/* Real-World Scenarios */}
+        <motion.section
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+            Real-World Scenarios
+          </motion.h3>
+
+          {/* Scenario 1 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                1
+              </span>
+              File Integrity Verification
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Software developer downloads a large file and needs to verify it
+              wasn't corrupted during download.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  📥 Downloaded File:
+                </div>
+                <div className="mb-3 font-mono">ubuntu-22.04.iso (2.5 GB)</div>
+                <div className="text-muted-foreground mb-2">
+                  🔐 Expected Hash (SHA-256):
+                </div>
+                <div className="mb-3 font-mono text-green-600">
+                  a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  ✅ Actual Hash Generated:
+                </div>
+                <div className="font-mono text-green-600">
+                  a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Hashes match - file is authentic and
+              uncorrupted.
+            </p>
+          </motion.div>
+
+          {/* Scenario 2 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                2
+              </span>
+              Password Storage System
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Web application needs to securely store user passwords without
+              storing the actual password text.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  🔑 User Password:
+                </div>
+                <div className="mb-3 font-mono">MySecurePassword123!</div>
+                <div className="text-muted-foreground mb-2">
+                  🗄️ Database Storage:
+                </div>
+                <div className="mb-3 font-mono text-green-600">
+                  ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  🔒 Login Verification:
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Compare hash of entered password with stored hash
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Even if database is compromised,
+              passwords remain secure due to one-way hashing.
+            </p>
+          </motion.div>
+
+          {/* Scenario 3 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                3
+              </span>
+              Digital Document Verification
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Legal document needs to prove it hasn't been altered since
+              creation.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  📄 Original Document:
+                </div>
+                <div className="mb-3">contract-v2.pdf (123 KB)</div>
+                <div className="text-muted-foreground mb-2">
+                  🔐 Document Hash (SHA-256):
+                </div>
+                <div className="mb-3 font-mono text-green-600">
+                  7d865e959b2466918c9863afca942d0f89c6484b44bdd8d4a2d2e351530b4b3f
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  ✅ Later Verification:
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Calculate hash of received document and compare with original
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Any modification to the document would
+              produce a completely different hash value.
+            </p>
+          </motion.div>
+        </motion.section>
+
+        {/* Step-by-Step Guide */}
+        <motion.section
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+            How to Generate Hashes
+          </motion.h3>
+
+          <motion.div className="space-y-4" variants={containerVariants}>
+            {[
+              {
+                step: "1",
+                title: "Choose Hash Algorithm",
+                desc: "Select the appropriate hash algorithm (SHA-256 recommended for security, MD5 for compatibility).",
+              },
+              {
+                step: "2",
+                title: "Enter Your Data",
+                desc: "Type or paste the text, file content, or data you want to hash in the input field.",
+              },
+              {
+                step: "3",
+                title: "Generate Hash",
+                desc: "Click generate to instantly create the hash value using the selected algorithm.",
+              },
+              {
+                step: "4",
+                title: "Copy & Use",
+                desc: "Copy the hash value for use in your application, verification process, or security implementation.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.step}
+                className="flex items-start gap-4 p-4 bg-muted/10 rounded-lg"
+                variants={itemVariants}
+                whileHover={{ x: 4 }}
+              >
+                <span className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                  {item.step}
+                </span>
+                <div>
+                  <h4 className="font-semibold mb-1">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
       </motion.section>
 
+      {/* FAQ Section */}
       <motion.section className="mb-12" variants={itemVariants}>
         <motion.button
           onClick={() => setShowFaq(!showFaq)}
-          className="flex items-center justify-between w-full text-left py-4 border-t rounded-xl px-2 hover:bg-muted/30 transition-colors"
-          whileHover={{ x: 4 }}
-          whileTap={{ scale: 0.99 }}
+          className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
+          whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-xl font-semibold">{t("common.faq")}</h2>
+          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -620,37 +808,139 @@ export function HashGeneratorTool({ lang }: HashGeneratorToolProps) {
         <AnimatePresence>
           {showFaq && (
             <motion.div
-              className="space-y-4 pt-4"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="space-y-4 pt-6 overflow-hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              {faqs.map((faq, index) => (
+              {[
+                {
+                  q: "What is a hash function?",
+                  a: "A hash function is a mathematical algorithm that converts input data into a fixed-size string of characters, which appears random. It's commonly used for data integrity verification and password storage.",
+                },
+                {
+                  q: "What are the different hash algorithms available?",
+                  a: "We support multiple hash algorithms including MD5, SHA-1, SHA-256, SHA-512, and others. Each has different security levels and use cases, with SHA-256 being the most commonly recommended for security purposes.",
+                },
+                {
+                  q: "Is it safe to hash passwords?",
+                  a: "While hashing is better than storing passwords in plain text, modern applications should use specialized password hashing algorithms like bcrypt, scrypt, or Argon2, which include salt and are designed specifically for password storage.",
+                },
+              ].map((faq, index) => (
                 <motion.div
-                  key={faq.qKey}
+                  key={faq.q}
+                  className="pixel-card p-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 24,
-                  }}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="bg-muted/30 rounded-xl">
-                    <CardContent className="p-4">
-                      <h3 className="font-medium mb-2">{t(faq.qKey)}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {t(faq.aKey)}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
+                  <p className="text-sm text-muted-foreground">{faq.a}</p>
                 </motion.div>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
+      </motion.section>
+
+      {/* Information Section */}
+      <motion.section className="mb-12" variants={itemVariants}>
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* What is */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">What is a Hash Generator?</h2>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p>
+                A hash generator is a cryptographic tool that converts input data into a fixed-size string
+                of characters using mathematical algorithms. The output, called a hash or digest, appears
+                random and is unique to the input data.
+              </p>
+              <p>
+                Hash functions are fundamental in computer science for data integrity verification, password
+                storage, digital signatures, and blockchain technology. Different algorithms provide varying
+                levels of security and performance.
+              </p>
+            </div>
+          </div>
+
+          {/* Key Features */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Key Features</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Multiple hash algorithms: MD5, SHA-1, SHA-256, SHA-512, and more</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Real-time hash generation as you type</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>One-click copy functionality for all generated hashes</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Support for both text and file input</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Algorithm comparison for different security needs</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Common Use Cases */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Common Use Cases</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>File integrity verification and checksums</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Password hashing for user authentication systems</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Digital signatures and certificates</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Data deduplication in storage systems</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Blockchain and cryptocurrency applications</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Real-World Scenarios */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Real-World Scenarios</h2>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <div>
+                <strong className="text-foreground">File Verification:</strong>
+                <p>Downloading software and verifying the integrity of files using MD5 or SHA-256 checksums to ensure they haven't been tampered with.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Version Control:</strong>
+                <p>Git uses SHA-1 hashes to identify commits and ensure data integrity in distributed version control systems.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">API Security:</strong>
+                <p>Generating HMAC signatures for API authentication and verifying request integrity between client and server.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Database Indexing:</strong>
+                <p>Using hash indexes for fast data retrieval in databases and caching systems for improved performance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.section>
     </motion.div>
   );

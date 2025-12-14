@@ -16,7 +16,9 @@ export type CatItemType =
   | "book" // Base64 success
   | "keyboard" // Hash Generator success
   | "coffee" // UUID Generator success
-  | "cookie" // Regex Tester success
+  | "cookie" // Color Converter success
+  | "qr" // QR Generator success
+  | "sparkles" // Regex Tester success
   | "star"; // Special achievements
 
 export type CatMood = "idle" | "happy" | "curious" | "sleepy" | "excited";
@@ -35,6 +37,8 @@ interface CatInventory {
   keyboard: boolean;
   coffee: boolean;
   cookie: boolean;
+  qr: boolean;
+  sparkles: boolean;
   star: boolean;
 }
 
@@ -67,6 +71,8 @@ const defaultInventory: CatInventory = {
   keyboard: false,
   coffee: false,
   cookie: false,
+  qr: false,
+  sparkles: false,
   star: false,
 };
 

@@ -193,6 +193,34 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
       <circle cx="16" cy="14" r="3" fill="hsl(50, 90%, 75%)" />
     </svg>
   ),
+  qr: (
+    <svg width="40" height="40" viewBox="0 0 32 32">
+      <rect x="6" y="6" width="8" height="8" fill="hsl(180, 30%, 30%)" />
+      <rect x="18" y="6" width="8" height="8" fill="hsl(180, 30%, 30%)" />
+      <rect x="6" y="18" width="8" height="8" fill="hsl(180, 30%, 30%)" />
+      <rect x="16" y="16" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="20" y="16" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="24" y="16" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="16" y="20" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="20" y="20" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="24" y="20" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="16" y="24" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="20" y="24" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+      <rect x="24" y="24" width="2" height="2" fill="hsl(180, 30%, 30%)" />
+    </svg>
+  ),
+  sparkles: (
+    <svg width="40" height="40" viewBox="0 0 32 32">
+      <path
+        d="M16 6 L18 12 L24 14 L18 16 L16 22 L14 16 L8 14 L14 12 Z"
+        fill="hsl(45, 90%, 70%)"
+      />
+      <circle cx="12" cy="8" r="1.5" fill="hsl(45, 90%, 80%)" />
+      <circle cx="20" cy="8" r="1" fill="hsl(45, 90%, 80%)" />
+      <circle cx="8" cy="20" r="1" fill="hsl(45, 90%, 80%)" />
+      <circle cx="24" cy="20" r="1.5" fill="hsl(45, 90%, 80%)" />
+    </svg>
+  ),
 };
 
 const itemConfig: Record<CatItemType, { name: string; description: string }> = {
@@ -218,6 +246,14 @@ const itemConfig: Record<CatItemType, { name: string; description: string }> = {
   },
   cookie: {
     name: "Acorn Cookie",
+    description: "Earned from Color conversion",
+  },
+  qr: {
+    name: "Mystic QR",
+    description: "Earned from QR generation",
+  },
+  sparkles: {
+    name: "Magic Sparkles",
     description: "Earned from Regex testing",
   },
   star: {
@@ -240,9 +276,13 @@ function ItemSlot({
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 200 }}
-      whileHover={unlocked ? { scale: 1.1, y: -5 } : undefined}
+      whileHover={unlocked ? { 
+        scale: 1.1, 
+        y: -5,
+        transition: { duration: 0.2, ease: "easeOut" }
+      } : undefined}
       className={`
-        relative p-4 rounded-2xl border-2 transition-all
+        group relative p-4 rounded-2xl border-2 transition-all
         ${
           unlocked
             ? "bg-card border-primary/50 shadow-lg cursor-pointer"
@@ -290,7 +330,7 @@ function ItemSlot({
 
       {/* Tooltip for unlocked items */}
       {unlocked && (
-        <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-lg opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+        <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
           {config.description}
         </div>
       )}

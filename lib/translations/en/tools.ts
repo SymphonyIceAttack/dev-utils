@@ -8,6 +8,7 @@ export const tools = {
   "tools.category.encoding": "Encoding",
   "tools.category.text": "Text",
   "tools.category.crypto": "Crypto",
+  "tools.category.design": "Design",
   "tools.noResults": "No tools found matching your criteria.",
 
   // Base64
@@ -29,4 +30,13 @@ export const tools = {
   "uuidGenerator.generateBtn": "Generate UUID",
   "uuidGenerator.generateMultiple": "Generate Multiple",
   "uuidGenerator.count": "Count",
+
+  // Regex Tester
+  "regexTester.title": "Regex Tester",
+  "regexTester.description": "Test regular expressions with real-time results",
+
+  // Color Converter
+  "colorConverter.title": "Color Converter",
+  "colorConverter.description":
+    "Convert between HEX, RGB, HSL and other color formats",
 };

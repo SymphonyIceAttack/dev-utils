@@ -57,4 +57,46 @@ export const hashGenerator = {
   "hashGenerator.faq.q4": "Is my data secure when using this tool?",
   "hashGenerator.faq.a4":
     "Absolutely. All hash generation happens locally in your browser. Your data is never sent to any server or stored anywhere, ensuring complete privacy and security.",
+
+  // Real-World Scenarios
+  "hashGenerator.scenarios.title": "Real-World Scenarios",
+  "hashGenerator.scenarios.scenario1.title": "File Integrity Verification",
+  "hashGenerator.scenarios.scenario1.desc":
+    "Software developer downloads a large file and needs to verify it wasn't corrupted during download.",
+  "hashGenerator.scenarios.scenario1.file": "📥 Downloaded File:",
+  "hashGenerator.scenarios.scenario1.expected": "🔐 Expected Hash (SHA-256):",
+  "hashGenerator.scenarios.scenario1.actual": "✅ Actual Hash Generated:",
+  "hashGenerator.scenarios.scenario1.result":
+    "Hashes match - file is authentic and uncorrupted.",
+  "hashGenerator.scenarios.scenario2.title": "Password Storage System",
+  "hashGenerator.scenarios.scenario2.desc":
+    "Web application needs to securely store user passwords without storing the actual password text.",
+  "hashGenerator.scenarios.scenario2.password": "🔑 User Password:",
+  "hashGenerator.scenarios.scenario2.storage": "🗄️ Database Storage:",
+  "hashGenerator.scenarios.scenario2.login": "🔒 Login Verification:",
+  "hashGenerator.scenarios.scenario2.result":
+    "Even if database is compromised, passwords remain secure due to one-way hashing.",
+  "hashGenerator.scenarios.scenario3.title": "Digital Document Verification",
+  "hashGenerator.scenarios.scenario3.desc":
+    "Legal document needs to prove it hasn't been altered since creation.",
+  "hashGenerator.scenarios.scenario3.document": "📄 Original Document:",
+  "hashGenerator.scenarios.scenario3.hash": "🔐 Document Hash (SHA-256):",
+  "hashGenerator.scenarios.scenario3.verification": "✅ Later Verification:",
+  "hashGenerator.scenarios.scenario3.result":
+    "Any modification to the document would produce a completely different hash value.",
+
+  // Step-by-Step Guide
+  "hashGenerator.guide.title": "How to Generate Hashes",
+  "hashGenerator.guide.step1.title": "Choose Hash Algorithm",
+  "hashGenerator.guide.step1.desc":
+    "Select the appropriate hash algorithm (SHA-256 recommended for security, MD5 for compatibility).",
+  "hashGenerator.guide.step2.title": "Enter Your Data",
+  "hashGenerator.guide.step2.desc":
+    "Type or paste the text, file content, or data you want to hash in the input field.",
+  "hashGenerator.guide.step3.title": "Generate Hash",
+  "hashGenerator.guide.step3.desc":
+    "Click generate to instantly create the hash value using the selected algorithm.",
+  "hashGenerator.guide.step4.title": "Copy & Use",
+  "hashGenerator.guide.step4.desc":
+    "Copy the hash value for use in your application, verification process, or security implementation.",
 };

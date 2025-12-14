@@ -8,6 +8,7 @@ export const tools = {
   "tools.category.encoding": "Кодирование",
   "tools.category.text": "Текст",
   "tools.category.crypto": "Крипто",
+  "tools.category.design": "Дизайн",
   "tools.noResults":
     "Инструменты, соответствующие вашим критериям, не найдены.",
 
@@ -30,4 +31,14 @@ export const tools = {
   "uuidGenerator.generateBtn": "Генерировать UUID",
   "uuidGenerator.generateMultiple": "Генерировать несколько",
   "uuidGenerator.count": "Количество",
+
+  // Regex Tester
+  "regexTester.title": "Тестер регулярных выражений",
+  "regexTester.description":
+    "Тестируйте регулярные выражения в реальном времени",
+
+  // Color Converter
+  "colorConverter.title": "Конвертер цветов",
+  "colorConverter.description":
+    "Конвертируйте между форматами HEX, RGB, HSL и другими цветами",
 };

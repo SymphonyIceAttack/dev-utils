@@ -50,4 +50,43 @@ export const urlEncoder = {
   "urlEncoder.faq.q3": "我的数据安全吗？",
   "urlEncoder.faq.a3":
     "是的，所有编码和解码都完全在您的浏览器中进行。您的数据永远不会发送到任何服务器。",
+
+  // Real-World Scenarios
+  "urlEncoder.scenarios.title": "真实场景应用",
+  "urlEncoder.scenarios.scenario1.title": "构建 API 查询字符串",
+  "urlEncoder.scenarios.scenario1.desc":
+    "您正在构建电商搜索功能，需要从用户输入创建 URL 查询参数。",
+  "urlEncoder.scenarios.scenario1.problem": "问题 URL：",
+  "urlEncoder.scenarios.scenario1.solution": "正确编码的 URL：",
+  "urlEncoder.scenarios.scenario1.result":
+    "使用 URL 编码正确处理空格、单引号和 & 符号。",
+  "urlEncoder.scenarios.scenario2.title": "国际字符支持",
+  "urlEncoder.scenarios.scenario2.desc":
+    "您的 Web 应用需要处理包含中文、日文或其他 Unicode 字符的用户搜索。",
+  "urlEncoder.scenarios.scenario2.original": "原始搜索词：",
+  "urlEncoder.scenarios.scenario2.encoded": "URL 编码：",
+  "urlEncoder.scenarios.scenario2.result":
+    "编码 Unicode 字符以确保它们在 URL 中正确传输。",
+  "urlEncoder.scenarios.scenario3.title": "社交媒体分享",
+  "urlEncoder.scenarios.scenario3.desc":
+    "为包含动态内容的社交媒体帖子创建可分享的链接。",
+  "urlEncoder.scenarios.scenario3.dynamic": "动态分享 URL：",
+  "urlEncoder.scenarios.scenario3.ready": "社交媒体就绪：",
+  "urlEncoder.scenarios.scenario3.result":
+    "编码参数以防止 URL 破坏并确保正确的社交媒体集成。",
+
+  // Step-by-Step Guide
+  "urlEncoder.guide.title": "如何使用 URL 编码",
+  "urlEncoder.guide.step1.title": "输入您的 URL 或文本",
+  "urlEncoder.guide.step1.desc":
+    "在上面的输入字段中粘贴您的 URL 或输入需要编码/解码的文本。",
+  "urlEncoder.guide.step2.title": "选择编码或解码",
+  "urlEncoder.guide.step2.desc":
+    "选择'编码'来转换特殊字符，或'解码'将编码的 URL 转换回可读格式。",
+  "urlEncoder.guide.step3.title": "点击转换",
+  "urlEncoder.guide.step3.desc":
+    "点击转换按钮以在输出字段中即时查看编码或解码的结果。",
+  "urlEncoder.guide.step4.title": "复制和使用",
+  "urlEncoder.guide.step4.desc":
+    "复制结果并在您的 Web 应用程序、API 调用或文档中使用。",
 };

@@ -7,6 +7,7 @@ export const tools = {
   "tools.category.encoding": "Kodierung",
   "tools.category.text": "Text",
   "tools.category.crypto": "Krypto",
+  "tools.category.design": "Design",
   "tools.noResults": "Keine Werkzeuge gefunden.",
   "base64.title": "Base64-Kodierer / Dekodierer",
   "base64.description": "Base64-Zeichenketten kodieren oder dekodieren",
@@ -23,4 +24,13 @@ export const tools = {
   "uuidGenerator.generateBtn": "UUID generieren",
   "uuidGenerator.generateMultiple": "Mehrere generieren",
   "uuidGenerator.count": "Anzahl",
+
+  // Regex Tester
+  "regexTester.title": "Regex Tester",
+  "regexTester.description": "Testen Sie reguläre Ausdrücke in Echtzeit",
+
+  // Color Converter
+  "colorConverter.title": "Farbkonverter",
+  "colorConverter.description":
+    "Zwischen HEX, RGB, HSL und anderen Farbformaten konvertieren",
 };

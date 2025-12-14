@@ -605,16 +605,218 @@ export function JsonFormatterTool({ lang }: JsonFormatterToolProps) {
             </motion.li>
           ))}
         </motion.ul>
+
+        {/* Real-World Scenarios */}
+        <motion.section
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+            Real-World Scenarios
+          </motion.h3>
+
+          {/* Scenario 1 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                1
+              </span>
+              API Response Debugging
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Frontend developer receives a minified JSON response from an API
+              and needs to debug the data structure.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  ❌ Minified Response (Hard to Read):
+                </div>
+                <div className="mb-3 font-mono text-xs bg-destructive/10 p-2 rounded">
+                  {"{user:{id:123,name:'John',orders:[{id:1,total:99.99}]}}"}
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  ✅ Formatted Response (Easy to Debug):
+                </div>
+                <div className="font-mono text-xs bg-green-50 p-2 rounded">
+                  {`{
+  "user": {
+    "id": 123,
+    "name": "John",
+    "orders": [
+      {
+        "id": 1,
+        "total": 99.99
+      }
+    ]
+  }
+}`}
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Developer can easily spot the nested
+              structure and identify that orders is an array.
+            </p>
+          </motion.div>
+
+          {/* Scenario 2 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                2
+              </span>
+              Configuration File Management
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              DevOps engineer needs to review and edit a complex Docker Compose
+              configuration file.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  🔧 Configuration Challenge:
+                </div>
+                <div className="mb-3">
+                  Large Docker Compose file with multiple services, networks,
+                  and volumes
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  📝 Before Formatting:
+                </div>
+                <div className="text-xs text-muted-foreground mb-3">
+                  Unreadable one-line configuration
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  ✨ After Formatting:
+                </div>
+                <div className="text-xs text-green-600">
+                  Proper indentation shows service hierarchy and dependencies
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Engineer can easily identify service
+              relationships and spot configuration errors.
+            </p>
+          </motion.div>
+
+          {/* Scenario 3 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                3
+              </span>
+              Error Detection & Fixing
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Junior developer receives invalid JSON from a colleague and needs
+              to find and fix the syntax error.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  ❌ Invalid JSON:
+                </div>
+                <div className="mb-3 font-mono text-xs bg-destructive/10 p-2 rounded">
+                  {"{name:'John',age:25,}"}
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  🔍 Error Detection:
+                </div>
+                <div className="mb-3 text-sm text-destructive">
+                  Error: Unexpected token ',' in JSON at position 18
+                </div>
+                <div className="text-muted-foreground mb-2">✅ Fixed JSON:</div>
+                <div className="font-mono text-xs bg-green-50 p-2 rounded">
+                  {`{
+  "name": "John",
+  "age": 25
+}`}
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Tool highlights the error location and
+              shows the corrected format.
+            </p>
+          </motion.div>
+        </motion.section>
+
+        {/* Step-by-Step Guide */}
+        <motion.section
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+            How to Format JSON
+          </motion.h3>
+
+          <motion.div className="space-y-4" variants={containerVariants}>
+            {[
+              {
+                step: "1",
+                title: "Paste Your JSON",
+                desc: "Copy and paste your JSON data (formatted or minified) into the input field.",
+              },
+              {
+                step: "2",
+                title: "Validate & Format",
+                desc: "The tool automatically validates syntax and formats the JSON with proper indentation.",
+              },
+              {
+                step: "3",
+                title: "Review & Edit",
+                desc: "Use syntax highlighting to easily read the structure and identify any issues.",
+              },
+              {
+                step: "4",
+                title: "Copy & Use",
+                desc: "Copy the formatted JSON for use in your application, documentation, or sharing with team members.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.step}
+                className="flex items-start gap-4 p-4 bg-muted/10 rounded-lg"
+                variants={itemVariants}
+                whileHover={{ x: 4 }}
+              >
+                <span className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                  {item.step}
+                </span>
+                <div>
+                  <h4 className="font-semibold mb-1">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
       </motion.section>
 
+      {/* FAQ Section */}
       <motion.section className="mb-12" variants={itemVariants}>
         <motion.button
           onClick={() => setShowFaq(!showFaq)}
-          className="flex items-center justify-between w-full text-left py-4 border-t rounded-xl px-2 hover:bg-muted/30 transition-colors"
-          whileHover={{ x: 4 }}
-          whileTap={{ scale: 0.99 }}
+          className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
+          whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
+          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -626,52 +828,139 @@ export function JsonFormatterTool({ lang }: JsonFormatterToolProps) {
         <AnimatePresence>
           {showFaq && (
             <motion.div
-              className="space-y-4 pt-4"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="space-y-4 pt-6 overflow-hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
               {[
                 {
-                  q: t("jsonFormatter.faq.q1", lang),
-                  a: t("jsonFormatter.faq.a1", lang),
+                  q: "What is JSON formatting?",
+                  a: "JSON formatting is the process of organizing and structuring JSON (JavaScript Object Notation) data in a readable and consistent way. It adds proper indentation, line breaks, and spacing to make the code easier to read and debug.",
                 },
                 {
-                  q: t("jsonFormatter.faq.q2", lang),
-                  a: t("jsonFormatter.faq.a2", lang),
+                  q: "Why should I format JSON?",
+                  a: "Formatting JSON makes it much easier to read, understand, and debug. It helps identify syntax errors, understand data structure, and makes collaboration with team members more efficient.",
                 },
                 {
-                  q: t("jsonFormatter.faq.q3", lang),
-                  a: t("jsonFormatter.faq.a3", lang),
-                },
-                {
-                  q: t("jsonFormatter.faq.q4", lang),
-                  a: t("jsonFormatter.faq.a4", lang),
+                  q: "Does formatting change the JSON data?",
+                  a: "No, formatting only changes the visual presentation by adding whitespace and indentation. The actual data content remains exactly the same and functionally identical to the original.",
                 },
               ].map((faq, index) => (
                 <motion.div
                   key={faq.q}
+                  className="pixel-card p-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 24,
-                  }}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="bg-muted/30 rounded-xl">
-                    <CardContent className="p-4">
-                      <h3 className="font-medium mb-2">{faq.q}</h3>
-                      <p className="text-sm text-muted-foreground">{faq.a}</p>
-                    </CardContent>
-                  </Card>
+                  <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
+                  <p className="text-sm text-muted-foreground">{faq.a}</p>
                 </motion.div>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
+      </motion.section>
+
+      {/* Information Section */}
+      <motion.section className="mb-12" variants={itemVariants}>
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* What is */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">What is a JSON Formatter?</h2>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p>
+                A JSON formatter is a tool that takes raw, minified JSON data and transforms it into a
+                human-readable format with proper indentation, line breaks, and spacing. It helps developers
+                easily read, understand, and debug JSON data structures.
+              </p>
+              <p>
+                JSON (JavaScript Object Notation) is a lightweight data interchange format widely used in
+                web APIs, configuration files, and data storage. Formatting makes this data more accessible
+                for development and debugging purposes.
+              </p>
+            </div>
+          </div>
+
+          {/* Key Features */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Key Features</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Real-time formatting and validation as you type</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Syntax error detection and highlighting</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Customizable indentation levels (2, 4, or 8 spaces)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Syntax highlighting for better visual organization</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>One-click copy and download functionality</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Common Use Cases */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Common Use Cases</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Debugging API responses and request payloads</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Reading and understanding configuration files</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Validating JSON data structure before deployment</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Preparing JSON data for documentation or sharing</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Converting minified JSON for code reviews</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Real-World Scenarios */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Real-World Scenarios</h2>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <div>
+                <strong className="text-foreground">API Development:</strong>
+                <p>When debugging a REST API, formatting the JSON response helps identify data structure issues and missing fields quickly.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Frontend Development:</strong>
+                <p>Working with JSON configuration files or API data in React/Vue applications, making the data structure visible for better component development.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Data Analysis:</strong>
+                <p>Analyzing JSON log files or data exports from databases, making it easier to spot patterns and anomalies in large datasets.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Team Collaboration:</strong>
+                <p>Sharing formatted JSON data with team members during code reviews or technical discussions improves communication and reduces misunderstanding.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.section>
     </motion.div>
   );

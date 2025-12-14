@@ -63,4 +63,42 @@ export const qrGenerator = {
   "qrGenerator.faq.q4": "我可以自定义二维码的外观吗？",
   "qrGenerator.faq.a4":
     "是的，您可以自定义二维码的大小、颜色（前景和背景）、错误纠正级别和边距。您还可以将它们下载为 PNG 图像。",
+
+  // Real-World Scenarios
+  "qrGenerator.scenarios.title": "真实场景应用",
+  "qrGenerator.scenarios.scenario1.title": "餐厅数字菜单",
+  "qrGenerator.scenarios.scenario1.desc":
+    "餐厅想要在大流行期间用无接触数字版本替换实体菜单。",
+  "qrGenerator.scenarios.scenario1.challenge": "🎯 业务挑战：",
+  "qrGenerator.scenarios.scenario1.solution": "📱 二维码解决方案：",
+  "qrGenerator.scenarios.scenario1.result":
+    "客户用手机扫描二维码即可立即访问数字菜单。",
+  "qrGenerator.scenarios.scenario2.title": "客人WiFi访问",
+  "qrGenerator.scenarios.scenario2.desc":
+    "酒店或咖啡店需要轻松安全地与客人分享WiFi凭据。",
+  "qrGenerator.scenarios.scenario2.traditional": "🔐 传统方法：",
+  "qrGenerator.scenarios.scenario2.qrSolution": "📱 二维码解决方案：",
+  "qrGenerator.scenarios.scenario2.result":
+    "客人扫描二维码并自动连接到WiFi，无需输入凭据。",
+  "qrGenerator.scenarios.scenario3.title": "商务卡片数字化集成",
+  "qrGenerator.scenarios.scenario3.desc":
+    "销售人员希望通过在商务卡片上添加二维码来提高网络效率。",
+  "qrGenerator.scenarios.scenario3.static": "👤 静态信息：",
+  "qrGenerator.scenarios.scenario3.enhancement": "📱 二维码增强：",
+  "qrGenerator.scenarios.scenario3.result":
+    "潜在客户扫描二维码访问完整的数字档案并立即联系。",
+
+  // Step-by-Step Guide
+  "qrGenerator.guide.title": "如何生成二维码",
+  "qrGenerator.guide.step1.title": "输入您的数据",
+  "qrGenerator.guide.step1.desc":
+    "输入您想要编码到二维码中的URL、文本、电话号码或WiFi凭据。",
+  "qrGenerator.guide.step2.title": "自定义外观",
+  "qrGenerator.guide.step2.desc":
+    "选择颜色、错误校正级别和大小以匹配您的品牌和扫描环境。",
+  "qrGenerator.guide.step3.title": "生成和预览",
+  "qrGenerator.guide.step3.desc": "点击生成来创建您的二维码并实时预览。",
+  "qrGenerator.guide.step4.title": "下载和使用",
+  "qrGenerator.guide.step4.desc":
+    "下载高质量的PNG文件并在印刷材料、网站或数字显示器中使用。",
 };

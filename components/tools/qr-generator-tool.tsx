@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
 
@@ -102,6 +103,7 @@ interface QrSettings {
 
 export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
   const { t } = useTranslation(lang);
+  const { spawnItem } = useCat();
   const [input, setInput] = useState("");
   const [qrCodeUrl, setQrCodeUrl] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
@@ -117,13 +119,8 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
   });
 
   const toolSectionRef = useRef<HTMLDivElement>(null);
-
-  const faqs = [
-    { qKey: "qrGenerator.faq.q1", aKey: "qrGenerator.faq.a1" },
-    { qKey: "qrGenerator.faq.q2", aKey: "qrGenerator.faq.a2" },
-    { qKey: "qrGenerator.faq.q3", aKey: "qrGenerator.faq.a3" },
-    { qKey: "qrGenerator.faq.q4", aKey: "qrGenerator.faq.a4" },
-  ];
+  const [lastGeneratedInput, setLastGeneratedInput] = useState("");
+  const [isInputChanged, setIsInputChanged] = useState(false);
 
   const generateQrCode = useCallback(async () => {
     if (!input.trim()) {
@@ -150,23 +147,32 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
 
       const url = await QRCode.toDataURL(input, options);
       setQrCodeUrl(url);
+      // 成功生成QR码时生成星星物品
+      if (url) {
+        spawnItem("qr");
+        setLastGeneratedInput(input);
+        setIsInputChanged(false);
+      }
     } catch (_err) {
       setError(t("qrGenerator.error.generation"));
       setQrCodeUrl("");
     } finally {
       setIsGenerating(false);
     }
-  }, [input, qrSettings, t]);
+  }, [input, qrSettings, t, spawnItem, setIsInputChanged]);
 
+  // 监听输入变化，设置按钮状态
   useEffect(() => {
-    if (input.trim()) {
-      const timer = setTimeout(() => {
-        generateQrCode();
-      }, 300);
+    if (input.trim() && input !== lastGeneratedInput) {
+      setIsInputChanged(true);
+    } else if (input.trim() === lastGeneratedInput) {
+      setIsInputChanged(false);
+    }
+  }, [input, lastGeneratedInput]);
 
-      return () => clearTimeout(timer);
-    } else {
-      setQrCodeUrl("");
+  const handleBuildClick = useCallback(() => {
+    if (input.trim()) {
+      generateQrCode();
     }
   }, [input, generateQrCode]);
 
@@ -329,6 +335,32 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
                         </motion.div>
                       )}
                     </AnimatePresence>
+
+                    <div className="flex justify-center">
+                      <Button
+                        onClick={handleBuildClick}
+                        disabled={!isInputChanged || !input.trim()}
+                        className="gap-2 rounded-xl h-11 px-6"
+                      >
+                        <motion.div
+                          animate={isGenerating ? { rotate: [0, 360] } : {}}
+                          transition={
+                            isGenerating
+                              ? {
+                                  duration: 2,
+                                  repeat: Number.POSITIVE_INFINITY,
+                                  ease: "linear",
+                                }
+                              : {}
+                          }
+                        >
+                          <Sparkles className="h-4 w-4" />
+                        </motion.div>
+                        {isGenerating
+                          ? t("qrGenerator.generating")
+                          : t("qrGenerator.generate")}
+                      </Button>
+                    </div>
                   </div>
 
                   <div className="space-y-4">
@@ -640,16 +672,203 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
             </motion.li>
           ))}
         </motion.ul>
+
+        {/* Real-World Scenarios */}
+        <motion.section
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+            Real-World Scenarios
+          </motion.h3>
+
+          {/* Scenario 1 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                1
+              </span>
+              Restaurant Digital Menu
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              A restaurant wants to replace physical menus with contactless
+              digital versions during the pandemic.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  🎯 Business Challenge:
+                </div>
+                <div className="mb-3">
+                  Customers need access to menus without touching physical
+                  objects
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  📱 QR Code Solution:
+                </div>
+                <div className="mb-3">
+                  Generate QR code linking to online menu URL
+                </div>
+                <div className="text-green-600 text-xs">
+                  QR Content: https://restaurant.com/menu-digital
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Customers scan QR code with their phones
+              to instantly access the digital menu.
+            </p>
+          </motion.div>
+
+          {/* Scenario 2 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                2
+              </span>
+              WiFi Access for Guests
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Hotel or coffee shop needs to share WiFi credentials with guests
+              easily and securely.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  🔐 Traditional Method:
+                </div>
+                <div className="mb-3">
+                  Writing WiFi password on a chalkboard (insecure)
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  📱 QR Code Solution:
+                </div>
+                <div className="mb-3">
+                  Generate WiFi QR code with credentials
+                </div>
+                <div className="text-green-600 text-xs">
+                  QR Content: WIFI:T:WPA;S:Guest_WiFi;P:password123;H:false;
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Guests scan QR code and automatically
+              connect to WiFi without typing credentials.
+            </p>
+          </motion.div>
+
+          {/* Scenario 3 */}
+          <motion.div
+            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
+            variants={itemVariants}
+          >
+            <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
+                3
+              </span>
+              Business Card Digital Integration
+            </h4>
+            <p className="text-muted-foreground mb-4">
+              Sales professional wants to make networking more efficient by
+              adding QR codes to business cards.
+            </p>
+            <div className="bg-background p-4 rounded-lg border">
+              <div className="text-sm">
+                <div className="text-muted-foreground mb-2">
+                  👤 Static Information:
+                </div>
+                <div className="mb-3">
+                  Name, phone, email printed on card (limited contact info)
+                </div>
+                <div className="text-muted-foreground mb-2">
+                  📱 QR Code Enhancement:
+                </div>
+                <div className="mb-3">
+                  QR code linking to vCard or LinkedIn profile
+                </div>
+                <div className="text-green-600 text-xs">
+                  QR Content: https://linkedin.com/in/john-doe
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong>Result:</strong> Prospects scan QR code to access complete
+              digital profile and connect instantly.
+            </p>
+          </motion.div>
+        </motion.section>
+
+        {/* Step-by-Step Guide */}
+        <motion.section
+          className="mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+            How to Generate QR Codes
+          </motion.h3>
+
+          <motion.div className="space-y-4" variants={containerVariants}>
+            {[
+              {
+                step: "1",
+                title: "Enter Your Data",
+                desc: "Type the URL, text, phone number, or WiFi credentials you want to encode in the QR code.",
+              },
+              {
+                step: "2",
+                title: "Customize Appearance",
+                desc: "Choose colors, error correction level, and size to match your brand and scanning environment.",
+              },
+              {
+                step: "3",
+                title: "Generate & Preview",
+                desc: "Click generate to create your QR code and preview it in real-time.",
+              },
+              {
+                step: "4",
+                title: "Download & Use",
+                desc: "Download the high-quality PNG file and use it in print materials, websites, or digital displays.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.step}
+                className="flex items-start gap-4 p-4 bg-muted/10 rounded-lg"
+                variants={itemVariants}
+                whileHover={{ x: 4 }}
+              >
+                <span className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                  {item.step}
+                </span>
+                <div>
+                  <h4 className="font-semibold mb-1">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
       </motion.section>
 
+      {/* FAQ Section */}
       <motion.section className="mb-12" variants={itemVariants}>
         <motion.button
           onClick={() => setShowFaq(!showFaq)}
-          className="flex items-center justify-between w-full text-left py-4 border-t rounded-xl px-2 hover:bg-muted/30 transition-colors"
-          whileHover={{ x: 4 }}
-          whileTap={{ scale: 0.99 }}
+          className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
+          whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-xl font-semibold">{t("common.faq")}</h2>
+          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -661,37 +880,140 @@ export function QrGeneratorTool({ lang }: QrGeneratorToolProps) {
         <AnimatePresence>
           {showFaq && (
             <motion.div
-              className="space-y-4 pt-4"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="space-y-4 pt-6 overflow-hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              {faqs.map((faq, index) => (
+              {[
+                {
+                  q: "What is a QR code?",
+                  a: "A QR (Quick Response) code is a two-dimensional barcode that can store various types of data including URLs, text, phone numbers, and more. It's designed to be quickly read by digital devices.",
+                },
+                {
+                  q: "What information can I encode in a QR code?",
+                  a: "You can encode various types of information including website URLs, contact information (vCard), email addresses, phone numbers, SMS messages, Wi-Fi credentials, and plain text.",
+                },
+                {
+                  q: "Are QR codes secure?",
+                  a: "QR codes themselves are secure, but always verify the source before scanning. Only scan QR codes from trusted sources as malicious codes can lead to harmful websites.",
+                },
+              ].map((faq, index) => (
                 <motion.div
-                  key={faq.qKey}
+                  key={faq.q}
+                  className="pixel-card p-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 24,
-                  }}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="bg-muted/30 rounded-xl">
-                    <CardContent className="p-4">
-                      <h3 className="font-medium mb-2">{t(faq.qKey)}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {t(faq.aKey)}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
+                  <p className="text-sm text-muted-foreground">{faq.a}</p>
                 </motion.div>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
+      </motion.section>
+
+      {/* Information Section */}
+      <motion.section className="mb-12" variants={itemVariants}>
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* What is */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">What is a QR Code Generator?</h2>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p>
+                A QR code generator is a tool that creates Quick Response (QR) codes -
+                two-dimensional barcodes that can store various types of data including
+                URLs, text, contact information, and more. QR codes are widely used for
+                marketing, payments, and information sharing.
+              </p>
+              <p>
+                QR codes can be scanned by smartphones and other devices with cameras,
+                making them perfect for connecting physical and digital experiences.
+                They support various data types and can be customized with different colors and styles.
+              </p>
+            </div>
+          </div>
+
+          {/* Key Features */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Key Features</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Generate QR codes for URLs, text, and contact information</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Customizable size and error correction levels</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Color customization for brand consistency</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Multiple export formats (PNG, SVG, PDF)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Real-time preview and instant generation</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Common Use Cases */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Common Use Cases</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Marketing materials and business cards</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Website URLs and social media links</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Contact information and vCard sharing</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Event tickets and digital passes</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                <span>Product information and tracking codes</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Real-World Scenarios */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Real-World Scenarios</h2>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <div>
+                <strong className="text-foreground">Restaurant Menus:</strong>
+                <p>Creating contactless menus that customers can scan with their phones to view digital menus and place orders.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Event Management:</strong>
+                <p>Generating QR codes for event tickets that can be quickly scanned at entrance points for seamless check-in.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Retail and E-commerce:</strong>
+                <p>Creating QR codes for product information, reviews, and direct purchase links to enhance the shopping experience.</p>
+              </div>
+              <div>
+                <strong className="text-foreground">Healthcare:</strong>
+                <p>Using QR codes for patient information, appointment scheduling, and medical record access while maintaining privacy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.section>
     </motion.div>
   );
