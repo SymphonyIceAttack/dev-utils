@@ -180,6 +180,10 @@ export async function generateMetadata({
     description: langData.description,
     keywords: langData.keywords,
     openGraph: langData.openGraph,
+    robots: {
+      index: true,
+      follow: true,
+    },
     alternates: {
       canonical: `${baseUrl}/${lang}`,
       languages: hreflangLinks,

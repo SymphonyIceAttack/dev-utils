@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     "URL encode guide",
     "web development",
   ],
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${siteUrl}/en/blog/url-encoding-guide`,
     languages: {

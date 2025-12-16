@@ -47,6 +47,10 @@ export async function generateMetadata({
     title: langData.title,
     description: langData.description,
     keywords: langData.keywords,
+    robots: {
+      index: true,
+      follow: true,
+    },
     alternates: {
       canonical: `${baseUrl}/tools/md5-generator`,
       languages: hreflangLinks,

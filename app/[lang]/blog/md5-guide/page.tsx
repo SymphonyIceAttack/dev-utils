@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     "hash function",
     "data integrity",
   ],
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${siteUrl}/en/blog/md5-guide`,
     languages: {

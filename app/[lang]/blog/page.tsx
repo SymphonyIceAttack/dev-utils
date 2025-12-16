@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     "UUID generation",
     "web development",
   ],
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${siteUrl}/en/blog`,
     languages: {

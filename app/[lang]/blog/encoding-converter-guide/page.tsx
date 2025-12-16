@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     "encoding guide",
     "unicode converter",
   ],
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${siteUrl}/en/blog/encoding-converter-guide`,
     languages: {

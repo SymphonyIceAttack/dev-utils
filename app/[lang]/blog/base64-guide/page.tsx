@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     "Base64 guide",
     "data encoding",
   ],
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${siteUrl}/en/blog/base64-guide`,
     languages: {

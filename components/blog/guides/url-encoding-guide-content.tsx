@@ -702,14 +702,14 @@ function percentEncode(str) {
 
 // URL-safe encoding (removes + and _)
 function urlSafeEncode(str) {
-  return percentEncode(str).replace(/\+/g, '-').replace(/\//g, '_');
+  return percentEncode(str).replace(/+/g, '-').replace(///g, '_');
 }
 
 // Base64 URL-safe variant
 function base64UrlEncode(buffer) {
   return btoa(String.fromCharCode(...new Uint8Array(buffer)))
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
+    .replace(/+/g, '-')
+    .replace(///g, '_')
     .replace(/=/g, '');
 }
 \`\`\`

@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     "text encoding",
     "garbled text",
   ],
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${siteUrl}/en/blog/encoding-guide`,
     languages: {

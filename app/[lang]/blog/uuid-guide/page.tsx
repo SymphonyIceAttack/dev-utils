@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     "unique identifier",
     "database primary key",
   ],
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: `${siteUrl}/en/blog/uuid-guide`,
     languages: {
