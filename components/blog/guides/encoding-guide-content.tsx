@@ -8,7 +8,7 @@ export function EncodingGuideContent() {
       <EncodingGuideStructuredData />
       <div className="container mx-auto max-w-4xl px-4 py-12">
         <article className="prose prose-lg max-w-none">
-          <h1>Learn Character Encoding: UTF-8, GBK & Beyond</h1>
+          <h1>Character Encoding Guide: UTF-8, GBK & Beyond</h1>
 
           <p className="lead">
             Character encoding is fundamental to how computers represent and

@@ -3,7 +3,7 @@ import { EncodingGuideContent } from "@/components/blog/guides/encoding-guide-co
 import { siteUrl } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Learn Character Encoding: UTF-8, GBK & Beyond - KittyEncode",
+  title: "Character Encoding Guide: UTF-8, GBK & Beyond - KittyEncode",
   description:
     "Understand character encoding systems, fix garbled text issues, and convert between different encodings like UTF-8, GBK, and Unicode.",
   keywords: [

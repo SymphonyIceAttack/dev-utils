@@ -8,7 +8,7 @@ import { extractTOCFromText, shouldShowTOC } from "@/lib/toc";
 
 export function Base64GuideContent() {
   // Enhanced markdown content with better structure and examples
-  const content = `# Learn Base64 Encoding: From Basics to Advanced
+  const content = `# Master Base64 Encoding: From Basics to Advanced
 
 Base64 encoding is a fundamental technique for representing binary data in ASCII text format. This comprehensive guide covers everything from basic concepts to advanced practical applications, helping you master this essential encoding scheme.
 

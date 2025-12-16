@@ -3,7 +3,7 @@ import { Base64GuideContent } from "@/components/blog/guides/base64-guide-conten
 import { siteUrl } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Learn Base64 Encoding: From Basics to Advanced - KittyEncode",
+  title: "Master Base64 Encoding: From Basics to Advanced - KittyEncode",
   description:
     "Explore how Base64 encoding works and its practical applications in image embedding, data transmission, and API authentication.",
   keywords: [

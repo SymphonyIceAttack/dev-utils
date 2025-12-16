@@ -3,7 +3,7 @@ import { PasswordGuideContent } from "@/components/blog/guides/password-guide-co
 import { siteUrl } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Learn Password Generation: Security Best Practices - KittyEncode",
+  title: "Secure Password Generation: Best Practices Guide - KittyEncode",
   description:
     "Create strong, secure passwords with our comprehensive guide. Learn about password entropy, generation algorithms, and security recommendations.",
   keywords: [
