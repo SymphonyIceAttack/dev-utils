@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PasswordGeneratorStructuredData } from "@/components/structured-data/password-generator";
 import { PasswordGeneratorTool } from "@/components/tools/password-generator-tool";
 import type { LanguageType } from "@/lib/translations";
-import { generateHreflangLinks } from "@/lib/translations";
+import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 
 const metadataConfig = {
   en: {
@@ -21,17 +21,20 @@ const metadataConfig = {
       " 無料のオンラインパスワードジェネレーター。强大でセキュアなランダムパスワードとAPIキーを作成。カスタマイズ可能オプション、暗号学的にセキュア、オフラインで動作。",
   },
   fr: {
-    title: "Générateur de Mot de Passe en Ligne - Outil de Mot de Passe Sécurisé Gratuit",
+    title:
+      "Générateur de Mot de Passe en Ligne - Outil de Mot de Passe Sécurisé Gratuit",
     description:
       "Générateur de mot de passe en ligne gratuit. Créez des mots de passe aléatoires forts et sécurisés et des clés API. Options personnalisables, cryptographiquement sécurisé, fonctionne hors ligne.",
   },
   es: {
-    title: "Generador de Contraseñas en Línea - Herramienta de Contraseña Segura Gratuita",
+    title:
+      "Generador de Contraseñas en Línea - Herramienta de Contraseña Segura Gratuita",
     description:
       "Generador de contraseñas en línea gratuito. Crea contraseñas aleatorias fuertes y seguras y claves API. Opciones personalizables, criptográficamente seguro, funciona sin conexión.",
   },
   ru: {
-    title: "Генератор Паролей Онлайн - Бесплатный Инструмент Безопасного Пароля",
+    title:
+      "Генератор Паролей Онлайн - Бесплатный Инструмент Безопасного Пароля",
     description:
       "Бесплатный онлайн генератор паролей. Создавайте сильные, безопасные случайные пароли и ключи API. Настраиваемые опции, криптографически безопасно, работает офлайн.",
   },
@@ -41,6 +44,13 @@ const metadataConfig = {
       "Kostenloser Online-Passwort-Generator. Erstellen Sie starke, sichere zufällige Passwörter und API-Schlüssel. Anpassbare Optionen, kryptographisch sicher, funktioniert offline.",
   },
 };
+
+// Generate static params for all supported languages
+export async function generateStaticParams() {
+  return supportedLocales.map((lang) => ({
+    lang,
+  }));
+}
 
 export async function generateMetadata({
   params,
@@ -56,7 +66,8 @@ export async function generateMetadata({
 
   return {
     title: langData.title,
-    description: langData.description,    robots: {
+    description: langData.description,
+    robots: {
       index: true,
       follow: true,
     },

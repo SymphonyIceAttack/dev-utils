@@ -47,7 +47,7 @@ export const terms = {
   "terms.contact.title": "Contact Information",
   "terms.contact.content":
     "If you have questions about these Terms of Service, please contact us:",
-  "terms.contact.email": "legal@devtools.app",
+  "terms.contact.email": "email@kitty-encode.top",
   "terms.commitment.title": "Our Commitment",
   "terms.commitment.content":
     "We're committed to providing fair, transparent terms that respect your rights while enabling us to continue offering these free tools to the developer community.",

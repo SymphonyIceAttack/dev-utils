@@ -13,7 +13,7 @@ export const contact = {
   "contact.email.title": "Email Us",
   "contact.email.description":
     "Send us an email and we'll respond within 24-48 hours",
-  "contact.email.address": "hello@devtools.app",
+  "contact.email.address": "email@kitty-encode.top",
   "contact.email.subject.title": "Subject:",
   "contact.email.subject.placeholder": "Brief description of your message",
   "contact.email.message.title": "Message:",
@@ -34,7 +34,7 @@ export const contact = {
   "business.title": "Business & Partnerships",
   "contact.business.content":
     "For business partnerships, sponsorships, or other commercial inquiries, please email us at:",
-  "contact.business.email": "business@devtools.app",
+  "contact.business.email": "email@kitty-encode.top",
   "contact.community.title": "Community",
   "community.title": "Join Our Community",
   "contact.community.content":

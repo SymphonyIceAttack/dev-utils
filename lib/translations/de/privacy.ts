@@ -39,7 +39,7 @@ export const privacy = {
   "privacy.contact.title": "Contact Us",
   "privacy.contact.content":
     "If you have questions about this privacy policy, please contact us:",
-  "privacy.contact.email": "privacy@devtools.app",
+  "privacy.contact.email": "email@kitty-encode.top",
   "privacy.commitment.title": "Our Privacy Commitment",
   "privacy.commitment.content":
     "We are committed to protecting your privacy. Our no-data-collection approach means you can use our tools with complete confidence that your privacy is protected.",

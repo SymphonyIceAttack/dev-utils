@@ -21,7 +21,10 @@ const footerLinks = {
     { label: "Blog", href: "/blog" },
     { label: "Documentation", href: "/docs" },
     { label: "Changelog", href: "/changelog" },
-    { label: "GitHub", href: "https://github.com/SymphonyIceAttack/kitty-encode" },
+    {
+      label: "GitHub",
+      href: "https://github.com/SymphonyIceAttack/kitty-encode",
+    },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },

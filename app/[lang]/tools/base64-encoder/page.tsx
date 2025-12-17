@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import { Base64EncoderStructuredData } from "@/components/structured-data/base64-encoder";
 import { Base64EncoderTool } from "@/components/tools/base64-encoder-tool";
 import type { LanguageType } from "@/lib/translations";
-import { generateHreflangLinks } from "@/lib/translations";
+import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
+
+// Generate static params for all supported languages
+export async function generateStaticParams() {
+  return supportedLocales.map((lang) => ({
+    lang,
+  }));
+}
 
 // 多语言元数据
 const metadataConfig = {

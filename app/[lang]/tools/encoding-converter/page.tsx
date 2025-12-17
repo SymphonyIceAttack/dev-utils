@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { EncodingConverterStructuredData } from "@/components/structured-data/encoding-converter";
 import { EncodingConverterTool } from "@/components/tools/encoding-converter-tool";
 import type { LanguageType } from "@/lib/translations";
-import { generateHreflangLinks } from "@/lib/translations";
+import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 
 const metadataConfig = {
   en: {
@@ -16,17 +16,20 @@ const metadataConfig = {
       "免费的在线字符编码转换器。在 UTF-8、GBK、十六进制、二进制和 Unicode 之间转换文本。即时修复乱码和编码问题。",
   },
   ja: {
-    title: "文字エンコーディングコンバーター - UTF-8、GBK、十六進数オンライン ツール",
+    title:
+      "文字エンコーディングコンバーター - UTF-8、GBK、十六進数オンライン ツール",
     description:
       " 無料のオンライン文字エンコーディングコンバーター。UTF-8、GBK、十六進数、バイナリ、Unicode間でテキストを変換。文字化けとエンコーディング問題を即座に修正。",
   },
   fr: {
-    title: "Convertisseur d'Encodage de Caractères - Outil UTF-8, GBK, Hex en Ligne",
+    title:
+      "Convertisseur d'Encodage de Caractères - Outil UTF-8, GBK, Hex en Ligne",
     description:
       "Convertisseur d'encodage de caractères en ligne gratuit. Convertissez le texte entre UTF-8, GBK, Hex, binaire et Unicode. Corrigez instantanément le texte corrompu et les problèmes d'encodage.",
   },
   es: {
-    title: "Convertidor de Codificación de Caracteres - Herramienta UTF-8, GBK, Hex en Línea",
+    title:
+      "Convertidor de Codificación de Caracteres - Herramienta UTF-8, GBK, Hex en Línea",
     description:
       "Convertidor de codificación de caracteres en línea gratuito. Convierte texto entre UTF-8, GBK, Hex, binario y Unicode. Corrige texto corrupto y problemas de codificación al instante.",
   },
@@ -42,6 +45,13 @@ const metadataConfig = {
   },
 };
 
+// Generate static params for all supported languages
+export async function generateStaticParams() {
+  return supportedLocales.map((lang) => ({
+    lang,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -56,7 +66,8 @@ export async function generateMetadata({
 
   return {
     title: langData.title,
-    description: langData.description,    robots: {
+    description: langData.description,
+    robots: {
       index: true,
       follow: true,
     },

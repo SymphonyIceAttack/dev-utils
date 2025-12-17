@@ -17,7 +17,7 @@ export const contact = {
 
   "contact.email.title": "给我们发邮件",
   "contact.email.description": "给我们发送邮件，我们将在 24-48 小时内回复",
-  "contact.email.address": "hello@devtools.app",
+  "contact.email.address": "email@kitty-encode.top",
   "contact.email.subject.title": "主题：",
   "contact.email.subject.placeholder": "您消息的简要描述",
   "contact.email.message.title": "消息：",
@@ -42,7 +42,7 @@ export const contact = {
   "business.title": "商业与合作伙伴关系",
   "contact.business.content":
     "对于商业合作伙伴关系、赞助或其他商业咨询，请给我们发邮件：",
-  "contact.business.email": "business@devtools.app",
+  "contact.business.email": "email@kitty-encode.top",
 
   "contact.community.title": "社区",
   "community.title": "加入我们的社区",

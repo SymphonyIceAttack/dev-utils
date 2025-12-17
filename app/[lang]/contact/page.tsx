@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
-import { generateHreflangLinks, type LanguageType } from "@/lib/translations";
+import {
+  generateHreflangLinks,
+  type LanguageType,
+  supportedLocales,
+} from "@/lib/translations";
 import { ContactPage } from "./client-page";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
+
+// Generate static params for all supported languages
+export async function generateStaticParams() {
+  return supportedLocales.map((lang) => ({
+    lang,
+  }));
+}
 
 const metadataConfig = {
   en: {

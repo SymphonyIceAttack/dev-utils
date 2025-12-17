@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Md5GeneratorStructuredData } from "@/components/structured-data/md5-generator";
 import { Md5GeneratorTool } from "@/components/tools/md5-generator-tool";
 import type { LanguageType } from "@/lib/translations";
-import { generateHreflangLinks } from "@/lib/translations";
+import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 
 const metadataConfig = {
   en: {
@@ -42,6 +42,13 @@ const metadataConfig = {
   },
 };
 
+// Generate static params for all supported languages
+export async function generateStaticParams() {
+  return supportedLocales.map((lang) => ({
+    lang,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -56,7 +63,8 @@ export async function generateMetadata({
 
   return {
     title: langData.title,
-    description: langData.description,    robots: {
+    description: langData.description,
+    robots: {
       index: true,
       follow: true,
     },

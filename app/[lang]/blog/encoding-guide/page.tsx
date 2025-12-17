@@ -3,10 +3,20 @@ import { EncodingGuideContent } from "@/components/blog/guides/encoding-guide-co
 import { EncodingGuideStructuredData } from "@/components/structured-data/blog-post";
 import { siteUrl } from "@/lib/config";
 
+// Generate static params for English only
+export async function generateStaticParams() {
+  return [
+    {
+      lang: "en",
+    },
+  ];
+}
+
 export const metadata: Metadata = {
   title: "Character Encoding Guide: UTF-8, GBK & Beyond - KittyEncode",
   description:
-    "Understand character encoding systems, fix garbled text issues, and convert between different encodings like UTF-8, GBK, and Unicode.",  robots: {
+    "Understand character encoding systems, fix garbled text issues, and convert between different encodings like UTF-8, GBK, and Unicode.",
+  robots: {
     index: false,
     follow: true,
   },

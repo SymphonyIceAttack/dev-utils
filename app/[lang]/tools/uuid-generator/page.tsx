@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { UuidGeneratorStructuredData } from "@/components/structured-data/uuid-generator";
 import { UuidGeneratorTool } from "@/components/tools/uuid-generator-tool";
 import type { LanguageType } from "@/lib/translations";
-import { generateHreflangLinks } from "@/lib/translations";
+import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 
 const metadataConfig = {
   en: {
@@ -21,26 +21,37 @@ const metadataConfig = {
       " 無料のオンラインUUIDジェネレーター。RFC4122準拠のUUID v4、v7、v1識別子を生成。バッチ生成、複数のフォーマット、オフラインで動作。",
   },
   fr: {
-    title: "Générateur UUID en Ligne - Outil d'Identifiant Unique Universel Gratuit",
+    title:
+      "Générateur UUID en Ligne - Outil d'Identifiant Unique Universel Gratuit",
     description:
       "Générateur UUID en ligne gratuit. Générez des identifiants UUID v4, v7 et v1 conformes RFC4122. Génération en lot, multiples formats, fonctionne hors ligne.",
   },
   es: {
-    title: "Generador UUID en Línea - Herramienta de Identificador Único Universal Gratuita",
+    title:
+      "Generador UUID en Línea - Herramienta de Identificador Único Universal Gratuita",
     description:
       "Generador UUID en línea gratuito. Genera identificadores UUID v4, v7 y v1 compatibles con RFC4122. Generación en lote, múltiples formatos, funciona sin conexión.",
   },
   ru: {
-    title: "Генератор UUID Онлайн - Бесплатный Инструмент Универсального Уникального Идентификатора",
+    title:
+      "Генератор UUID Онлайн - Бесплатный Инструмент Универсального Уникального Идентификатора",
     description:
       "Бесплатный онлайн генератор UUID. Генерируйте идентификаторы UUID v4, v7 и v1, соответствующие RFC4122. Массовая генерация, множественные форматы, работает офлайн.",
   },
   de: {
-    title: "UUID Generator Online - Kostenloses Universelles Eindeutiges Identifikations-Tool",
+    title:
+      "UUID Generator Online - Kostenloses Universelles Eindeutiges Identifikations-Tool",
     description:
       "Kostenloser Online-UUID-Generator. Generieren Sie RFC4122-konforme UUID v4-, v7- und v1-Identifikatoren. Stapel-Generierung, mehrere Formate, funktioniert offline.",
   },
 };
+
+// Generate static params for all supported languages
+export async function generateStaticParams() {
+  return supportedLocales.map((lang) => ({
+    lang,
+  }));
+}
 
 export async function generateMetadata({
   params,

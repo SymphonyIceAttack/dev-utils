@@ -52,7 +52,7 @@ export const privacy = {
   "privacy.contact.title": "Contact Us",
   "privacy.contact.content":
     "If you have questions about this privacy policy, please contact us:",
-  "privacy.contact.email": "privacy@devtools.app",
+  "privacy.contact.email": "email@kitty-encode.top",
 
   "privacy.commitment.title": "Our Privacy Commitment",
   "privacy.commitment.content":

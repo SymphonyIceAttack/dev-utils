@@ -44,7 +44,7 @@ export const disclaimer = {
   "disclaimer.contact.title": "Questions",
   "disclaimer.contact.content":
     "If you have any questions about this disclaimer, please contact us:",
-  "disclaimer.contact.email": "legal@devtools.app",
+  "disclaimer.contact.email": "email@kitty-encode.top",
   "disclaimer.commitment.title": "Our Commitment",
   "disclaimer.commitment.content":
     "While we provide this disclaimer for legal protection, we remain committed to providing reliable, useful tools and transparent communication with our users.",

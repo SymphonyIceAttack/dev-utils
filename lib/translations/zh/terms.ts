@@ -63,7 +63,7 @@ export const terms = {
 
   "terms.contact.title": "联系信息",
   "terms.contact.content": "如果您对这些服务条款有疑问，请联系我们：",
-  "terms.contact.email": "legal@devtools.app",
+  "terms.contact.email": "email@kitty-encode.top",
 
   "terms.commitment.title": "我们的承诺",
   "terms.commitment.content":

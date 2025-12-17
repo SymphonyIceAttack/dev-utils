@@ -49,7 +49,7 @@ export const privacy = {
 
   "privacy.contact.title": "联系我们",
   "privacy.contact.content": "如果您对本隐私政策有任何疑问，请联系我们：",
-  "privacy.contact.email": "privacy@devtools.app",
+  "privacy.contact.email": "email@kitty-encode.top",
 
   "privacy.commitment.title": "我们的隐私承诺",
   "privacy.commitment.content":

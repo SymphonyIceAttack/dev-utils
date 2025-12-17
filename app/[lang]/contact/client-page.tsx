@@ -145,10 +145,15 @@ export function ContactPage({ lang }: ContactPageProps) {
                     {t("contact.email.address", lang)}
                   </p>
                 </div>
-                <Button className="w-full gap-2">
-                  <Mail className="w-4 h-4" />
-                  {t("contact.email.send", lang)}
-                </Button>
+                <a 
+                  href={`mailto:${t("contact.email.address", lang)}?subject=${encodeURIComponent(`KittyEncode Contact - ${t("contact.email.subject.placeholder", lang)}`)}&body=${encodeURIComponent(t("contact.email.message.placeholder", lang))}`}
+                  className="w-full"
+                >
+                  <Button className="w-full gap-2">
+                    <Mail className="w-4 h-4" />
+                    {t("contact.email.send", lang)}
+                  </Button>
+                </a>
               </CardContent>
             </Card>
 

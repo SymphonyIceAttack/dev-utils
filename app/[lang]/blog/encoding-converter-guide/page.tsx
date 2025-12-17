@@ -3,10 +3,20 @@ import { EncodingConverterGuideContent } from "@/components/blog/guides/encoding
 import { EncodingConverterGuideStructuredData } from "@/components/structured-data/blog-post";
 import { siteUrl } from "@/lib/config";
 
+// Generate static params for English only
+export async function generateStaticParams() {
+  return [
+    {
+      lang: "en",
+    },
+  ];
+}
+
 export const metadata: Metadata = {
   title: "Text Encoding Conversion: Complete Guide - KittyEncode",
   description:
-    "Master text encoding conversion between UTF-8, UTF-16, ASCII, Hex, Binary, and Unicode Escape formats. Essential guide for handling international text and data encoding.",  robots: {
+    "Master text encoding conversion between UTF-8, UTF-16, ASCII, Hex, Binary, and Unicode Escape formats. Essential guide for handling international text and data encoding.",
+  robots: {
     index: false,
     follow: true,
   },

@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import { BlogList } from "@/components/blog/blog-list";
 import { siteUrl } from "@/lib/config";
 
+// Generate static params for English only
+export async function generateStaticParams() {
+  return [
+    {
+      lang: "en",
+    },
+  ];
+}
+
 export const metadata: Metadata = {
   title: "Developer Guides & Tutorials - KittyEncode Blog",
   description:

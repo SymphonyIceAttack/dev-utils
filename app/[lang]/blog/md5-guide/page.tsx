@@ -3,6 +3,15 @@ import { Md5GuideContent } from "@/components/blog/guides/md5-guide-content";
 import { Md5GuideStructuredData } from "@/components/structured-data/blog-post";
 import { siteUrl } from "@/lib/config";
 
+// Generate static params for English only
+export async function generateStaticParams() {
+  return [
+    {
+      lang: "en",
+    },
+  ];
+}
+
 export const metadata: Metadata = {
   title: "MD5 Hashing Tutorial: Complete Implementation Guide - KittyEncode",
   description:
