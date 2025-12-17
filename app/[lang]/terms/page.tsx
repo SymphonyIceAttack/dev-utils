@@ -9,17 +9,11 @@ const metadataConfig = {
     title: "Terms of Service - Free Online Developer Tools",
     description:
       "Terms of service for our free online developer tools. Simple, fair terms for using our developer utilities.",
-    keywords: [
-      "terms of service",
-      "terms and conditions",
-      "developer tools terms",
-      "user agreement",
-    ],
     openGraph: {
       title: "Terms of Service - Free Online Developer Tools",
       description:
         "Terms of service for our free online developer tools. Simple, fair terms for using our developer utilities.",
-      url: `${baseUrl}/terms`,
+      url: `${baseUrl}/en/terms`,
       type: "website",
     },
   },
@@ -27,7 +21,6 @@ const metadataConfig = {
     title: "服务条款 - 免费在线开发者工具",
     description:
       "我们免费在线开发者工具的服务条款。使用我们的开发者实用工具的简单、公平条款。",
-    keywords: ["服务条款", "条款和条件", "开发者工具条款", "用户协议"],
     openGraph: {
       title: "服务条款 - 免费在线开发者工具",
       description:
@@ -40,7 +33,6 @@ const metadataConfig = {
     title: "利用規約 - 無料オンライン開発者ツール",
     description:
       "無料のオンライン開発者ツールの利用規約。開発者ユーティリティを使用するためのシンプルで公正な条件。",
-    keywords: ["利用規約", "利用規約", "開発者ツール規約", "ユーザー契約"],
     openGraph: {
       title: "利用規約 - 無料オンライン開発者ツール",
       description:
@@ -53,12 +45,6 @@ const metadataConfig = {
     title: "Conditions de Service - Outils de Développeur en Ligne Gratuits",
     description:
       "Conditions de service pour nos outils de développeur en ligne gratuits. Conditions simples et équitables pour utiliser nos utilitaires de développeur.",
-    keywords: [
-      "conditions de service",
-      "termes et conditions",
-      "conditions outils développeur",
-      "accord utilisateur",
-    ],
     openGraph: {
       title: "Conditions de Service - Outils de Développeur en Ligne Gratuits",
       description:
@@ -72,12 +58,6 @@ const metadataConfig = {
       "Términos de Servicio - Herramientas de Desarrollador Gratuitas en Línea",
     description:
       "Términos de servicio para nuestras herramientas de desarrollador gratuitas en línea. Términos simples y justos para usar nuestras utilidades de desarrollador.",
-    keywords: [
-      "términos de servicio",
-      "términos y condiciones",
-      "términos herramientas desarrollador",
-      "acuerdo usuario",
-    ],
     openGraph: {
       title:
         "Términos de Servicio - Herramientas de Desarrollador Gratuitas en Línea",
@@ -92,12 +72,6 @@ const metadataConfig = {
       "Условия Обслуживания - Бесплатные Онлайн Инструменты для Разработчиков",
     description:
       "Условия обслуживания для наших бесплатных онлайн инструментов для разработчиков. Простые, справедливые условия для использования наших утилит для разработчиков.",
-    keywords: [
-      "условия обслуживания",
-      "правила и условия",
-      "условия инструментов разработчика",
-      "пользовательское соглашение",
-    ],
     openGraph: {
       title:
         "Условия Обслуживания - Бесплатные Онлайн Инструменты для Разработчиков",
@@ -111,12 +85,6 @@ const metadataConfig = {
     title: "Nutzungsbedingungen - Kostenlose Online Entwicklertools",
     description:
       "Nutzungsbedingungen für unsere kostenlosen Online-Entwicklertools. Einfache, faire Bedingungen für die Nutzung unserer Entwickler-Utilities.",
-    keywords: [
-      "nutzungsbedingungen",
-      "bedingungen",
-      "entwicklertools bedingungen",
-      "nutzervereinbarung",
-    ],
     openGraph: {
       title: "Nutzungsbedingungen - Kostenlose Online Entwicklertools",
       description:
@@ -142,7 +110,6 @@ export async function generateMetadata({
   return {
     title: langData.title,
     description: langData.description,
-    keywords: langData.keywords,
     openGraph: langData.openGraph,
     robots: {
       index: false,

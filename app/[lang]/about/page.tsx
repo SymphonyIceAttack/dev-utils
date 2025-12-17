@@ -10,18 +10,11 @@ const metadataConfig = {
     title: "About Us - Free Online Developer Tools",
     description:
       "Learn about our mission to provide free, fast, and reliable online developer tools for developers worldwide.",
-    keywords: [
-      "about us",
-      "developer tools",
-      "online tools",
-      "free tools",
-      "developer utilities",
-    ],
     openGraph: {
       title: "About Us - Free Online Developer Tools",
       description:
         "Learn about our mission to provide free, fast, and reliable online developer tools for developers worldwide.",
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}/en/about`,
       type: "website",
     },
   },
@@ -29,13 +22,6 @@ const metadataConfig = {
     title: "关于我们 - 免费在线开发者工具",
     description:
       "了解我们的使命：为全球开发者提供免费、快速、可靠的在线开发者工具。",
-    keywords: [
-      "关于我们",
-      "开发者工具",
-      "在线工具",
-      "免费工具",
-      "开发者实用工具",
-    ],
     openGraph: {
       title: "关于我们 - 免费在线开发者工具",
       description:
@@ -48,13 +34,6 @@ const metadataConfig = {
     title: "私たちについて - 無料オンライン開発者ツール",
     description:
       "世界中の開発者に無料、高速、信頼できるオンライン開発者ツールを提供するミッションについて解説する。",
-    keywords: [
-      "私たちについて",
-      "開発者ツール",
-      "オンライン道具",
-      "無料ツール",
-      "開発者ユーティリティ",
-    ],
     openGraph: {
       title: "私たちについて - 無料オンライン開発者ツール",
       description:
@@ -67,13 +46,6 @@ const metadataConfig = {
     title: "À propos de nous - Outils de développeur en ligne gratuits",
     description:
       "Découvrez notre mission de fournir des outils de développeur en ligne gratuits, rapides et fiables pour les développeurs du monde entier.",
-    keywords: [
-      "à propos de nous",
-      "outils développeur",
-      "outils en ligne",
-      "outils gratuits",
-      "utilitaires développeur",
-    ],
     openGraph: {
       title: "À propos de nous - Outils de développeur en ligne gratuits",
       description:
@@ -87,13 +59,6 @@ const metadataConfig = {
       "Acerca de Nosotros - Herramientas de Desarrollador Gratuitas en Línea",
     description:
       "Conoce nuestra misión de proporcionar herramientas de desarrollador gratuitas, rápidas y confiables para desarrolladores de todo el mundo.",
-    keywords: [
-      "acerca de nosotros",
-      "herramientas desarrollador",
-      "herramientas en línea",
-      "herramientas gratuitas",
-      "utilidades desarrollador",
-    ],
     openGraph: {
       title:
         "Acerca de Nosotros - Herramientas de Desarrollador Gratuitas en Línea",
@@ -107,13 +72,6 @@ const metadataConfig = {
     title: "О нас - Бесплатные онлайн инструменты для разработчиков",
     description:
       "Узнайте о нашей миссии по предоставлению бесплатных, быстрых и надежных онлайн инструментов для разработчиков по всему миру.",
-    keywords: [
-      "о нас",
-      "инструменты разработчика",
-      "онлайн инструменты",
-      "бесплатные инструменты",
-      "утилиты разработчика",
-    ],
     openGraph: {
       title: "О нас - Бесплатные онлайн инструменты для разработчиков",
       description:
@@ -126,13 +84,6 @@ const metadataConfig = {
     title: "Über Uns - Kostenlose Online Entwicklertools",
     description:
       "Erfahren Sie mehr über unsere Mission, kostenlose, schnelle und zuverlässige Online-Entwicklertools für Entwickler weltweit bereitzustellen.",
-    keywords: [
-      "über uns",
-      "entwicklertools",
-      "online tools",
-      "kostenlose tools",
-      "entwickler utilitäten",
-    ],
     openGraph: {
       title: "Über Uns - Kostenlose Online Entwicklertools",
       description:
@@ -158,7 +109,6 @@ export async function generateMetadata({
   return {
     title: langData.title,
     description: langData.description,
-    keywords: langData.keywords,
     openGraph: langData.openGraph,
     robots: {
       index: false,

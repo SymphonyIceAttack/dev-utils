@@ -9,27 +9,36 @@ const metadataConfig = {
     title: "UUID Generator Online - Free Universal Unique Identifier Tool",
     description:
       "Free online UUID generator. Generate RFC4122 compliant UUID v4, v7, and v1 identifiers. Bulk generation, multiple formats, works offline.",
-    keywords: [
-      "UUID generator",
-      "universal unique identifier",
-      "UUID v4",
-      "UUID v7",
-      "random ID generator",
-      "GUID generator",
-    ],
   },
   zh: {
     title: "UUID 生成器 - 在线通用唯一标识符工具",
     description:
       "免费的在线 UUID 生成器。生成符合 RFC4122 标准的 UUID v4、v7 和 v1 标识符。批量生成，多种格式，离线工作。",
-    keywords: [
-      "UUID 生成器",
-      "通用唯一标识符",
-      "UUID v4",
-      "UUID v7",
-      "随机 ID 生成器",
-      "GUID 生成器",
-    ],
+  },
+  ja: {
+    title: "UUID ジェネレーター - 無料オンライン汎用一意識別子ツール",
+    description:
+      " 無料のオンラインUUIDジェネレーター。RFC4122準拠のUUID v4、v7、v1識別子を生成。バッチ生成、複数のフォーマット、オフラインで動作。",
+  },
+  fr: {
+    title: "Générateur UUID en Ligne - Outil d'Identifiant Unique Universel Gratuit",
+    description:
+      "Générateur UUID en ligne gratuit. Générez des identifiants UUID v4, v7 et v1 conformes RFC4122. Génération en lot, multiples formats, fonctionne hors ligne.",
+  },
+  es: {
+    title: "Generador UUID en Línea - Herramienta de Identificador Único Universal Gratuita",
+    description:
+      "Generador UUID en línea gratuito. Genera identificadores UUID v4, v7 y v1 compatibles con RFC4122. Generación en lote, múltiples formatos, funciona sin conexión.",
+  },
+  ru: {
+    title: "Генератор UUID Онлайн - Бесплатный Инструмент Универсального Уникального Идентификатора",
+    description:
+      "Бесплатный онлайн генератор UUID. Генерируйте идентификаторы UUID v4, v7 и v1, соответствующие RFC4122. Массовая генерация, множественные форматы, работает офлайн.",
+  },
+  de: {
+    title: "UUID Generator Online - Kostenloses Universelles Eindeutiges Identifikations-Tool",
+    description:
+      "Kostenloser Online-UUID-Generator. Generieren Sie RFC4122-konforme UUID v4-, v7- und v1-Identifikatoren. Stapel-Generierung, mehrere Formate, funktioniert offline.",
   },
 };
 
@@ -48,13 +57,12 @@ export async function generateMetadata({
   return {
     title: langData.title,
     description: langData.description,
-    keywords: langData.keywords,
     robots: {
       index: true,
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/tools/uuid`,
+      canonical: `${baseUrl}/${lang}/tools/uuid-generator`,
       languages: hreflangLinks,
     },
   };

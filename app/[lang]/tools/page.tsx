@@ -17,6 +17,34 @@ const metadataConfig = {
     description:
       "免费在线开发者工具集合。URL编码器、Base64、MD5、UUID生成器、密码生成器和编码转换器。快速、安全、离线工作。",
   },
+  ja: {
+    title: "無料オンライン開発者ツール - エンコーディング、ハッシュなど",
+    description:
+      "無料のオンライン開発者ツールのコレクション。URLエンコーダー、Base64、MD5、UUIDジェネレーター、パスワードジェネレーター、エンコーディングコンバーター。高速、安全、オフラインで動作。",
+  },
+  fr: {
+    title:
+      "Outils de Développeur en Ligne Gratuits - Encodage, Hachage et Plus",
+    description:
+      "Collection d'outils de développeur en ligne gratuits. Encodeur URL, Base64, MD5, générateur UUID, générateur de mot de passe et convertisseur d'encodage. Rapide, sécurisé, fonctionne hors ligne.",
+  },
+  es: {
+    title:
+      "Herramientas de Desarrollador Gratuitas en Línea - Codificación, Hashing y Más",
+    description:
+      "Colección de herramientas de desarrollador en línea gratuitas. Codificador URL, Base64, MD5, generador UUID, generador de contraseñas y convertidor de codificación. Rápido, seguro, funciona sin conexión.",
+  },
+  ru: {
+    title:
+      "Бесплатные Онлайн Инструменты для Разработчиков - Кодирование, Хеширование и Больше",
+    description:
+      "Коллекция бесплатных онлайн инструментов для разработчиков. Кодировщик URL, Base64, MD5, генератор UUID, генератор паролей и конвертер кодировок. Быстро, безопасно, работает офлайн.",
+  },
+  de: {
+    title: "Kostenlose Online Entwicklertools - Kodierung, Hashing und Mehr",
+    description:
+      "Sammlung kostenloser Online-Entwicklertools. URL-Encoder, Base64, MD5, UUID-Generator, Passwort-Generator und Encoding-Konverter. Schnell, sicher, funktioniert offline.",
+  },
 };
 
 export async function generateMetadata({
@@ -37,7 +65,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/tools`,
+      canonical: `${baseUrl}/${lang}/tools`,
       languages: hreflangLinks,
     },
   };

@@ -6,15 +6,7 @@ import { siteUrl } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Master Base64 Encoding: From Basics to Advanced - KittyEncode",
   description:
-    "Explore how Base64 encoding works and its practical applications in image embedding, data transmission, and API authentication.",
-  keywords: [
-    "Base64 encoding",
-    "Base64 decode",
-    "Base64 online",
-    "Base64 guide",
-    "data encoding",
-  ],
-  robots: {
+    "Explore how Base64 encoding works and its practical applications in image embedding, data transmission, and API authentication.",  robots: {
     index: false,
     follow: true,
   },

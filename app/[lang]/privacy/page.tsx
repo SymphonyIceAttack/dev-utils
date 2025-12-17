@@ -9,17 +9,11 @@ const metadataConfig = {
     title: "Privacy Policy - Free Online Developer Tools",
     description:
       "Our privacy policy explains how we protect your privacy. We don't collect, store, or track any personal information.",
-    keywords: [
-      "privacy policy",
-      "data protection",
-      "privacy",
-      "developer tools privacy",
-    ],
     openGraph: {
       title: "Privacy Policy - Free Online Developer Tools",
       description:
         "Our privacy policy explains how we protect your privacy. We don't collect, store, or track any personal information.",
-      url: `${baseUrl}/privacy`,
+      url: `${baseUrl}/en/privacy`,
       type: "website",
     },
   },
@@ -27,7 +21,6 @@ const metadataConfig = {
     title: "隐私政策 - 免费在线开发者工具",
     description:
       "我们的隐私政策说明我们如何保护您的隐私。我们不收集、存储或跟踪任何个人信息。",
-    keywords: ["隐私政策", "数据保护", "隐私", "开发者工具隐私"],
     openGraph: {
       title: "隐私政策 - 免费在线开发者工具",
       description:
@@ -40,12 +33,6 @@ const metadataConfig = {
     title: "プライバシーポリシー - 無料オンライン開発者ツール",
     description:
       "プライバシーレースポリシーは、プライバシーをどのように保護するかについて説明します。個人情報一切を収集、保存、追跡しません。",
-    keywords: [
-      "プライバシーポリシー",
-      "データ保護",
-      "プライバシー",
-      "開発者ツールのプライバシー",
-    ],
     openGraph: {
       title: "プライバシーポリシー - 無料オンライン開発者ツール",
       description:
@@ -59,12 +46,6 @@ const metadataConfig = {
       "Politique de Confidentialité - Outils de Développeur en Ligne Gratuits",
     description:
       "Notre politique de confidentialité explique comment nous protégeons votre vie privée. Nous ne collectons, ne stockons ou ne suivons aucune information personnelle.",
-    keywords: [
-      "politique de confidentialité",
-      "protection des données",
-      "confidentialité",
-      "confidentialité outils développeur",
-    ],
     openGraph: {
       title:
         "Politique de Confidentialité - Outils de Développeur en Ligne Gratuits",
@@ -79,12 +60,6 @@ const metadataConfig = {
       "Política de Privacidad - Herramientas de Desarrollador Gratuitas en Línea",
     description:
       "Nuestra política de privacidad explica cómo protegemos tu privacidad. No recopilamos, almacenamos ni rastreamos información personal.",
-    keywords: [
-      "política de privacidad",
-      "protección de datos",
-      "privacidad",
-      "privacidad herramientas desarrollador",
-    ],
     openGraph: {
       title:
         "Política de Privacidad - Herramientas de Desarrollador Gratuitas en Línea",
@@ -99,12 +74,6 @@ const metadataConfig = {
       "Политика Конфиденциальности - Бесплатные Онлайн Инструменты для Разработчиков",
     description:
       "Наша политика конфиденциальности объясняет, как мы защищаем вашу конфиденциальность. Мы не собираем, не храним и не отслеживаем личную информацию.",
-    keywords: [
-      "политика конфиденциальности",
-      "защита данных",
-      "конфиденциальность",
-      "конфиденциальность инструментов разработчика",
-    ],
     openGraph: {
       title:
         "Политика Конфиденциальности - Бесплатные Онлайн Инструменты для Разработчиков",
@@ -118,12 +87,6 @@ const metadataConfig = {
     title: "Datenschutzrichtlinie - Kostenlose Online Entwicklertools",
     description:
       "Unsere Datenschutzrichtlinie erklärt, wie wir Ihre Privatsphäre schützen. Wir sammeln, speichern oder verfolgen keine persönlichen Informationen.",
-    keywords: [
-      "datenschutzrichtlinie",
-      "datenschutz",
-      "privatsphäre",
-      "entwicklertools privatsphäre",
-    ],
     openGraph: {
       title: "Datenschutzrichtlinie - Kostenlose Online Entwicklertools",
       description:
@@ -149,7 +112,6 @@ export async function generateMetadata({
   return {
     title: langData.title,
     description: langData.description,
-    keywords: langData.keywords,
     openGraph: langData.openGraph,
     robots: {
       index: false,

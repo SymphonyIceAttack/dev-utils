@@ -6,15 +6,7 @@ import { siteUrl } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Complete Guide to URL Encoding: Best Practices - KittyEncode",
   description:
-    "Master URL encoding principles, use cases, and best practices. Learn why URL encoding is essential and how to use it correctly across different programming languages.",
-  keywords: [
-    "URL encoding",
-    "percent encoding",
-    "URL encode online",
-    "URL encode guide",
-    "web development",
-  ],
-  robots: {
+    "Master URL encoding principles, use cases, and best practices. Learn why URL encoding is essential and how to use it correctly across different programming languages.",  robots: {
     index: false,
     follow: true,
   },

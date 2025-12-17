@@ -21,7 +21,7 @@ const footerLinks = {
     { label: "Blog", href: "/blog" },
     { label: "Documentation", href: "/docs" },
     { label: "Changelog", href: "/changelog" },
-    { label: "GitHub", href: "https://github.com" },
+    { label: "GitHub", href: "https://github.com/SymphonyIceAttack/kitty-encode" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -191,7 +191,7 @@ export function Footer({ lang }: FooterProps) {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href="https://github.com"
+                  href="https://github.com/SymphonyIceAttack/kitty-encode"
                   className="p-2 rounded-xl border-2 border-foreground/40 dark:border-primary/40 hover:bg-accent transition-colors block"
                   style={{ boxShadow: "2px 2px 0 0 var(--foreground)" }}
                 >

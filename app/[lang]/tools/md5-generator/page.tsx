@@ -9,25 +9,36 @@ const metadataConfig = {
     title: "MD5 Hash Generator Online - Free MD5 Tool",
     description:
       "Free online MD5 hash generator. Generate MD5 checksums from text instantly. Support 32-bit and 16-bit output. Secure and works offline.",
-    keywords: [
-      "MD5 generator",
-      "MD5 hash",
-      "MD5 checksum",
-      "hash generator",
-      "MD5 online",
-    ],
   },
   zh: {
     title: "MD5 哈希生成器 - 在线 MD5 工具",
     description:
       "免费的在线 MD5 哈希生成器。即时从文本生成 MD5 校验和。支持 32 位和 16 位输出。安全且离线工作。",
-    keywords: [
-      "MD5 生成器",
-      "MD5 哈希",
-      "MD5 校验和",
-      "哈希生成器",
-      "MD5 在线",
-    ],
+  },
+  ja: {
+    title: "MD5 ハッシュジェネレーター - 無料オンライン MD5 ツール",
+    description:
+      " 無料のオンラインMD5ハッシュジェネレーター。テキストから即座にMD5チェックサムを生成。32ビットと16ビットの出力をサポート。安全でオフライン動作。",
+  },
+  fr: {
+    title: "Générateur de Hachage MD5 en Ligne - Outil MD5 Gratuit",
+    description:
+      "Générateur de hachage MD5 en ligne gratuit. Générez des checksums MD5 à partir de texte instantanément. Support de sortie 32-bit et 16-bit. Sécurisé et fonctionne hors ligne.",
+  },
+  es: {
+    title: "Generador de Hash MD5 en Línea - Herramienta MD5 Gratuita",
+    description:
+      "Generador de hash MD5 en línea gratuito. Genera checksums MD5 a partir de texto al instante. Soporte de salida de 32-bit y 16-bit. Seguro y funciona sin conexión.",
+  },
+  ru: {
+    title: "Генератор MD5 Хеша Онлайн - Бесплатный MD5 Инструмент",
+    description:
+      "Бесплатный онлайн генератор MD5 хеша. Генерируйте MD5 контрольные суммы из текста мгновенно. Поддержка 32-битного и 16-битного вывода. Безопасно и работает офлайн.",
+  },
+  de: {
+    title: "MD5 Hash Generator Online - Kostenloses MD5 Tool",
+    description:
+      "Kostenloser Online-MD5-Hash-Generator. Generieren Sie MD5-Checksummen aus Text sofort. Unterstützt 32-Bit- und 16-Bit-Ausgabe. Sicher und funktioniert offline.",
   },
 };
 
@@ -45,14 +56,12 @@ export async function generateMetadata({
 
   return {
     title: langData.title,
-    description: langData.description,
-    keywords: langData.keywords,
-    robots: {
+    description: langData.description,    robots: {
       index: true,
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/tools/md5-generator`,
+      canonical: `${baseUrl}/${lang}/tools/md5-generator`,
       languages: hreflangLinks,
     },
   };

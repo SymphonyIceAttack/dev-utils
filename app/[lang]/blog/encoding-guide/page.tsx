@@ -6,16 +6,7 @@ import { siteUrl } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Character Encoding Guide: UTF-8, GBK & Beyond - KittyEncode",
   description:
-    "Understand character encoding systems, fix garbled text issues, and convert between different encodings like UTF-8, GBK, and Unicode.",
-  keywords: [
-    "character encoding",
-    "UTF-8",
-    "GBK",
-    "Unicode",
-    "text encoding",
-    "garbled text",
-  ],
-  robots: {
+    "Understand character encoding systems, fix garbled text issues, and convert between different encodings like UTF-8, GBK, and Unicode.",  robots: {
     index: false,
     follow: true,
   },

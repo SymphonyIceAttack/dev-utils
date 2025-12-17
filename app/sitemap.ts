@@ -58,9 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: "daily",
       priority: 1.0,
-      alternates: {
-        [lang]: `${baseUrl}/${lang}`,
-      },
     });
 
     // 添加语言特定的工具页面
@@ -69,9 +66,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.9,
-      alternates: {
-        [lang]: `${baseUrl}/${lang}/tools`,
-      },
     });
 
     // 添加每个工具页面
@@ -81,9 +75,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: currentDate,
         changeFrequency: "monthly",
         priority: 0.8,
-        alternates: {
-          [lang]: `${baseUrl}/${lang}/tools/${tool}`,
-        },
       });
     });
 
