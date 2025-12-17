@@ -71,3 +71,11 @@ devenv.local.nix
 
 # pre-commit
 .pre-commit-config.yaml
+
+# Cloudflare
+.wrangler
+.open-next
+cloudflare-env.d.ts
+.dev.vars
+
+

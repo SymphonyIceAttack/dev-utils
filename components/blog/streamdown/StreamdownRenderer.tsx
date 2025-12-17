@@ -1,11 +1,39 @@
 "use client";
-import { Streamdown } from "streamdown";
+import { lazy, Suspense } from "react";
+
+const globalWithBoolean = globalThis as typeof globalThis & {
+  boolean?: typeof Boolean;
+};
+
+if (typeof globalWithBoolean.boolean === "undefined") {
+  globalWithBoolean.boolean = Boolean;
+}
+
+const Streamdown = lazy(() =>
+  import("streamdown").then((mod) => ({ default: mod.Streamdown })),
+);
+
+function StreamdownFallback() {
+  return (
+    <div className="animate-pulse space-y-4">
+      <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded" />
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6" />
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-4/5" />
+    </div>
+  );
+}
 
 interface StreamdownRendererProps {
   content: string;
   className?: string;
   mode?: "static" | "streaming";
   customComponents?: Record<string, unknown>;
+}
+
+interface AnchorProps {
+  href: string;
+  children: React.ReactNode;
 }
 
 /**
@@ -150,28 +178,33 @@ export function StreamdownRenderer({
         {children}
       </strong>
     ),
-    a: (props: any) => (
+    a: ({ href, children }: AnchorProps) => (
       <a
-        href={props.href}
+        href={href}
         className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline decoration-2 decoration-blue-300 dark:decoration-blue-600 hover:decoration-blue-600 dark:hover:decoration-blue-400 transition-colors"
       >
-        {props.children}
+        {children}
       </a>
     ),
   };
 
   // 合并默认组件和自定义组件
-  const mergedComponents = { ...defaultComponents, ...customComponents } as any;
+  const mergedComponents = {
+    ...defaultComponents,
+    ...customComponents,
+  } as Record<string, unknown>;
 
   return (
     <div className={className}>
-      <Streamdown
-        mode={mode}
-        shikiTheme={["github-light", "github-dark"]}
-        components={mergedComponents}
-      >
-        {content}
-      </Streamdown>
+      <Suspense fallback={<StreamdownFallback />}>
+        <Streamdown
+          mode={mode}
+          shikiTheme={["github-light", "github-dark"]}
+          components={mergedComponents}
+        >
+          {content}
+        </Streamdown>
+      </Suspense>
     </div>
   );
 }

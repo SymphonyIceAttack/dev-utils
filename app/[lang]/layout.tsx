@@ -12,13 +12,6 @@ import { LanguageProvider } from "@/context/language-context";
 import type { LanguageType } from "@/lib/translations";
 import { supportedLocales } from "@/lib/translations";
 
-// Generate static params for all supported languages
-export async function generateStaticParams() {
-  return supportedLocales.map((lang) => ({
-    lang,
-  }));
-}
-
 const nunitoFont = Nunito({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
