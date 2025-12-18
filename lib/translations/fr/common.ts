@@ -17,7 +17,7 @@ export const common = {
   "common.clear": "Effacer",
   "common.paste": "Coller",
   "common.download": "Télécharger",
-  "common.upload": "Envoyer",
+  "common.upload": "Téléverser",
   "common.input": "Entrée",
   "common.output": "Sortie",
   "common.format": "Formater",
@@ -31,13 +31,24 @@ export const common = {
   "common.result": "Résultat",
   "common.examples": "Exemples",
   "common.faq": "Questions fréquentes",
-  "common.needsUpdate": "Entrée modifiée, besoin de re-convertir",
+  "common.needsUpdate": "Entrée modifiée, reconversion nécessaire",
 
   // Badges
   "badge.free": "Gratuit",
   "badge.noSignup": "Sans inscription",
   "badge.offline": "Fonctionne hors ligne",
-  "badge.privacy": "Confidentialité d'abord",
+  "badge.privacy": "Confidentialité",
+  "badge.rfcCompliant": "Conforme RFC",
+  "badge.cryptographicallySecure": "Sécurité cryptographique",
+  "badge.multipleModes": "Modes multiples",
+  "badge.passphraseSupport": "Support passphrase",
+  "badge.bulkGeneration": "Génération en masse",
+  "badge.fileChecksums": "Sommes de contrôle",
+  "badge.batchProcessing": "Traitement par lots",
+  "badge.fileUpload": "Téléversement",
+  "badge.multiEncoding": "Multi-encodage",
+  "badge.realtimeConversion": "Conversion temps réel",
+  "badge.formatSupport": "Support formats",
 
   // Buttons
   "button.getStarted": "Commencer",
@@ -47,5 +58,6 @@ export const common = {
   "button.viewAll": "Voir tous les outils",
 
   // Cat Mascot
-  "cat.fallingItemTooltip": "Cliquez sur l'objet pour l'envoyer chez le chat !",
+  "cat.fallingItemTooltip": "Cliquez pour envoyer à la maison du chat !",
+  "cat.dropHint": "Déposez le chat ici !",
 };

@@ -1,6 +1,6 @@
 export const home = {
   // App
-  "app.title": "DevTools - 免费在线开发者工具",
+  "app.title": "KittyEncode - 免费在线开发者工具",
   "app.description":
     "免费在线开发者工具集合，包括 JSON 格式化、URL 编码、Base64 转换等。快速、安全、支持离线使用。",
   "app.hero.title": "开发者工具",
@@ -8,8 +8,8 @@ export const home = {
 
   // Hero Section
   "hero.badge": "100% 免费开源",
-  "hero.title1": "必备开发者",
-  "hero.title2": "工具",
+  "hero.title1": "KittyEncode",
+  "hero.title2": "开发者工具",
   "hero.description":
     "免费、快速、注重隐私的实用工具，完全在浏览器中运行。数据永不离开您的设备。",
   "hero.viewAllTools": "查看所有工具",
@@ -42,7 +42,7 @@ export const home = {
   "toolsSection.timestamp.description": "在 Unix 时间戳和可读日期之间转换",
 
   // Features Section
-  "featuresSection.title": "为什么选择 DevTools？",
+  "featuresSection.title": "为什么选择 KittyEncode？",
   "featuresSection.subtitle": "为重视速度、隐私和简洁的开发者打造",
   "featuresSection.fast.title": "极速响应",
   "featuresSection.fast.description":

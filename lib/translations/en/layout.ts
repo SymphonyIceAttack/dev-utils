@@ -1,12 +1,15 @@
 export const layout = {
   // Footer
-  "footer.copyright": "© 2025 DevTools",
+  "footer.copyright": "© 2025 KittyEncode",
   "footer.builtWith": "Built with Next.js and modern technologies",
   "footer.company": "Company",
+  "footer.tools": "Tools",
   "footer.aboutUs": "About Us",
   "footer.contact": "Contact",
   "footer.resources": "Resources",
   "footer.blog": "Blog",
+  "footer.documentation": "Documentation",
+  "footer.changelog": "Changelog",
   "footer.helpFaq": "Help & FAQ",
   "footer.legal": "Legal",
   "footer.privacyPolicy": "Privacy Policy",
@@ -15,9 +18,18 @@ export const layout = {
   "footer.developer": "Developer",
   "footer.sourceCode": "Source Code",
   "footer.githubProfile": "GitHub",
+  "footer.tagline": "Purr-fect coding utilities with a feline touch.",
+  "footer.madeWithLove": "Made with ♥ for developers.",
+  
+  "footer.tool.urlEncoder": "URL Encoder",
+  "footer.tool.base64Encoder": "Base64 Encoder",
+  "footer.tool.md5Generator": "MD5 Generator",
+  "footer.tool.uuidGenerator": "UUID Generator",
+  "footer.tool.passwordGenerator": "Password Generator",
+  "footer.tool.encodingConverter": "Encoding Converter",
 
   // Metadata
-  "metadata.title": "DevTools - Free Online Developer Utilities",
+  "metadata.title": "KittyEncode - Free Online Developer Utilities",
   "metadata.description":
     "Free online developer tools for JSON formatting, URL encoding, Base64 conversion, hash generation and more. Fast, secure, works offline.",
   "metadata.keywords":

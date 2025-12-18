@@ -1,13 +1,13 @@
 export const home = {
-  "app.title": "DevTools - 無料オンライン開発者ツール",
+  "app.title": "KittyEncode - 無料オンライン開発者ツール",
   "app.description":
     "JSON整形、URLエンコード、Base64変換などの無料オンライン開発者ツール。",
   "app.hero.title": "開発者ツール",
   "app.hero.subtitle":
     "開発者のための便利なツール集。高速、無料、プライバシー優先。",
   "hero.badge": "100% 無料＆オープンソース",
-  "hero.title1": "必須の開発者",
-  "hero.title2": "ツール",
+  "hero.title1": "KittyEncode",
+  "hero.title2": "開発者ツール",
   "hero.description":
     "無料、高速、プライバシー重視のユーティリティ。完全にブラウザ内で動作します。",
   "hero.viewAllTools": "すべてのツールを見る",
@@ -37,7 +37,7 @@ export const home = {
     "Markdownをライブレンダリングでプレビュー",
   "toolsSection.timestamp.title": "タイムスタンプ変換ツール",
   "toolsSection.timestamp.description": "Unixタイムスタンプと日付間で変換",
-  "featuresSection.title": "なぜDevTools？",
+  "featuresSection.title": "なぜKittyEncode？",
   "featuresSection.subtitle":
     "スピード、プライバシー、シンプルさを重視する開発者のために",
   "featuresSection.fast.title": "超高速",

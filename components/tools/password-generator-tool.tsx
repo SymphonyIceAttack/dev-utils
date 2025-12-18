@@ -444,10 +444,10 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
           }}
         >
           {[
-            "Cryptographically Secure",
-            "Multiple Modes",
-            "Passphrase Support",
-            "Bulk Generation",
+            t("badge.cryptographicallySecure"),
+            t("badge.multipleModes"),
+            t("badge.passphraseSupport"),
+            t("badge.bulkGeneration"),
           ].map((tag) => (
             <motion.span
               key={tag}
@@ -558,7 +558,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                 {/* Mode selector */}
                 <div>
                   <span className="text-sm font-medium block mb-2">
-                    Generation Mode
+                    {t("passwordGenerator.mode.label")}
                   </span>
                   <div className="grid grid-cols-2 gap-2">
                     <motion.button
@@ -575,7 +575,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      Random
+                      {t("passwordGenerator.mode.random")}
                     </motion.button>
                     <motion.button
                       onClick={() => {
@@ -591,7 +591,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      Passphrase
+                      {t("passwordGenerator.mode.passphrase")}
                     </motion.button>
                   </div>
                 </div>
@@ -606,7 +606,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium">Words</span>
+                        <span className="text-sm font-medium">{t("passwordGenerator.passphrase.words")}</span>
                         <span className="text-sm font-mono bg-muted px-2 py-1 rounded">
                           {options.passphraseWords}
                         </span>
@@ -634,7 +634,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
 
                     <div>
                       <span className="text-sm font-medium block mb-2">
-                        Separator
+                        {t("passwordGenerator.passphrase.separator")}
                       </span>
                       <select
                         value={options.passphraseSeparator}
@@ -648,11 +648,11 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                         }}
                         className="w-full px-3 py-2 text-sm border border-border rounded-lg bg-background"
                       >
-                        <option value="-">Hyphen (-)</option>
-                        <option value="_">Underscore (_)</option>
-                        <option value=" ">Space</option>
-                        <option value=".">Period (.)</option>
-                        <option value="">None</option>
+                        <option value="-">{t("passwordGenerator.passphrase.separator.hyphen")}</option>
+                        <option value="_">{t("passwordGenerator.passphrase.separator.underscore")}</option>
+                        <option value=" ">{t("passwordGenerator.passphrase.separator.space")}</option>
+                        <option value=".">{t("passwordGenerator.passphrase.separator.period")}</option>
+                        <option value="">{t("passwordGenerator.passphrase.separator.none")}</option>
                       </select>
                     </div>
                   </motion.div>
@@ -695,13 +695,13 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                 <div className="space-y-2">
                   <span className="text-sm font-medium">
                     {options.mode === "passphrase"
-                      ? "Additional Options"
+                      ? t("passwordGenerator.option.additional")
                       : t("passwordGenerator.options")}
                   </span>
                   {[
                     {
                       key: "uppercase",
-                      label: "Capitalize Words",
+                      label: t("passwordGenerator.option.capitalize"),
                       mode: "both",
                     },
                     {
@@ -837,7 +837,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium">
-                    Generated Passwords ({bulkPasswords.length})
+                    {t("passwordGenerator.output.generated")} ({bulkPasswords.length})
                   </span>
                   <Button
                     variant="ghost"
@@ -845,7 +845,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                     onClick={() => copyToClipboard(bulkPasswords.join("\n"))}
                     className="rounded-lg"
                   >
-                    <Copy className="h-4 w-4 mr-1" /> Copy All
+                    <Copy className="h-4 w-4 mr-1" /> {t("passwordGenerator.output.copyAll")}
                   </Button>
                 </div>
                 <div className="max-h-[200px] overflow-auto rounded-xl border-2 border-border bg-muted/30 p-4">
@@ -968,11 +968,10 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
               animate={{ opacity: 1, y: 0 }}
             >
               <Sparkles className="h-5 w-5" />
-              Password Presets
+              {t("passwordGenerator.presetsTitle")}
             </motion.h3>
             <p className="text-sm text-muted-foreground mb-6">
-              Pre-configured password settings for different security levels.
-              Click \"Quick Run\" to generate with preset settings:
+              {t("passwordGenerator.presetsDesc")}
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {presets.map((preset, index) => (
@@ -990,10 +989,10 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                         {preset.key}
                       </h4>
                       <p className="text-xs text-muted-foreground">
-                        {preset.length} chars
-                        {preset.symbols && " • Symbols"}
-                        {preset.numbers && " • Numbers"}
-                        {preset.uppercase && " • Upper"}
+                        {preset.length} {t("passwordGenerator.preset.chars")}
+                        {preset.symbols && ` • ${t("passwordGenerator.preset.symbols")}`}
+                        {preset.numbers && ` • ${t("passwordGenerator.preset.numbers")}`}
+                        {preset.uppercase && ` • ${t("passwordGenerator.preset.upper")}`}
                       </p>
                     </div>
                     <div className="flex gap-1 ml-2">
@@ -1015,7 +1014,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                         className="pixel-btn px-3 py-1 text-xs h-7"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        title="Load Preset Only"
+                        title={t("passwordGenerator.preset.loadOnly")}
                       >
                         <motion.span
                           animate={{ rotate: [0, 15, -15, 0] }}
@@ -1031,7 +1030,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                     </div>
                   </div>
                   <div className="text-xs font-mono text-muted-foreground break-all bg-muted/30 p-2 rounded border">
-                    Length: {preset.length}
+                    {t("passwordGenerator.length")}: {preset.length}
                   </div>
                 </motion.div>
               ))}
@@ -1049,26 +1048,19 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
         variants={containerVariants}
       >
         <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          Why Use a Password Generator? How Does it Work?
+          {t("passwordGenerator.seo.title")}
         </motion.h2>
         <motion.p
           className="text-muted-foreground leading-relaxed mb-6"
           variants={itemVariants}
-        >
-          Strong, unique passwords are essential for security. This tool uses{" "}
-          <strong className="text-foreground">cryptographically secure</strong>{" "}
-          random number generation via the Web Crypto API
-          (crypto.getRandomValues) to create passwords that are virtually
-          impossible to guess or crack through brute force. The implementation
-          supports both random character generation and passphrase-based
-          methods.
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: t("passwordGenerator.seo.desc") }}
+        />
 
         <motion.h3
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Technical Implementation
+          {t("passwordGenerator.tech.title")}
         </motion.h3>
         <motion.div
           className="bg-muted/30 rounded-xl p-4 mb-6"
@@ -1076,42 +1068,38 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
         >
           <div className="grid gap-4 text-sm">
             <div>
-              <strong>Random Password Generation:</strong>
+              <strong>{t("passwordGenerator.tech.randomTitle")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
                 <li>
-                  Uses crypto.getRandomValues() for cryptographically secure
-                  randomness
+                  {t("passwordGenerator.tech.randomList1")}
                 </li>
                 <li>
-                  Builds character pools dynamically based on user preferences
+                  {t("passwordGenerator.tech.randomList2")}
                 </li>
                 <li>
-                  Optional ambiguous character exclusion (0, O, 1, l, I for
-                  better readability)
+                  {t("passwordGenerator.tech.randomList3")}
                 </li>
                 <li>
-                  Uniform distribution ensures each character position is
-                  equally likely
+                  {t("passwordGenerator.tech.randomList4")}
                 </li>
                 <li>
-                  Supports length from 4 to 64 characters with various character
-                  types
+                  {t("passwordGenerator.tech.randomList5")}
                 </li>
               </ul>
             </div>
             <div>
-              <strong>Passphrase Generation:</strong>
+              <strong>{t("passwordGenerator.tech.passphraseTitle")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
                 <li>
-                  Dictionary-based selection from 100+ common English words
+                  {t("passwordGenerator.tech.passphraseList1")}
                 </li>
-                <li>Each word adds approximately 6.6 bits of entropy</li>
-                <li>Optional capitalization and number/symbol addition</li>
+                <li>{t("passwordGenerator.tech.passphraseList2")}</li>
+                <li>{t("passwordGenerator.tech.passphraseList3")}</li>
                 <li>
-                  Customizable separators (hyphen, underscore, space, etc.)
+                  {t("passwordGenerator.tech.passphraseList4")}
                 </li>
                 <li>
-                  Word count range: 3-8 words for different security levels
+                  {t("passwordGenerator.tech.passphraseList5")}
                 </li>
               </ul>
             </div>
@@ -1122,25 +1110,25 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Key Features
+          {t("passwordGenerator.features.title")}
         </motion.h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: "Cryptographically Secure",
-              desc: "Uses Web Crypto API for true randomness",
+              title: t("passwordGenerator.feature.secure.title"),
+              desc: t("passwordGenerator.feature.secure.desc"),
             },
             {
-              title: "Multiple Modes",
-              desc: "Random passwords and passphrases",
+              title: t("passwordGenerator.feature.modes.title"),
+              desc: t("passwordGenerator.feature.modes.desc"),
             },
             {
-              title: "Passphrase Support",
-              desc: "Easy-to-remember word combinations",
+              title: t("passwordGenerator.feature.passphrase.title"),
+              desc: t("passwordGenerator.feature.passphrase.desc"),
             },
             {
-              title: "Bulk Generation",
-              desc: "Generate multiple passwords at once",
+              title: t("passwordGenerator.feature.bulk.title"),
+              desc: t("passwordGenerator.feature.bulk.desc"),
             },
           ].map((feature) => (
             <motion.div
@@ -1161,7 +1149,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Best Practices & Usage Boundaries
+          {t("passwordGenerator.bestPractices.title")}
         </motion.h3>
         <motion.ul
           className="text-muted-foreground space-y-2"
@@ -1169,29 +1157,29 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
         >
           {[
             {
-              case: "Use a unique password for every account",
+              case: t("passwordGenerator.bestPractices.item1"),
               boundary:
-                "✅ Critical - Prevents credential stuffing attacks across multiple services",
+                t("passwordGenerator.bestPractices.boundary1"),
             },
             {
-              case: "Make passwords at least 12-16 characters long",
+              case: t("passwordGenerator.bestPractices.item2"),
               boundary:
-                "✅ Recommended - 16+ characters for high-value accounts (banking, email)",
+                t("passwordGenerator.bestPractices.boundary2"),
             },
             {
-              case: "Include uppercase, lowercase, numbers, and symbols",
+              case: t("passwordGenerator.bestPractices.item3"),
               boundary:
-                "✅ Important - Increases entropy and resists dictionary attacks",
+                t("passwordGenerator.bestPractices.boundary3"),
             },
             {
-              case: "Store passwords in a secure password manager",
+              case: t("passwordGenerator.bestPractices.item4"),
               boundary:
-                "✅ Essential - Never reuse passwords or write them down unsecured",
+                t("passwordGenerator.bestPractices.boundary4"),
             },
             {
-              case: "Enable two-factor authentication when available",
+              case: t("passwordGenerator.bestPractices.item5"),
               boundary:
-                "✅ Strongly recommended - Adds critical second layer of security",
+                t("passwordGenerator.bestPractices.boundary5"),
             },
           ].map((item, index) => (
             <motion.li
@@ -1224,7 +1212,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
+          <h2 className="text-lg font-semibold">{t("passwordGenerator.faq.title")}</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -1244,16 +1232,16 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
             >
               {[
                 {
-                  q: "Is this password generator secure?",
-                  a: "Yes! We use the Web Crypto API (crypto.getRandomValues) which provides cryptographically secure random numbers. All generation happens locally in your browser.",
+                  q: t("passwordGenerator.faq.q1"),
+                  a: t("passwordGenerator.faq.a1"),
                 },
                 {
-                  q: "Are my passwords stored anywhere?",
-                  a: "No. Generated passwords exist only in your browser and are never sent to any server. Once you close the page, they're gone unless you save them.",
+                  q: t("passwordGenerator.faq.q2"),
+                  a: t("passwordGenerator.faq.a2"),
                 },
                 {
-                  q: "What makes a strong password?",
-                  a: "A strong password is long (16+ characters), uses a mix of character types, is unique to each account, and is random (not based on dictionary words or personal info).",
+                  q: t("passwordGenerator.faq.q3"),
+                  a: t("passwordGenerator.faq.a3"),
                 },
               ].map((faq, index) => (
                 <motion.div

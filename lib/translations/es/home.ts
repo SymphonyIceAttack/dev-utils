@@ -1,6 +1,6 @@
 export const home = {
   // App
-  "app.title": "DevTools - Herramientas de desarrollador gratuitas",
+  "app.title": "KittyEncode - Herramientas de desarrollador gratuitas",
   "app.description":
     "Colección de herramientas gratuitas para desarrolladores: JSON, codificación URL, Base64 y más. Rápido, seguro y funciona sin conexión.",
   "app.hero.title": "Herramientas de desarrollador",
@@ -9,8 +9,8 @@ export const home = {
 
   // Hero Section
   "hero.badge": "100% Gratis y Código Abierto",
-  "hero.title1": "Herramientas esenciales",
-  "hero.title2": "para desarrolladores",
+  "hero.title1": "KittyEncode",
+  "hero.title2": "Herramientas para desarrolladores",
   "hero.description":
     "Utilidades gratuitas, rápidas y enfocadas en la privacidad que funcionan completamente en tu navegador. Ningún dato abandona nunca tu dispositivo.",
   "hero.viewAllTools": "Ver todas las herramientas",
@@ -51,7 +51,7 @@ export const home = {
     "Convierte entre timestamps Unix y fechas legibles",
 
   // Features Section
-  "featuresSection.title": "¿Por qué DevTools?",
+  "featuresSection.title": "¿Por qué KittyEncode?",
   "featuresSection.subtitle":
     "Construido para desarrolladores que valoran velocidad, privacidad y simplicidad",
   "featuresSection.fast.title": "Ultra rápido",

@@ -146,7 +146,7 @@ export function ContactPage({ lang }: ContactPageProps) {
                   </p>
                 </div>
                 <a
-                  href={`mailto:${t("contact.email.address", lang)}?subject=${encodeURIComponent(`KittyEncode Contact - ${t("contact.email.subject.placeholder", lang)}`)}&body=${encodeURIComponent(t("contact.email.message.placeholder", lang))}`}
+                  href={`mailto:${t("contact.email.address", lang)}?subject=${encodeURIComponent(`${t("contact.email.subject.prefix", lang)}${t("contact.email.subject.placeholder", lang)}`)}&body=${encodeURIComponent(t("contact.email.message.placeholder", lang))}`}
                   className="w-full"
                 >
                   <Button className="w-full gap-2">

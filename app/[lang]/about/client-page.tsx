@@ -166,7 +166,7 @@ export function AboutPage({ lang }: AboutPageProps) {
             <h2 className="text-2xl font-bold mb-2">
               {t("about.values.title", lang)}
             </h2>
-            <p className="text-muted-foreground">What drives us every day</p>
+            <p className="text-muted-foreground">{t("about.values.subtitle", lang)}</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

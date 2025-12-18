@@ -20,6 +20,7 @@ export const about = {
     "一个每个开发者都能获得构建精彩事物所需工具的世界，无论他们的预算或位置如何。",
 
   "about.values.title": "我们的价值观",
+  "about.values.subtitle": "每天驱动我们前进的动力",
   "about.values.freedom.title": "自由",
   "about.values.freedom.content": "我们的所有工具完全免费，无隐藏成本或限制。",
   "about.values.quality.title": "质量",

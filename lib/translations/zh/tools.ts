@@ -24,13 +24,6 @@ export const tools = {
   "hashGenerator.inputPlaceholder": "输入要哈希的文本...",
   "hashGenerator.algorithm": "算法",
 
-  // UUID Generator
-  "uuidGenerator.title": "UUID 生成器",
-  "uuidGenerator.description": "生成随机 UUID (v4)",
-  "uuidGenerator.generateBtn": "生成 UUID",
-  "uuidGenerator.generateMultiple": "批量生成",
-  "uuidGenerator.count": "数量",
-
   // Regex Tester
   "regexTester.title": "正则表达式测试器",
   "regexTester.description": "实时测试正则表达式的匹配结果",

@@ -1,12 +1,12 @@
 export const home = {
-  "app.title": "DevTools - Kostenlose Online-Entwicklerwerkzeuge",
+  "app.title": "KittyEncode - Kostenlose Online-Entwicklerwerkzeuge",
   "app.description": "Sammlung kostenloser Online-Entwicklerwerkzeuge.",
   "app.hero.title": "Entwicklerwerkzeuge",
   "app.hero.subtitle":
     "Nützliche Werkzeuge für Entwickler. Schnell, kostenlos.",
   "hero.badge": "100% Kostenlos & Open Source",
-  "hero.title1": "Essentielle Entwickler",
-  "hero.title2": "Werkzeuge",
+  "hero.title1": "KittyEncode",
+  "hero.title2": "Entwicklerwerkzeuge",
   "hero.description":
     "Kostenlose, schnelle und datenschutzorientierte Utilities.",
   "hero.viewAllTools": "Alle Werkzeuge anzeigen",
@@ -35,7 +35,7 @@ export const home = {
   "toolsSection.markdown.description": "Markdown live vorschauen",
   "toolsSection.timestamp.title": "Zeitstempel-Konverter",
   "toolsSection.timestamp.description": "Unix-Zeitstempel konvertieren",
-  "featuresSection.title": "Warum DevTools?",
+  "featuresSection.title": "Warum KittyEncode?",
   "featuresSection.subtitle":
     "Für Entwickler, die Geschwindigkeit und Datenschutz schätzen",
   "featuresSection.fast.title": "Blitzschnell",

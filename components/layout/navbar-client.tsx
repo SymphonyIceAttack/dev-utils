@@ -14,12 +14,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useCat } from "@/context/cat-context";
+import { useTranslation } from "@/hooks/use-translation";
 import { languageNames, supportedLocales } from "@/lib/translations";
+import type { LanguageType } from "@/lib/translations";
 
 const navLinks = [
-  { href: "", label: "Home" },
-  { href: "/tools", label: "Tools" },
-  { href: "/blog", label: "Blog" },
+  { href: "", labelKey: "nav.home" },
+  { href: "/tools", labelKey: "nav.tools" },
+  { href: "/blog", labelKey: "nav.blog" },
 ];
 
 function KittyEncodeLogo() {
@@ -36,7 +38,7 @@ function KittyEncodeLogo() {
 }
 
 interface NavbarProps {
-  lang: string;
+  lang: LanguageType;
 }
 
 export function Navbar({ lang }: NavbarProps) {
@@ -45,6 +47,7 @@ export function Navbar({ lang }: NavbarProps) {
   const { isCatDragging } = useCat();
   const router = useRouter();
   const pathname = usePathname();
+  const { t } = useTranslation(lang);
 
   const handleLanguageChange = (newLang: string) => {
     const segments = pathname.split("/");
@@ -171,7 +174,7 @@ export function Navbar({ lang }: NavbarProps) {
                   exit={{ opacity: 0, height: 0, y: -5 }}
                   className="text-xs text-primary font-medium"
                 >
-                  Drop kitty here!
+                  {t("cat.dropHint")}
                 </motion.span>
               )}
             </AnimatePresence>
@@ -195,7 +198,7 @@ export function Navbar({ lang }: NavbarProps) {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </motion.span>
               </Link>
             </motion.div>
@@ -214,7 +217,7 @@ export function Navbar({ lang }: NavbarProps) {
                   className="hidden sm:flex rounded-full border-2 border-transparent hover:border-foreground/30 dark:hover:border-primary/30"
                 >
                   <Globe className="h-5 w-5" />
-                  <span className="sr-only">Change language</span>
+                  <span className="sr-only">{t("button.switchLanguage")}</span>
                 </Button>
               </motion.div>
             </DropdownMenuTrigger>
@@ -278,7 +281,7 @@ export function Navbar({ lang }: NavbarProps) {
                   <Moon className="h-5 w-5" />
                 </motion.div>
               </motion.div>
-              <span className="sr-only">Toggle theme</span>
+              <span className="sr-only">{t("button.switchTheme")}</span>
             </Button>
           </motion.div>
 
@@ -339,7 +342,7 @@ export function Navbar({ lang }: NavbarProps) {
                     className="px-4 py-3 text-sm font-medium text-muted-foreground rounded-xl border-2 border-transparent hover:border-foreground/30 dark:hover:border-primary/30 transition-colors hover:bg-accent hover:text-foreground block"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </motion.div>
               ))}

@@ -1,12 +1,15 @@
 export const layout = {
   // Footer
-  "footer.copyright": "© 2025 DevTools",
+  "footer.copyright": "© 2025 KittyEncode",
   "footer.builtWith": "Construit avec Next.js et technologies modernes",
   "footer.company": "Entreprise",
+  "footer.tools": "Outils",
   "footer.aboutUs": "À propos",
   "footer.contact": "Contact",
   "footer.resources": "Ressources",
   "footer.blog": "Blog",
+  "footer.documentation": "Documentation",
+  "footer.changelog": "Journal des modifications",
   "footer.helpFaq": "Aide et FAQ",
   "footer.legal": "Légal",
   "footer.privacyPolicy": "Politique de confidentialité",
@@ -15,9 +18,18 @@ export const layout = {
   "footer.developer": "Développeur",
   "footer.sourceCode": "Code source",
   "footer.githubProfile": "GitHub",
+  "footer.tagline": "Des utilitaires de codage parfaits avec une touche féline.",
+  "footer.madeWithLove": "Fait avec ♥ pour les développeurs.",
+
+  "footer.tool.urlEncoder": "Encodeur URL",
+  "footer.tool.base64Encoder": "Encodeur Base64",
+  "footer.tool.md5Generator": "Générateur MD5",
+  "footer.tool.uuidGenerator": "Générateur UUID",
+  "footer.tool.passwordGenerator": "Générateur de mot de passe",
+  "footer.tool.encodingConverter": "Convertisseur d'encodage",
 
   // Metadata
-  "metadata.title": "DevTools - Utilitaires de développement gratuits en ligne",
+  "metadata.title": "KittyEncode - Utilitaires de développement gratuits en ligne",
   "metadata.description":
     "Outils de développement gratuits en ligne pour formatage JSON, encodage URL, conversion Base64, génération de hachage et plus. Rapide, sécurisé, fonctionne hors ligne.",
   "metadata.keywords":

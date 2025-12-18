@@ -3,33 +3,35 @@
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "@/hooks/use-translation";
+import type { LanguageType } from "@/lib/translations";
 
 const footerLinks = {
   tools: [
-    { label: "URL Encoder", href: "/" },
-    { label: "Base64 Encoder", href: "/tools/base64-encoder" },
-    { label: "MD5 Generator", href: "/tools/md5-generator" },
-    { label: "UUID Generator", href: "/tools/uuid-generator" },
-    { label: "Password Generator", href: "/tools/password-generator" },
-    { label: "Encoding Converter", href: "/tools/encoding-converter" },
+    { labelKey: "footer.tool.urlEncoder", href: "/" },
+    { labelKey: "footer.tool.base64Encoder", href: "/tools/base64-encoder" },
+    { labelKey: "footer.tool.md5Generator", href: "/tools/md5-generator" },
+    { labelKey: "footer.tool.uuidGenerator", href: "/tools/uuid-generator" },
+    { labelKey: "footer.tool.passwordGenerator", href: "/tools/password-generator" },
+    { labelKey: "footer.tool.encodingConverter", href: "/tools/encoding-converter" },
   ],
   company: [
-    { label: "About Us", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { labelKey: "footer.aboutUs", href: "/about" },
+    { labelKey: "footer.contact", href: "/contact" },
   ],
   resources: [
-    { label: "Blog", href: "/blog" },
-    { label: "Documentation", href: "/docs" },
-    { label: "Changelog", href: "/changelog" },
+    { labelKey: "footer.blog", href: "/blog" },
+    { labelKey: "footer.documentation", href: "/docs" },
+    { labelKey: "footer.changelog", href: "/changelog" },
     {
-      label: "GitHub",
+      labelKey: "footer.githubProfile",
       href: "https://github.com/SymphonyIceAttack/kitty-encode",
     },
   ],
   legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Disclaimer", href: "/disclaimer" },
+    { labelKey: "footer.privacyPolicy", href: "/privacy" },
+    { labelKey: "footer.termsOfService", href: "/terms" },
+    { labelKey: "footer.disclaimer", href: "/disclaimer" },
   ],
 };
 
@@ -129,10 +131,12 @@ const itemVariants = {
 };
 
 interface FooterProps {
-  lang: string;
+  lang: LanguageType;
 }
 
 export function Footer({ lang }: FooterProps) {
+  const { t } = useTranslation(lang);
+
   return (
     <footer className="border-t-2 border-foreground/40 dark:border-primary/30 bg-card/50 relative overflow-hidden">
       {/* 像素风背景装饰 - 添加动画 */}
@@ -185,7 +189,7 @@ export function Footer({ lang }: FooterProps) {
               </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Purr-fect coding utilities with a feline touch.
+              {t("footer.tagline")}
             </p>
             {/* 社交图标 */}
             <div className="mt-4 flex gap-2">
@@ -207,7 +211,7 @@ export function Footer({ lang }: FooterProps) {
           {/* Company */}
           <motion.div variants={itemVariants}>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground border-b-2 border-dashed border-foreground/25 dark:border-primary/25 pb-2">
-              Company
+              {t("footer.company")}
             </h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
@@ -224,7 +228,7 @@ export function Footer({ lang }: FooterProps) {
                     }
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </motion.li>
               ))}
@@ -234,7 +238,7 @@ export function Footer({ lang }: FooterProps) {
           {/* Tools */}
           <motion.div variants={itemVariants}>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground border-b-2 border-dashed border-foreground/25 dark:border-primary/25 pb-2">
-              Tools
+              {t("footer.tools")}
             </h4>
             <ul className="space-y-2">
               {footerLinks.tools.map((link) => (
@@ -251,7 +255,7 @@ export function Footer({ lang }: FooterProps) {
                     }
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </motion.li>
               ))}
@@ -261,7 +265,7 @@ export function Footer({ lang }: FooterProps) {
           {/* Resources */}
           <motion.div variants={itemVariants}>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground border-b-2 border-dashed border-foreground/25 dark:border-primary/25 pb-2">
-              Resources
+              {t("footer.resources")}
             </h4>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
@@ -278,7 +282,7 @@ export function Footer({ lang }: FooterProps) {
                     }
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </motion.li>
               ))}
@@ -288,7 +292,7 @@ export function Footer({ lang }: FooterProps) {
           {/* Legal */}
           <motion.div variants={itemVariants}>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground border-b-2 border-dashed border-foreground/25 dark:border-primary/25 pb-2">
-              Legal
+              {t("footer.legal")}
             </h4>
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
@@ -305,7 +309,7 @@ export function Footer({ lang }: FooterProps) {
                     }
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </motion.li>
               ))}
@@ -319,8 +323,7 @@ export function Footer({ lang }: FooterProps) {
           variants={itemVariants}
         >
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} KittyEncode. Made with ♥ for
-            developers.
+            © {new Date().getFullYear()} KittyEncode. {t("footer.madeWithLove")}
           </p>
         </motion.div>
       </motion.div>

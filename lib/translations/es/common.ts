@@ -10,7 +10,7 @@ export const common = {
   "common.language": "Idioma",
   "common.theme": "Tema",
   "common.loading": "Cargando...",
-  "common.error": "Ha ocurrido un error",
+  "common.error": "Ocurrió un error",
   "common.success": "Éxito",
   "common.copy": "Copiar",
   "common.copied": "¡Copiado!",
@@ -21,7 +21,7 @@ export const common = {
   "common.input": "Entrada",
   "common.output": "Salida",
   "common.format": "Formatear",
-  "common.minify": "Minimizar",
+  "common.minify": "Minificar",
   "common.validate": "Validar",
   "common.encode": "Codificar",
   "common.decode": "Decodificar",
@@ -31,22 +31,33 @@ export const common = {
   "common.result": "Resultado",
   "common.examples": "Ejemplos",
   "common.faq": "Preguntas frecuentes",
-  "common.needsUpdate": "Entrada cambiada, necesita reconvertir",
+  "common.needsUpdate": "Entrada modificada, reconversión necesaria",
 
   // Badges
   "badge.free": "Gratis",
   "badge.noSignup": "Sin registro",
   "badge.offline": "Funciona sin conexión",
   "badge.privacy": "Privacidad primero",
+  "badge.rfcCompliant": "Cumple RFC",
+  "badge.cryptographicallySecure": "Seguridad criptográfica",
+  "badge.multipleModes": "Múltiples modos",
+  "badge.passphraseSupport": "Soporte passphrase",
+  "badge.bulkGeneration": "Generación masiva",
+  "badge.fileChecksums": "Sumas de verificación",
+  "badge.batchProcessing": "Procesamiento por lotes",
+  "badge.fileUpload": "Carga de archivos",
+  "badge.multiEncoding": "Multi-codificación",
+  "badge.realtimeConversion": "Conversión en tiempo real",
+  "badge.formatSupport": "Soporte de formatos",
 
   // Buttons
   "button.getStarted": "Comenzar",
-  "button.learnMore": "Más información",
+  "button.learnMore": "Saber más",
   "button.switchTheme": "Cambiar tema",
   "button.switchLanguage": "Cambiar idioma",
   "button.viewAll": "Ver todas las herramientas",
 
   // Cat Mascot
-  "cat.fallingItemTooltip":
-    "¡Haz clic en el objeto para enviarlo a casa del gato!",
+  "cat.fallingItemTooltip": "¡Haz clic para enviar a la casa del gato!",
+  "cat.dropHint": "¡Suelta al gatito aquí!",
 };

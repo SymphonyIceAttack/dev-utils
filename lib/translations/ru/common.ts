@@ -31,13 +31,24 @@ export const common = {
   "common.result": "Результат",
   "common.examples": "Примеры",
   "common.faq": "Частые вопросы",
-  "common.needsUpdate": "Ввод изменен, необходимо повторить преобразование",
+  "common.needsUpdate": "Ввод изменён, требуется повторная конвертация",
 
   // Badges
   "badge.free": "Бесплатно",
   "badge.noSignup": "Без регистрации",
   "badge.offline": "Работает офлайн",
-  "badge.privacy": "Приватность",
+  "badge.privacy": "Конфиденциальность",
+  "badge.rfcCompliant": "Соответствует RFC",
+  "badge.cryptographicallySecure": "Криптографическая безопасность",
+  "badge.multipleModes": "Несколько режимов",
+  "badge.passphraseSupport": "Поддержка парольных фраз",
+  "badge.bulkGeneration": "Массовая генерация",
+  "badge.fileChecksums": "Контрольные суммы",
+  "badge.batchProcessing": "Пакетная обработка",
+  "badge.fileUpload": "Загрузка файлов",
+  "badge.multiEncoding": "Мульти-кодирование",
+  "badge.realtimeConversion": "Конвертация в реальном времени",
+  "badge.formatSupport": "Поддержка форматов",
 
   // Buttons
   "button.getStarted": "Начать",
@@ -47,6 +58,6 @@ export const common = {
   "button.viewAll": "Все инструменты",
 
   // Cat Mascot
-  "cat.fallingItemTooltip":
-    "Нажмите на предмет, чтобы отправить его коту домой!",
+  "cat.fallingItemTooltip": "Нажмите, чтобы отправить в дом кота!",
+  "cat.dropHint": "Перетащите котика сюда!",
 };

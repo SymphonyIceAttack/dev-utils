@@ -18,11 +18,6 @@ export const tools = {
   "hashGenerator.description": "MD5、SHA-1、SHA-256などのハッシュを生成",
   "hashGenerator.inputPlaceholder": "ハッシュ化するテキストを入力...",
   "hashGenerator.algorithm": "アルゴリズム",
-  "uuidGenerator.title": "UUID ジェネレーター",
-  "uuidGenerator.description": "ランダムUUID（v4）生成",
-  "uuidGenerator.generateBtn": "UUIDを生成",
-  "uuidGenerator.generateMultiple": "一括生成",
-  "uuidGenerator.count": "数",
 
   // Regex Tester
   "regexTester.title": "正規表現テスター",

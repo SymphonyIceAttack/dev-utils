@@ -18,6 +18,7 @@ export const contact = {
   "contact.email.title": "给我们发邮件",
   "contact.email.description": "给我们发送邮件，我们将在 24-48 小时内回复",
   "contact.email.address": "email@kitty-encode.top",
+  "contact.email.subject.prefix": "KittyEncode 联系 - ",
   "contact.email.subject.title": "主题：",
   "contact.email.subject.placeholder": "您消息的简要描述",
   "contact.email.message.title": "消息：",
@@ -54,7 +55,7 @@ export const contact = {
     "我们周一至周五上午 9 点至下午 6 点（UTC）监控邮件。在这些时间之外发送的邮件将在下一个工作日回复。",
 
   "contact.faq.title": "快速答案",
-  "faq.title": "联系我们之前",
+  "contact.faq.subtitle": "联系我们之前",
   "contact.faq.content": "以下是常见问题的快速答案：",
   "contact.faq.tools.title": "您的工具真的免费吗？",
   "contact.faq.tools.content":

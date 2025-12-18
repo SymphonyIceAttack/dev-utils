@@ -25,10 +25,53 @@ export const base64Encoder = {
   "base64Encoder.error.encoding": "Error encoding text to Base64",
   "base64Encoder.error.decoding": "Error decoding Base64 text",
 
+  "base64Encoder.techTitle": "Technical Implementation Details",
+  "base64Encoder.tech.dataUri": "<strong>Data URI Scheme:</strong> <code>data:image/png;base64,iVBORw0KGgo...</code> - Used for embedding images directly in HTML/CSS",
+  "base64Encoder.tech.email": "<strong>Email Attachments:</strong> binary MIME encoding for attachments in email systems (SMTP)",
+  "base64Encoder.tech.db": "<strong>Database Storage:</strong> Converting BLOBs to TEXT columns while preserving binary integrity",
+  "base64Encoder.tech.jwt": "<strong>JWT Tokens:</strong> Payload section in JSON Web Tokens for API authentication",
+  "base64Encoder.tech.api": "<strong>API Responses:</strong> Serializing complex objects for JSON API responses",
+
+  "base64Encoder.featuresTitle": "Key Features",
+  "base64Encoder.feature.textBinary.title": "Text & Binary",
+  "base64Encoder.feature.textBinary.desc": "Encode/decode both text strings and binary files",
+  "base64Encoder.feature.urlSafe.title": "URL Safe",
+  "base64Encoder.feature.urlSafe.desc": "Generate URL-safe Base64 encoding variants",
+  "base64Encoder.feature.fileSupport.title": "File Support",
+  "base64Encoder.feature.fileSupport.desc": "Upload and encode image and document files",
+  "base64Encoder.feature.privacy.title": "100% Private",
+  "base64Encoder.feature.privacy.desc": "All processing happens locally in your browser",
+
+  "base64Encoder.useCasesTitle": "Common Use Cases",
+  "base64Encoder.useCase.images": "Embedding images in HTML and CSS files",
+  "base64Encoder.useCase.email": "Encoding data for email and text transmission",
+  "base64Encoder.useCase.db": "Storing binary data in databases",
+  "base64Encoder.useCase.auth": "API authentication and token handling",
+  "base64Encoder.useCase.serialization": "Data serialization for web applications",
+
+  "base64Encoder.limitsTitle": "Usage Limits & Best Practices",
+  "base64Encoder.limits.limitations": "⚠️ Limitations",
+  "base64Encoder.limits.sizeIncrease": "Increases data size by ~33% (4 chars per 3 bytes)",
+  "base64Encoder.limits.largeFiles": "Not suitable for large files (use binary protocols instead)",
+  "base64Encoder.limits.notEncryption": "Not encryption - easily reversible, don't use for sensitive data",
+  "base64Encoder.limits.browserMemory": "Browser memory limits for very large inputs",
+  
+  "base64Encoder.limits.bestPractices": "✅ Best Practices",
+  "base64Encoder.limits.smallBinary": "Use for small binary data (images, files < 10MB)",
+  "base64Encoder.limits.compression": "Combine with compression (gzip) for efficiency",
+  "base64Encoder.limits.urlSafe": "Use URL-safe Base64 (+/-) for web applications",
+  "base64Encoder.limits.validation": "Always validate Base64 input before decoding",
+
+  "base64Encoder.security.title": "🔒 Security Note",
+  "base64Encoder.security.desc": "Base64 is NOT encryption. It provides no security or privacy. Only use for data format conversion, never for protecting sensitive information. For encryption, use proper cryptographic algorithms like AES.",
+
   // SEO Content
   "base64Encoder.seo.title": "What is Base64 Encoding?",
   "base64Encoder.seo.description":
-    "Base64 encoding is a method of converting binary data into ASCII text format. It's widely used in web development, email transmission, and data storage. Our free online Base64 encoder and decoder allows you to convert between text and Base64 instantly without any installation or signup.",
+    "<strong className=\"text-foreground\">Base64 encoding</strong> is a binary-to-text encoding scheme that converts binary data into ASCII string format. It's widely used for encoding binary data that needs to be stored and transferred over media designed to deal with textual data. Our free online Base64 encoder/decoder tool handles text and binary data conversion instantly.",
+  "base64Encoder.seo.techImplTitle": "🔧 Technical Implementation",
+  "base64Encoder.seo.techImplDesc": "Our Base64 encoder uses JavaScript's built-in <code className=\"bg-background px-1 rounded\">btoa()</code> and <code className=\"bg-background px-1 rounded\">atob()</code> functions with proper Unicode handling via <code className=\"bg-background px-1 rounded\">encodeURIComponent()</code> for international characters. The algorithm maps every 3 bytes of binary data to 4 Base64 characters using a 64-character alphabet (A-Z, a-z, 0-9, +, /) with padding (=) for incomplete byte groups.",
+  
   "base64Encoder.seo.featuresTitle": "Key Features",
   "base64Encoder.seo.feature1.title": "Instant Conversion",
   "base64Encoder.seo.feature1.desc": "Real-time encoding and decoding",
@@ -47,7 +90,7 @@ export const base64Encoder = {
     "Choose encode or decode mode and click the convert button",
   "base64Encoder.seo.howToUse3": "Copy the result with one click",
 
-  // FAQ
+  "base64Encoder.faqTitle": "Frequently Asked Questions",
   "base64Encoder.faq.q1": "What is Base64 encoding?",
   "base64Encoder.faq.a1":
     "Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format. It's commonly used to transmit binary data over systems that can only reliably handle text, such as email or certain web APIs.",
@@ -67,9 +110,11 @@ export const base64Encoder = {
   "base64Encoder.scenarios.scenario1.desc":
     "Developer needs to include a small icon in an email but wants to avoid attachment limitations.",
   "base64Encoder.scenarios.scenario1.problem": "📧 Problem:",
+  "base64Encoder.scenarios.scenario1.problemDesc": "Email server blocks attachments or recipient has size limitations",
   "base64Encoder.scenarios.scenario1.solution": "🔧 Base64 Solution:",
+  "base64Encoder.scenarios.scenario1.solutionDesc": "Convert small icon (logo.png) to Base64 and embed in HTML email",
   "base64Encoder.scenarios.scenario1.result":
-    "Email displays the icon without requiring external file attachments.",
+    "Result: Email displays the icon without requiring external file attachments.",
   "base64Encoder.scenarios.scenario2.title": "API Authentication Token",
   "base64Encoder.scenarios.scenario2.desc":
     "Mobile app developer needs to encode user credentials for Basic Authentication in API requests.",
@@ -77,15 +122,16 @@ export const base64Encoder = {
   "base64Encoder.scenarios.scenario2.encoded": "🔑 Base64 Encoded:",
   "base64Encoder.scenarios.scenario2.header": "📡 API Request Header:",
   "base64Encoder.scenarios.scenario2.result":
-    "Credentials are safely encoded for HTTP Basic Authentication.",
+    "Result: Credentials are safely encoded for HTTP Basic Authentication.",
   "base64Encoder.scenarios.scenario3.title": "JSON Data with Binary Content",
   "base64Encoder.scenarios.scenario3.desc":
     "Backend developer needs to store a small PDF file in a JSON database field.",
   "base64Encoder.scenarios.scenario3.binary": "📄 Binary Data:",
+  "base64Encoder.scenarios.scenario3.binaryDesc": "document.pdf (45 KB) - binary format not JSON-compatible",
   "base64Encoder.scenarios.scenario3.encoding": "🔄 Base64 Encoding:",
   "base64Encoder.scenarios.scenario3.storage": "💾 JSON Storage:",
   "base64Encoder.scenarios.scenario3.result":
-    "Binary PDF content is now stored as text in the JSON database field.",
+    "Result: Binary PDF content is now stored as text in the JSON database field.",
 
   // Step-by-Step Guide
   "base64Encoder.guide.title": "How to Use Base64 Encoding",

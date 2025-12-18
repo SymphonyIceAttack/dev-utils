@@ -257,21 +257,24 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             },
           }}
         >
-          {["Free", "No Signup", "Works Offline", "Privacy First"].map(
-            (tag) => (
-              <motion.span
-                key={tag}
-                className="pixel-badge"
-                variants={{
-                  hidden: { opacity: 0, scale: 0.8 },
-                  visible: { opacity: 1, scale: 1 },
-                }}
-                whileHover={{ scale: 1.1, y: -2 }}
-              >
-                {tag}
-              </motion.span>
-            ),
-          )}
+          {[
+            t("badge.free"),
+            t("badge.noSignup"),
+            t("badge.offline"),
+            t("badge.privacy"),
+          ].map((tag) => (
+            <motion.span
+              key={tag}
+              className="pixel-badge"
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              whileHover={{ scale: 1.1, y: -2 }}
+            >
+              {tag}
+            </motion.span>
+          ))}
         </motion.div>
       </motion.section>
 
@@ -676,62 +679,48 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
         variants={containerVariants}
       >
         <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          What is Base64 Encoding?
+          {t("base64Encoder.seo.title")}
         </motion.h2>
         <motion.p
           className="text-muted-foreground leading-relaxed mb-6"
           variants={itemVariants}
-        >
-          <strong className="text-foreground">Base64 encoding</strong> is a
-          binary-to-text encoding scheme that converts binary data into ASCII
-          string format. It's widely used for encoding binary data that needs to
-          be stored and transferred over media designed to deal with textual
-          data. Our free online Base64 encoder/decoder tool handles text and
-          binary data conversion instantly.
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: t("base64Encoder.seo.description") }}
+        />
 
         <motion.div
           className="mb-6 p-4 bg-muted/30 rounded-xl border border-border/50"
           variants={itemVariants}
         >
-          <h4 className="font-semibold mb-2">🔧 Technical Implementation</h4>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Our Base64 encoder uses JavaScript's built-in{" "}
-            <code className="bg-background px-1 rounded">btoa()</code> and
-            <code className="bg-background px-1 rounded">atob()</code> functions
-            with proper Unicode handling via
-            <code className="bg-background px-1 rounded">
-              encodeURIComponent()
-            </code>{" "}
-            for international characters. The algorithm maps every 3 bytes of
-            binary data to 4 Base64 characters using a 64-character alphabet
-            (A-Z, a-z, 0-9, +, /) with padding (=) for incomplete byte groups.
-          </p>
+          <h4 className="font-semibold mb-2">{t("base64Encoder.seo.techImplTitle")}</h4>
+          <p 
+            className="text-sm text-muted-foreground leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: t("base64Encoder.seo.techImplDesc") }}
+          />
         </motion.div>
 
         <motion.h3
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Key Features
+          {t("base64Encoder.featuresTitle")}
         </motion.h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: "Text & Binary",
-              desc: "Encode/decode both text strings and binary files",
+              title: t("base64Encoder.feature.textBinary.title"),
+              desc: t("base64Encoder.feature.textBinary.desc"),
             },
             {
-              title: "URL Safe",
-              desc: "Generate URL-safe Base64 encoding variants",
+              title: t("base64Encoder.feature.urlSafe.title"),
+              desc: t("base64Encoder.feature.urlSafe.desc"),
             },
             {
-              title: "File Support",
-              desc: "Upload and encode image and document files",
+              title: t("base64Encoder.feature.fileSupport.title"),
+              desc: t("base64Encoder.feature.fileSupport.desc"),
             },
             {
-              title: "100% Private",
-              desc: "All processing happens locally in your browser",
+              title: t("base64Encoder.feature.privacy.title"),
+              desc: t("base64Encoder.feature.privacy.desc"),
             },
           ].map((feature) => (
             <motion.div
@@ -752,18 +741,18 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Common Use Cases
+          {t("base64Encoder.useCasesTitle")}
         </motion.h3>
         <motion.ul
           className="text-muted-foreground space-y-2"
           variants={containerVariants}
         >
           {[
-            "Embedding images in HTML and CSS files",
-            "Encoding data for email and text transmission",
-            "Storing binary data in databases",
-            "API authentication and token handling",
-            "Data serialization for web applications",
+            t("base64Encoder.useCase.images"),
+            t("base64Encoder.useCase.email"),
+            t("base64Encoder.useCase.db"),
+            t("base64Encoder.useCase.auth"),
+            t("base64Encoder.useCase.serialization"),
           ].map((item, index) => (
             <motion.li
               key={item}
@@ -787,30 +776,14 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
           variants={itemVariants}
         >
           <h4 className="font-semibold mb-2">
-            💻 Technical Implementation Details
+            💻 {t("base64Encoder.techTitle")}
           </h4>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p>
-              <strong>Data URI Scheme:</strong>{" "}
-              <code>data:image/png;base64,iVBORw0KGgo...</code> - Used for
-              embedding images directly in HTML/CSS
-            </p>
-            <p>
-              <strong>Email Attachments:</strong> binary MIME encoding for
-              attachments in email systems (SMTP)
-            </p>
-            <p>
-              <strong>Database Storage:</strong> Converting BLOBs to TEXT
-              columns while preserving binary integrity
-            </p>
-            <p>
-              <strong>JWT Tokens:</strong> Payload section in JSON Web Tokens
-              for API authentication
-            </p>
-            <p>
-              <strong>API Responses:</strong> Serializing complex objects for
-              JSON API responses
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.dataUri") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.email") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.db") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.jwt") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.api") }} />
           </div>
         </motion.div>
 
@@ -823,7 +796,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
           variants={containerVariants}
         >
           <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
-            Real-World Scenarios
+            {t("base64Encoder.scenarios.title")}
           </motion.h3>
 
           {/* Scenario 1 */}
@@ -835,25 +808,22 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                 1
               </span>
-              Email Attachment Replacement
+              {t("base64Encoder.scenarios.scenario1.title")}
             </h4>
             <p className="text-muted-foreground mb-4">
-              Developer needs to include a small icon in an email but wants to
-              avoid attachment limitations.
+              {t("base64Encoder.scenarios.scenario1.desc")}
             </p>
             <div className="bg-background p-4 rounded-lg border">
               <div className="text-sm">
-                <div className="text-muted-foreground mb-2">📧 Problem:</div>
+                <div className="text-muted-foreground mb-2">{t("base64Encoder.scenarios.scenario1.problem")}</div>
                 <div className="mb-3">
-                  Email server blocks attachments or recipient has size
-                  limitations
+                  {t("base64Encoder.scenarios.scenario1.problemDesc")}
                 </div>
                 <div className="text-muted-foreground mb-2">
-                  🔧 Base64 Solution:
+                  {t("base64Encoder.scenarios.scenario1.solution")}
                 </div>
                 <div className="mb-3">
-                  Convert small icon (logo.png) to Base64 and embed in HTML
-                  email
+                  {t("base64Encoder.scenarios.scenario1.solutionDesc")}
                 </div>
                 <div className="text-green-600 text-xs">
                   &lt;img
@@ -863,8 +833,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-3">
-              <strong>Result:</strong> Email displays the icon without requiring
-              external file attachments.
+              <strong>{t("base64Encoder.scenarios.scenario1.result")}</strong>
             </p>
           </motion.div>
 
@@ -877,26 +846,25 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                 2
               </span>
-              API Authentication Token
+              {t("base64Encoder.scenarios.scenario2.title")}
             </h4>
             <p className="text-muted-foreground mb-4">
-              Mobile app developer needs to encode user credentials for Basic
-              Authentication in API requests.
+              {t("base64Encoder.scenarios.scenario2.desc")}
             </p>
             <div className="bg-background p-4 rounded-lg border">
               <div className="text-sm">
                 <div className="text-muted-foreground mb-2">
-                  🔐 User Credentials:
+                  {t("base64Encoder.scenarios.scenario2.credentials")}
                 </div>
                 <div className="mb-3 font-mono">username: password123</div>
                 <div className="text-muted-foreground mb-2">
-                  🔑 Base64 Encoded:
+                  {t("base64Encoder.scenarios.scenario2.encoded")}
                 </div>
                 <div className="mb-3 font-mono text-green-600">
                   dXNlcm5hbWU6cGFzc3dvcmQxMjM=
                 </div>
                 <div className="text-muted-foreground mb-2">
-                  📡 API Request Header:
+                  {t("base64Encoder.scenarios.scenario2.header")}
                 </div>
                 <div className="text-xs text-muted-foreground">
                   Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQxMjM=
@@ -904,8 +872,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-3">
-              <strong>Result:</strong> Credentials are safely encoded for HTTP
-              Basic Authentication.
+              <strong>{t("base64Encoder.scenarios.scenario2.result")}</strong>
             </p>
           </motion.div>
 
@@ -918,28 +885,27 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                 3
               </span>
-              JSON Data with Binary Content
+              {t("base64Encoder.scenarios.scenario3.title")}
             </h4>
             <p className="text-muted-foreground mb-4">
-              Backend developer needs to store a small PDF file in a JSON
-              database field.
+              {t("base64Encoder.scenarios.scenario3.desc")}
             </p>
             <div className="bg-background p-4 rounded-lg border">
               <div className="text-sm">
                 <div className="text-muted-foreground mb-2">
-                  📄 Binary Data:
+                  {t("base64Encoder.scenarios.scenario3.binary")}
                 </div>
                 <div className="mb-3">
-                  document.pdf (45 KB) - binary format not JSON-compatible
+                  {t("base64Encoder.scenarios.scenario3.binaryDesc")}
                 </div>
                 <div className="text-muted-foreground mb-2">
-                  🔄 Base64 Encoding:
+                  {t("base64Encoder.scenarios.scenario3.encoding")}
                 </div>
                 <div className="mb-3 font-mono text-green-600">
                   JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4K...
                 </div>
                 <div className="text-muted-foreground mb-2">
-                  💾 JSON Storage:
+                  {t("base64Encoder.scenarios.scenario3.storage")}
                 </div>
                 <div className="text-xs text-muted-foreground">
                   {
@@ -949,8 +915,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-3">
-              <strong>Result:</strong> Binary PDF content is now stored as text
-              in the JSON database field.
+              <strong>{t("base64Encoder.scenarios.scenario3.result")}</strong>
             </p>
           </motion.div>
         </motion.section>
@@ -964,30 +929,30 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
           variants={containerVariants}
         >
           <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
-            How to Use Base64 Encoding
+            {t("base64Encoder.guide.title")}
           </motion.h3>
 
           <motion.div className="space-y-4" variants={containerVariants}>
             {[
               {
                 step: "1",
-                title: "Choose Encode or Decode",
-                desc: "Select 'Encode' to convert text/binary to Base64, or 'Decode' to convert Base64 back to original format.",
+                title: t("base64Encoder.guide.step1.title"),
+                desc: t("base64Encoder.guide.step1.desc"),
               },
               {
                 step: "2",
-                title: "Enter Your Data",
-                desc: "Type text or upload a file (images, documents) that you want to encode or decode.",
+                title: t("base64Encoder.guide.step2.title"),
+                desc: t("base64Encoder.guide.step2.desc"),
               },
               {
                 step: "3",
-                title: "Generate Result",
-                desc: "Click the convert button to instantly see the Base64 encoded or decoded result.",
+                title: t("base64Encoder.guide.step3.title"),
+                desc: t("base64Encoder.guide.step3.desc"),
               },
               {
                 step: "4",
-                title: "Copy & Implement",
-                desc: "Copy the result for use in your applications, APIs, email templates, or data storage.",
+                title: t("base64Encoder.guide.step4.title"),
+                desc: t("base64Encoder.guide.step4.desc"),
               },
             ].map((item) => (
               <motion.div
@@ -1019,75 +984,70 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               animate={{ opacity: 1, y: 0 }}
             >
               <AlertCircle className="h-5 w-5" />
-              Usage Limits & Best Practices
+              {t("base64Encoder.limitsTitle")}
             </motion.h3>
             <div className="grid gap-6 md:grid-cols-2">
               <div>
                 <h4 className="font-semibold mb-3 text-amber-600">
-                  ⚠️ Limitations
+                  {t("base64Encoder.limits.limitations")}
                 </h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
                     <span>
-                      Increases data size by ~33% (4 chars per 3 bytes)
+                      {t("base64Encoder.limits.sizeIncrease")}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
                     <span>
-                      Not suitable for large files (use binary protocols
-                      instead)
+                      {t("base64Encoder.limits.largeFiles")}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
                     <span>
-                      Not encryption - easily reversible, don't use for
-                      sensitive data
+                      {t("base64Encoder.limits.notEncryption")}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Browser memory limits for very large inputs</span>
+                    <span>{t("base64Encoder.limits.browserMemory")}</span>
                   </li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-3 text-green-600">
-                  ✅ Best Practices
+                  {t("base64Encoder.limits.bestPractices")}
                 </h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
                     <span>
-                      Use for small binary data (images, files &lt; 10MB)
+                      {t("base64Encoder.limits.smallBinary")}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Combine with compression (gzip) for efficiency</span>
+                    <span>{t("base64Encoder.limits.compression")}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Use URL-safe Base64 (+/-) for web applications</span>
+                    <span>{t("base64Encoder.limits.urlSafe")}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Always validate Base64 input before decoding</span>
+                    <span>{t("base64Encoder.limits.validation")}</span>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-xl border border-blue-200 dark:border-blue-800">
               <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">
-                🔒 Security Note
+                {t("base64Encoder.security.title")}
               </h4>
               <p className="text-sm text-blue-700 dark:text-blue-300">
-                Base64 is NOT encryption. It provides no security or privacy.
-                Only use for data format conversion, never for protecting
-                sensitive information. For encryption, use proper cryptographic
-                algorithms like AES.
+                {t("base64Encoder.security.desc")}
               </p>
             </div>
           </CardContent>
@@ -1101,7 +1061,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
+          <h2 className="text-lg font-semibold">{t("base64Encoder.faqTitle")}</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -1121,16 +1081,20 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             >
               {[
                 {
-                  q: "What is Base64 encoding?",
-                  a: "Base64 is a binary-to-text encoding scheme that converts binary data into ASCII string format. It's commonly used to embed image files or other binary data in text-based formats like JSON, XML, or HTML.",
+                  q: t("base64Encoder.faq.q1"),
+                  a: t("base64Encoder.faq.a1"),
                 },
                 {
-                  q: "When should I use Base64 encoding?",
-                  a: "Use Base64 when you need to include binary data in text-based formats, send data through systems that only support text, or store binary data in databases that aren't designed for binary storage.",
+                  q: t("base64Encoder.faq.q2"),
+                  a: t("base64Encoder.faq.a2"),
                 },
                 {
-                  q: "Is Base64 encryption?",
-                  a: "No, Base64 is not encryption or security measure. It's simply an encoding scheme that makes binary data text-safe. The encoded data can be easily decoded back to its original form.",
+                  q: t("base64Encoder.faq.q3"),
+                  a: t("base64Encoder.faq.a3"),
+                },
+                {
+                  q: t("base64Encoder.faq.q4"),
+                  a: t("base64Encoder.faq.a4"),
                 },
               ].map((faq, index) => (
                 <motion.div

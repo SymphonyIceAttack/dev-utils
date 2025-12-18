@@ -38,6 +38,17 @@ export const common = {
   "badge.noSignup": "无需注册",
   "badge.offline": "离线可用",
   "badge.privacy": "隐私优先",
+  "badge.rfcCompliant": "符合 RFC 标准",
+  "badge.cryptographicallySecure": "加密安全",
+  "badge.multipleModes": "多种模式",
+  "badge.passphraseSupport": "助记词支持",
+  "badge.bulkGeneration": "批量生成",
+  "badge.fileChecksums": "文件校验",
+  "badge.batchProcessing": "批量处理",
+  "badge.fileUpload": "文件上传",
+  "badge.multiEncoding": "多编码支持",
+  "badge.realtimeConversion": "实时转换",
+  "badge.formatSupport": "格式支持",
 
   // Buttons
   "button.getStarted": "开始使用",
@@ -48,4 +59,5 @@ export const common = {
 
   // Cat Mascot
   "cat.fallingItemTooltip": "点击物品飞入小猫的家里！",
+  "cat.dropHint": "把小猫放在这里！",
 };

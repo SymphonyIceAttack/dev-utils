@@ -1,12 +1,15 @@
 export const common = {
+  // Navigation
   "nav.home": "Startseite",
   "nav.tools": "Werkzeuge",
   "nav.blog": "Blog",
   "nav.about": "Über uns",
   "nav.contact": "Kontakt",
+
+  // Common
   "common.language": "Sprache",
   "common.theme": "Thema",
-  "common.loading": "Laden...",
+  "common.loading": "Lädt...",
   "common.error": "Ein Fehler ist aufgetreten",
   "common.success": "Erfolg",
   "common.copy": "Kopieren",
@@ -18,7 +21,7 @@ export const common = {
   "common.input": "Eingabe",
   "common.output": "Ausgabe",
   "common.format": "Formatieren",
-  "common.minify": "Minimieren",
+  "common.minify": "Komprimieren",
   "common.validate": "Validieren",
   "common.encode": "Kodieren",
   "common.decode": "Dekodieren",
@@ -27,12 +30,27 @@ export const common = {
   "common.reset": "Zurücksetzen",
   "common.result": "Ergebnis",
   "common.examples": "Beispiele",
-  "common.faq": "Häufig gestellte Fragen",
-  "common.needsUpdate": "Eingabe geändert, muss neu konvertiert werden",
+  "common.faq": "Häufige Fragen",
+  "common.needsUpdate": "Eingabe geändert, erneute Konvertierung erforderlich",
+
+  // Badges
   "badge.free": "Kostenlos",
-  "badge.noSignup": "Keine Anmeldung",
+  "badge.noSignup": "Ohne Anmeldung",
   "badge.offline": "Funktioniert offline",
   "badge.privacy": "Datenschutz zuerst",
+  "badge.rfcCompliant": "RFC-konform",
+  "badge.cryptographicallySecure": "Kryptografisch sicher",
+  "badge.multipleModes": "Mehrere Modi",
+  "badge.passphraseSupport": "Passphrase-Unterstützung",
+  "badge.bulkGeneration": "Massengenerierung",
+  "badge.fileChecksums": "Datei-Prüfsummen",
+  "badge.batchProcessing": "Stapelverarbeitung",
+  "badge.fileUpload": "Datei-Upload",
+  "badge.multiEncoding": "Multi-Kodierung",
+  "badge.realtimeConversion": "Echtzeit-Konvertierung",
+  "badge.formatSupport": "Format-Unterstützung",
+
+  // Buttons
   "button.getStarted": "Loslegen",
   "button.learnMore": "Mehr erfahren",
   "button.switchTheme": "Thema wechseln",
@@ -40,6 +58,6 @@ export const common = {
   "button.viewAll": "Alle Werkzeuge anzeigen",
 
   // Cat Mascot
-  "cat.fallingItemTooltip":
-    "Klicken Sie auf das Objekt, um es zur Katze nach Hause zu schicken!",
+  "cat.fallingItemTooltip": "Klicken Sie, um es ins Katzenhaus zu senden!",
+  "cat.dropHint": "Lassen Sie die Katze hier fallen!",
 };

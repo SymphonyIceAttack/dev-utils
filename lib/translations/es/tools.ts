@@ -25,13 +25,6 @@ export const tools = {
   "hashGenerator.inputPlaceholder": "Ingresa texto para hashear...",
   "hashGenerator.algorithm": "Algoritmo",
 
-  // UUID Generator
-  "uuidGenerator.title": "Generador UUID",
-  "uuidGenerator.description": "Genera UUIDs aleatorios (v4)",
-  "uuidGenerator.generateBtn": "Generar UUID",
-  "uuidGenerator.generateMultiple": "Generar múltiples",
-  "uuidGenerator.count": "Cantidad",
-
   // Regex Tester
   "regexTester.title": "Probador Regex",
   "regexTester.description": "Prueba expresiones regulares en tiempo real",

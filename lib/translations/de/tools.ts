@@ -19,11 +19,6 @@ export const tools = {
     "MD5, SHA-1, SHA-256 und andere Hashes generieren",
   "hashGenerator.inputPlaceholder": "Text zum Hashen eingeben...",
   "hashGenerator.algorithm": "Algorithmus",
-  "uuidGenerator.title": "UUID-Generator",
-  "uuidGenerator.description": "Zufällige UUIDs (v4) generieren",
-  "uuidGenerator.generateBtn": "UUID generieren",
-  "uuidGenerator.generateMultiple": "Mehrere generieren",
-  "uuidGenerator.count": "Anzahl",
 
   // Regex Tester
   "regexTester.title": "Regex Tester",

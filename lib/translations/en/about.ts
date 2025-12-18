@@ -21,6 +21,7 @@ export const about = {
     "A world where every developer has access to the tools they need to build amazing things, regardless of their budget or location.",
 
   "about.values.title": "Our Values",
+  "about.values.subtitle": "What drives us every day",
   "about.values.freedom.title": "Freedom",
   "about.values.freedom.content":
     "All our tools are completely free with no hidden costs or limitations.",

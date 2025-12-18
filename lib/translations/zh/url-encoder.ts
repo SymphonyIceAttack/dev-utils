@@ -11,9 +11,12 @@ export const urlEncoder = {
   "urlEncoder.encodeBtn": "编码 URL",
   "urlEncoder.decodeBtn": "解码 URL",
   "urlEncoder.swapBtn": "交换 & 转换",
+  "urlEncoder.clearBtn": "清除",
   "urlEncoder.encodeTab": "编码/解码",
   "urlEncoder.examplesTab": "示例",
   "urlEncoder.examplesHint": "点击示例加载：",
+  "urlEncoder.examplesTitle": "示例 URL",
+  "urlEncoder.examplesDesc": "点击任意示例将其加载到输入字段，或使用「快速运行」自动转换：",
   "urlEncoder.example1.title": "查询参数",
   "urlEncoder.example2.title": "带特殊字符的 URL",
   "urlEncoder.example3.title": "API 端点",
@@ -40,6 +43,28 @@ export const urlEncoder = {
   "urlEncoder.seo.useCase4": "在 Web 开发中调试编码的 URL",
   "urlEncoder.seo.useCase5": "为表单提交准备数据",
 
+  "urlEncoder.techDetailsTitle": "技术实现",
+  "urlEncoder.techDetails.jsFunctions": "JavaScript 函数",
+  "urlEncoder.techDetails.algoDetails": "算法详情",
+  "urlEncoder.techDetails.algoList1": "将字符转换为 UTF-8 字节",
+  "urlEncoder.techDetails.algoList2": "每个字节变为 %XX（十六进制）",
+  "urlEncoder.techDetails.algoList3": "保留字符被编码",
+  "urlEncoder.techDetails.algoList4": "非保留字符保持不变",
+
+  "urlEncoder.limitationsTitle": "使用边界和限制",
+  "urlEncoder.limitations.appropriate": "适用于：",
+  "urlEncoder.limitations.appropriateList1": "查询参数和表单数据",
+  "urlEncoder.limitations.appropriateList2": "API 请求和 Web 服务",
+  "urlEncoder.limitations.appropriateList3": "包含特殊字符的 URL 参数",
+  "urlEncoder.limitations.appropriateList4": "URL 中的多语言内容",
+  "urlEncoder.limitations.notSuitable": "不适用于：",
+  "urlEncoder.limitations.notSuitableList1": "完整 URL 结构编码",
+  "urlEncoder.limitations.notSuitableList2": "域名或协议",
+  "urlEncoder.limitations.notSuitableList3": "已编码内容（避免双重编码）",
+  "urlEncoder.limitations.notSuitableList4": "HTML 实体编码",
+
+  "urlEncoder.faqTitle": "常见问题",
+
   // FAQ
   "urlEncoder.faq.q1": "什么是 URL 编码？",
   "urlEncoder.faq.a1":
@@ -58,6 +83,7 @@ export const urlEncoder = {
     "您正在构建电商搜索功能，需要从用户输入创建 URL 查询参数。",
   "urlEncoder.scenarios.scenario1.problem": "问题 URL：",
   "urlEncoder.scenarios.scenario1.solution": "正确编码的 URL：",
+  "urlEncoder.scenarios.scenario1.solutionLabel": "解决方案：",
   "urlEncoder.scenarios.scenario1.result":
     "使用 URL 编码正确处理空格、单引号和 & 符号。",
   "urlEncoder.scenarios.scenario2.title": "国际字符支持",

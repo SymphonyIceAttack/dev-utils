@@ -48,15 +48,7 @@ interface EncodingConverterToolProps {
   lang: LanguageType;
 }
 
-const encodings = [
-  { value: "utf-8", label: "UTF-8" },
-  { value: "utf-16", label: "UTF-16" },
-  { value: "ascii", label: "ASCII" },
-  { value: "iso-8859-1", label: "ISO-8859-1 (Latin-1)" },
-  { value: "hex", label: "Hex" },
-  { value: "binary", label: "Binary" },
-  { value: "unicode-escape", label: "Unicode Escape (\\uXXXX)" },
-];
+
 
 const exampleData = [
   {
@@ -147,6 +139,16 @@ function unicodeEscapeToText(escaped: string): string {
 
 export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
   const { t } = useTranslation(lang);
+  
+  const encodings = [
+    { value: "utf-8", label: t("encodingConverter.encodings.utf8") },
+    { value: "utf-16", label: t("encodingConverter.encodings.utf16") },
+    { value: "ascii", label: t("encodingConverter.encodings.ascii") },
+    { value: "iso-8859-1", label: t("encodingConverter.encodings.iso88591") },
+    { value: "hex", label: t("encodingConverter.encodings.hex") },
+    { value: "binary", label: t("encodingConverter.encodings.binary") },
+    { value: "unicode-escape", label: t("encodingConverter.encodings.unicodeEscape") },
+  ];
   const { spawnItem } = useCat();
   const [lastSpawnTime, setLastSpawnTime] = useState(0);
   const COOLDOWN_DURATION = 3000;
@@ -333,10 +335,10 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
           }}
         >
           {[
-            "Multi-Encoding",
-            "Real-time Conversion",
-            "Format Support",
-            "Privacy First",
+            t("badge.multiEncoding"),
+            t("badge.realtimeConversion"),
+            t("badge.formatSupport"),
+            t("badge.privacy"),
           ].map((tag) => (
             <motion.span
               key={tag}
@@ -763,26 +765,19 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
         variants={containerVariants}
       >
         <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          What is Character Encoding? How Does it Work?
+          {t("encodingConverter.seo.title")}
         </motion.h2>
         <motion.p
           className="text-muted-foreground leading-relaxed mb-6"
           variants={itemVariants}
-        >
-          <strong className="text-foreground">Character encoding</strong> is a
-          system that maps characters to bytes for storage and transmission. Our
-          implementation uses JavaScript's built-in TextEncoder/TextDecoder APIs
-          with custom handlers for hex, binary, and Unicode escape formats.
-          Different encodings like UTF-8, GBK, and ISO-8859-1 represent
-          characters differently, which can cause "mojibake" (garbled text) when
-          data is decoded with the wrong encoding.
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: t("encodingConverter.seo.description") }}
+        />
 
         <motion.h3
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Technical Implementation
+          {t("encodingConverter.techTitle")}
         </motion.h3>
         <motion.div
           className="bg-muted/30 rounded-xl p-4 mb-6"
@@ -790,30 +785,30 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
         >
           <div className="grid gap-4 text-sm">
             <div>
-              <strong>Core Conversion Logic:</strong>
+              <strong>{t("encodingConverter.tech.coreLogic")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>TextEncoder/TextDecoder for UTF-8/UTF-16 processing</li>
-                <li>Custom hex/binary conversion with proper byte alignment</li>
-                <li>Unicode escape sequence parsing (\uXXXX format)</li>
-                <li>Surrogate pair handling for emoji (0x10000-0x10FFFF)</li>
-                <li>Character-by-character processing with error recovery</li>
+                <li>{t("encodingConverter.tech.logic1")}</li>
+                <li>{t("encodingConverter.tech.logic2")}</li>
+                <li>{t("encodingConverter.tech.logic3")}</li>
+                <li>{t("encodingConverter.tech.logic4")}</li>
+                <li>{t("encodingConverter.tech.logic5")}</li>
               </ul>
             </div>
             <div>
-              <strong>Supported Encodings:</strong>
+              <strong>{t("encodingConverter.tech.supported")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
                 <li>
-                  UTF-8: 1-4 bytes per character, backward compatible with ASCII
+                  {t("encodingConverter.tech.utf8")}
                 </li>
                 <li>
-                  UTF-16: 2 or 4 bytes per character (BMP + surrogate pairs)
+                  {t("encodingConverter.tech.utf16")}
                 </li>
-                <li>ASCII: 7-bit encoding (0-127), subset of UTF-8</li>
+                <li>{t("encodingConverter.tech.ascii")}</li>
                 <li>
-                  ISO-8859-1: 8-bit encoding for Western European languages
+                  {t("encodingConverter.tech.iso")}
                 </li>
-                <li>Hex: Two-digit hexadecimal representation of each byte</li>
-                <li>Binary: 8-bit binary representation separated by spaces</li>
+                <li>{t("encodingConverter.tech.hex")}</li>
+                <li>{t("encodingConverter.tech.binary")}</li>
               </ul>
             </div>
           </div>
@@ -823,25 +818,25 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Key Features
+          {t("encodingConverter.featuresTitle")}
         </motion.h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: "Multi-Encoding",
-              desc: "Support for UTF-8, GBK, Latin-1 and more",
+              title: t("encodingConverter.feature.multi.title"),
+              desc: t("encodingConverter.feature.multi.desc"),
             },
             {
-              title: "Real-time Conversion",
-              desc: "Instant preview as you type",
+              title: t("encodingConverter.feature.realtime.title"),
+              desc: t("encodingConverter.feature.realtime.desc"),
             },
             {
-              title: "Format Support",
-              desc: "Text, Hex, Base64 and Unicode formats",
+              title: t("encodingConverter.feature.format.title"),
+              desc: t("encodingConverter.feature.format.desc"),
             },
             {
-              title: "100% Private",
-              desc: "All processing happens in your browser",
+              title: t("encodingConverter.feature.privacy.title"),
+              desc: t("encodingConverter.feature.privacy.desc"),
             },
           ].map((feature) => (
             <motion.div
@@ -862,7 +857,7 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Common Use Cases & Usage Boundaries
+          {t("encodingConverter.useCasesTitle")}
         </motion.h3>
         <motion.ul
           className="text-muted-foreground space-y-2"
@@ -870,28 +865,24 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
         >
           {[
             {
-              case: "Fixing garbled text from incorrect encoding",
-              boundary:
-                "✅ Essential - Most common use case for recovering readable text",
+              case: t("encodingConverter.useCase.garbled"),
+              boundary: t("encodingConverter.useCase.garbledDesc"),
             },
             {
-              case: "Converting legacy GBK data to UTF-8",
-              boundary:
-                "✅ Recommended - UTF-8 is the web standard and most compatible",
+              case: t("encodingConverter.useCase.gbk"),
+              boundary: t("encodingConverter.useCase.gbkDesc"),
             },
             {
-              case: "Debugging character encoding issues",
-              boundary:
-                "✅ Perfect - Hex view helps identify encoding problems",
+              case: t("encodingConverter.useCase.debug"),
+              boundary: t("encodingConverter.useCase.debugDesc"),
             },
             {
-              case: "Viewing hex representation of text",
-              boundary: "✅ Useful - Debugging and data analysis applications",
+              case: t("encodingConverter.useCase.hex"),
+              boundary: t("encodingConverter.useCase.hexDesc"),
             },
             {
-              case: "Converting between Unicode formats",
-              boundary:
-                "⚠️ Context-dependent - Ensure target system supports the format",
+              case: t("encodingConverter.useCase.unicode"),
+              boundary: t("encodingConverter.useCase.unicodeDesc"),
             },
           ].map((item, index) => (
             <motion.li
@@ -924,7 +915,7 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
+          <h2 className="text-lg font-semibold">{t("encodingConverter.faqTitle")}</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -944,16 +935,16 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
             >
               {[
                 {
-                  q: "What is the difference between UTF-8 and UTF-16?",
-                  a: "UTF-8 uses 1-4 bytes per character and is backward compatible with ASCII. UTF-16 uses 2 or 4 bytes. UTF-8 is more common on the web, while UTF-16 is used internally by Windows and Java.",
+                  q: t("encodingConverter.faq.q1"),
+                  a: t("encodingConverter.faq.a1"),
                 },
                 {
-                  q: "How do I fix garbled Chinese text?",
-                  a: "Garbled Chinese usually means the text was encoded in GBK but decoded as UTF-8 (or vice versa). Try converting from the original encoding to UTF-8.",
+                  q: t("encodingConverter.faq.q2"),
+                  a: t("encodingConverter.faq.a2"),
                 },
                 {
-                  q: "Is my data secure?",
-                  a: "Yes, all encoding conversion happens locally in your browser. Your data is never sent to any server.",
+                  q: t("encodingConverter.faq.q3"),
+                  a: t("encodingConverter.faq.a3"),
                 },
               ].map((faq, index) => (
                 <motion.div

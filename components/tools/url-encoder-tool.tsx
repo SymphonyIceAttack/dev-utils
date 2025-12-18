@@ -221,21 +221,24 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
             },
           }}
         >
-          {["Free", "No Signup", "Works Offline", "Privacy First"].map(
-            (tag) => (
-              <motion.span
-                key={tag}
-                className="pixel-badge"
-                variants={{
-                  hidden: { opacity: 0, scale: 0.8 },
-                  visible: { opacity: 1, scale: 1 },
-                }}
-                whileHover={{ scale: 1.1, y: -2 }}
-              >
-                {tag}
-              </motion.span>
-            ),
-          )}
+          {[
+            t("badge.free", lang),
+            t("badge.noSignup", lang),
+            t("badge.offline", lang),
+            t("badge.privacy", lang),
+          ].map((tag) => (
+            <motion.span
+              key={tag}
+              className="pixel-badge"
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              whileHover={{ scale: 1.1, y: -2 }}
+            >
+              {tag}
+            </motion.span>
+          ))}
         </motion.div>
       </motion.section>
 
@@ -495,7 +498,7 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
                     >
                       <Sparkles className="h-4 w-4" />
                     </motion.span>
-                    {mode === "encode" ? "Encode URL" : "Decode URL"}
+                    {mode === "encode" ? t("urlEncoder.encodeBtn", lang) : t("urlEncoder.decodeBtn", lang)}
                   </motion.button>
                   <motion.button
                     onClick={swapInputOutput}
@@ -511,7 +514,7 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
                     >
                       <ArrowRightLeft className="h-4 w-4" />
                     </motion.span>
-                    Swap & Convert
+                    {t("urlEncoder.swapBtn", lang)}
                   </motion.button>
                   <motion.button
                     onClick={() => {
@@ -523,7 +526,7 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Clear
+                    {t("urlEncoder.clearBtn", lang)}
                   </motion.button>
                 </motion.div>
               </TabsContent>
@@ -542,11 +545,10 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
               animate={{ opacity: 1, y: 0 }}
             >
               <Sparkles className="h-5 w-5" />
-              Example URLs
+              {t("urlEncoder.examplesTitle", lang)}
             </motion.h3>
             <p className="text-sm text-muted-foreground mb-6">
-              Click on any example to load it into the input field, or use
-              "Quick Run" to automatically convert:
+              {t("urlEncoder.examplesDesc", lang)}
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {exampleUrlData.map((example, index) => (
@@ -621,18 +623,14 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
         variants={containerVariants}
       >
         <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          What is URL Encoding?
+          {t("urlEncoder.seo.title", lang)}
         </motion.h2>
         <motion.p
           className="text-muted-foreground leading-relaxed mb-6"
           variants={itemVariants}
         >
-          <strong className="text-foreground">URL encoding</strong>, also known
-          as percent-encoding, is a mechanism for encoding information in a
-          Uniform Resource Identifier (URI). It converts special characters into
-          a format that can be transmitted over the Internet. Our free online
-          URL encoder/decoder helps you convert URLs and query parameters
-          instantly without any installation or signup.
+          <strong className="text-foreground">{t("urlEncoder.seo.title", lang)}</strong>
+          {t("urlEncoder.seo.description", lang)}
         </motion.p>
 
         {/* Technical Implementation Details */}
@@ -644,12 +642,12 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
             <span className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-sm font-bold">
               ⚡
             </span>
-            Technical Implementation
+            {t("urlEncoder.techDetailsTitle", lang)}
           </h3>
           <div className="grid gap-4 md:grid-cols-2">
             <div>
               <h4 className="font-semibold mb-2 text-sm">
-                JavaScript Functions
+                {t("urlEncoder.techDetails.jsFunctions", lang)}
               </h4>
               <div className="bg-background p-3 rounded border font-mono text-xs space-y-2">
                 <div className="text-muted-foreground">
@@ -663,12 +661,12 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-2 text-sm">Algorithm Details</h4>
+              <h4 className="font-semibold mb-2 text-sm">{t("urlEncoder.techDetails.algoDetails", lang)}</h4>
               <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Converts characters to UTF-8 bytes</li>
-                <li>• Each byte becomes %XX (hexadecimal)</li>
-                <li>• Reserved characters are encoded</li>
-                <li>• Unreserved characters remain unchanged</li>
+                <li>• {t("urlEncoder.techDetails.algoList1", lang)}</li>
+                <li>• {t("urlEncoder.techDetails.algoList2", lang)}</li>
+                <li>• {t("urlEncoder.techDetails.algoList3", lang)}</li>
+                <li>• {t("urlEncoder.techDetails.algoList4", lang)}</li>
               </ul>
             </div>
           </div>
@@ -678,25 +676,25 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Key Features
+          {t("urlEncoder.seo.featuresTitle", lang)}
         </motion.h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: "URL Encode",
-              desc: "Convert special characters to percent-encoding",
+              title: t("urlEncoder.seo.feature1.title", lang),
+              desc: t("urlEncoder.seo.feature1.desc", lang),
             },
             {
-              title: "URL Decode",
-              desc: "Restore encoded URLs to readable format",
+              title: t("urlEncoder.seo.feature2.title", lang),
+              desc: t("urlEncoder.seo.feature2.desc", lang),
             },
             {
-              title: "Syntax Highlighting",
-              desc: "Color-coded output for easy reading",
+              title: t("urlEncoder.seo.feature3.title", lang),
+              desc: t("urlEncoder.seo.feature3.desc", lang),
             },
             {
-              title: "100% Private",
-              desc: "All processing happens in your browser",
+              title: t("urlEncoder.seo.feature4.title", lang),
+              desc: t("urlEncoder.seo.feature4.desc", lang),
             },
           ].map((feature) => (
             <motion.div
@@ -717,18 +715,18 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Common Use Cases
+          {t("urlEncoder.seo.useCasesTitle", lang)}
         </motion.h3>
         <motion.ul
           className="text-muted-foreground space-y-2"
           variants={containerVariants}
         >
           {[
-            "Encoding query parameters for API requests",
-            "Converting non-ASCII characters in URLs",
-            "Handling special characters like spaces and ampersands",
-            "Debugging encoded URLs in web development",
-            "Preparing data for form submissions",
+            t("urlEncoder.seo.useCase1", lang),
+            t("urlEncoder.seo.useCase2", lang),
+            t("urlEncoder.seo.useCase3", lang),
+            t("urlEncoder.seo.useCase4", lang),
+            t("urlEncoder.seo.useCase5", lang),
           ].map((item, index) => (
             <motion.li
               key={item}
@@ -756,29 +754,29 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
             <span className="w-5 h-5 bg-amber-200 dark:bg-amber-800 text-amber-800 dark:text-amber-200 rounded-full flex items-center justify-center text-xs font-bold">
               !
             </span>
-            Usage Boundaries & Limitations
+            {t("urlEncoder.limitationsTitle", lang)}
           </h4>
           <div className="grid gap-3 md:grid-cols-2">
             <div>
               <h5 className="font-medium text-amber-700 dark:text-amber-300 text-xs mb-2">
-                ✅ Appropriate For:
+                ✅ {t("urlEncoder.limitations.appropriate", lang)}
               </h5>
               <ul className="text-xs text-amber-600 dark:text-amber-400 space-y-1">
-                <li>• Query parameters and form data</li>
-                <li>• API requests and web services</li>
-                <li>• URL parameters with special characters</li>
-                <li>• Multilingual content in URLs</li>
+                <li>• {t("urlEncoder.limitations.appropriateList1", lang)}</li>
+                <li>• {t("urlEncoder.limitations.appropriateList2", lang)}</li>
+                <li>• {t("urlEncoder.limitations.appropriateList3", lang)}</li>
+                <li>• {t("urlEncoder.limitations.appropriateList4", lang)}</li>
               </ul>
             </div>
             <div>
               <h5 className="font-medium text-amber-700 dark:text-amber-300 text-xs mb-2">
-                ⚠️ Not Suitable For:
+                ⚠️ {t("urlEncoder.limitations.notSuitable", lang)}
               </h5>
               <ul className="text-xs text-amber-600 dark:text-amber-400 space-y-1">
-                <li>• Complete URL structure encoding</li>
-                <li>• Domain names or protocols</li>
-                <li>• Already encoded content (double encoding)</li>
-                <li>• HTML entity encoding</li>
+                <li>• {t("urlEncoder.limitations.notSuitableList1", lang)}</li>
+                <li>• {t("urlEncoder.limitations.notSuitableList2", lang)}</li>
+                <li>• {t("urlEncoder.limitations.notSuitableList3", lang)}</li>
+                <li>• {t("urlEncoder.limitations.notSuitableList4", lang)}</li>
               </ul>
             </div>
           </div>
@@ -825,7 +823,7 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-3">
-              <strong>Solution:</strong>{" "}
+              <strong>{t("urlEncoder.scenarios.scenario1.solutionLabel", lang)}</strong>{" "}
               {t("urlEncoder.scenarios.scenario1.result", lang)}
             </p>
           </motion.div>
@@ -839,25 +837,23 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                 2
               </span>
-              International Character Support
+              {t("urlEncoder.scenarios.scenario2.title", lang)}
             </h4>
             <p className="text-muted-foreground mb-4">
-              Your web app needs to handle user searches containing Chinese,
-              Japanese, or other Unicode characters.
+              {t("urlEncoder.scenarios.scenario2.desc", lang)}
             </p>
             <div className="bg-background p-4 rounded-lg border font-mono text-sm whitespace-pre-wrap break-words">
               <div className="text-muted-foreground mb-2">
-                Original Search Term:
+                {t("urlEncoder.scenarios.scenario2.original", lang)}
               </div>
               <div className="mb-3">开发ツール + 在线服务</div>
-              <div className="text-muted-foreground mb-2">URL Encoded:</div>
+              <div className="text-muted-foreground mb-2">{t("urlEncoder.scenarios.scenario2.encoded", lang)}</div>
               <div className="text-green-600">
                 %E5%BC%80%E5%8F%91%E3%83%84%E3%83%BC%E3%83%AB%20%2B%20%E5%9C%A8%E7%BA%BF%E6%9C%8D%E5%8A%A1
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-3">
-              <strong>Solution:</strong> Encode Unicode characters to ensure
-              they're properly transmitted in URLs.
+              <strong>{t("urlEncoder.scenarios.scenario1.solutionLabel", lang)}</strong> {t("urlEncoder.scenarios.scenario2.result", lang)}
             </p>
           </motion.div>
 
@@ -870,30 +866,28 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                 3
               </span>
-              Social Media Sharing
+              {t("urlEncoder.scenarios.scenario3.title", lang)}
             </h4>
             <p className="text-muted-foreground mb-4">
-              Creating shareable links for social media posts that include
-              dynamic content.
+              {t("urlEncoder.scenarios.scenario3.desc", lang)}
             </p>
             <div className="bg-background p-4 rounded-lg border font-mono text-sm whitespace-pre-wrap break-words">
               <div className="text-muted-foreground mb-2">
-                Dynamic Share URL:
+                {t("urlEncoder.scenarios.scenario3.dynamic", lang)}
               </div>
               <div className="mb-3">
                 https://app.com/share?title=Check this out!&text=Amazing article
                 about web development
               </div>
               <div className="text-muted-foreground mb-2">
-                Social Media Ready:
+                {t("urlEncoder.scenarios.scenario3.ready", lang)}
               </div>
               <div className="text-green-600">
                 https://app.com/share?title=Check%20this%20out%21&amp;text=Amazing%20article%20about%20web%20development
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-3">
-              <strong>Solution:</strong> Encode parameters to prevent URL
-              breaking and ensure proper social media integration.
+              <strong>{t("urlEncoder.scenarios.scenario1.solutionLabel", lang)}</strong> {t("urlEncoder.scenarios.scenario3.result", lang)}
             </p>
           </motion.div>
         </motion.section>
@@ -907,30 +901,30 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
           variants={containerVariants}
         >
           <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
-            How to Use URL Encoding
+            {t("urlEncoder.guide.title", lang)}
           </motion.h3>
 
           <motion.div className="space-y-4" variants={containerVariants}>
             {[
               {
                 step: "1",
-                title: "Enter Your URL or Text",
-                desc: "Paste your URL or enter the text that needs encoding/decoding in the input field above.",
+                title: t("urlEncoder.guide.step1.title", lang),
+                desc: t("urlEncoder.guide.step1.desc", lang),
               },
               {
                 step: "2",
-                title: "Choose Encode or Decode",
-                desc: "Select 'Encode' to convert special characters, or 'Decode' to convert encoded URLs back to readable format.",
+                title: t("urlEncoder.guide.step2.title", lang),
+                desc: t("urlEncoder.guide.step2.desc", lang),
               },
               {
                 step: "3",
-                title: "Click Convert",
-                desc: "Click the convert button to instantly see the encoded or decoded result in the output field.",
+                title: t("urlEncoder.guide.step3.title", lang),
+                desc: t("urlEncoder.guide.step3.desc", lang),
               },
               {
                 step: "4",
-                title: "Copy and Use",
-                desc: "Copy the result and use it in your web applications, API calls, or documentation.",
+                title: t("urlEncoder.guide.step4.title", lang),
+                desc: t("urlEncoder.guide.step4.desc", lang),
               },
             ].map((item, _index) => (
               <motion.div
@@ -959,7 +953,7 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
+          <h2 className="text-lg font-semibold">{t("urlEncoder.faqTitle", lang)}</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -979,16 +973,16 @@ export function UrlEncoderTool({ lang = "en" as LanguageType }) {
             >
               {[
                 {
-                  q: "What is URL encoding?",
-                  a: "URL encoding converts characters into a format that can be transmitted over the Internet. Special characters are replaced with a '%' followed by two hexadecimal digits.",
+                  q: t("urlEncoder.faq.q1", lang),
+                  a: t("urlEncoder.faq.a1", lang),
                 },
                 {
-                  q: "When should I use URL encoding?",
-                  a: "Use URL encoding when your URL contains special characters like spaces, ampersands (&), or non-ASCII characters like Chinese or Japanese text.",
+                  q: t("urlEncoder.faq.q2", lang),
+                  a: t("urlEncoder.faq.a2", lang),
                 },
                 {
-                  q: "Is my data secure?",
-                  a: "Yes, all encoding and decoding happens entirely in your browser. Your data is never sent to any server.",
+                  q: t("urlEncoder.faq.q3", lang),
+                  a: t("urlEncoder.faq.a3", lang),
                 },
               ].map((faq, index) => (
                 <motion.div

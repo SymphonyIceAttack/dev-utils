@@ -1,16 +1,16 @@
 export const home = {
   // App
-  "app.title": "KittyEncode - Coding Tools with a Feline Touch",
+  "app.title": "KittyEncode - Free Online Developer Utilities",
   "app.description":
-    "A collection of free online coding utilities with a cute programming cat theme. Fast, secure, and works offline.",
-  "app.hero.title": "Coding Tools",
+    "A collection of free online developer utilities. Fast, secure, and works offline.",
+  "app.hero.title": "Developer Tools",
   "app.hero.subtitle":
-    "Purr-fect developer utilities with a feline touch. Fast, free, and privacy-first.",
+    "Essential developer utilities. Fast, free, and privacy-first.",
 
   // Hero Section
   "hero.badge": "100% Free & Open Source",
   "hero.title1": "KittyEncode",
-  "hero.title2": "Coding Tools",
+  "hero.title2": "Developer Tools",
   "hero.description":
     "Free, fast, and privacy-focused utilities that work entirely in your browser. No data ever leaves your device.",
   "hero.viewAllTools": "View All Tools",

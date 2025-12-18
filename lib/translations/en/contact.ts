@@ -20,6 +20,7 @@ export const contact = {
   "contact.email.description":
     "Send us an email and we'll respond within 24-48 hours",
   "contact.email.address": "email@kitty-encode.top",
+  "contact.email.subject.prefix": "KittyEncode Contact - ",
   "contact.email.subject.title": "Subject:",
   "contact.email.subject.placeholder": "Brief description of your message",
   "contact.email.message.title": "Message:",
@@ -57,7 +58,7 @@ export const contact = {
     "We monitor emails Monday through Friday, 9 AM - 6 PM (UTC). Emails sent outside these hours will be responded to on the next business day.",
 
   "contact.faq.title": "Quick Answers",
-  "faq.title": "Before You Contact Us",
+  "contact.faq.subtitle": "Before You Contact Us",
   "contact.faq.content": "Here are quick answers to common questions:",
   "contact.faq.tools.title": "Are your tools really free?",
   "contact.faq.tools.content":

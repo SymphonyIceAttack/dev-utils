@@ -1,78 +1,77 @@
 export const contact = {
   // Meta tags
-  "contact.title": "Contact Us - Free Online Developer Tools",
+  "contact.title": "Contact - Outils de Développement Gratuits en Ligne",
   "contact.description":
-    "Get in touch with us. We love hearing from developers and are here to help with any questions or suggestions.",
+    "Prenez contact avec nous. Nous aimons entendre les développeurs et sommes là pour aider avec toute question ou suggestion.",
   "contact.keywords":
-    "contact, support, feedback, developer tools support, help",
-
-  // Page content
-  "contact.heading": "Contact Us",
-  "contact.subheading": "We'd love to hear from you",
+    "contact, support, feedback, support d'outils de développeur, aide",
+  "contact.heading": "Nous Contacter",
+  "contact.subheading": "Nous aimerions beaucoup entendre parler de vous",
 
   "contact.intro":
-    "Have a question, suggestion, or just want to say hello? We'd love to hear from you! Whether you need help with our tools or have ideas for new features, don't hesitate to reach out.",
+    "Avez-vous une question, une suggestion, ou voulez-vous simplement dire bonjour ? Nous aimerions beaucoup entendre parler de vous ! Que vous ayez besoin d'aide avec nos outils ou que vous ayez des idées pour de nouvelles fonctionnalités, n'hésitez pas à nous contacter.",
 
-  "contact.methods.title": "Get in Touch",
-  "contact.methods.subtitle": "Choose the best way to reach us",
+  "contact.methods.title": "Prenez Contact",
+  "contact.methods.subtitle": "Choisissez la meilleure façon de nous joindre",
 
-  "contact.email.title": "Email Us",
+  "contact.email.title": "Envoyez-nous un Email",
   "contact.email.description":
-    "Send us an email and we'll respond within 24-48 hours",
+    "Envoyez-nous un email et nous répondrons dans les 24-48 heures",
   "contact.email.address": "email@kitty-encode.top",
-  "contact.email.subject.title": "Subject:",
-  "contact.email.subject.placeholder": "Brief description of your message",
-  "contact.email.message.title": "Message:",
-  "contact.email.message.placeholder": "Your message here...",
-  "contact.email.send": "Send Email",
+  "contact.email.subject.prefix": "KittyEncode Contact - ",
+  "contact.email.subject.title": "Objet :",
+  "contact.email.subject.placeholder": "Brève description de votre message",
+  "contact.email.message.title": "Message :",
+  "contact.email.message.placeholder": "Votre message ici...",
+  "contact.email.send": "Envoyer l'Email",
 
-  "contact.response.title": "Response Time",
+  "contact.response.title": "Temps de Réponse",
   "contact.response.content":
-    'We typically respond to emails within 24-48 hours during business days. For urgent technical issues, please include "URGENT" in your subject line.',
+    'Nous répondons normalement aux emails dans les 24-48 heures pendant les jours ouvrables. Pour les problèmes techniques urgents, veuillez inclure "URGENT" dans votre ligne d\'objet.',
 
-  "contact.feedback.title": "Feedback Welcome",
-  "feedback.title": "We Value Your Input",
+  "contact.feedback.title": "Commentaires Bienvenus",
+  "feedback.title": "Nous Apprécions Votre Contribution",
   "contact.feedback.content":
-    "Your feedback helps us improve our tools and build new features that developers actually need. Whether it's a bug report, feature request, or general suggestion, we want to hear from you.",
+    "Vos commentaires nous aident à améliorer nos outils et à construire de nouvelles fonctionnalités dont les développeurs ont vraiment besoin. Que ce soit un rapport de bogue, une demande de fonctionnalité ou une suggestion générale, nous voulons entendre parler de vous.",
 
   "contact.collaboration.title": "Collaboration",
-  "collaboration.title": "Want to Collaborate?",
+  "collaboration.title": "Voulez-vous Collaborer ?",
   "contact.collaboration.content":
-    "Are you working on an open source project or have ideas for improving developer workflows? We'd love to explore collaboration opportunities.",
+    "Travaillez-vous sur un projet open source ou avez-vous des idées pour améliorer les flux de travail des développeurs ? Nous aimerions explorer les opportunités de collaboration.",
 
-  "contact.business.title": "Business Inquiries",
-  "business.title": "Business & Partnerships",
+  "contact.business.title": "Demandes Commerciales",
+  "business.title": "Affaires et Partenariats",
   "contact.business.content":
-    "For business partnerships, sponsorships, or other commercial inquiries, please email us at:",
+    "Pour les partenariats d'affaires, les parrainages ou autres demandes commerciales, veuillez nous envoyer un email à :",
   "contact.business.email": "email@kitty-encode.top",
 
-  "contact.community.title": "Community",
-  "community.title": "Join Our Community",
+  "contact.community.title": "Communauté",
+  "community.title": "Rejoignez Notre Communauté",
   "contact.community.content":
-    "Follow us for updates, tips, and announcements about new tools and features.",
+    "Suivez-nous pour des mises à jour, des conseils et des annonces sur les nouveaux outils et fonctionnalités.",
 
-  "contact.office.title": "Office Hours",
-  "office.title": "Response Hours",
+  "contact.office.title": "Heures de Bureau",
+  "office.title": "Heures de Réponse",
   "contact.office.content":
-    "We monitor emails Monday through Friday, 9 AM - 6 PM (UTC). Emails sent outside these hours will be responded to on the next business day.",
+    "Nous surveillons les emails du lundi au vendredi, 9 h - 18 h (UTC). Les emails envoyés en dehors de ces heures seront répondus le prochain jour ouvrable.",
 
-  "contact.faq.title": "Quick Answers",
-  "faq.title": "Before You Contact Us",
-  "contact.faq.content": "Here are quick answers to common questions:",
-  "contact.faq.tools.title": "Are your tools really free?",
+  "contact.faq.title": "Réponses Rapides",
+  "contact.faq.subtitle": "Avant de Nous Contacter",
+  "contact.faq.content": "Voici des réponses rapides aux questions courantes :",
+  "contact.faq.tools.title": "Vos outils sont-ils vraiment gratuits ?",
   "contact.faq.tools.content":
-    "Yes, absolutely! All our tools are completely free with no hidden costs or limitations.",
-  "contact.faq.privacy.title": "Do you collect my data?",
+    "Oui, absolument ! Tous nos outils sont complètement gratuits sans coûts cachés ni limitations.",
+  "contact.faq.privacy.title": "Collectez-vous mes données ?",
   "contact.faq.privacy.content":
-    "No, we don't collect any personal information. All processing happens in your browser.",
-  "contact.faq.offline.title": "Do the tools work offline?",
+    "Non, nous ne collectons aucune information personnelle. Tout le traitement se fait dans votre navigateur.",
+  "contact.faq.offline.title": "Les outils fonctionnent-ils hors ligne ?",
   "contact.faq.offline.content":
-    "Most tools work offline after the initial load, but some features may require an internet connection.",
-  "contact.faq.api.title": "Do you have an API?",
+    "La plupart des outils fonctionnent hors ligne après le chargement initial, mais certaines fonctionnalités peuvent nécessiter une connexion Internet.",
+  "contact.faq.api.title": "Avez-vous une API ?",
   "contact.faq.api.content":
-    "Not currently, but we're considering it based on developer demand.",
+    "Pas actuellement, mais nous l'envisageons en fonction de la demande des développeurs.",
 
-  "contact.thanks.title": "Thank You",
+  "contact.thanks.title": "Merci",
   "contact.thanks.content":
-    "Thank you for taking the time to contact us. Your input helps us build better tools for the developer community!",
+    "Merci d'avoir pris le temps de nous contacter. Votre contribution nous aide à construire de meilleurs outils pour la communauté des développeurs !",
 };

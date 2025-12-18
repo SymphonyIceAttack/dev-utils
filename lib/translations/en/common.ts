@@ -38,6 +38,17 @@ export const common = {
   "badge.noSignup": "No Signup",
   "badge.offline": "Works Offline",
   "badge.privacy": "Privacy First",
+  "badge.rfcCompliant": "RFC Compliant",
+  "badge.cryptographicallySecure": "Cryptographically Secure",
+  "badge.multipleModes": "Multiple Modes",
+  "badge.passphraseSupport": "Passphrase Support",
+  "badge.bulkGeneration": "Bulk Generation",
+  "badge.fileChecksums": "File Checksums",
+  "badge.batchProcessing": "Batch Processing",
+  "badge.fileUpload": "File Upload",
+  "badge.multiEncoding": "Multi-Encoding",
+  "badge.realtimeConversion": "Real-time Conversion",
+  "badge.formatSupport": "Format Support",
 
   // Buttons
   "button.getStarted": "Get Started",
@@ -48,4 +59,5 @@ export const common = {
 
   // Cat Mascot
   "cat.fallingItemTooltip": "Click item to send it to cat's home!",
+  "cat.dropHint": "Drop kitty here!",
 };

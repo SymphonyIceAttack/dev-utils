@@ -1,105 +1,119 @@
 export const urlEncoder = {
-  "urlEncoder.title": "Encodeur / Décodeur URL",
-  "urlEncoder.description":
-    "Encodez ou décodez des URLs et paramètres de requête",
-  "urlEncoder.pageTitle": "Encodeur / Décodeur URL",
+  "urlEncoder.title": "URL Encoder / Decoder",
+  "urlEncoder.description": "Encode or decode URLs and query parameters",
+  "urlEncoder.pageTitle": "URL Encoder / Decoder",
   "urlEncoder.pageSubtitle":
-    "Encodez ou décodez des URLs et paramètres de requête instantanément",
-  "urlEncoder.inputPlaceholder.encode":
-    "Entrez du texte ou une URL à encoder...",
-  "urlEncoder.inputPlaceholder.decode": "Entrez une URL encodée à décoder...",
-  "urlEncoder.inputLabel.encode": "Texte à encoder",
-  "urlEncoder.inputLabel.decode": "URL à décoder",
-  "urlEncoder.outputPlaceholder": "Le résultat apparaîtra ici...",
-  "urlEncoder.encodeBtn": "Encoder URL",
-  "urlEncoder.decodeBtn": "Décoder URL",
-  "urlEncoder.swapBtn": "Échanger et convertir",
-  "urlEncoder.encodeTab": "Encoder/Décoder",
-  "urlEncoder.examplesTab": "Exemples",
-  "urlEncoder.examplesHint": "Cliquez sur un exemple pour le charger :",
-  "urlEncoder.example1.title": "Paramètres de requête",
-  "urlEncoder.example2.title": "URL avec caractères spéciaux",
-  "urlEncoder.example3.title": "Endpoint API",
-  "urlEncoder.error.encode": "Échec de l'encodage",
-  "urlEncoder.error.decode": "Chaîne encodée invalide",
+    "Encode or decode URLs and query parameters instantly",
+  "urlEncoder.inputPlaceholder.encode": "Enter text or URL to encode...",
+  "urlEncoder.inputPlaceholder.decode": "Enter encoded URL to decode...",
+  "urlEncoder.inputLabel.encode": "Text to Encode",
+  "urlEncoder.inputLabel.decode": "URL to Decode",
+  "urlEncoder.outputPlaceholder": "Result will appear here...",
+  "urlEncoder.encodeBtn": "Encode URL",
+  "urlEncoder.decodeBtn": "Decode URL",
+  "urlEncoder.swapBtn": "Swap & Convert",
+  "urlEncoder.clearBtn": "Clear",
+  "urlEncoder.encodeTab": "Encode/Decode",
+  "urlEncoder.examplesTab": "Examples",
+  "urlEncoder.examplesHint": "Click on an example to load it:",
+  "urlEncoder.examplesTitle": "Example URLs",
+  "urlEncoder.examplesDesc": "Click on any example to load it into the input field, or use \"Quick Run\" to automatically convert:",
+  "urlEncoder.example1.title": "Query Parameters",
+  "urlEncoder.example2.title": "URL with Special Chars",
+  "urlEncoder.example3.title": "API Endpoint",
+  "urlEncoder.error.encode": "Encoding failed",
+  "urlEncoder.error.decode": "Invalid encoded string",
 
   // SEO Content
-  "urlEncoder.seo.title": "Qu'est-ce que l'encodage URL ?",
+  "urlEncoder.seo.title": "What is URL Encoding?",
   "urlEncoder.seo.description":
-    "L'encodage URL, également connu sous le nom d'encodage pourcent, est un mécanisme d'encodage d'informations dans un identificateur de ressource uniforme (URI). Il convertit les caractères spéciaux dans un format qui peut être transmis sur Internet. Notre encodeur/décodeur URL gratuit en ligne vous aide à convertir instantanément les URLs et les paramètres de requête sans installation ni inscription.",
-  "urlEncoder.seo.featuresTitle": "Fonctionnalités clés",
-  "urlEncoder.seo.feature1.title": "Encoder URL",
+    "URL encoding, also known as percent-encoding, is a mechanism for encoding information in a Uniform Resource Identifier (URI). It converts special characters into a format that can be transmitted over the Internet. Our free online URL encoder/decoder helps you convert URLs and query parameters instantly without any installation or signup.",
+  "urlEncoder.seo.featuresTitle": "Key Features",
+  "urlEncoder.seo.feature1.title": "URL Encode",
   "urlEncoder.seo.feature1.desc":
-    "Convertir les caractères spéciaux en encodage pourcent",
-  "urlEncoder.seo.feature2.title": "Décoder URL",
-  "urlEncoder.seo.feature2.desc":
-    "Restaurer les URLs encodées au format lisible",
-  "urlEncoder.seo.feature3.title": "Coloration syntaxique",
-  "urlEncoder.seo.feature3.desc":
-    "Sortie codée par couleurs pour lecture facile",
-  "urlEncoder.seo.feature4.title": "100% Privé",
-  "urlEncoder.seo.feature4.desc":
-    "Tout le traitement se fait dans votre navigateur",
-  "urlEncoder.seo.useCasesTitle": "Cas d'utilisation courants",
-  "urlEncoder.seo.useCase1":
-    "Encodage de paramètres de requête pour requêtes API",
-  "urlEncoder.seo.useCase2": "Conversion de caractères non-ASCII dans les URLs",
+    "Convert special characters to percent-encoding",
+  "urlEncoder.seo.feature2.title": "URL Decode",
+  "urlEncoder.seo.feature2.desc": "Restore encoded URLs to readable format",
+  "urlEncoder.seo.feature3.title": "Syntax Highlighting",
+  "urlEncoder.seo.feature3.desc": "Color-coded output for easy reading",
+  "urlEncoder.seo.feature4.title": "100% Private",
+  "urlEncoder.seo.feature4.desc": "All processing happens in your browser",
+  "urlEncoder.seo.useCasesTitle": "Common Use Cases",
+  "urlEncoder.seo.useCase1": "Encoding query parameters for API requests",
+  "urlEncoder.seo.useCase2": "Converting non-ASCII characters in URLs",
   "urlEncoder.seo.useCase3":
-    "Gestion des caractères spéciaux comme les espaces et esperluettes",
-  "urlEncoder.seo.useCase4":
-    "Débogage d'URLs encodées dans le développement web",
-  "urlEncoder.seo.useCase5":
-    "Préparation de données pour soumissions de formulaires",
+    "Handling special characters like spaces and ampersands",
+  "urlEncoder.seo.useCase4": "Debugging encoded URLs in web development",
+  "urlEncoder.seo.useCase5": "Preparing data for form submissions",
 
-  // FAQ
-  "urlEncoder.faq.q1": "Qu'est-ce que l'encodage URL ?",
+  "urlEncoder.techDetailsTitle": "Technical Implementation",
+  "urlEncoder.techDetails.jsFunctions": "JavaScript Functions",
+  "urlEncoder.techDetails.algoDetails": "Algorithm Details",
+  "urlEncoder.techDetails.algoList1": "Converts characters to UTF-8 bytes",
+  "urlEncoder.techDetails.algoList2": "Each byte becomes %XX (hexadecimal)",
+  "urlEncoder.techDetails.algoList3": "Reserved characters are encoded",
+  "urlEncoder.techDetails.algoList4": "Unreserved characters remain unchanged",
+
+  "urlEncoder.limitationsTitle": "Usage Boundaries & Limitations",
+  "urlEncoder.limitations.appropriate": "Appropriate For:",
+  "urlEncoder.limitations.appropriateList1": "Query parameters and form data",
+  "urlEncoder.limitations.appropriateList2": "API requests and web services",
+  "urlEncoder.limitations.appropriateList3": "URL parameters with special characters",
+  "urlEncoder.limitations.appropriateList4": "Multilingual content in URLs",
+  "urlEncoder.limitations.notSuitable": "Not Suitable For:",
+  "urlEncoder.limitations.notSuitableList1": "Complete URL structure encoding",
+  "urlEncoder.limitations.notSuitableList2": "Domain names or protocols",
+  "urlEncoder.limitations.notSuitableList3": "Already encoded content (double encoding)",
+  "urlEncoder.limitations.notSuitableList4": "HTML entity encoding",
+
+  "urlEncoder.faqTitle": "Frequently Asked Questions",
+  "urlEncoder.faq.q1": "What is URL encoding?",
   "urlEncoder.faq.a1":
-    "L'encodage URL convertit les caractères dans un format qui peut être transmis sur Internet. Les caractères spéciaux sont remplacés par un '%' suivi de deux chiffres hexadécimaux.",
-  "urlEncoder.faq.q2": "Quand dois-je utiliser l'encodage URL ?",
+    "URL encoding converts characters into a format that can be transmitted over the Internet. Special characters are replaced with a '%' followed by two hexadecimal digits.",
+  "urlEncoder.faq.q2": "When should I use URL encoding?",
   "urlEncoder.faq.a2":
-    "Utilisez l'encodage URL quand votre URL contient des caractères spéciaux comme des espaces, des esperluettes (&), ou des caractères non-ASCII comme du texte chinois ou japonais.",
-  "urlEncoder.faq.q3": "Mes données sont-elles sécurisées ?",
+    "Use URL encoding when your URL contains special characters like spaces, ampersands (&), or non-ASCII characters like Chinese or Japanese text.",
+  "urlEncoder.faq.q3": "Is my data secure?",
   "urlEncoder.faq.a3":
-    "Oui, tout l'encodage et le décodage se font entièrement dans votre navigateur. Vos données ne sont jamais envoyées à aucun serveur.",
+    "Yes, all encoding and decoding happens entirely in your browser. Your data is never sent to any server.",
 
   // Real-World Scenarios
-  "urlEncoder.scenarios.title": "Scénarios du Monde Réel",
-  "urlEncoder.scenarios.scenario1.title":
-    "Construction de Chaînes de Requête API",
+  "urlEncoder.scenarios.title": "Real-World Scenarios",
+  "urlEncoder.scenarios.scenario1.title": "Building API Query Strings",
   "urlEncoder.scenarios.scenario1.desc":
-    "Vous construisez une fonction de recherche de commerce électronique et devez créer des paramètres de requête URL à partir de la saisie utilisateur.",
-  "urlEncoder.scenarios.scenario1.problem": "URL problématique :",
-  "urlEncoder.scenarios.scenario1.solution": "URL correctement encodée :",
+    "You're building an e-commerce search feature and need to create URL query parameters from user input.",
+  "urlEncoder.scenarios.scenario1.problem": "Problematic URL:",
+  "urlEncoder.scenarios.scenario1.solution": "Correctly Encoded URL:",
+  "urlEncoder.scenarios.scenario1.solutionLabel": "Solution:",
   "urlEncoder.scenarios.scenario1.result":
-    "Utilisez l'encodage URL pour gérer correctement les espaces, apostrophes et esperluettes.",
-  "urlEncoder.scenarios.scenario2.title":
-    "Support de Caractères Internationaux",
+    "Use URL encoding to handle spaces, apostrophes, and ampersands properly.",
+  "urlEncoder.scenarios.scenario2.title": "International Character Support",
   "urlEncoder.scenarios.scenario2.desc":
-    "Votre application web doit gérer les recherches d'utilisateurs contenant des caractères chinois, japonais ou autres caractères Unicode.",
-  "urlEncoder.scenarios.scenario2.original": "Terme de recherche original :",
-  "urlEncoder.scenarios.scenario2.encoded": "URL encodée :",
+    "Your web app needs to handle user searches containing Chinese, Japanese, or other Unicode characters.",
+  "urlEncoder.scenarios.scenario2.original": "Original Search Term:",
+  "urlEncoder.scenarios.scenario2.encoded": "URL Encoded:",
   "urlEncoder.scenarios.scenario2.result":
-    "Encodez les caractères Unicode pour assurer qu'ils sont correctement transmis dans les URLs.",
-  "urlEncoder.scenarios.scenario3.title": "Partage sur les Réseaux Sociaux",
+    "Encode Unicode characters to ensure they're properly transmitted in URLs.",
+  "urlEncoder.scenarios.scenario3.title": "Social Media Sharing",
   "urlEncoder.scenarios.scenario3.desc":
-    "Création de liens partageables pour des publications de réseaux sociaux qui incluent du contenu dynamique.",
-  "urlEncoder.scenarios.scenario3.dynamic": "URL de partage dynamique :",
-  "urlEncoder.scenarios.scenario3.ready": "Prêt pour les réseaux sociaux :",
+    "Creating shareable links for social media posts that include dynamic content.",
+  "urlEncoder.scenarios.scenario3.dynamic": "Dynamic Share URL:",
+  "urlEncoder.scenarios.scenario3.ready": "Social Media Ready:",
   "urlEncoder.scenarios.scenario3.result":
-    "Encodez les paramètres pour empêcher la rupture d'URL et assurer une intégration appropriée avec les réseaux sociaux.",
+    "Encode parameters to prevent URL breaking and ensure proper social media integration.",
 
   // Step-by-Step Guide
-  "urlEncoder.guide.title": "Comment Utiliser l'Encodage URL",
-  "urlEncoder.guide.step1.title": "Entrez votre URL ou Texte",
+  "urlEncoder.guide.title": "How to Use URL Encoding",
+  "urlEncoder.guide.step1.title": "Enter Your URL or Text",
   "urlEncoder.guide.step1.desc":
-    "Collez votre URL ou saisissez le texte qui nécessite un encodage/décodage dans le champ de saisie ci-dessus.",
-  "urlEncoder.guide.step2.title": "Choisir Encoder ou Décoder",
+    "Paste your URL or enter the text that needs encoding/decoding in the input field above.",
+  "urlEncoder.guide.step2.title": "Choose Encode or Decode",
   "urlEncoder.guide.step2.desc":
-    "Sélectionnez 'Encoder' pour convertir les caractères spéciaux, ou 'Décoder' pour convertir les URLs encodées vers le format lisible.",
-  "urlEncoder.guide.step3.title": "Cliquer sur Convertir",
+    "Select 'Encode' to convert special characters, or 'Decode' to convert encoded URLs back to readable format.",
+  "urlEncoder.guide.step3.title": "Click Convert",
   "urlEncoder.guide.step3.desc":
-    "Cliquez sur le bouton convertir pour voir instantanément le résultat encodé ou décodé dans le champ de sortie.",
-  "urlEncoder.guide.step4.title": "Copier et Utiliser",
+    "Click the convert button to instantly see the encoded or decoded result in the output field.",
+  "urlEncoder.guide.step4.title": "Copy and Use",
   "urlEncoder.guide.step4.desc":
-    "Copiez le résultat et utilisez-le dans vos applications web, appels API, ou documentation.",
+    "Copy the result and use it in your web applications, API calls, or documentation.",
 };

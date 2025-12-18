@@ -1,64 +1,75 @@
 export const contact = {
-  "contact.title": "Contact Us - Free Online Developer Tools",
+  // Meta 标签
+  "contact.title": "お問い合わせ - 無料オンライン開発者ツール",
   "contact.description":
-    "Get in touch with us. We love hearing from developers and are here to help with any questions or suggestions.",
-  "contact.keywords":
-    "contact, support, feedback, developer tools support, help",
-  "contact.heading": "Contact Us",
-  "contact.subheading": "We'd love to hear from you",
+    "お問い合わせ联系我们。お話を聞くことを大好きで、問題やご提案をお手伝いする準備ができています。",
+  "contact.keywords": "联系, 支持, 反馈, 开发者工具支持, 帮助",
+
+  // 页面内容
+  "contact.heading": "联系我们",
+  "contact.subheading": "我们很乐意听到您的声音",
+
   "contact.intro":
-    "Have a question, suggestion, or just want to say hello? We'd love to hear from you! Whether you need help with our tools or have ideas for new features, don't hesitate to reach out.",
-  "contact.methods.title": "Get in Touch",
-  "contact.methods.subtitle": "Choose the best way to reach us",
-  "contact.email.title": "Email Us",
-  "contact.email.description":
-    "Send us an email and we'll respond within 24-48 hours",
+    "有问题、建议或只是想打招呼？我们很乐意听到您的声音！无论您需要我们的工具帮助还是有新功能的想法，请随时与我们联系。",
+
+  "contact.methods.title": "取得联系",
+  "contact.methods.subtitle": "选择最适合的方式联系我们",
+
+  "contact.email.title": "给我们发邮件",
+  "contact.email.description": "给我们发送邮件，我们将在 24-48 小时内回复",
   "contact.email.address": "email@kitty-encode.top",
-  "contact.email.subject.title": "Subject:",
-  "contact.email.subject.placeholder": "Brief description of your message",
-  "contact.email.message.title": "Message:",
-  "contact.email.message.placeholder": "Your message here...",
-  "contact.email.send": "Send Email",
-  "contact.response.title": "Response Time",
+  "contact.email.subject.prefix": "KittyEncode お問い合わせ - ",
+  "contact.email.subject.title": "主题：",
+  "contact.email.subject.placeholder": "您消息的简要描述",
+  "contact.email.message.title": "消息：",
+  "contact.email.message.placeholder": "您的消息内容...",
+  "contact.email.send": "发送邮件",
+
+  "contact.response.title": "回复时间",
   "contact.response.content":
-    'We typically respond to emails within 24-48 hours during business days. For urgent technical issues, please include "URGENT" in your subject line.',
-  "contact.feedback.title": "Feedback Welcome",
-  "feedback.title": "We Value Your Input",
+    '我们通常在工作日 24-48 小时内回复邮件。对于紧急技术问题，请在主题行中包含"紧急"。',
+
+  "contact.feedback.title": "欢迎反馈",
+  "feedback.title": "我们重视您的意见",
   "contact.feedback.content":
-    "Your feedback helps us improve our tools and build new features that developers actually need. Whether it's a bug report, feature request, or general suggestion, we want to hear from you.",
-  "contact.collaboration.title": "Collaboration",
-  "collaboration.title": "Want to Collaborate?",
+    "您的反馈帮助我们改进工具并构建开发者真正需要的新功能。无论是错误报告、功能请求还是一般建议，我们都希望听到您的声音。",
+
+  "contact.collaboration.title": "合作",
+  "collaboration.title": "想要合作吗？",
   "contact.collaboration.content":
-    "Are you working on an open source project or have ideas for improving developer workflows? We'd love to explore collaboration opportunities.",
-  "contact.business.title": "Business Inquiries",
-  "business.title": "Business & Partnerships",
+    "您是否正在参与开源项目或有改善开发者工作流程的想法？我们很乐意探索合作机会。",
+
+  "contact.business.title": "商业咨询",
+  "business.title": "商业与合作伙伴关系",
   "contact.business.content":
-    "For business partnerships, sponsorships, or other commercial inquiries, please email us at:",
+    "对于商业合作伙伴关系、赞助或其他商业咨询，请给我们发邮件：",
   "contact.business.email": "email@kitty-encode.top",
-  "contact.community.title": "Community",
-  "community.title": "Join Our Community",
-  "contact.community.content":
-    "Follow us for updates, tips, and announcements about new tools and features.",
-  "contact.office.title": "Office Hours",
-  "office.title": "Response Hours",
+
+  "contact.community.title": "社区",
+  "community.title": "加入我们的社区",
+  "contact.community.content": "关注我们以获取更新、提示和新工具及功能的公告。",
+
+  "contact.office.title": "办公时间",
+  "office.title": "回复时间",
   "contact.office.content":
-    "We monitor emails Monday through Friday, 9 AM - 6 PM (UTC). Emails sent outside these hours will be responded to on the next business day.",
-  "contact.faq.title": "Quick Answers",
-  "faq.title": "Before You Contact Us",
-  "contact.faq.content": "Here are quick answers to common questions:",
-  "contact.faq.tools.title": "Are your tools really free?",
+    "我们周一至周五上午 9 点至下午 6 点（UTC）监控邮件。在这些时间之外发送的邮件将在下一个工作日回复。",
+
+  "contact.faq.title": "快速答案",
+  "contact.faq.subtitle": "联系我们之前",
+  "contact.faq.content": "以下是常见问题的快速答案：",
+  "contact.faq.tools.title": "您的工具真的免费吗？",
   "contact.faq.tools.content":
-    "Yes, absolutely! All our tools are completely free with no hidden costs or limitations.",
-  "contact.faq.privacy.title": "Do you collect my data?",
+    "是的，绝对免费！我们的所有工具完全免费，无隐藏成本或限制。",
+  "contact.faq.privacy.title": "你们收集我的数据吗？",
   "contact.faq.privacy.content":
-    "No, we don't collect any personal information. All processing happens in your browser.",
-  "contact.faq.offline.title": "Do the tools work offline?",
+    "不，我们不收集任何个人信息。所有处理都在您的浏览器中进行。",
+  "contact.faq.offline.title": "工具是否离线工作？",
   "contact.faq.offline.content":
-    "Most tools work offline after the initial load, but some features may require an internet connection.",
-  "contact.faq.api.title": "Do you have an API?",
-  "contact.faq.api.content":
-    "Not currently, but we're considering it based on developer demand.",
-  "contact.thanks.title": "Thank You",
+    "大多数工具在初始加载后可以离线工作，但某些功能可能需要互联网连接。",
+  "contact.faq.api.title": "你们有 API 吗？",
+  "contact.faq.api.content": "目前没有，但我们正在根据开发者需求考虑提供。",
+
+  "contact.thanks.title": "谢谢您",
   "contact.thanks.content":
-    "Thank you for taking the time to contact us. Your input helps us build better tools for the developer community!",
+    "感谢您花时间联系我们。您的意见帮助我们为开发者社区构建更好的工具！",
 };

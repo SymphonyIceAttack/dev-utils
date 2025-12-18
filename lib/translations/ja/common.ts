@@ -1,9 +1,12 @@
 export const common = {
+  // Navigation
   "nav.home": "ホーム",
   "nav.tools": "ツール",
   "nav.blog": "ブログ",
-  "nav.about": "について",
+  "nav.about": "会社概要",
   "nav.contact": "お問い合わせ",
+
+  // Common
   "common.language": "言語",
   "common.theme": "テーマ",
   "common.loading": "読み込み中...",
@@ -26,19 +29,35 @@ export const common = {
   "common.generate": "生成",
   "common.reset": "リセット",
   "common.result": "結果",
-  "common.examples": "サンプル",
+  "common.examples": "例",
   "common.faq": "よくある質問",
-  "common.needsUpdate": "入力変更、再変換が必要",
+  "common.needsUpdate": "入力が変更されました。再変換が必要です",
+
+  // Badges
   "badge.free": "無料",
   "badge.noSignup": "登録不要",
   "badge.offline": "オフライン対応",
   "badge.privacy": "プライバシー優先",
+  "badge.rfcCompliant": "RFC準拠",
+  "badge.cryptographicallySecure": "暗号学的に安全",
+  "badge.multipleModes": "複数モード",
+  "badge.passphraseSupport": "パスフレーズ対応",
+  "badge.bulkGeneration": "一括生成",
+  "badge.fileChecksums": "ファイルチェックサム",
+  "badge.batchProcessing": "バッチ処理",
+  "badge.fileUpload": "ファイルアップロード",
+  "badge.multiEncoding": "マルチエンコーディング",
+  "badge.realtimeConversion": "リアルタイム変換",
+  "badge.formatSupport": "フォーマット対応",
+
+  // Buttons
   "button.getStarted": "始める",
-  "button.learnMore": "詳しく見る",
-  "button.switchTheme": "テーマ切替",
-  "button.switchLanguage": "言語切替",
+  "button.learnMore": "詳細を見る",
+  "button.switchTheme": "テーマを切替",
+  "button.switchLanguage": "言語を切替",
   "button.viewAll": "すべてのツールを見る",
 
   // Cat Mascot
-  "cat.fallingItemTooltip": "アイテムをクリックして猫の家に送ろう！",
+  "cat.fallingItemTooltip": "クリックして猫の家に送る！",
+  "cat.dropHint": "ここに猫をドロップ！",
 };

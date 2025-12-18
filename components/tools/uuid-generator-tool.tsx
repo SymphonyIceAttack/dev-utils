@@ -252,21 +252,24 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
             },
           }}
         >
-          {["Free", "No Signup", "Works Offline", "RFC Compliant"].map(
-            (tag) => (
-              <motion.span
-                key={tag}
-                className="pixel-badge"
-                variants={{
-                  hidden: { opacity: 0, scale: 0.8 },
-                  visible: { opacity: 1, scale: 1 },
-                }}
-                whileHover={{ scale: 1.1, y: -2 }}
-              >
-                {tag}
-              </motion.span>
-            ),
-          )}
+          {[
+            t("badge.free"),
+            t("badge.noSignup"),
+            t("badge.offline"),
+            t("badge.rfcCompliant"),
+          ].map((tag) => (
+            <motion.span
+              key={tag}
+              className="pixel-badge"
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              whileHover={{ scale: 1.1, y: -2 }}
+            >
+              {tag}
+            </motion.span>
+          ))}
         </motion.div>
       </motion.section>
 
@@ -350,12 +353,14 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="v4">UUID v4 (Random)</SelectItem>
+                            <SelectItem value="v4">
+                              {t("uuidGenerator.option.v4")}
+                            </SelectItem>
                             <SelectItem value="v7">
-                              UUID v7 (Timestamp)
+                              {t("uuidGenerator.option.v7")}
                             </SelectItem>
                             <SelectItem value="v1">
-                              UUID v1 (Time-based)
+                              {t("uuidGenerator.option.v1")}
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -378,13 +383,17 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="standard">
-                              Standard (with hyphens)
+                              {t("uuidGenerator.option.standard")}
                             </SelectItem>
                             <SelectItem value="withoutHyphens">
-                              Without hyphens
+                              {t("uuidGenerator.option.withoutHyphens")}
                             </SelectItem>
-                            <SelectItem value="uppercase">Uppercase</SelectItem>
-                            <SelectItem value="braces">With braces</SelectItem>
+                            <SelectItem value="uppercase">
+                              {t("uuidGenerator.option.uppercase")}
+                            </SelectItem>
+                            <SelectItem value="braces">
+                              {t("uuidGenerator.option.braces")}
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -515,12 +524,14 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="v4">UUID v4 (Random)</SelectItem>
+                            <SelectItem value="v4">
+                              {t("uuidGenerator.option.v4")}
+                            </SelectItem>
                             <SelectItem value="v7">
-                              UUID v7 (Timestamp)
+                              {t("uuidGenerator.option.v7")}
                             </SelectItem>
                             <SelectItem value="v1">
-                              UUID v1 (Time-based)
+                              {t("uuidGenerator.option.v1")}
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -543,13 +554,17 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="standard">
-                              Standard (with hyphens)
+                              {t("uuidGenerator.option.standard")}
                             </SelectItem>
                             <SelectItem value="withoutHyphens">
-                              Without hyphens
+                              {t("uuidGenerator.option.withoutHyphens")}
                             </SelectItem>
-                            <SelectItem value="uppercase">Uppercase</SelectItem>
-                            <SelectItem value="braces">With braces</SelectItem>
+                            <SelectItem value="uppercase">
+                              {t("uuidGenerator.option.uppercase")}
+                            </SelectItem>
+                            <SelectItem value="braces">
+                              {t("uuidGenerator.option.braces")}
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -646,47 +661,46 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
               animate={{ opacity: 1, y: 0 }}
             >
               <Sparkles className="h-5 w-5" />
-              UUID Examples
+              {t("uuidGenerator.examplesTitle")}
             </motion.h3>
             <p className="text-sm text-muted-foreground mb-6">
-              Different UUID versions and formats for various use cases. Click
-              \"Quick Run\" to generate, or \"Copy\" to copy a UUID:
+              {t("uuidGenerator.examplesDesc")}
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  title: "UUID v4 (Random)",
-                  desc: "Most common for general purposes",
+                  title: t("uuidGenerator.example.v4.title"),
+                  desc: t("uuidGenerator.example.v4.desc"),
                   version: "v4" as const,
                   format: "standard" as const,
                 },
                 {
-                  title: "UUID v7 (Timestamp)",
-                  desc: "Sortable by creation time",
+                  title: t("uuidGenerator.example.v7.title"),
+                  desc: t("uuidGenerator.example.v7.desc"),
                   version: "v7" as const,
                   format: "standard" as const,
                 },
                 {
-                  title: "UUID v1 (Time-based)",
-                  desc: "Contains timestamp info",
+                  title: t("uuidGenerator.example.v1.title"),
+                  desc: t("uuidGenerator.example.v1.desc"),
                   version: "v1" as const,
                   format: "standard" as const,
                 },
                 {
-                  title: "UUID without hyphens",
-                  desc: "Compact format for URLs",
+                  title: t("uuidGenerator.example.noHyphens.title"),
+                  desc: t("uuidGenerator.example.noHyphens.desc"),
                   version: "v4" as const,
                   format: "withoutHyphens" as const,
                 },
                 {
-                  title: "UUID Uppercase",
-                  desc: "All caps format",
+                  title: t("uuidGenerator.example.uppercase.title"),
+                  desc: t("uuidGenerator.example.uppercase.desc"),
                   version: "v4" as const,
                   format: "uppercase" as const,
                 },
                 {
-                  title: "UUID with braces",
-                  desc: "Wrapped in curly braces",
+                  title: t("uuidGenerator.example.braces.title"),
+                  desc: t("uuidGenerator.example.braces.desc"),
                   version: "v4" as const,
                   format: "braces" as const,
                 },
@@ -775,64 +789,27 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
         variants={containerVariants}
       >
         <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          What is UUID?
+          {t("uuidGenerator.whatIsUuidTitle")}
         </motion.h2>
         <motion.p
           className="text-muted-foreground leading-relaxed mb-6"
           variants={itemVariants}
-        >
-          <strong className="text-foreground">
-            UUID (Universally Unique Identifier)
-          </strong>{" "}
-          is a 128-bit identifier that is guaranteed to be unique across both
-          time and space. UUIDs are widely used in distributed systems,
-          databases, and applications where unique identification is required
-          without central coordination.
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: t("uuidGenerator.whatIsUuidDesc") }}
+        />
 
         <motion.div
           className="mt-6 p-4 bg-muted/30 rounded-xl border border-border/50"
           variants={itemVariants}
         >
           <h4 className="font-semibold mb-2">
-            💻 Technical Implementation Details
+            💻 {t("uuidGenerator.techDetailsTitle")}
           </h4>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p>
-              <strong>Web Crypto API:</strong> Uses{" "}
-              <code className="bg-background px-1 rounded">
-                crypto.getRandomValues()
-              </code>{" "}
-              for cryptographically secure random number generation
-            </p>
-            <p>
-              <strong>UUID v4 Structure:</strong>{" "}
-              <code className="bg-background px-1 rounded">
-                xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
-              </code>{" "}
-              where x is random hex, 4 indicates version, y is variant (8, 9, a,
-              or b)
-            </p>
-            <p>
-              <strong>UUID v7 Structure:</strong> First 48 bits are Unix
-              timestamp in milliseconds, followed by version bits (0111), then
-              random data with variant bits
-            </p>
-            <p>
-              <strong>Bit Manipulation:</strong>{" "}
-              <code className="bg-background px-1 rounded">
-                bytes[6] = (bytes[6] & 0x0f) | 0x40
-              </code>{" "}
-              sets version 4,{" "}
-              <code className="bg-background px-1 rounded">
-                bytes[8] = (bytes[8] & 0x3f) | 0x80
-              </code>{" "}
-              sets RFC4122 variant
-            </p>
-            <p>
-              <strong>Collision Probability:</strong> With 122 random bits in
-              v4, probability of collision is ~1 in 2.71 quintillion
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.webCrypto") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.v4Struct") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.v7Struct") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.bitManip") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.collision") }} />
           </div>
         </motion.div>
 
@@ -840,25 +817,25 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Key Features
+          {t("uuidGenerator.featuresTitle")}
         </motion.h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: "RFC4122 Compliant",
-              desc: "Standard UUID v1, v4, and v7 support",
+              title: t("uuidGenerator.feature.rfc.title"),
+              desc: t("uuidGenerator.feature.rfc.desc"),
             },
             {
-              title: "Multiple Formats",
-              desc: "Standard, uppercase, braces, and more",
+              title: t("uuidGenerator.feature.formats.title"),
+              desc: t("uuidGenerator.feature.formats.desc"),
             },
             {
-              title: "Bulk Generation",
-              desc: "Generate thousands of UUIDs at once",
+              title: t("uuidGenerator.feature.bulk.title"),
+              desc: t("uuidGenerator.feature.bulk.desc"),
             },
             {
-              title: "100% Private",
-              desc: "All processing happens in your browser",
+              title: t("uuidGenerator.feature.privacy.title"),
+              desc: t("uuidGenerator.feature.privacy.desc"),
             },
           ].map((feature) => (
             <motion.div
@@ -879,38 +856,38 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          UUID Versions Comparison
+          {t("uuidGenerator.comparisonTitle")}
         </motion.h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left p-3 font-semibold">Version</th>
+                <th className="text-left p-3 font-semibold">{t("uuidGenerator.comparison.version")}</th>
                 <th className="text-left p-3 font-semibold">
-                  Generation Method
+                  {t("uuidGenerator.comparison.method")}
                 </th>
-                <th className="text-left p-3 font-semibold">Sortable</th>
-                <th className="text-left p-3 font-semibold">Best For</th>
+                <th className="text-left p-3 font-semibold">{t("uuidGenerator.comparison.sortable")}</th>
+                <th className="text-left p-3 font-semibold">{t("uuidGenerator.comparison.bestFor")}</th>
               </tr>
             </thead>
             <tbody className="text-muted-foreground">
               <tr className="border-b border-border/50">
                 <td className="p-3 font-medium text-foreground">UUID v1</td>
-                <td className="p-3">Timestamp + MAC address</td>
-                <td className="p-3">Partial</td>
-                <td className="p-3">Legacy systems (privacy concerns)</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v1.method")}</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v1.sortable")}</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v1.bestFor")}</td>
               </tr>
               <tr className="border-b border-border/50">
                 <td className="p-3 font-medium text-foreground">UUID v4</td>
-                <td className="p-3">Random (122 bits)</td>
-                <td className="p-3">No</td>
-                <td className="p-3">General purpose, most common</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v4.method")}</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v4.sortable")}</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v4.bestFor")}</td>
               </tr>
               <tr className="border-b border-border/50">
                 <td className="p-3 font-medium text-foreground">UUID v7</td>
-                <td className="p-3">Unix timestamp + random</td>
-                <td className="p-3">Yes</td>
-                <td className="p-3">Database PKs, time-ordered data</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v7.method")}</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v7.sortable")}</td>
+                <td className="p-3">{t("uuidGenerator.comparison.v7.bestFor")}</td>
               </tr>
             </tbody>
           </table>
@@ -920,18 +897,18 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Common Use Cases
+          {t("uuidGenerator.useCasesTitle")}
         </motion.h3>
         <motion.ul
           className="text-muted-foreground space-y-2"
           variants={containerVariants}
         >
           {[
-            "Database primary keys in distributed systems",
-            "Session identifiers and authentication tokens",
-            "Distributed transaction IDs across microservices",
-            "File and resource naming without collision",
-            "Message queue deduplication keys",
+            t("uuidGenerator.useCase.db"),
+            t("uuidGenerator.useCase.session"),
+            t("uuidGenerator.useCase.distributed"),
+            t("uuidGenerator.useCase.files"),
+            t("uuidGenerator.useCase.queue"),
           ].map((item, index) => (
             <motion.li
               key={item}
@@ -958,7 +935,7 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
+          <h2 className="text-lg font-semibold">{t("uuidGenerator.faqTitle")}</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -978,16 +955,16 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
             >
               {[
                 {
-                  q: "What's the difference between UUID versions?",
-                  a: "v4 uses random generation, v7 includes timestamp for better sorting, v1 uses MAC address and timestamp (deprecated for privacy).",
+                  q: t("uuidGenerator.faq.q1"),
+                  a: t("uuidGenerator.faq.a1"),
                 },
                 {
-                  q: "Are UUIDs really unique?",
-                  a: "Yes, the probability of generating duplicate UUIDs is extremely low. For v4, the chance of collision is negligible for practical purposes.",
+                  q: t("uuidGenerator.faq.q2"),
+                  a: t("uuidGenerator.faq.a2"),
                 },
                 {
-                  q: "Can I use UUIDs as primary keys?",
-                  a: "Absolutely! UUIDs are excellent for distributed systems where centralized ID generation isn't feasible.",
+                  q: t("uuidGenerator.faq.q3"),
+                  a: t("uuidGenerator.faq.a3"),
                 },
               ].map((faq, index) => (
                 <motion.div

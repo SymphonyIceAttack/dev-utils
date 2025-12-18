@@ -513,10 +513,10 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
           }}
         >
           {[
-            "File Checksums",
-            "Batch Processing",
-            "File Upload",
-            "Privacy First",
+            t("badge.fileChecksums"),
+            t("badge.batchProcessing"),
+            t("badge.fileUpload"),
+            t("badge.privacy"),
           ].map((tag) => (
             <motion.span
               key={tag}
@@ -550,7 +550,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                   {t("md5Generator.generate")}
                 </TabsTrigger>
                 <TabsTrigger value="file" className="rounded-lg">
-                  File Upload
+                  {t("md5Generator.fileUpload")}
                 </TabsTrigger>
               </TabsList>
 
@@ -599,7 +599,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                         }}
                         className="gap-2 rounded-xl h-11"
                       >
-                        {batchMode ? "Single Mode" : "Batch Mode"}
+                        {batchMode ? t("md5Generator.mode.single") : t("md5Generator.mode.batch")}
                       </Button>
                     </motion.div>
                   </div>
@@ -655,7 +655,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                     <div className="flex items-center justify-between h-8">
                       <span className="text-sm font-medium">
                         {batchMode
-                          ? "Batch Input"
+                          ? t("md5Generator.batchInput")
                           : t("md5Generator.inputLabel")}
                       </span>
                       {batchMode && (
@@ -665,7 +665,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                           onClick={() => setBatchInputs([...batchInputs, ""])}
                           className="rounded-lg h-7"
                         >
-                          Add Row
+                          {t("md5Generator.addRow")}
                         </Button>
                       )}
                     </div>
@@ -730,7 +730,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                     <div className="flex items-center justify-between h-8">
                       <span className="text-sm font-medium">
                         {batchMode
-                          ? "Batch Output"
+                          ? t("md5Generator.batchOutput")
                           : t("md5Generator.outputLabel")}
                       </span>
                       {batchMode && batchOutputs.length > 0 && (
@@ -742,7 +742,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                           }
                           className="rounded-lg"
                         >
-                          <Copy className="h-4 w-4 mr-1" /> Copy All
+                          <Copy className="h-4 w-4 mr-1" /> {t("md5Generator.copyAll")}
                         </Button>
                       )}
                     </div>
@@ -822,11 +822,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                           </div>
                         ) : (
                           <div className="text-sm text-muted-foreground font-mono whitespace-pre-wrap break-words">
-                            Batch results will appear here...
-                            <br />
-                            Your MD5 hashes
-                            <br />
-                            will be displayed here.
+                            {t("md5Generator.batchPlaceholder")}
                           </div>
                         )}
                       </div>
@@ -919,7 +915,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                       transition={{ delay: 0.2 }}
                     >
                       <div className="flex items-center justify-between h-8">
-                        <span className="text-sm font-medium">Upload File</span>
+                        <span className="text-sm font-medium">{t("md5Generator.fileUpload.title")}</span>
                       </div>
                       <div className="border-2 border-dashed border-border rounded-xl p-8 text-center">
                         <input
@@ -949,16 +945,16 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                             </svg>
                           </div>
                           <span className="text-sm font-medium">
-                            Click to upload file
+                            {t("md5Generator.fileUpload.click")}
                           </span>
                           <span className="text-xs text-muted-foreground">
-                            Max 10MB • Text files only
+                            {t("md5Generator.fileUpload.hint")}
                           </span>
                         </label>
                       </div>
                       {uploadedFileName && (
                         <p className="text-sm text-muted-foreground">
-                          Uploaded: {uploadedFileName}
+                          {t("md5Generator.fileUpload.uploaded").replace("{name}", uploadedFileName)}
                         </p>
                       )}
                     </motion.div>
@@ -1110,12 +1106,10 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
               animate={{ opacity: 1, y: 0 }}
             >
               <Sparkles className="h-5 w-5" />
-              Example Inputs
+              {t("md5Generator.exampleInputs")}
             </motion.h3>
             <p className="text-sm text-muted-foreground mb-6">
-              {t("md5Generator.examplesHint")} Click on any example to load it
-              into the input field, or use "Quick Run" to automatically generate
-              MD5:
+              {t("md5Generator.examplesHint")}
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {exampleData.map((example, index) => (
@@ -1142,7 +1136,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                         className="pixel-btn px-3 py-1 text-xs h-7"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        title="Load Example Only"
+                        title={t("md5Generator.loadExample")}
                       >
                         <motion.span
                           animate={{ rotate: [0, 15, -15, 0] }}
@@ -1190,27 +1184,19 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
         variants={containerVariants}
       >
         <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          What is MD5 Hashing? How is it Implemented?
+          {t("md5Generator.seo.title")}
         </motion.h2>
         <motion.p
           className="text-muted-foreground leading-relaxed mb-6"
           variants={itemVariants}
-        >
-          <strong className="text-foreground">
-            MD5 (Message-Digest Algorithm 5)
-          </strong>{" "}
-          is a widely used cryptographic hash function that produces a 128-bit
-          (16-byte) hash value, typically expressed as a 32-character
-          hexadecimal number. Our implementation uses pure JavaScript with
-          bitwise operations, performing 4 rounds of 16 operations each on
-          512-bit data blocks.
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: t("md5Generator.seo.desc") }}
+        />
 
         <motion.h3
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Technical Implementation
+          {t("md5Generator.tech.title")}
         </motion.h3>
         <motion.div
           className="bg-muted/30 rounded-xl p-4 mb-6"
@@ -1218,22 +1204,22 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
         >
           <div className="grid gap-4 text-sm">
             <div>
-              <strong>Core Functions:</strong>
+              <strong>{t("md5Generator.tech.coreTitle")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>F(x,y,z) = (x ∧ y) ∨ (¬x ∧ z) - Round 1</li>
-                <li>G(x,y,z) = (x ∧ z) ∨ (y ∧ ¬z) - Round 2</li>
-                <li>H(x,y,z) = x ⊕ y ⊕ z - Round 3</li>
-                <li>I(x,y,z) = y ⊕ (x ∨ ¬z) - Round 4</li>
+                <li>{t("md5Generator.tech.coreList1")}</li>
+                <li>{t("md5Generator.tech.coreList2")}</li>
+                <li>{t("md5Generator.tech.coreList3")}</li>
+                <li>{t("md5Generator.tech.coreList4")}</li>
               </ul>
             </div>
             <div>
-              <strong>Processing Steps:</strong>
+              <strong>{t("md5Generator.tech.stepsTitle")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>1. Message preprocessing (padding and length appending)</li>
-                <li>2. Divide message into 512-bit blocks</li>
-                <li>3. Process each block through 4 rounds of 16 operations</li>
-                <li>4. Use 32-bit arithmetic and bitwise operations</li>
-                <li>5. Combine results to produce final 128-bit hash</li>
+                <li>{t("md5Generator.tech.stepsList1")}</li>
+                <li>{t("md5Generator.tech.stepsList2")}</li>
+                <li>{t("md5Generator.tech.stepsList3")}</li>
+                <li>{t("md5Generator.tech.stepsList4")}</li>
+                <li>{t("md5Generator.tech.stepsList5")}</li>
               </ul>
             </div>
           </div>
@@ -1243,25 +1229,25 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Key Features
+          {t("md5Generator.features.title")}
         </motion.h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: "File Checksums",
-              desc: "Generate MD5 for files up to 10MB",
+              title: t("md5Generator.feature.checksums.title"),
+              desc: t("md5Generator.feature.checksums.desc"),
             },
             {
-              title: "Batch Processing",
-              desc: "Hash multiple strings simultaneously",
+              title: t("md5Generator.feature.batch.title"),
+              desc: t("md5Generator.feature.batch.desc"),
             },
             {
-              title: "File Upload",
-              desc: "Drag & drop files for instant hashing",
+              title: t("md5Generator.feature.upload.title"),
+              desc: t("md5Generator.feature.upload.desc"),
             },
             {
-              title: "100% Private",
-              desc: "All processing happens in your browser",
+              title: t("md5Generator.feature.privacy.title"),
+              desc: t("md5Generator.feature.privacy.desc"),
             },
           ].map((feature) => (
             <motion.div
@@ -1282,7 +1268,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
           className="text-lg font-semibold mt-8 mb-4"
           variants={itemVariants}
         >
-          Common Use Cases & Usage Boundaries
+          {t("md5Generator.useCases.title")}
         </motion.h3>
         <motion.ul
           className="text-muted-foreground space-y-2"
@@ -1290,29 +1276,29 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
         >
           {[
             {
-              case: "File integrity verification and checksums",
+              case: t("md5Generator.useCases.item1"),
               boundary:
-                "✅ Suitable - Perfect for detecting accidental file corruption during transmission",
+                t("md5Generator.useCases.boundary1"),
             },
             {
-              case: "Database password storage (with salt)",
+              case: t("md5Generator.useCases.item2"),
               boundary:
-                "⚠️ Not recommended - Use bcrypt, Argon2, or scrypt instead",
+                t("md5Generator.useCases.boundary2"),
             },
             {
-              case: "Generating unique identifiers",
+              case: t("md5Generator.useCases.item3"),
               boundary:
-                "⚠️ Use with caution - Consider UUID v4 for better uniqueness guarantees",
+                t("md5Generator.useCases.boundary3"),
             },
             {
-              case: "Detecting duplicate files",
+              case: t("md5Generator.useCases.item4"),
               boundary:
-                "✅ Suitable - Good for non-critical duplicate detection in local systems",
+                t("md5Generator.useCases.boundary4"),
             },
             {
-              case: "API signature verification",
+              case: t("md5Generator.useCases.item5"),
               boundary:
-                "❌ Not secure - Vulnerable to collision attacks, use HMAC with SHA-256",
+                t("md5Generator.useCases.boundary5"),
             },
           ].map((item, index) => (
             <motion.li
@@ -1345,7 +1331,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">Frequently Asked Questions</h2>
+          <h2 className="text-lg font-semibold">{t("md5Generator.faq.title")}</h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -1365,16 +1351,16 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
             >
               {[
                 {
-                  q: "What is the difference between 32-bit and 16-bit MD5?",
-                  a: "32-bit MD5 is the full hash (32 hex characters). 16-bit MD5 takes the middle 16 characters of the full hash, sometimes used for shorter checksums.",
+                  q: t("md5Generator.faq.q1"),
+                  a: t("md5Generator.faq.a1"),
                 },
                 {
-                  q: "Is MD5 secure for passwords?",
-                  a: "MD5 alone is not recommended for password hashing due to known vulnerabilities. Use modern algorithms like bcrypt or Argon2 for password security.",
+                  q: t("md5Generator.faq.q2"),
+                  a: t("md5Generator.faq.a2"),
                 },
                 {
-                  q: "Is my data secure when using this tool?",
-                  a: "Yes, all MD5 hashing happens locally in your browser. Your data is never sent to any server.",
+                  q: t("md5Generator.faq.q3"),
+                  a: t("md5Generator.faq.a3"),
                 },
               ].map((faq, index) => (
                 <motion.div
