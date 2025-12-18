@@ -61,4 +61,45 @@ export const urlEncoder = {
   "urlEncoder.faq.q3": "Mes données sont-elles sécurisées ?",
   "urlEncoder.faq.a3":
     "Oui, tout l'encodage et le décodage se font entièrement dans votre navigateur. Vos données ne sont jamais envoyées à aucun serveur.",
+
+  // Real-World Scenarios
+  "urlEncoder.scenarios.title": "Scénarios du Monde Réel",
+  "urlEncoder.scenarios.scenario1.title":
+    "Construction de Chaînes de Requête API",
+  "urlEncoder.scenarios.scenario1.desc":
+    "Vous construisez une fonction de recherche de commerce électronique et devez créer des paramètres de requête URL à partir de la saisie utilisateur.",
+  "urlEncoder.scenarios.scenario1.problem": "URL problématique :",
+  "urlEncoder.scenarios.scenario1.solution": "URL correctement encodée :",
+  "urlEncoder.scenarios.scenario1.result":
+    "Utilisez l'encodage URL pour gérer correctement les espaces, apostrophes et esperluettes.",
+  "urlEncoder.scenarios.scenario2.title":
+    "Support de Caractères Internationaux",
+  "urlEncoder.scenarios.scenario2.desc":
+    "Votre application web doit gérer les recherches d'utilisateurs contenant des caractères chinois, japonais ou autres caractères Unicode.",
+  "urlEncoder.scenarios.scenario2.original": "Terme de recherche original :",
+  "urlEncoder.scenarios.scenario2.encoded": "URL encodée :",
+  "urlEncoder.scenarios.scenario2.result":
+    "Encodez les caractères Unicode pour assurer qu'ils sont correctement transmis dans les URLs.",
+  "urlEncoder.scenarios.scenario3.title": "Partage sur les Réseaux Sociaux",
+  "urlEncoder.scenarios.scenario3.desc":
+    "Création de liens partageables pour des publications de réseaux sociaux qui incluent du contenu dynamique.",
+  "urlEncoder.scenarios.scenario3.dynamic": "URL de partage dynamique :",
+  "urlEncoder.scenarios.scenario3.ready": "Prêt pour les réseaux sociaux :",
+  "urlEncoder.scenarios.scenario3.result":
+    "Encodez les paramètres pour empêcher la rupture d'URL et assurer une intégration appropriée avec les réseaux sociaux.",
+
+  // Step-by-Step Guide
+  "urlEncoder.guide.title": "Comment Utiliser l'Encodage URL",
+  "urlEncoder.guide.step1.title": "Entrez votre URL ou Texte",
+  "urlEncoder.guide.step1.desc":
+    "Collez votre URL ou saisissez le texte qui nécessite un encodage/décodage dans le champ de saisie ci-dessus.",
+  "urlEncoder.guide.step2.title": "Choisir Encoder ou Décoder",
+  "urlEncoder.guide.step2.desc":
+    "Sélectionnez 'Encoder' pour convertir les caractères spéciaux, ou 'Décoder' pour convertir les URLs encodées vers le format lisible.",
+  "urlEncoder.guide.step3.title": "Cliquer sur Convertir",
+  "urlEncoder.guide.step3.desc":
+    "Cliquez sur le bouton convertir pour voir instantanément le résultat encodé ou décodé dans le champ de sortie.",
+  "urlEncoder.guide.step4.title": "Copier et Utiliser",
+  "urlEncoder.guide.step4.desc":
+    "Copiez le résultat et utilisez-le dans vos applications web, appels API, ou documentation.",
 };

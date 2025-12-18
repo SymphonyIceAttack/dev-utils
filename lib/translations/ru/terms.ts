@@ -17,10 +17,12 @@ export const terms = {
   "terms.usage.title": "Permitted Use",
   "terms.usage.content":
     "You may use our tools for any lawful purpose. Our tools are designed to work entirely in your browser for privacy and security.",
-  "terms.prohibited.title": "Prohibited Uses",
-  "terms.prohibited.content":
-    "You may not use our services for any unlawful purpose; to violate any regulations; to infringe upon intellectual property rights; to harass or discriminate; to submit false information; to upload malicious code; to spam or scrape; for obscene purposes; to interfere with security features",
-  "terms.disclaimer.title": "Disclaimer of Warranties",
+  "terms.prohibited.title": "Запрещенное использование",
+  "terms.prohibited.content": "Вы не можете использовать наши услуги:",
+  "terms.prohibited.list":
+    "Для любых незаконных целей или для склонения других к совершению незаконных действий; Для нарушения любых международных, федеральных, провинциальных или государственных правил, законов или местных постановлений; Для нарушения наших прав интеллектуальной собственности или прав интеллектуальной собственности других; Для преследования, оскорбления, оскорбления, причинения вреда, клеветы, дискредитации, запугивания или дискриминации; Для предоставления ложной или вводящей в заблуждение информации; Для загрузки или передачи вирусов или любого другого типа вредоносного кода; Для спама, фишинга, фарминга, предлога, паутины, ползания или скрейпинга; Для любых непристойных или аморальных целей; Для вмешательства или обхода функций безопасности службы",
+
+  "terms.disclaimer.title": "Отказ от гарантий",
   "terms.disclaimer.content":
     'Our tools are provided "as is" without warranty of any kind. We do not guarantee the accuracy, completeness, or usefulness of any information provided by our tools.',
   "terms.limitation.title": "Limitation of Liability",

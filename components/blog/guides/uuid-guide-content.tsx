@@ -1,10 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArticleHeader } from "@/components/blog/article-header";
 import { StreamdownRenderer } from "@/components/blog/streamdown";
 import { StreamdownTOC } from "@/components/blog/streamdown-toc";
 import { UuidGuideStructuredData } from "@/components/structured-data/blog-post";
 import { extractTOCFromText, shouldShowTOC } from "@/lib/toc";
+
+// Article metadata
+const articleData = {
+  title: "UUID Generation: A Developer's Complete Guide",
+  description:
+    "UUIDs (Universally Unique Identifiers) are 128-bit identifiers that guarantee uniqueness across both time and space. This comprehensive guide covers UUID versions, generation methods, and best practices.",
+  author: "Dev Team",
+  date: "2024-12-12",
+  readTime: "9 min",
+  tags: ["UUID", "Guide", "Database"],
+  image: "/uuid-guide-pixel.jpeg",
+  featured: false,
+};
 
 export function UuidGuideContent() {
   // Comprehensive UUID guide content
@@ -269,11 +283,23 @@ UUIDs provide a robust solution for generating unique identifiers across distrib
             initial="initial"
             animate="animate"
           >
-            <motion.div
-              className="prose prose-lg max-w-none streamdown-content"
-              variants={fadeInUp}
-            >
-              <StreamdownRenderer content={content} />
+            <motion.div className="space-y-8" variants={fadeInUp}>
+              {/* Article Header with Cover Image */}
+              <ArticleHeader
+                title={articleData.title}
+                description={articleData.description}
+                author={articleData.author}
+                date={articleData.date}
+                readTime={articleData.readTime}
+                tags={articleData.tags}
+                image={articleData.image}
+                featured={articleData.featured}
+              />
+
+              {/* Article Content */}
+              <div className="prose prose-lg max-w-none streamdown-content">
+                <StreamdownRenderer content={content} />
+              </div>
             </motion.div>
           </motion.article>
 

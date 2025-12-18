@@ -1,10 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArticleHeader } from "@/components/blog/article-header";
 import { StreamdownRenderer } from "@/components/blog/streamdown";
 import { StreamdownTOC } from "@/components/blog/streamdown-toc";
 import { Md5GuideStructuredData } from "@/components/structured-data/blog-post";
 import { extractTOCFromText, shouldShowTOC } from "@/lib/toc";
+
+// Article metadata
+const articleData = {
+  title: "MD5 Hashing Tutorial: Complete Implementation Guide",
+  description:
+    "MD5 (Message Digest Algorithm 5) is a cryptographic hash function that produces a 128-bit hash value. While no longer secure for cryptographic purposes, it remains useful for data integrity verification.",
+  author: "Security Team",
+  date: "2024-12-13",
+  readTime: "10 min",
+  tags: ["MD5", "Guide", "Cryptography"],
+  image: "/md5-guide-pixel.jpeg",
+  featured: false,
+};
 
 export function Md5GuideContent() {
   // Comprehensive MD5 guide content
@@ -535,11 +549,23 @@ While MD5 is no longer suitable for security applications due to collision vulne
             initial="initial"
             animate="animate"
           >
-            <motion.div
-              className="prose prose-lg max-w-none streamdown-content"
-              variants={fadeInUp}
-            >
-              <StreamdownRenderer content={content} />
+            <motion.div className="space-y-8" variants={fadeInUp}>
+              {/* Article Header with Cover Image */}
+              <ArticleHeader
+                title={articleData.title}
+                description={articleData.description}
+                author={articleData.author}
+                date={articleData.date}
+                readTime={articleData.readTime}
+                tags={articleData.tags}
+                image={articleData.image}
+                featured={articleData.featured}
+              />
+
+              {/* Article Content */}
+              <div className="prose prose-lg max-w-none streamdown-content">
+                <StreamdownRenderer content={content} />
+              </div>
             </motion.div>
           </motion.article>
 

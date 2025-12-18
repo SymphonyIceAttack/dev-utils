@@ -59,4 +59,45 @@ export const urlEncoder = {
   "urlEncoder.faq.q3": "¿Están seguros mis datos?",
   "urlEncoder.faq.a3":
     "Sí, todo el codificado y decodificado ocurre completamente en tu navegador. Tus datos nunca se envían a ningún servidor.",
+
+  // Real-World Scenarios
+  "urlEncoder.scenarios.title": "Escenarios del Mundo Real",
+  "urlEncoder.scenarios.scenario1.title":
+    "Construyendo Cadenas de Consulta de API",
+  "urlEncoder.scenarios.scenario1.desc":
+    "Estás construyendo una función de búsqueda de comercio electrónico y necesitas crear parámetros de consulta de URL a partir de la entrada del usuario.",
+  "urlEncoder.scenarios.scenario1.problem": "URL problemática:",
+  "urlEncoder.scenarios.scenario1.solution": "URL codificada correctamente:",
+  "urlEncoder.scenarios.scenario1.result":
+    "Usa codificación URL para manejar espacios, comillas y ampersands correctamente.",
+  "urlEncoder.scenarios.scenario2.title":
+    "Soporte de Caracteres Internacionales",
+  "urlEncoder.scenarios.scenario2.desc":
+    "Tu aplicación web necesita manejar búsquedas de usuario que contengan caracteres chinos, japoneses u otros caracteres Unicode.",
+  "urlEncoder.scenarios.scenario2.original": "Término de búsqueda original:",
+  "urlEncoder.scenarios.scenario2.encoded": "Codificado URL:",
+  "urlEncoder.scenarios.scenario2.result":
+    "Codifica caracteres Unicode para asegurar que se transmitan correctamente en URLs.",
+  "urlEncoder.scenarios.scenario3.title": "Compartir en Redes Sociales",
+  "urlEncoder.scenarios.scenario3.desc":
+    "Crear enlaces compartibles para publicaciones de redes sociales que incluyan contenido dinámico.",
+  "urlEncoder.scenarios.scenario3.dynamic": "URL de compartir dinámica:",
+  "urlEncoder.scenarios.scenario3.ready": "Lista para redes sociales:",
+  "urlEncoder.scenarios.scenario3.result":
+    "Codifica parámetros para prevenir ruptura de URLs y asegurar integración correcta con redes sociales.",
+
+  // Step-by-Step Guide
+  "urlEncoder.guide.title": "Cómo Usar la Codificación URL",
+  "urlEncoder.guide.step1.title": "Ingresa tu URL o Texto",
+  "urlEncoder.guide.step1.desc":
+    "Pega tu URL o ingresa el texto que necesita codificación/decodificación en el campo de entrada de arriba.",
+  "urlEncoder.guide.step2.title": "Elige Codificar o Decodificar",
+  "urlEncoder.guide.step2.desc":
+    "Selecciona 'Codificar' para convertir caracteres especiales, o 'Decodificar' para convertir URLs codificadas de vuelta al formato legible.",
+  "urlEncoder.guide.step3.title": "Haz Clic en Convertir",
+  "urlEncoder.guide.step3.desc":
+    "Haz clic en el botón convertir para ver instantáneamente el resultado codificado o decodificado en el campo de salida.",
+  "urlEncoder.guide.step4.title": "Copiar y Usar",
+  "urlEncoder.guide.step4.desc":
+    "Copia el resultado y úsalo en tus aplicaciones web, llamadas a API, o documentación.",
 };

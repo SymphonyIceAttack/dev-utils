@@ -49,4 +49,43 @@ export const urlEncoder = {
   "urlEncoder.faq.q3": "データは安全ですか？",
   "urlEncoder.faq.a3":
     "はい、すべてのエンコードとデコードはブラウザ内で完全に実行されます。",
+
+  // Real-World Scenarios
+  "urlEncoder.scenarios.title": "実際の使用例",
+  "urlEncoder.scenarios.scenario1.title": "APIクエリ文字列の構築",
+  "urlEncoder.scenarios.scenario1.desc":
+    "あなたは電子商取引の検索機能を構築しており、ユーザー入力からURLクエリパラメータを作成する必要があります。",
+  "urlEncoder.scenarios.scenario1.problem": "問題のあるURL:",
+  "urlEncoder.scenarios.scenario1.solution": "正しくエンコードされたURL:",
+  "urlEncoder.scenarios.scenario1.result":
+    "スペース、アポストロフィ、アンパサンドを適切に処理するためにURLエンコーディングを使用してください。",
+  "urlEncoder.scenarios.scenario2.title": "国際文字サポート",
+  "urlEncoder.scenarios.scenario2.desc":
+    "あなたのWebアプリケーションは、中国語、日本語、その他のUnicode文字を含むユーザー検索を処理する必要があります。",
+  "urlEncoder.scenarios.scenario2.original": "元の検索語:",
+  "urlEncoder.scenarios.scenario2.encoded": "URLエンコード済み:",
+  "urlEncoder.scenarios.scenario2.result":
+    "Unicode文字をエンコードして、URLで適切に送信されることを確認してください。",
+  "urlEncoder.scenarios.scenario3.title": "ソーシャルメディア共有",
+  "urlEncoder.scenarios.scenario3.desc":
+    "動的コンテンツを含むソーシャルメディア投稿用の共有可能リンクを作成します。",
+  "urlEncoder.scenarios.scenario3.dynamic": "動的共有URL:",
+  "urlEncoder.scenarios.scenario3.ready": "ソーシャルメディア対応:",
+  "urlEncoder.scenarios.scenario3.result":
+    "URLの破損を防ぎ、ソーシャルメディアとの適切な統合を保証するためにパラメータをエンコードしてください。",
+
+  // Step-by-Step Guide
+  "urlEncoder.guide.title": "URLエンコーディングの使用方法",
+  "urlEncoder.guide.step1.title": "URLまたはテキストを入力",
+  "urlEncoder.guide.step1.desc":
+    "上記の入力フィールドにエンコード/デコードが必要なURLまたはテキストを貼り付けるか入力してください。",
+  "urlEncoder.guide.step2.title": "エンコードまたはデコードを選択",
+  "urlEncoder.guide.step2.desc":
+    "特殊文字を変換するには「エンコード」を、エンコードされたURLを読み可能な形式に変換するには「デコード」を選択してください。",
+  "urlEncoder.guide.step3.title": "変換をクリック",
+  "urlEncoder.guide.step3.desc":
+    "変換ボタンをクリックして、出力フィールドでエンコードまたはデコードされた結果を即座に表示します。",
+  "urlEncoder.guide.step4.title": "コピーして使用",
+  "urlEncoder.guide.step4.desc":
+    "結果をコピーして、Webアプリケーション、API呼び出しまたはドキュメントで使用してください。",
 };

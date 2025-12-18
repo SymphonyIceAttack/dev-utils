@@ -1,10 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArticleHeader } from "@/components/blog/article-header";
 import { StreamdownRenderer } from "@/components/blog/streamdown";
 import { StreamdownTOC } from "@/components/blog/streamdown-toc";
 import { EncodingConverterGuideStructuredData } from "@/components/structured-data/blog-post";
 import { extractTOCFromText, shouldShowTOC } from "@/lib/toc";
+
+// Article metadata
+const articleData = {
+  title: "Text Encoding Conversion: Complete Guide",
+  description:
+    "Encoding conversion is a fundamental skill for handling international text, data transmission, and compatibility across different systems. This comprehensive guide covers everything you need to know about converting between various text encoding formats.",
+  author: "Dev Team",
+  date: "2024-12-09",
+  readTime: "6 min",
+  tags: ["Converter", "Guide", "Encoding"],
+  image: "/encoding-converter-guide-pixel.jpeg",
+  featured: false,
+};
 
 export function EncodingConverterGuideContent() {
   // Comprehensive guide content for encoding conversion
@@ -532,11 +546,23 @@ Understanding encoding conversion is essential for modern software development, 
             initial="initial"
             animate="animate"
           >
-            <motion.div
-              className="prose prose-lg max-w-none streamdown-content"
-              variants={fadeInUp}
-            >
-              <StreamdownRenderer content={content} />
+            <motion.div className="space-y-8" variants={fadeInUp}>
+              {/* Article Header with Cover Image */}
+              <ArticleHeader
+                title={articleData.title}
+                description={articleData.description}
+                author={articleData.author}
+                date={articleData.date}
+                readTime={articleData.readTime}
+                tags={articleData.tags}
+                image={articleData.image}
+                featured={articleData.featured}
+              />
+
+              {/* Article Content */}
+              <div className="prose prose-lg max-w-none streamdown-content">
+                <StreamdownRenderer content={content} />
+              </div>
             </motion.div>
           </motion.article>
 

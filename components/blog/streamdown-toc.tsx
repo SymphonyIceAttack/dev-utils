@@ -55,12 +55,25 @@ export function StreamdownTOC({
 
         const level = match[1].length;
         const text = match[2].trim();
-        const id = text
+        let id = text
           .toLowerCase()
           .replace(/[^\w\s-]/gu, "") // 使用 unicode 标志支持中文，与 Streamdown 组件保持一致
           .replace(/\s+/g, "-")
           .replace(/-+/g, "-")
           .trim();
+
+        // 处理重复的ID
+        const existingIds = new Set(extractedHeadings.map((h) => h.id));
+        if (existingIds.has(id)) {
+          let counter = 1;
+          let newId = `${id}-${counter}`;
+          while (existingIds.has(newId)) {
+            counter++;
+            newId = `${id}-${counter}`;
+          }
+          id = newId;
+        }
+
         extractedHeadings.push({ id, text, level });
       }
 

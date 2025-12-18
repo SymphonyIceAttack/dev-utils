@@ -59,4 +59,48 @@ export const base64Encoder = {
   "base64Encoder.faq.q4": "Mes données sont-elles sécurisées avec cet outil ?",
   "base64Encoder.faq.a4":
     "Absolument. Tout l'encodage et le décodage Base64 se font localement dans votre navigateur. Vos données ne sont jamais envoyées vers aucun serveur ou stockées nulle part, garantissant une confidentialité et une sécurité complètes.",
+
+  // Real-World Scenarios
+  "base64Encoder.scenarios.title": "Scénarios du Monde Réel",
+  "base64Encoder.scenarios.scenario1.title":
+    "Remplacement de Pièce Jointe d'E-mail",
+  "base64Encoder.scenarios.scenario1.desc":
+    "Le développeur doit inclure une petite icône dans un e-mail mais veut éviter les limitations de pièces jointes.",
+  "base64Encoder.scenarios.scenario1.problem": "📧 Problème :",
+  "base64Encoder.scenarios.scenario1.solution": "🔧 Solution Base64 :",
+  "base64Encoder.scenarios.scenario1.result":
+    "L'e-mail affiche l'icône sans nécessiter de pièces jointes de fichiers externes.",
+  "base64Encoder.scenarios.scenario2.title": "Jeton d'Authentification API",
+  "base64Encoder.scenarios.scenario2.desc":
+    "Le développeur d'une application mobile doit encoder les identifiants utilisateur pour l'authentification de base dans les requêtes API.",
+  "base64Encoder.scenarios.scenario2.credentials":
+    "🔐 Identifiants utilisateur :",
+  "base64Encoder.scenarios.scenario2.encoded": "🔑 Base64 encodé :",
+  "base64Encoder.scenarios.scenario2.header": "📡 En-tête de requête API :",
+  "base64Encoder.scenarios.scenario2.result":
+    "Les identifiants sont encodés en toute sécurité pour l'authentification HTTP de base.",
+  "base64Encoder.scenarios.scenario3.title":
+    "Données JSON avec Contenu Binaire",
+  "base64Encoder.scenarios.scenario3.desc":
+    "Le développeur backend doit stocker un petit fichier PDF dans un champ de base de données JSON.",
+  "base64Encoder.scenarios.scenario3.binary": "📄 Données binaires :",
+  "base64Encoder.scenarios.scenario3.encoding": "🔄 Encodage Base64 :",
+  "base64Encoder.scenarios.scenario3.storage": "💾 Stockage JSON :",
+  "base64Encoder.scenarios.scenario3.result":
+    "Le contenu binaire PDF est maintenant stocké sous forme de texte dans le champ de base de données JSON.",
+
+  // Step-by-Step Guide
+  "base64Encoder.guide.title": "Comment Utiliser l'Encodage Base64",
+  "base64Encoder.guide.step1.title": "Choisir Encoder ou Décoder",
+  "base64Encoder.guide.step1.desc":
+    "Sélectionnez 'Encoder' pour convertir du texte/bin vers Base64, ou 'Décoder' pour convertir Base64 vers le format original.",
+  "base64Encoder.guide.step2.title": "Saisir Vos Données",
+  "base64Encoder.guide.step2.desc":
+    "Tapez du texte ou téléchargez un fichier (images, documents) que vous voulez encoder ou décoder.",
+  "base64Encoder.guide.step3.title": "Générer le Résultat",
+  "base64Encoder.guide.step3.desc":
+    "Cliquez sur le bouton convertir pour voir instantanément le résultat encodé ou décodé Base64.",
+  "base64Encoder.guide.step4.title": "Copier et Implémenter",
+  "base64Encoder.guide.step4.desc":
+    "Copiez le résultat pour l'utiliser dans vos applications, API, modèles d'e-mails, ou stockage de données.",
 };

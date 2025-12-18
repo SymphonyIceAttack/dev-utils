@@ -17,10 +17,13 @@ export const terms = {
   "terms.usage.title": "Permitted Use",
   "terms.usage.content":
     "You may use our tools for any lawful purpose. Our tools are designed to work entirely in your browser for privacy and security.",
-  "terms.prohibited.title": "Prohibited Uses",
+  "terms.prohibited.title": "禁止される使用法",
   "terms.prohibited.content":
-    "You may not use our services for any unlawful purpose; to violate any regulations; to infringe upon intellectual property rights; to harass or discriminate; to submit false information; to upload malicious code; to spam or scrape; for obscene purposes; to interfere with security features",
-  "terms.disclaimer.title": "Disclaimer of Warranties",
+    "あなたは次のような目的では当社のサービスを使用することはできません：",
+  "terms.prohibited.list":
+    "違法な目的または他者に違法行為を促す目的のため; 国際的、連邦、州または地方の規制、規則、法律または地方条例に違反するため; 当社の知的財産権または他者の知的財産権を侵害または違反するため; 嫌がらせ、虐待、侮辱、害、名誉毀損、中傷、軽蔑、脅迫、または差別するため; 偽または誤解を招く情報を提出するため; ウイルスまたはその他の悪意のあるコードをアップロードまたは送信するため; スパム、フィッシング、プリテキスト、スパイダー、クロール、またはスクレイピングのため; わいせつまたは不道徳な目的のため; サービスのセキュリティ機能を妨害または回避するため",
+
+  "terms.disclaimer.title": "保証の否認",
   "terms.disclaimer.content":
     'Our tools are provided "as is" without warranty of any kind. We do not guarantee the accuracy, completeness, or usefulness of any information provided by our tools.',
   "terms.limitation.title": "Limitation of Liability",

@@ -123,7 +123,7 @@ export async function generateMetadata({
     description: langData.description,
     openGraph: langData.openGraph,
     robots: {
-      index: false,
+      index: true,
       follow: true,
     },
     alternates: {

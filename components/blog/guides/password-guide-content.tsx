@@ -1,10 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArticleHeader } from "@/components/blog/article-header";
 import { StreamdownRenderer } from "@/components/blog/streamdown";
 import { StreamdownTOC } from "@/components/blog/streamdown-toc";
 import { PasswordGuideStructuredData } from "@/components/structured-data/blog-post";
 import { extractTOCFromText, shouldShowTOC } from "@/lib/toc";
+
+// Article metadata
+const articleData = {
+  title: "Secure Password Generation: Best Practices Guide",
+  description:
+    "Creating strong, secure passwords is crucial for protecting your digital assets. This comprehensive guide covers password entropy, generation methods, and modern security best practices.",
+  author: "Security Team",
+  date: "2024-12-11",
+  readTime: "8 min",
+  tags: ["Password", "Guide", "Security"],
+  image: "/password-guide-pixel.jpeg",
+  featured: false,
+};
 
 export function PasswordGuideContent() {
   // Comprehensive password guide content
@@ -387,11 +401,23 @@ Strong password generation is fundamental to digital security. Modern best pract
             initial="initial"
             animate="animate"
           >
-            <motion.div
-              className="prose prose-lg max-w-none streamdown-content"
-              variants={fadeInUp}
-            >
-              <StreamdownRenderer content={content} />
+            <motion.div className="space-y-8" variants={fadeInUp}>
+              {/* Article Header with Cover Image */}
+              <ArticleHeader
+                title={articleData.title}
+                description={articleData.description}
+                author={articleData.author}
+                date={articleData.date}
+                readTime={articleData.readTime}
+                tags={articleData.tags}
+                image={articleData.image}
+                featured={articleData.featured}
+              />
+
+              {/* Article Content */}
+              <div className="prose prose-lg max-w-none streamdown-content">
+                <StreamdownRenderer content={content} />
+              </div>
             </motion.div>
           </motion.article>
 

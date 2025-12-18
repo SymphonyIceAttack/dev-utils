@@ -55,4 +55,44 @@ export const urlEncoder = {
   "urlEncoder.faq.q3": "Мои данные в безопасности?",
   "urlEncoder.faq.a3":
     "Да, всё кодирование и декодирование происходит полностью в вашем браузере. Ваши данные никогда не отправляются на какой-либо сервер.",
+
+  // Real-World Scenarios
+  "urlEncoder.scenarios.title": "Реальные сценарии",
+  "urlEncoder.scenarios.scenario1.title": "Построение строк запроса API",
+  "urlEncoder.scenarios.scenario1.desc":
+    "Вы создаете функцию поиска электронной коммерции и вам нужно создать параметры запроса URL из пользовательского ввода.",
+  "urlEncoder.scenarios.scenario1.problem": "Проблемный URL:",
+  "urlEncoder.scenarios.scenario1.solution": "Правильно закодированный URL:",
+  "urlEncoder.scenarios.scenario1.result":
+    "Используйте URL кодирование для правильной обработки пробелов, апострофов и амперсандов.",
+  "urlEncoder.scenarios.scenario2.title": "Поддержка международных символов",
+  "urlEncoder.scenarios.scenario2.desc":
+    "Вашему веб-приложению нужно обрабатывать пользовательские поисковые запросы, содержащие китайские, японские или другие символы Unicode.",
+  "urlEncoder.scenarios.scenario2.original": "Исходный поисковый термин:",
+  "urlEncoder.scenarios.scenario2.encoded": "URL закодировано:",
+  "urlEncoder.scenarios.scenario2.result":
+    "Закодируйте символы Unicode, чтобы убедиться, что они правильно передаются в URL.",
+  "urlEncoder.scenarios.scenario3.title": "Поделиться в социальных сетях",
+  "urlEncoder.scenarios.scenario3.desc":
+    "Создание ссылок для публикаций в социальных сетях, которые включают динамический контент.",
+  "urlEncoder.scenarios.scenario3.dynamic":
+    "Динамическая ссылка для поделиться:",
+  "urlEncoder.scenarios.scenario3.ready": "Готово для соцсетей:",
+  "urlEncoder.scenarios.scenario3.result":
+    "Закодируйте параметры, чтобы предотвратить разрыв URL и обеспечить правильную интеграцию с социальными сетями.",
+
+  // Step-by-Step Guide
+  "urlEncoder.guide.title": "Как использовать URL кодирование",
+  "urlEncoder.guide.step1.title": "Введите ваш URL или текст",
+  "urlEncoder.guide.step1.desc":
+    "Вставьте ваш URL или введите текст, который нуждается в кодировании/декодировании в поле ввода выше.",
+  "urlEncoder.guide.step2.title": "Выберите Кодировать или Декодировать",
+  "urlEncoder.guide.step2.desc":
+    "Выберите 'Кодировать' для преобразования спецсимволов, или 'Декодировать' для преобразования закодированных URL обратно в читаемый формат.",
+  "urlEncoder.guide.step3.title": "Нажмите Конвертировать",
+  "urlEncoder.guide.step3.desc":
+    "Нажмите кнопку конвертировать, чтобы мгновенно увидеть закодированный или декодированный результат в поле вывода.",
+  "urlEncoder.guide.step4.title": "Копировать и Использовать",
+  "urlEncoder.guide.step4.desc":
+    "Скопируйте результат и используйте его в ваших веб-приложениях, API вызовах или документации.",
 };

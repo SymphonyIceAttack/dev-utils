@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Twitter } from "lucide-react";
+import { Github } from "lucide-react";
 import Link from "next/link";
 
 const footerLinks = {
@@ -199,18 +199,6 @@ export function Footer({ lang }: FooterProps) {
                   style={{ boxShadow: "2px 2px 0 0 var(--foreground)" }}
                 >
                   <Github className="h-5 w-5" />
-                </Link>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="https://twitter.com"
-                  className="p-2 rounded-xl border-2 border-foreground/40 dark:border-primary/40 hover:bg-accent transition-colors block"
-                  style={{ boxShadow: "2px 2px 0 0 var(--foreground)" }}
-                >
-                  <Twitter className="h-5 w-5" />
                 </Link>
               </motion.div>
             </div>

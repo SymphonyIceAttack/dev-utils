@@ -2,10 +2,8 @@
 
 import { motion } from "framer-motion";
 import type React from "react";
-import { useEffect, useRef, useState } from "react";
-import type { CatItemType } from "@/context/cat-context";
-import { useLanguage } from "@/context/language-context";
-import { t } from "@/lib/translations";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { type CatItemType, useCat } from "@/context/cat-context";
 
 const GhibliIcons: Record<CatItemType, React.ReactNode> = {
   fish: (
@@ -32,21 +30,21 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
         fill="none"
       />
       <path
-        d="M8 20 Q16 24 24 20"
+        d="M6 18 Q16 14 26 18"
         stroke="hsl(155, 45%, 35%)"
         strokeWidth="2"
         fill="none"
       />
       <path
-        d="M10 16 Q16 12 22 16"
+        d="M10 24 Q16 20 22 24"
         stroke="hsl(155, 45%, 35%)"
         strokeWidth="2"
         fill="none"
       />
       <path
-        d="M12 18 Q16 22 20 18"
-        stroke="hsl(155, 45%, 35%)"
-        strokeWidth="2"
+        d="M26 16 Q30 12 28 8"
+        stroke="hsl(155, 40%, 50%)"
+        strokeWidth="3"
         fill="none"
       />
     </svg>
@@ -54,248 +52,278 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
   book: (
     <svg width="32" height="32" viewBox="0 0 32 32">
       <rect
-        x="8"
+        x="4"
         y="6"
-        width="16"
+        width="24"
         height="20"
         rx="2"
-        fill="hsl(25, 45%, 60%)"
+        fill="hsl(35, 50%, 55%)"
       />
       <rect
-        x="10"
+        x="6"
         y="8"
-        width="12"
+        width="20"
         height="16"
         rx="1"
-        fill="hsl(25, 50%, 80%)"
+        fill="hsl(45, 60%, 92%)"
       />
-      <line
-        x1="16"
-        y1="8"
-        x2="16"
-        y2="24"
-        stroke="hsl(25, 45%, 40%)"
-        strokeWidth="1"
-      />
+      <path d="M16 8 L16 24" stroke="hsl(35, 40%, 45%)" strokeWidth="1" />
+      <path d="M10 12 L14 12" stroke="hsl(155, 40%, 45%)" strokeWidth="1.5" />
+      <path d="M10 15 L14 15" stroke="hsl(155, 40%, 45%)" strokeWidth="1.5" />
+      <path d="M18 12 L22 12" stroke="hsl(155, 40%, 45%)" strokeWidth="1.5" />
+      <path d="M18 15 L22 15" stroke="hsl(155, 40%, 45%)" strokeWidth="1.5" />
     </svg>
   ),
   keyboard: (
     <svg width="32" height="32" viewBox="0 0 32 32">
       <rect
-        x="6"
+        x="2"
         y="10"
-        width="20"
-        height="12"
-        rx="2"
-        fill="hsl(220, 20%, 25%)"
+        width="28"
+        height="14"
+        rx="3"
+        fill="hsl(155, 25%, 40%)"
       />
-      <rect x="8" y="12" width="2" height="2" fill="hsl(220, 20%, 60%)" />
-      <rect x="11" y="12" width="2" height="2" fill="hsl(220, 20%, 60%)" />
-      <rect x="14" y="12" width="2" height="2" fill="hsl(220, 20%, 60%)" />
-      <rect x="17" y="12" width="2" height="2" fill="hsl(220, 20%, 60%)" />
-      <rect x="20" y="12" width="2" height="2" fill="hsl(220, 20%, 60%)" />
-      <rect x="8" y="15" width="2" height="2" fill="hsl(220, 20%, 60%)" />
-      <rect x="11" y="15" width="2" height="2" fill="hsl(220, 20%, 60%)" />
-      <rect x="14" y="15" width="4" height="2" fill="hsl(220, 20%, 60%)" />
-      <rect x="19" y="15" width="3" height="2" fill="hsl(220, 20%, 60%)" />
+      <rect
+        x="4"
+        y="12"
+        width="24"
+        height="10"
+        rx="2"
+        fill="hsl(155, 20%, 85%)"
+      />
+      <rect
+        x="6"
+        y="14"
+        width="4"
+        height="2"
+        rx="0.5"
+        fill="hsl(155, 30%, 50%)"
+      />
+      <rect
+        x="12"
+        y="14"
+        width="4"
+        height="2"
+        rx="0.5"
+        fill="hsl(155, 30%, 50%)"
+      />
+      <rect
+        x="18"
+        y="14"
+        width="4"
+        height="2"
+        rx="0.5"
+        fill="hsl(155, 30%, 50%)"
+      />
+      <rect
+        x="24"
+        y="14"
+        width="2"
+        height="2"
+        rx="0.5"
+        fill="hsl(155, 30%, 50%)"
+      />
+      <rect
+        x="8"
+        y="18"
+        width="14"
+        height="2"
+        rx="0.5"
+        fill="hsl(155, 30%, 50%)"
+      />
     </svg>
   ),
   coffee: (
     <svg width="32" height="32" viewBox="0 0 32 32">
-      <rect
-        x="8"
-        y="12"
-        width="16"
-        height="12"
-        rx="2"
-        fill="hsl(30, 40%, 70%)"
-      />
-      <rect
-        x="10"
-        y="8"
-        width="12"
-        height="6"
-        rx="1"
-        fill="hsl(30, 40%, 90%)"
-      />
       <path
-        d="M24 14 Q28 16 24 18"
-        stroke="hsl(30, 40%, 50%)"
-        strokeWidth="2"
+        d="M6 12 L8 26 Q8 28 10 28 L20 28 Q22 28 22 26 L24 12 Z"
+        fill="hsl(155, 35%, 50%)"
+      />
+      <ellipse cx="15" cy="12" rx="9" ry="3" fill="hsl(30, 40%, 45%)" />
+      <ellipse cx="15" cy="12" rx="7" ry="2" fill="hsl(30, 35%, 55%)" />
+      <path
+        d="M24 15 Q28 15 28 19 Q28 23 24 23"
+        stroke="hsl(155, 35%, 45%)"
+        strokeWidth="2.5"
         fill="none"
       />
-      <circle cx="14" cy="18" r="1" fill="hsl(30, 30%, 30%)" />
-      <circle cx="18" cy="16" r="1" fill="hsl(30, 30%, 30%)" />
+      <path
+        d="M12 6 Q11 3 13 3"
+        stroke="hsl(155, 20%, 70%)"
+        strokeWidth="1.5"
+        fill="none"
+        opacity="0.7"
+      />
+      <path
+        d="M15 5 Q14 2 16 2"
+        stroke="hsl(155, 20%, 70%)"
+        strokeWidth="1.5"
+        fill="none"
+        opacity="0.7"
+      />
+      <path
+        d="M18 6 Q17 3 19 3"
+        stroke="hsl(155, 20%, 70%)"
+        strokeWidth="1.5"
+        fill="none"
+        opacity="0.7"
+      />
     </svg>
   ),
   sparkles: (
     <svg width="32" height="32" viewBox="0 0 32 32">
-      <circle cx="16" cy="16" r="8" fill="hsl(280, 70%, 80%)" />
       <path
-        d="M16 8 L17 12 L21 13 L17 14 L16 18 L15 14 L11 13 L15 12 Z"
-        fill="hsl(280, 80%, 90%)"
+        d="M16 2 L18 12 L28 14 L18 16 L16 26 L14 16 L4 14 L14 12 Z"
+        fill="hsl(50, 80%, 55%)"
+        stroke="hsl(45, 70%, 45%)"
+        strokeWidth="1"
       />
-      <path
-        d="M12 20 L12.5 22 L14.5 22.5 L12.5 23 L12 25 L11.5 23 L9.5 22.5 L11.5 22 Z"
-        fill="hsl(280, 80%, 85%)"
-      />
-      <path
-        d="M20 20 L20.5 22 L22.5 22.5 L20.5 23 L20 25 L19.5 23 L17.5 22.5 L19.5 22 Z"
-        fill="hsl(280, 80%, 85%)"
-      />
+      <circle cx="16" cy="14" r="2" fill="hsl(50, 90%, 75%)" />
     </svg>
   ),
 };
 
+const itemNames: Record<CatItemType, string> = {
+  fish: "Forest Fish",
+  yarn: "Leaf Yarn",
+  book: "Wisdom Book",
+  keyboard: "Nature Keys",
+  coffee: "Herb Tea",
+  sparkles: "Magic Sparkles",
+};
+
 interface FallingItemProps {
+  id: string;
   type: CatItemType;
-  onCollect: (type: CatItemType) => void;
+  initialX: number;
 }
 
-export function FallingItem({ type, onCollect }: FallingItemProps) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(true);
+export function FallingItem({ id, type, initialX }: FallingItemProps) {
+  const { feedCat } = useCat();
   const itemRef = useRef<HTMLDivElement>(null);
-  const { lang } = useLanguage();
+  const [isFlying, setIsFlying] = useState(false);
+  const [targetPosition, setTargetPosition] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
 
-  useEffect(() => {
-    // Random starting position
-    const startX =
-      Math.random() * (typeof window !== "undefined" ? window.innerWidth : 800);
-    setPosition({ x: startX, y: -50 });
+  const flyToLogo = useCallback(() => {
+    if (isFlying) return;
 
-    // Animate falling
-    const fallDuration = 3000 + Math.random() * 2000; // 3-5 seconds
-    const startTime = Date.now();
-
-    const fall = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / fallDuration, 1);
-
-      setPosition((prev) => ({
-        x: prev.x + Math.sin(progress * Math.PI * 2) * 2, // Slight horizontal sway
-        y:
-          -50 +
-          progress *
-            (typeof window !== "undefined" ? window.innerHeight + 100 : 600),
-      }));
-
-      if (progress < 1) {
-        requestAnimationFrame(fall);
-      } else {
-        setIsVisible(false);
+    const logoElement = document.querySelector("#site-logo");
+    if (logoElement && typeof window !== "undefined") {
+      const logoRect = logoElement.getBoundingClientRect();
+      const itemRect = itemRef.current?.getBoundingClientRect();
+      if (itemRect) {
+        const targetX = logoRect.left + logoRect.width / 2 - itemRect.width / 2;
+        const targetY =
+          logoRect.top + logoRect.height / 2 - itemRect.height / 2;
+        setTargetPosition({ x: targetX, y: targetY });
+        setIsFlying(true);
       }
-    };
+    }
+  }, [isFlying]);
 
-    const fallInterval = setTimeout(() => {
-      requestAnimationFrame(fall);
-    }, 100);
-
-    return () => clearTimeout(fallInterval);
-  }, []);
+  // Auto fly to logo after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isFlying) {
+        flyToLogo();
+      }
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [id, isFlying, flyToLogo]);
 
   const handleClick = () => {
-    if (isVisible) {
-      setIsVisible(false);
-      onCollect(type);
+    if (!isFlying) {
+      flyToLogo();
     }
   };
 
-  if (!isVisible) return null;
+  const handleAnimationComplete = () => {
+    if (isFlying) {
+      feedCat(id);
+    }
+  };
 
   return (
     <motion.div
       ref={itemRef}
-      className="absolute cursor-pointer z-50"
-      style={{
-        left: position.x,
-        top: position.y,
+      initial={{ x: `${initialX}vw`, y: -100, opacity: 0, rotate: -20 }}
+      animate={{
+        y:
+          isFlying && targetPosition
+            ? targetPosition.y
+            : typeof window !== "undefined"
+              ? window.innerHeight - 150
+              : 500,
+        x: isFlying && targetPosition ? targetPosition.x : undefined,
+        scale: isFlying ? 0.3 : 1,
+        opacity: isFlying ? 0 : 1,
+        rotate: 0,
       }}
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0, opacity: 0 }}
-      whileHover={{ scale: 1.2 }}
-      whileTap={{ scale: 0.9 }}
+      transition={{
+        type: "spring",
+        damping: 15,
+        stiffness: 100,
+        duration: isFlying ? 0.5 : 1.5,
+      }}
+      onAnimationComplete={handleAnimationComplete}
       onClick={handleClick}
+      exit={{ scale: 0, opacity: 0 }}
+      whileHover={{ scale: isFlying ? 0.3 : 1.1 }}
+      className="fixed z-40 cursor-pointer pointer-events-auto"
     >
       <div className="relative group">
-        <div className="absolute inset-0 bg-white/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300" />
+        <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity" />
+
         <motion.div
-          className="relative bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg border border-white/50 hover:bg-white hover:shadow-xl transition-all duration-300"
-          animate={{
-            y: [0, -5, 0],
-            rotate: [0, 5, -5, 0],
-          }}
+          animate={{ y: [0, -5, 0] }}
           transition={{
             duration: 2,
             repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
           }}
+          className="relative bg-card border-2 border-primary/40 rounded-2xl p-3 shadow-lg"
+          style={{ boxShadow: "3px 3px 0 0 var(--primary)" }}
         >
           {GhibliIcons[type]}
+
+          {/* Tooltip */}
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            {itemNames[type]}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-primary" />
+          </div>
         </motion.div>
 
-        {/* Item name tooltip */}
         <motion.div
-          className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          initial={{ y: 5, opacity: 0 }}
-          whileHover={{ y: 0, opacity: 1 }}
+          animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+          className="absolute -top-1 -right-1 text-primary"
         >
-          {t(`cat.items.${type}`, lang)}
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent border-t-black/80" />
+          <svg width="16" height="16" viewBox="0 0 16 16">
+            <ellipse
+              cx="8"
+              cy="8"
+              rx="3"
+              ry="6"
+              fill="currentColor"
+              transform="rotate(-30 8 8)"
+            />
+            <path
+              d="M8 2 Q10 8 8 14"
+              stroke="hsl(155, 50%, 30%)"
+              strokeWidth="0.5"
+              fill="none"
+            />
+          </svg>
         </motion.div>
       </div>
     </motion.div>
-  );
-}
-
-interface FallingItemsProps {
-  items: CatItemType[];
-  onCollect: (type: CatItemType) => void;
-}
-
-export function FallingItems({ items, onCollect }: FallingItemsProps) {
-  const [fallingItems, setFallingItems] = useState<
-    { id: string; type: CatItemType }[]
-  >([]);
-
-  useEffect(() => {
-    if (items.length === 0) return;
-
-    // Spawn items with some randomness
-    const spawnInterval = setInterval(
-      () => {
-        if (fallingItems.length < 3) {
-          // Max 3 items at a time
-          const randomType = items[Math.floor(Math.random() * items.length)];
-          const newItem = {
-            id: `${randomType}-${Date.now()}-${Math.random()}`,
-            type: randomType,
-          };
-          setFallingItems((prev) => [...prev, newItem]);
-        }
-      },
-      2000 + Math.random() * 3000,
-    ); // Spawn every 2-5 seconds
-
-    return () => clearInterval(spawnInterval);
-  }, [items, fallingItems.length]);
-
-  const handleCollect = (type: CatItemType) => {
-    setFallingItems((prev) => prev.filter((item) => item.type !== type));
-    onCollect(type);
-  };
-
-  return (
-    <div className="fixed inset-0 pointer-events-none z-40">
-      {fallingItems.map((item) => (
-        <div key={item.id} className="pointer-events-auto">
-          <FallingItem
-            type={item.type}
-            onCollect={() => handleCollect(item.type)}
-          />
-        </div>
-      ))}
-    </div>
   );
 }

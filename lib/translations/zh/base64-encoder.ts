@@ -53,4 +53,45 @@ export const base64Encoder = {
   "base64Encoder.faq.q4": "使用此工具时我的数据安全吗？",
   "base64Encoder.faq.a4":
     "绝对安全。所有 Base64 编码和解码都在您的浏览器中本地进行。您的数据永远不会发送到任何服务器或存储在任何地方，确保完全的隐私和安全。",
+
+  // Real-World Scenarios
+  "base64Encoder.scenarios.title": "实际应用场景",
+  "base64Encoder.scenarios.scenario1.title": "电子邮件附件替代",
+  "base64Encoder.scenarios.scenario1.desc":
+    "开发者需要在电子邮件中包含一个小图标，但希望避免附件限制。",
+  "base64Encoder.scenarios.scenario1.problem": "📧 问题：",
+  "base64Encoder.scenarios.scenario1.solution": "🔧 Base64 解决方案：",
+  "base64Encoder.scenarios.scenario1.result":
+    "电子邮件显示图标而无需外部文件附件。",
+  "base64Encoder.scenarios.scenario2.title": "API 认证令牌",
+  "base64Encoder.scenarios.scenario2.desc":
+    "移动应用开发者需要为 API 请求中的基本认证编码用户凭据。",
+  "base64Encoder.scenarios.scenario2.credentials": "🔐 用户凭据：",
+  "base64Encoder.scenarios.scenario2.encoded": "🔑 Base64 编码：",
+  "base64Encoder.scenarios.scenario2.header": "📡 API 请求头：",
+  "base64Encoder.scenarios.scenario2.result":
+    "凭据被安全地编码用于 HTTP 基本认证。",
+  "base64Encoder.scenarios.scenario3.title": "包含二进制内容的 JSON 数据",
+  "base64Encoder.scenarios.scenario3.desc":
+    "后端开发者需要将一个小 PDF 文件存储在 JSON 数据库字段中。",
+  "base64Encoder.scenarios.scenario3.binary": "📄 二进制数据：",
+  "base64Encoder.scenarios.scenario3.encoding": "🔄 Base64 编码：",
+  "base64Encoder.scenarios.scenario3.storage": "💾 JSON 存储：",
+  "base64Encoder.scenarios.scenario3.result":
+    "二进制 PDF 内容现在作为文本存储在 JSON 数据库字段中。",
+
+  // Step-by-Step Guide
+  "base64Encoder.guide.title": "如何使用 Base64 编码",
+  "base64Encoder.guide.step1.title": "选择编码或解码",
+  "base64Encoder.guide.step1.desc":
+    "选择'编码'将文本/二进制转换为 Base64，或'解码'将 Base64 转换回原始格式。",
+  "base64Encoder.guide.step2.title": "输入您的数据",
+  "base64Encoder.guide.step2.desc":
+    "输入文本或上传文件（图像、文档）您想要编码或解码。",
+  "base64Encoder.guide.step3.title": "生成结果",
+  "base64Encoder.guide.step3.desc":
+    "点击转换按钮立即查看 Base64 编码或解码的结果。",
+  "base64Encoder.guide.step4.title": "复制和使用",
+  "base64Encoder.guide.step4.desc":
+    "复制结果用于您的应用程序、API、电子邮件模板或数据存储。",
 };

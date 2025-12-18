@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import type React from "react";
 import { Button } from "@/components/ui/button";
-import { CAT_ITEMS, type CatItemType, useCat } from "@/context/cat-context";
+import { type CatItemType, useCat } from "@/context/cat-context";
 
 const GhibliIcons: Record<CatItemType, React.ReactNode> = {
   fish: (
@@ -175,13 +175,12 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
   sparkles: (
     <svg width="40" height="40" viewBox="0 0 32 32">
       <path
-        d="M16 6 L18 12 L24 14 L18 16 L16 22 L14 16 L8 14 L14 12 Z"
-        fill="hsl(45, 90%, 70%)"
+        d="M16 2 L18 12 L28 14 L18 16 L16 26 L14 16 L4 14 L14 12 Z"
+        fill="hsl(50, 80%, 55%)"
+        stroke="hsl(45, 70%, 45%)"
+        strokeWidth="1"
       />
-      <circle cx="12" cy="8" r="1.5" fill="hsl(45, 90%, 80%)" />
-      <circle cx="20" cy="8" r="1" fill="hsl(45, 90%, 80%)" />
-      <circle cx="8" cy="20" r="1" fill="hsl(45, 90%, 80%)" />
-      <circle cx="24" cy="20" r="1.5" fill="hsl(45, 90%, 80%)" />
+      <circle cx="16" cy="14" r="2" fill="hsl(50, 90%, 75%)" />
     </svg>
   ),
 };
@@ -193,7 +192,7 @@ const itemConfig: Record<CatItemType, { name: string; description: string }> = {
   },
   yarn: {
     name: "Leaf Yarn",
-    description: "Earned from Encoding conversion",
+    description: "Earned from JSON formatting",
   },
   book: {
     name: "Wisdom Book",
@@ -201,7 +200,7 @@ const itemConfig: Record<CatItemType, { name: string; description: string }> = {
   },
   keyboard: {
     name: "Nature Keys",
-    description: "Earned from MD5 generation",
+    description: "Earned from Hash generation",
   },
   coffee: {
     name: "Herb Tea",
@@ -227,17 +226,9 @@ function ItemSlot({
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 200 }}
-      whileHover={
-        unlocked
-          ? {
-              scale: 1.1,
-              y: -5,
-              transition: { duration: 0.2, ease: "easeOut" },
-            }
-          : undefined
-      }
+      whileHover={unlocked ? { scale: 1.1, y: -5 } : undefined}
       className={`
-        group relative p-4 rounded-2xl border-2 transition-all
+        relative p-4 rounded-2xl border-2 transition-all
         ${
           unlocked
             ? "bg-card border-primary/50 shadow-lg cursor-pointer"
@@ -285,7 +276,7 @@ function ItemSlot({
 
       {/* Tooltip for unlocked items */}
       {unlocked && (
-        <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
+        <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-lg opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap z-10">
           {config.description}
         </div>
       )}
@@ -295,14 +286,40 @@ function ItemSlot({
 
 function GhibliHomeIcon() {
   return (
-    <img
-      src="/base-logo.png"
-      alt="Forest Cat's Home"
-      width={32}
-      height={32}
-      className="rounded-lg"
-      style={{ imageRendering: "pixelated" }}
-    />
+    <svg width="32" height="32" viewBox="0 0 32 32">
+      {/* Roof */}
+      <path
+        d="M16 4 L4 14 L8 14 L8 26 L24 26 L24 14 L28 14 Z"
+        fill="hsl(155, 35%, 45%)"
+      />
+      {/* Wall */}
+      <rect x="10" y="14" width="12" height="12" fill="hsl(45, 50%, 85%)" />
+      {/* Door */}
+      <rect
+        x="14"
+        y="18"
+        width="4"
+        height="8"
+        rx="1"
+        fill="hsl(35, 45%, 50%)"
+      />
+      {/* Window */}
+      <rect
+        x="11"
+        y="16"
+        width="4"
+        height="4"
+        rx="0.5"
+        fill="hsl(200, 60%, 70%)"
+      />
+      <path
+        d="M13 16 L13 20 M11 18 L15 18"
+        stroke="hsl(45, 40%, 75%)"
+        strokeWidth="0.5"
+      />
+      {/* Chimney */}
+      <rect x="20" y="8" width="3" height="6" fill="hsl(20, 40%, 50%)" />
+    </svg>
   );
 }
 
@@ -418,16 +435,18 @@ export function CatHomeModal() {
             {/* Items grid */}
             <div className="p-6">
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
-                {CAT_ITEMS.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <ItemSlot type={item.id} unlocked={inventory[item.id]} />
-                  </motion.div>
-                ))}
+                {(Object.keys(inventory) as CatItemType[]).map(
+                  (type, index) => (
+                    <motion.div
+                      key={type}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <ItemSlot type={type} unlocked={inventory[type]} />
+                    </motion.div>
+                  ),
+                )}
               </div>
 
               <div className="mt-6 pt-4 border-t border-primary/20">

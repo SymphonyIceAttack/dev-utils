@@ -18,8 +18,9 @@ export const terms = {
   "terms.usage.content":
     "You may use our tools for any lawful purpose. Our tools are designed to work entirely in your browser for privacy and security.",
   "terms.prohibited.title": "Prohibited Uses",
-  "terms.prohibited.content":
-    "You may not use our services for any unlawful purpose; to violate any regulations; to infringe upon intellectual property rights; to harass or discriminate; to submit false information; to upload malicious code; to spam or scrape; for obscene purposes; to interfere with security features",
+  "terms.prohibited.content": "You may not use our services:",
+  "terms.prohibited.list":
+    "For any unlawful purpose or to solicit others to perform unlawful acts; To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances; To infringe upon or violate our intellectual property rights or the intellectual property rights of others; To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate; To submit false or misleading information; To upload or transmit viruses or any other type of malicious code; To spam, phish, pharm, pretext, spider, crawl, or scrape; For any obscene or immoral purpose; To interfere with or circumvent the security features of the service",
   "terms.disclaimer.title": "Disclaimer of Warranties",
   "terms.disclaimer.content":
     'Our tools are provided "as is" without warranty of any kind. We do not guarantee the accuracy, completeness, or usefulness of any information provided by our tools.',

@@ -1,10 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArticleHeader } from "@/components/blog/article-header";
 import { StreamdownRenderer } from "@/components/blog/streamdown";
 import { StreamdownTOC } from "@/components/blog/streamdown-toc";
 import { UrlEncodingGuideStructuredData } from "@/components/structured-data/blog-post";
 import { extractTOCFromText, shouldShowTOC } from "@/lib/toc";
+
+// Article metadata
+const articleData = {
+  title: "Complete Guide to URL Encoding: Best Practices",
+  description:
+    "URL encoding is a fundamental technique in web development that ensures special characters, spaces, and non-ASCII text can be safely transmitted over the internet.",
+  author: "Dev Team",
+  date: "2024-12-15",
+  readTime: "8 min",
+  tags: ["URL Encoding", "Guide", "Web Dev"],
+  image: "/url-encoding-guide-pixel.jpeg",
+  featured: true,
+};
 
 export function UrlEncodingGuideContent() {
   // Comprehensive URL encoding guide content
@@ -575,7 +589,7 @@ const url = goodEncoding(params);
 ### 2. Caching Encoded Values
 **Avoid re-encoding the same values:**
 
-\`\`\`\`javascript
+\`\`\`javascript
 class URLEncoder {
   constructor() {
     this.cache = new Map();
@@ -768,11 +782,23 @@ URL encoding is essential for modern web development, ensuring that URLs work re
             initial="initial"
             animate="animate"
           >
-            <motion.div
-              className="prose prose-lg max-w-none streamdown-content"
-              variants={fadeInUp}
-            >
-              <StreamdownRenderer content={content} />
+            <motion.div className="space-y-8" variants={fadeInUp}>
+              {/* Article Header with Cover Image */}
+              <ArticleHeader
+                title={articleData.title}
+                description={articleData.description}
+                author={articleData.author}
+                date={articleData.date}
+                readTime={articleData.readTime}
+                tags={articleData.tags}
+                image={articleData.image}
+                featured={articleData.featured}
+              />
+
+              {/* Article Content */}
+              <div className="prose prose-lg max-w-none streamdown-content">
+                <StreamdownRenderer content={content} />
+              </div>
             </motion.div>
           </motion.article>
 

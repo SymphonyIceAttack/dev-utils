@@ -1,9 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArticleHeader } from "@/components/blog/article-header";
 import { StreamdownRenderer } from "@/components/blog/streamdown";
 import { StreamdownTOC } from "@/components/blog/streamdown-toc";
 import { extractTOCFromText, shouldShowTOC } from "@/lib/toc";
+
+// Article metadata
+const articleData = {
+  title: "Master Base64 Encoding: From Basics to Advanced",
+  description:
+    "Base64 encoding is a fundamental technique for representing binary data in ASCII text format. This comprehensive guide covers everything from basic concepts to advanced practical applications.",
+  author: "Dev Team",
+  date: "2024-12-14",
+  readTime: "7 min",
+  tags: ["Base64", "Guide", "Encoding"],
+  image: "/base64-guide-pixel.jpeg",
+  featured: true,
+};
 
 export function Base64GuideContent() {
   // Enhanced markdown content with better structure and examples
@@ -261,11 +275,23 @@ Base64 encoding is an essential tool for web developers and system administrator
           initial="initial"
           animate="animate"
         >
-          <motion.div
-            className="prose prose-lg max-w-none streamdown-content"
-            variants={fadeInUp}
-          >
-            <StreamdownRenderer content={content} />
+          <motion.div className="space-y-8" variants={fadeInUp}>
+            {/* Article Header with Cover Image */}
+            <ArticleHeader
+              title={articleData.title}
+              description={articleData.description}
+              author={articleData.author}
+              date={articleData.date}
+              readTime={articleData.readTime}
+              tags={articleData.tags}
+              image={articleData.image}
+              featured={articleData.featured}
+            />
+
+            {/* Article Content */}
+            <div className="prose prose-lg max-w-none streamdown-content">
+              <StreamdownRenderer content={content} />
+            </div>
           </motion.div>
         </motion.article>
 
