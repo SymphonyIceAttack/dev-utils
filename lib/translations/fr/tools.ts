@@ -2,7 +2,6 @@ export const tools = {
   // Tools Page
   "tools.title": "Outils de développement",
   "tools.subtitle": "Collection d'outils utiles pour développeurs",
-  "tools.search": "Rechercher des outils...",
   "tools.category.all": "Tous",
   "tools.category.data": "Données",
   "tools.category.encoding": "Encodage",

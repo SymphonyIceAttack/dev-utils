@@ -2,7 +2,6 @@ export const tools = {
   // Tools Page
   "tools.title": "Herramientas de desarrollador",
   "tools.subtitle": "Una colección de herramientas útiles para desarrolladores",
-  "tools.search": "Buscar herramientas...",
   "tools.category.all": "Todas",
   "tools.category.data": "Datos",
   "tools.category.encoding": "Codificación",

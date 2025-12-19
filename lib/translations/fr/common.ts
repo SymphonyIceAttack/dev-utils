@@ -33,8 +33,10 @@ export const common = {
   "common.faq": "Questions fréquentes",
   "common.needsUpdate": "Entrée modifiée, reconversion nécessaire",
   "common.relatedTools": "Outils et guides associés",
-  "common.relatedToolsDesc": "Découvrez plus d'outils et de guides pour améliorer votre flux de travail de développement",
-  "common.relatedToolDesc": "Un outil puissant pour améliorer votre flux de travail de développement",
+  "common.relatedToolsDesc":
+    "Découvrez plus d'outils et de guides pour améliorer votre flux de travail de développement",
+  "common.relatedToolDesc":
+    "Un outil puissant pour améliorer votre flux de travail de développement",
   "common.relatedGuideDesc": "Guide complet pour maîtriser ce sujet",
 
   // Badges
