@@ -1,3 +1,17 @@
+/**
+ * Character Encoding Converter Tool
+ *
+ * This module provides comprehensive character encoding conversion functionality
+ * supporting multiple encoding formats including UTF-8, UTF-16, ASCII, ISO-8859-1,
+ * hexadecimal, binary, and Unicode escape sequences.
+ *
+ * Key features:
+ * - Bidirectional conversion between multiple encoding formats
+ * - Proper handling of Unicode surrogate pairs for emoji and special characters
+ * - Input validation and error handling
+ * - Support for bulk conversions with statistics tracking
+ */
+
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -27,129 +41,566 @@ import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
-  },
-};
+/**
+ * Supported encoding types
+ */
+export type EncodingType =
+  | "utf-8"
+  | "utf-16"
+  | "ascii"
+  | "iso-8859-1"
+  | "hex"
+  | "binary"
+  | "unicode-escape";
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3 },
-  },
-};
-
-interface EncodingConverterToolProps {
-  lang: LanguageType;
+/**
+ * Result of a conversion operation
+ */
+interface ConversionResult {
+  success: boolean;
+  data?: string;
+  error?: string;
+  metadata?: {
+    inputLength: number;
+    outputLength: number;
+    conversionTime: number;
+  };
 }
 
-const exampleData = [
-  {
-    titleKey: "encodingConverter.examples.chinese",
-    data: "你好世界！Hello World!",
-  },
-  { titleKey: "encodingConverter.examples.japanese", data: "こんにちは世界" },
-  { titleKey: "encodingConverter.examples.mixed", data: "Héllo Wörld 你好 🌍" },
-];
+/**
+ * Encoding conversion statistics
+ */
+interface ConversionStats {
+  totalConversions: number;
+  encodeCount: number;
+  decodeCount: number;
+  lastUsed: Date | null;
+  errorCount: number;
+  averageConversionTime: number;
+}
 
-function textToHex(text: string): string {
-  return Array.from(text)
-    .map((char) => {
+/**
+ * Input validation utilities
+ */
+
+/**
+ * Validates hexadecimal input format
+ * @param input - The hexadecimal string to validate
+ * @returns true if valid, false otherwise
+ */
+function isValidHex(input: string): boolean {
+  if (!input || typeof input !== "string") return false;
+
+  // Remove all whitespace and check if remaining string contains only hex digits
+  const cleanInput = input.replace(/\s+/g, "");
+  if (cleanInput.length === 0) return false;
+
+  // Check if all characters are valid hex digits
+  return /^[0-9A-Fa-f]*$/.test(cleanInput) && cleanInput.length % 2 === 0;
+}
+
+/**
+ * Validates binary input format
+ * @param input - The binary string to validate
+ * @returns true if valid, false otherwise
+ */
+function isValidBinary(input: string): boolean {
+  if (!input || typeof input !== "string") return false;
+
+  // Remove all whitespace and check if remaining string contains only 0s and 1s
+  const cleanInput = input.replace(/\s+/g, "");
+  if (cleanInput.length === 0) return false;
+
+  // Check if all characters are valid binary digits
+  return /^[01]*$/.test(cleanInput) && cleanInput.length % 8 === 0;
+}
+
+/**
+ * Validates Unicode escape sequence format
+ * @param input - The escape sequence string to validate
+ * @returns true if valid, false otherwise
+ */
+function isValidUnicodeEscape(input: string): boolean {
+  if (!input || typeof input !== "string") return false;
+
+  // Pattern matches \uXXXX or \u{XXXXX} formats
+  const unicodePattern = /(\\u\{[0-9A-Fa-f]+\\}|\\u[0-9A-Fa-f]{4})/g;
+  return unicodePattern.test(input) || input.length === 0;
+}
+
+/**
+ * Validates input length to prevent memory issues
+ * @param input - The input string to check
+ * @param maxLength - Maximum allowed length (default: 1MB)
+ * @returns true if within limits, false otherwise
+ */
+function isValidLength(
+  input: string,
+  maxLength: number = 1024 * 1024,
+): boolean {
+  return input.length <= maxLength;
+}
+
+/**
+ * Comprehensive input validation for encoding conversion
+ * @param input - The input string to validate
+ * @param encoding - The source encoding type
+ * @returns Validation result with error message if invalid
+ */
+function validateInput(
+  input: string,
+  encoding: EncodingType,
+): { isValid: boolean; error?: string } {
+  // Check if input is empty
+  if (!input || input.trim().length === 0) {
+    return { isValid: false, error: "Input cannot be empty" };
+  }
+
+  // Check input length
+  if (!isValidLength(input)) {
+    return { isValid: false, error: "Input too large. Maximum size is 1MB." };
+  }
+
+  // Check encoding-specific format
+  switch (encoding) {
+    case "hex":
+      if (!isValidHex(input)) {
+        return {
+          isValid: false,
+          error:
+            "Invalid hexadecimal format. Must contain only hex digits (0-9, A-F) and have even length.",
+        };
+      }
+      break;
+
+    case "binary":
+      if (!isValidBinary(input)) {
+        return {
+          isValid: false,
+          error:
+            "Invalid binary format. Must contain only 0s and 1s with length multiple of 8.",
+        };
+      }
+      break;
+
+    case "unicode-escape":
+      if (!isValidUnicodeEscape(input)) {
+        return {
+          isValid: false,
+          error:
+            "Invalid Unicode escape format. Use \\uXXXX or \\u{XXXXX} notation.",
+        };
+      }
+      break;
+  }
+
+  return { isValid: true };
+}
+
+/**
+ * Enhanced encoding conversion functions with proper error handling
+ */
+
+/**
+ * Converts text to hexadecimal representation
+ * @param text - Input text to convert
+ * @returns Conversion result with hex string or error
+ */
+function textToHex(text: string): ConversionResult {
+  const startTime = performance.now();
+
+  try {
+    if (typeof text !== "string") {
+      return { success: false, error: "Input must be a string" };
+    }
+
+    const hexArray = Array.from(text).map((char) => {
       const code = char.charCodeAt(0);
+
+      // Handle Unicode surrogate pairs for emoji and special characters
       if (code > 0xffff) {
-        // Handle surrogate pairs for emoji
+        // Calculate high and low surrogate values
         const hi = Math.floor((code - 0x10000) / 0x400) + 0xd800;
         const lo = ((code - 0x10000) % 0x400) + 0xdc00;
         return `${hi.toString(16).padStart(4, "0")} ${lo.toString(16).padStart(4, "0")}`;
       }
+
+      // Regular character: use 2 digits for ASCII, 4 for extended
       return code.toString(16).padStart(code > 255 ? 4 : 2, "0");
-    })
-    .join(" ");
-}
+    });
 
-function hexToText(hex: string): string {
-  const codes = hex
-    .trim()
-    .split(/\s+/)
-    .map((h) => parseInt(h, 16));
-  let result = "";
-  for (let i = 0; i < codes.length; i++) {
-    if (codes[i] >= 0xd800 && codes[i] <= 0xdbff && i + 1 < codes.length) {
-      // Surrogate pair
-      const hi = codes[i];
-      const lo = codes[i + 1];
-      if (lo >= 0xdc00 && lo <= 0xdfff) {
-        result += String.fromCodePoint(
-          (hi - 0xd800) * 0x400 + (lo - 0xdc00) + 0x10000,
-        );
-        i++;
-        continue;
-      }
-    }
-    result += String.fromCharCode(codes[i]);
+    const result = hexArray.join(" ");
+    const conversionTime = performance.now() - startTime;
+
+    return {
+      success: true,
+      data: result,
+      metadata: {
+        inputLength: text.length,
+        outputLength: result.length,
+        conversionTime,
+      },
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: `Hex conversion failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+    };
   }
-  return result;
 }
 
-function textToBinary(text: string): string {
-  return Array.from(new TextEncoder().encode(text))
-    .map((byte) => byte.toString(2).padStart(8, "0"))
-    .join(" ");
+/**
+ * Converts hexadecimal string back to text
+ * @param hex - Input hexadecimal string to convert
+ * @returns Conversion result with text or error
+ */
+function hexToText(hex: string): ConversionResult {
+  const startTime = performance.now();
+
+  try {
+    if (typeof hex !== "string") {
+      return { success: false, error: "Input must be a string" };
+    }
+
+    // Validate hex format first
+    const validation = validateInput(hex, "hex");
+    if (!validation.isValid) {
+      return { success: false, error: validation.error };
+    }
+
+    const codes = hex
+      .trim()
+      .split(/\s+/)
+      .map((h) => {
+        const parsed = parseInt(h, 16);
+        if (Number.isNaN(parsed)) {
+          throw new Error(`Invalid hex value: ${h}`);
+        }
+        return parsed;
+      });
+
+    let result = "";
+    for (let i = 0; i < codes.length; i++) {
+      // Handle Unicode surrogate pairs
+      if (codes[i] >= 0xd800 && codes[i] <= 0xdbff && i + 1 < codes.length) {
+        const hi = codes[i];
+        const lo = codes[i + 1];
+
+        if (lo >= 0xdc00 && lo <= 0xdfff) {
+          // Valid surrogate pair found
+          result += String.fromCodePoint(
+            (hi - 0xd800) * 0x400 + (lo - 0xdc00) + 0x10000,
+          );
+          i++; // Skip the low surrogate as it's been processed
+          continue;
+        }
+      }
+
+      // Regular character
+      result += String.fromCharCode(codes[i]);
+    }
+
+    const conversionTime = performance.now() - startTime;
+
+    return {
+      success: true,
+      data: result,
+      metadata: {
+        inputLength: hex.length,
+        outputLength: result.length,
+        conversionTime,
+      },
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: `Hex to text conversion failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+    };
+  }
 }
 
-function binaryToText(binary: string): string {
-  const bytes = binary
-    .trim()
-    .split(/\s+/)
-    .map((b) => parseInt(b, 2));
-  return new TextDecoder().decode(new Uint8Array(bytes));
+/**
+ * Converts text to binary representation
+ * @param text - Input text to convert
+ * @returns Conversion result with binary string or error
+ */
+function textToBinary(text: string): ConversionResult {
+  const startTime = performance.now();
+
+  try {
+    if (typeof text !== "string") {
+      return { success: false, error: "Input must be a string" };
+    }
+
+    const encoder = new TextEncoder();
+    const bytes = encoder.encode(text);
+
+    const binaryArray = Array.from(bytes).map((byte) =>
+      byte.toString(2).padStart(8, "0"),
+    );
+
+    const result = binaryArray.join(" ");
+    const conversionTime = performance.now() - startTime;
+
+    return {
+      success: true,
+      data: result,
+      metadata: {
+        inputLength: text.length,
+        outputLength: result.length,
+        conversionTime,
+      },
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: `Binary conversion failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+    };
+  }
 }
 
-function textToUnicodeEscape(text: string): string {
-  return Array.from(text)
-    .map((char) => {
+/**
+ * Converts binary string back to text
+ * @param binary - Input binary string to convert
+ * @returns Conversion result with text or error
+ */
+function binaryToText(binary: string): ConversionResult {
+  const startTime = performance.now();
+
+  try {
+    if (typeof binary !== "string") {
+      return { success: false, error: "Input must be a string" };
+    }
+
+    // Validate binary format first
+    const validation = validateInput(binary, "binary");
+    if (!validation.isValid) {
+      return { success: false, error: validation.error };
+    }
+
+    const bytes = binary
+      .trim()
+      .split(/\s+/)
+      .map((b) => {
+        const parsed = parseInt(b, 2);
+        if (Number.isNaN(parsed) || parsed < 0 || parsed > 255) {
+          throw new Error(`Invalid binary byte: ${b}`);
+        }
+        return parsed;
+      });
+
+    const decoder = new TextDecoder();
+    const result = decoder.decode(new Uint8Array(bytes));
+    const conversionTime = performance.now() - startTime;
+
+    return {
+      success: true,
+      data: result,
+      metadata: {
+        inputLength: binary.length,
+        outputLength: result.length,
+        conversionTime,
+      },
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: `Binary to text conversion failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+    };
+  }
+}
+
+/**
+ * Converts text to Unicode escape sequences
+ * @param text - Input text to convert
+ * @returns Conversion result with escaped string or error
+ */
+function textToUnicodeEscape(text: string): ConversionResult {
+  const startTime = performance.now();
+
+  try {
+    if (typeof text !== "string") {
+      return { success: false, error: "Input must be a string" };
+    }
+
+    const escapeArray = Array.from(text).map((char) => {
       const code = char.codePointAt(0);
       if (code === undefined) return "";
+
+      // Handle characters outside Basic Multilingual Plane
       if (code > 0xffff) {
         return `\\u{${code.toString(16).toUpperCase()}}`;
       }
+
+      // Use escape sequences only for non-ASCII characters
       if (code > 127) {
         return `\\u${code.toString(16).toUpperCase().padStart(4, "0")}`;
       }
+
       return char;
-    })
-    .join("");
+    });
+
+    const result = escapeArray.join("");
+    const conversionTime = performance.now() - startTime;
+
+    return {
+      success: true,
+      data: result,
+      metadata: {
+        inputLength: text.length,
+        outputLength: result.length,
+        conversionTime,
+      },
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: `Unicode escape conversion failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+    };
+  }
 }
 
-function unicodeEscapeToText(escaped: string): string {
-  return escaped.replace(
-    /\\u\{([0-9A-Fa-f]+)\}|\\u([0-9A-Fa-f]{4})/g,
-    (_, p1, p2) => {
-      return String.fromCodePoint(parseInt(p1 || p2, 16));
-    },
-  );
+/**
+ * Converts Unicode escape sequences back to text
+ * @param escaped - Input escape sequence string to convert
+ * @returns Conversion result with text or error
+ */
+function unicodeEscapeToText(escaped: string): ConversionResult {
+  const startTime = performance.now();
+
+  try {
+    if (typeof escaped !== "string") {
+      return { success: false, error: "Input must be a string" };
+    }
+
+    // Validate escape format first
+    const validation = validateInput(escaped, "unicode-escape");
+    if (!validation.isValid) {
+      return { success: false, error: validation.error };
+    }
+
+    const result = escaped.replace(
+      /\\u\{([0-9A-Fa-f]+)\}|\\u([0-9A-Fa-f]{4})/g,
+      (_, p1, p2) => {
+        const hexValue = p1 || p2;
+        const codePoint = parseInt(hexValue, 16);
+
+        if (Number.isNaN(codePoint)) {
+          throw new Error(`Invalid Unicode escape sequence: \\u${hexValue}`);
+        }
+
+        return String.fromCodePoint(codePoint);
+      },
+    );
+
+    const conversionTime = performance.now() - startTime;
+
+    return {
+      success: true,
+      data: result,
+      metadata: {
+        inputLength: escaped.length,
+        outputLength: result.length,
+        conversionTime,
+      },
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: `Unicode escape to text conversion failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+    };
+  }
 }
 
+/**
+ * Main encoding conversion component
+ */
+interface EncodingConverterToolProps {
+  lang: LanguageType;
+}
+/**
+ * Main encoding conversion component
+ */
 export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
   const { t } = useTranslation(lang);
 
+  // Enhanced encoding definitions with metadata
   const encodings = [
-    { value: "utf-8", label: t("encodingConverter.encodings.utf8") },
-    { value: "utf-16", label: t("encodingConverter.encodings.utf16") },
-    { value: "ascii", label: t("encodingConverter.encodings.ascii") },
-    { value: "iso-8859-1", label: t("encodingConverter.encodings.iso88591") },
-    { value: "hex", label: t("encodingConverter.encodings.hex") },
-    { value: "binary", label: t("encodingConverter.encodings.binary") },
+    {
+      value: "utf-8",
+      label: t("encodingConverter.encodings.utf8"),
+      description: "Unicode text encoding, web standard",
+    },
+    {
+      value: "utf-16",
+      label: t("encodingConverter.encodings.utf16"),
+      description: "Unicode text encoding, 2-4 bytes per character",
+    },
+    {
+      value: "ascii",
+      label: t("encodingConverter.encodings.ascii"),
+      description: "7-bit ASCII encoding",
+    },
+    {
+      value: "iso-8859-1",
+      label: t("encodingConverter.encodings.iso88591"),
+      description: "Latin-1 encoding for Western European languages",
+    },
+    {
+      value: "hex",
+      label: t("encodingConverter.encodings.hex"),
+      description: "Hexadecimal representation of bytes",
+    },
+    {
+      value: "binary",
+      label: t("encodingConverter.encodings.binary"),
+      description: "Binary representation of bytes",
+    },
     {
       value: "unicode-escape",
       label: t("encodingConverter.encodings.unicodeEscape"),
+      description: "Unicode escape sequences (\\uXXXX format)",
     },
   ];
+
+  // Example data for testing conversions
+  const exampleData = [
+    {
+      titleKey: "encodingConverter.examples.chinese",
+      data: "你好世界！Hello World!",
+      description: "Mixed Chinese and English text",
+    },
+    {
+      titleKey: "encodingConverter.examples.japanese",
+      data: "こんにちは世界",
+      description: "Japanese Hiragana text",
+    },
+    {
+      titleKey: "encodingConverter.examples.mixed",
+      data: "Héllo Wörld 你好 🌍",
+      description: "Multilingual text with emoji",
+    },
+  ];
+
+  // Animation variants for consistent UI
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3 },
+    },
+  };
+
+  // State management
   const { spawnItem } = useCat();
   const [lastSpawnTime, setLastSpawnTime] = useState(0);
   const COOLDOWN_DURATION = 3000;
@@ -165,23 +616,30 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
 
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const [sourceEncoding, setSourceEncoding] = useState("utf-8");
-  const [targetEncoding, setTargetEncoding] = useState("hex");
+  const [sourceEncoding, setSourceEncoding] = useState<EncodingType>("utf-8");
+  const [targetEncoding, setTargetEncoding] = useState<EncodingType>("hex");
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
-  const [showFaq, setShowFaq] = useState(true); // 默认展开FAQ
+  const [showFaq, setShowFaq] = useState(true);
   const [activeTab, setActiveTab] = useState("convert");
   const [viewMode, setViewMode] = useState<"text" | "hex">("text");
   const [needsUpdate, setNeedsUpdate] = useState(false);
-  const [conversionStats, setConversionStats] = useState({
+
+  // Enhanced statistics with error tracking
+  const [conversionStats, setConversionStats] = useState<ConversionStats>({
     totalConversions: 0,
     encodeCount: 0,
     decodeCount: 0,
-    lastUsed: null as Date | null,
+    lastUsed: null,
+    errorCount: 0,
+    averageConversionTime: 0,
   });
 
   const toolSectionRef = useRef<HTMLDivElement>(null);
 
+  /**
+   * Core conversion function with enhanced error handling and validation
+   */
   const convert = useCallback(() => {
     if (!input.trim()) {
       setOutput("");
@@ -189,77 +647,227 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
       return;
     }
 
+    const startTime = performance.now();
+    setError(null);
+
     try {
-      setError(null);
-      let text = input;
+      // Validate input before conversion
+      const validation = validateInput(input, sourceEncoding);
+      if (!validation.isValid) {
+        setError(validation.error || "Invalid input format");
+        setOutput("");
 
-      // First decode from source encoding to text
-      if (sourceEncoding === "hex") {
-        text = hexToText(input);
-      } else if (sourceEncoding === "binary") {
-        text = binaryToText(input);
-      } else if (sourceEncoding === "unicode-escape") {
-        text = unicodeEscapeToText(input);
+        // Update error statistics
+        setConversionStats((prev) => ({
+          ...prev,
+          errorCount: prev.errorCount + 1,
+          lastUsed: new Date(),
+        }));
+
+        return;
       }
 
-      // Then encode to target encoding
-      let result = "";
-      if (targetEncoding === "hex") {
-        result = textToHex(text);
-      } else if (targetEncoding === "binary") {
-        result = textToBinary(text);
-      } else if (targetEncoding === "unicode-escape") {
-        result = textToUnicodeEscape(text);
-      } else if (targetEncoding === "utf-8") {
-        result = text;
-      } else if (targetEncoding === "utf-16") {
-        result = Array.from(text)
-          .map(
+      let text: string;
+
+      // Phase 1: Decode from source encoding to text
+      let decodeResult: ConversionResult;
+
+      switch (sourceEncoding) {
+        case "hex":
+          decodeResult = hexToText(input);
+          break;
+        case "binary":
+          decodeResult = binaryToText(input);
+          break;
+        case "unicode-escape":
+          decodeResult = unicodeEscapeToText(input);
+          break;
+        case "utf-8":
+        case "utf-16":
+        case "ascii":
+        case "iso-8859-1":
+          // These are text encodings, no decoding needed
+          text = input;
+          decodeResult = { success: true, data: input };
+          break;
+        default:
+          throw new Error(`Unsupported source encoding: ${sourceEncoding}`);
+      }
+
+      if (!decodeResult.success) {
+        setError(decodeResult.error || "Decoding failed");
+        setOutput("");
+
+        setConversionStats((prev) => ({
+          ...prev,
+          errorCount: prev.errorCount + 1,
+          lastUsed: new Date(),
+        }));
+
+        return;
+      }
+
+      text = decodeResult.data || "";
+
+      // Phase 2: Encode text to target encoding
+      let encodeResult: ConversionResult;
+
+      switch (targetEncoding) {
+        case "hex":
+          encodeResult = textToHex(text);
+          break;
+        case "binary":
+          encodeResult = textToBinary(text);
+          break;
+        case "unicode-escape":
+          encodeResult = textToUnicodeEscape(text);
+          break;
+        case "utf-8":
+          encodeResult = { success: true, data: text };
+          break;
+        case "utf-16": {
+          // Custom UTF-16 implementation
+          const utf16Array = Array.from(text).map(
             (char) => `\\u${char.charCodeAt(0).toString(16).padStart(4, "0")}`,
-          )
-          .join("");
-      } else if (targetEncoding === "ascii") {
-        // biome-ignore lint/suspicious/noControlCharactersInRegex: intentional ASCII range check
-        result = text.replace(/[^\x00-\x7F]/g, "?");
-      } else if (targetEncoding === "iso-8859-1") {
-        // biome-ignore lint/suspicious/noControlCharactersInRegex: intentional Latin-1 range check
-        result = text.replace(/[^\x00-\xFF]/g, "?");
-      } else {
-        result = text;
+          );
+          encodeResult = {
+            success: true,
+            data: utf16Array.join(""),
+            metadata: {
+              inputLength: text.length,
+              outputLength: utf16Array.join("").length,
+              conversionTime: performance.now() - startTime,
+            },
+          };
+          break;
+        }
+        case "ascii": {
+          // Convert non-ASCII characters to ?
+          const asciiText = Array.from(text)
+            .map((char) => {
+              return char.charCodeAt(0) <= 127 ? char : "?";
+            })
+            .join("");
+          encodeResult = {
+            success: true,
+            data: asciiText,
+            metadata: {
+              inputLength: text.length,
+              outputLength: asciiText.length,
+              conversionTime: performance.now() - startTime,
+            },
+          };
+          break;
+        }
+        case "iso-8859-1": {
+          // Convert characters outside Latin-1 range to ?
+          const latin1Text = Array.from(text)
+            .map((char) => {
+              return char.charCodeAt(0) <= 255 ? char : "?";
+            })
+            .join("");
+          encodeResult = {
+            success: true,
+            data: latin1Text,
+            metadata: {
+              inputLength: text.length,
+              outputLength: latin1Text.length,
+              conversionTime: performance.now() - startTime,
+            },
+          };
+          break;
+        }
+        default:
+          throw new Error(`Unsupported target encoding: ${targetEncoding}`);
       }
 
-      setOutput(result);
+      if (!encodeResult.success) {
+        setError(encodeResult.error || "Encoding failed");
+        setOutput("");
 
+        setConversionStats((prev) => ({
+          ...prev,
+          errorCount: prev.errorCount + 1,
+          lastUsed: new Date(),
+        }));
+
+        return;
+      }
+
+      // Success: Update output and statistics
+      setOutput(encodeResult.data || "");
+
+      const totalConversionTime = performance.now() - startTime;
+      const isDecode = sourceEncoding !== "utf-8";
+      const isEncode = targetEncoding !== "utf-8";
+
+      // Update comprehensive statistics
+      setConversionStats((prev) => {
+        const newStats = {
+          totalConversions: prev.totalConversions + 1,
+          encodeCount: isEncode ? prev.encodeCount + 1 : prev.encodeCount,
+          decodeCount: isDecode ? prev.decodeCount + 1 : prev.decodeCount,
+          errorCount: prev.errorCount,
+          lastUsed: new Date(),
+          averageConversionTime:
+            prev.averageConversionTime === 0
+              ? totalConversionTime
+              : (prev.averageConversionTime + totalConversionTime) / 2,
+        };
+        return newStats;
+      });
+
+      // Trigger cat animation for successful conversion
       if (shouldSpawnItem()) {
         spawnItem("yarn");
       }
 
-      // Update statistics
-      setConversionStats((prev) => ({
-        totalConversions: prev.totalConversions + 1,
-        encodeCount: prev.encodeCount + 1,
-        decodeCount: prev.decodeCount,
-        lastUsed: new Date(),
-      }));
-
       // Clear the needs update flag after successful conversion
       setNeedsUpdate(false);
-    } catch {
-      setError(t("encodingConverter.error.converting"));
+    } catch (error) {
+      // Catch any unexpected errors
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown conversion error";
+      setError(errorMessage);
       setOutput("");
-    }
-  }, [input, sourceEncoding, targetEncoding, t, spawnItem, shouldSpawnItem]);
 
+      setConversionStats((prev) => ({
+        ...prev,
+        errorCount: prev.errorCount + 1,
+        lastUsed: new Date(),
+      }));
+    }
+  }, [input, sourceEncoding, targetEncoding, spawnItem, shouldSpawnItem]);
+
+  /**
+   * Enhanced clipboard copy with error handling
+   */
   const copyToClipboard = useCallback(async () => {
-    if (output) {
+    if (!output) return;
+
+    try {
       await navigator.clipboard.writeText(output);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      // Fallback for browsers that don't support clipboard API
+      console.warn("Clipboard API not available:", error);
+      setError("Failed to copy to clipboard. Please select and copy manually.");
     }
   }, [output]);
 
+  /**
+   * Load example data with validation
+   */
   const loadExample = useCallback(
     (data: string) => {
+      // Validate example data
+      const validation = validateInput(data, sourceEncoding);
+      if (!validation.isValid) {
+        setError(`Example data validation failed: ${validation.error}`);
+        return;
+      }
+
       setInput(data);
       setError(null);
       setActiveTab("convert");
@@ -276,14 +884,18 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
         });
       }, 100);
     },
-    [output, input],
+    [output, input, sourceEncoding],
   );
 
+  /**
+   * Swap source and target encodings with data
+   */
   const swapEncodings = useCallback(() => {
     setSourceEncoding(targetEncoding);
     setTargetEncoding(sourceEncoding);
     setInput(output);
     setOutput("");
+    setError(null);
   }, [sourceEncoding, targetEncoding, output]);
 
   return (
@@ -383,7 +995,9 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
                     </span>
                     <Select
                       value={sourceEncoding}
-                      onValueChange={setSourceEncoding}
+                      onValueChange={(value: string) =>
+                        setSourceEncoding(value as EncodingType)
+                      }
                     >
                       <SelectTrigger className="rounded-xl">
                         <SelectValue />
@@ -419,7 +1033,9 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
                     </span>
                     <Select
                       value={targetEncoding}
-                      onValueChange={setTargetEncoding}
+                      onValueChange={(value) =>
+                        setTargetEncoding(value as EncodingType)
+                      }
                     >
                       <SelectTrigger className="rounded-xl">
                         <SelectValue />
@@ -569,7 +1185,9 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
                           )}
                           <CodeHighlighter
                             code={
-                              viewMode === "hex" ? textToHex(output) : output
+                              viewMode === "hex"
+                                ? textToHex(output).data || ""
+                                : output
                             }
                             language="javascript"
                             className={`min-h-[300px] max-h-[400px] ${needsUpdate ? "opacity-90" : ""}`}
@@ -630,7 +1248,7 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
                     </motion.div>
                   </div>
 
-                  {/* Usage Analysis Tags - 右侧 */}
+                  {/* Enhanced Usage Analysis Tags */}
                   <motion.div
                     className="flex flex-wrap gap-2"
                     initial={{ opacity: 0, y: -10 }}
@@ -640,6 +1258,7 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
                     <motion.div
                       className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
                       whileHover={{ scale: 1.05 }}
+                      title={`Total conversions: ${conversionStats.totalConversions}`}
                     >
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
                       {conversionStats.totalConversions} Converted
@@ -647,17 +1266,39 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
                     <motion.div
                       className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-green-500/10 text-green-600 text-xs font-medium"
                       whileHover={{ scale: 1.05 }}
+                      title={`Encoding operations: ${conversionStats.encodeCount}`}
                     >
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      {conversionStats.encodeCount} UTF-8
+                      {conversionStats.encodeCount} Encoded
                     </motion.div>
                     <motion.div
                       className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-500/10 text-blue-600 text-xs font-medium"
                       whileHover={{ scale: 1.05 }}
+                      title={`Decoding operations: ${conversionStats.decodeCount}`}
                     >
                       <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      {conversionStats.decodeCount} Hex
+                      {conversionStats.decodeCount} Decoded
                     </motion.div>
+                    {conversionStats.errorCount > 0 && (
+                      <motion.div
+                        className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-red-500/10 text-red-600 text-xs font-medium"
+                        whileHover={{ scale: 1.05 }}
+                        title={`Failed conversions: ${conversionStats.errorCount}`}
+                      >
+                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                        {conversionStats.errorCount} Errors
+                      </motion.div>
+                    )}
+                    {conversionStats.averageConversionTime > 0 && (
+                      <motion.div
+                        className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-500/10 text-purple-600 text-xs font-medium"
+                        whileHover={{ scale: 1.05 }}
+                        title={`Average conversion time: ${conversionStats.averageConversionTime.toFixed(2)}ms`}
+                      >
+                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        {conversionStats.averageConversionTime.toFixed(1)}ms avg
+                      </motion.div>
+                    )}
                     {conversionStats.lastUsed && (
                       <motion.div
                         className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/10 text-amber-600 text-xs font-medium"

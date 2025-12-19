@@ -22,6 +22,15 @@ export const encodingConverter = {
   "encodingConverter.error.converting": "转换编码时出错",
   "encodingConverter.error.invalidInput": "所选编码的输入无效",
 
+  // Encoding names for dropdowns
+  "encodingConverter.encodings.utf8": "UTF-8",
+  "encodingConverter.encodings.utf16": "UTF-16",
+  "encodingConverter.encodings.ascii": "ASCII",
+  "encodingConverter.encodings.iso88591": "ISO-8859-1",
+  "encodingConverter.encodings.hex": "十六进制",
+  "encodingConverter.encodings.binary": "二进制",
+  "encodingConverter.encodings.unicodeEscape": "Unicode 转义",
+
   "encodingConverter.seo.title": "什么是字符编码？它是如何工作的？",
   "encodingConverter.seo.description":
     '<strong className="text-foreground">字符编码</strong>是一种将字符映射到字节以进行存储和传输的系统。我们的实现使用 JavaScript 内置的 TextEncoder/TextDecoder API，并为十六进制、二进制和 Unicode 转义格式提供自定义处理程序。UTF-8、GBK 和 ISO-8859-1 等不同编码以不同方式表示字符，当数据使用错误的编码解码时会导致「乱码」（garbled text）。',

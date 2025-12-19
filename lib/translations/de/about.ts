@@ -1,38 +1,44 @@
 export const about = {
-  "about.title": "About Us - Free Online Developer Tools",
+  // Meta-Tags
+  "about.title": "Über uns - Kostenlose Online-Entwicklertools",
   "about.description":
-    "Learn about our mission to provide free, fast, and reliable online developer tools for developers worldwide.",
+    "Erfahren Sie mehr über unsere Mission, kostenlose, schnelle und zuverlässige Online-Entwicklertools für Entwickler weltweit bereitzustellen.",
   "about.keywords":
-    "about us, developer tools, online tools, free tools, developer utilities",
-  "about.heading": "About Us",
-  "about.subheading": "Empowering developers with free, reliable tools",
+    "über uns, entwicklertools, online tools, kostenlose tools, entwickler utilities",
+  "about.heading": "Über uns",
+  "about.subheading": "Entwickler mit kostenlosen, zuverlässigen Tools stärken",
   "about.intro":
-    "We are a team of passionate developers who believe that quality tools should be accessible to everyone. Our mission is to provide fast, reliable, and completely free online developer tools that help developers work more efficiently.",
-  "about.mission.title": "Our Mission",
+    "Wir sind ein Team leidenschaftlicher Entwickler, die glauben, dass qualitativ hochwertige Tools für jeden zugänglich sein sollten. Unsere Mission ist es, schnelle, zuverlässige und completely kostenlose Online-Entwicklertools bereitzustellen, die Entwicklern helfen, effizienter zu arbeiten.",
+
+  "about.mission.title": "Unsere Mission",
   "about.mission.content":
-    "To democratize access to developer tools by providing high-quality, free online utilities that every developer can use without barriers.",
-  "about.vision.title": "Our Vision",
+    "Den Zugang zu Entwicklertools zu demokratisieren, indem wir hochwertige, kostenlose Online-Utilities bereitstellen, die jeder Entwickler ohne Barrieren nutzen kann.",
+
+  "about.vision.title": "Unsere Vision",
   "about.vision.content":
-    "A world where every developer has access to the tools they need to build amazing things, regardless of their budget or location.",
-  "about.values.title": "Our Values",
-  "about.values.subtitle": "What drives us every day",
-  "about.values.freedom.title": "Freedom",
+    "Eine Welt, in der jeder Entwickler Zugang zu den Tools hat, die er benötigt, um erstaunliche Dinge zu bauen, unabhängig von seinem Budget oder Standort.",
+
+  "about.values.title": "Unsere Werte",
+  "about.values.subtitle": "Was uns jeden Tag antreibt",
+  "about.values.freedom.title": "Freiheit",
   "about.values.freedom.content":
-    "All our tools are completely free with no hidden costs or limitations.",
-  "about.values.quality.title": "Quality",
+    "Alle unsere Tools sind completely kostenlos ohne versteckte Kosten oder Einschränkungen.",
+  "about.values.quality.title": "Qualität",
   "about.values.quality.content":
-    "We prioritize accuracy, performance, and user experience in everything we build.",
-  "about.values.privacy.title": "Privacy",
+    "Wir priorisieren Genauigkeit, Performance und Benutzerfreundlichkeit in allem, was wir bauen.",
+  "about.values.privacy.title": "Privatsphäre",
   "about.values.privacy.content":
-    "Your data stays on your device. We don't store or track any personal information.",
-  "about.values.openness.title": "Openness",
+    "Ihre Daten bleiben auf Ihrem Gerät. Wir speichern oder verfolgen keine persönlichen Informationen.",
+  "about.values.openness.title": "Offenheit",
   "about.values.openness.content":
-    "We're transparent about how our tools work and what data we collect (which is none).",
-  "about.team.title": "Our Story",
+    "Wir sind transparent darüber, wie unsere Tools funktionieren und welche Daten wir sammeln (nämlich keine).",
+
+  "about.team.title": "Unsere Geschichte",
   "about.team.content":
-    "Started by developers, for developers. We experienced firsthand the frustration of needing quick tools but having to install software or deal with complicated interfaces.",
-  "about.cta.title": "Get Involved",
+    "Von Entwicklern gestartet, für Entwickler. Wir haben aus erster Hand die Frustration erlebt, schnelle Tools zu benötigen, aber Software installieren oder mit komplizierten Schnittstellen umgehen zu müssen.",
+
+  "about.cta.title": "Beteiligen Sie sich",
   "about.cta.content":
-    "Have suggestions for new tools or improvements? We'd love to hear from you!",
-  "about.cta.button": "Contact Us",
+    "Haben Sie Vorschläge für neue Tools oder Verbesserungen? Wir würden gerne von Ihnen hören!",
+  "about.cta.button": "Kontaktieren Sie uns",
 };

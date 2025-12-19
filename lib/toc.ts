@@ -23,6 +23,7 @@ export function generateId(title: string): string {
  */
 export function extractTOCItems(htmlContent: string): TOCItem[] {
   const tocItems: TOCItem[] = [];
+  const idCounts = new Map<string, number>();
 
   // Match h1, h2, h3, h4, h5, h6 tags
   const headingRegex = /<h([1-6])(?:[^>]*)>([^<]+)<\/h[1-6]>/gi;
@@ -36,7 +37,14 @@ export function extractTOCItems(htmlContent: string): TOCItem[] {
 
     const level = parseInt(match[1], 10);
     const title = match[2].trim();
-    const id = generateId(title);
+    let id = generateId(title);
+
+    // Handle duplicate IDs by adding suffixes
+    const count = idCounts.get(id) || 0;
+    if (count > 0) {
+      id = `${id}-${count + 1}`;
+    }
+    idCounts.set(id, count + 1);
 
     tocItems.push({
       id,
@@ -54,6 +62,7 @@ export function extractTOCItems(htmlContent: string): TOCItem[] {
 export function extractTOCFromText(textContent: string): TOCItem[] {
   const tocItems: TOCItem[] = [];
   const lines = textContent.split("\n");
+  const idCounts = new Map<string, number>();
 
   for (const line of lines) {
     // Match markdown-style headings: #, ##, ###, ####, etc.
@@ -61,7 +70,14 @@ export function extractTOCFromText(textContent: string): TOCItem[] {
     if (headingMatch) {
       const level = headingMatch[1].length;
       const title = headingMatch[2].trim();
-      const id = generateId(title);
+      let id = generateId(title);
+
+      // Handle duplicate IDs by adding suffixes
+      const count = idCounts.get(id) || 0;
+      if (count > 0) {
+        id = `${id}-${count + 1}`;
+      }
+      idCounts.set(id, count + 1);
 
       tocItems.push({
         id,

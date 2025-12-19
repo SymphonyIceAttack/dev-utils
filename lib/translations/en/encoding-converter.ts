@@ -23,6 +23,15 @@ export const encodingConverter = {
   "encodingConverter.error.converting": "Error converting encoding",
   "encodingConverter.error.invalidInput": "Invalid input for selected encoding",
 
+  // Encoding names for dropdowns
+  "encodingConverter.encodings.utf8": "UTF-8",
+  "encodingConverter.encodings.utf16": "UTF-16",
+  "encodingConverter.encodings.ascii": "ASCII",
+  "encodingConverter.encodings.iso88591": "ISO-8859-1",
+  "encodingConverter.encodings.hex": "Hexadecimal",
+  "encodingConverter.encodings.binary": "Binary",
+  "encodingConverter.encodings.unicodeEscape": "Unicode Escape",
+
   // SEO Content
   "encodingConverter.seo.title":
     "What is Character Encoding? How Does it Work?",

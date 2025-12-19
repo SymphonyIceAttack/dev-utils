@@ -1,38 +1,46 @@
 export const about = {
-  "about.title": "About Us - Free Online Developer Tools",
+  // メタタグ
+  "about.title": "私たちについて - 無料のオンライン開発者ツール",
   "about.description":
-    "Learn about our mission to provide free, fast, and reliable online developer tools for developers worldwide.",
+    "世界の開発者向けに無料、高速、信頼性の高いオンライン開発者ツールを提供するミッションについて詳しくをご覧ください。",
   "about.keywords":
-    "about us, developer tools, online tools, free tools, developer utilities",
-  "about.heading": "About Us",
-  "about.subheading": "Empowering developers with free, reliable tools",
+    "私たちについて、開発者ツール、オンラインツール、無料ツール、開発者ユーティリティ",
+
+  // ページコンテンツ
+  "about.heading": "私たちについて",
+  "about.subheading": "無料、信頼性の高いツールで開発者を支援",
   "about.intro":
-    "We are a team of passionate developers who believe that quality tools should be accessible to everyone. Our mission is to provide fast, reliable, and completely free online developer tools that help developers work more efficiently.",
-  "about.mission.title": "Our Mission",
+    "私たちは、品質のツールがすべての人にアクセス可能であるべきだと 信じる熱意的な開発者のチームです、私たちは高速で信頼性が高く、完全 に 無料のオンライン開発者ツールを提供し、開発者がより効率的に作業でき るようにする使命があります。",
+
+  "about.mission.title": "私たちの使命",
   "about.mission.content":
-    "To democratize access to developer tools by providing high-quality, free online utilities that every developer can use without barriers.",
-  "about.vision.title": "Our Vision",
+    "すべての開発者が障壁なしに使用できる高品質で 無料のオンライン ユーティリティを提供することで、開発者ツールへのアクセスの民主化",
+
+  "about.vision.title": "私たちのビジョン",
   "about.vision.content":
-    "A world where every developer has access to the tools they need to build amazing things, regardless of their budget or location.",
-  "about.values.title": "Our Values",
-  "about.values.subtitle": "What drives us every day",
-  "about.values.freedom.title": "Freedom",
+    "すべての開発者が予算や場所に関係なく、素晴らしいものを構築す るのに必要なツールにアクセスできる世界",
+
+  "about.values.title": "私たちの価値観",
+  "about.values.subtitle": "毎日私たちを drives",
+  "about.values.freedom.title": "自由",
   "about.values.freedom.content":
-    "All our tools are completely free with no hidden costs or limitations.",
-  "about.values.quality.title": "Quality",
+    "すべてのツールは完全に無料で、隠されたコストや制限はありません。",
+  "about.values.quality.title": "品質",
   "about.values.quality.content":
-    "We prioritize accuracy, performance, and user experience in everything we build.",
-  "about.values.privacy.title": "Privacy",
+    "精度、パフォーマンス、ユーザーフレンドリー性をすべてに優先順位",
+  "about.values.privacy.title": "プライバシー",
   "about.values.privacy.content":
-    "Your data stays on your device. We don't store or track any personal information.",
-  "about.values.openness.title": "Openness",
+    "データはデバイス上に残ります。個人情報を 保存 или追跡しません。",
+  "about.values.openness.title": "オープン性",
   "about.values.openness.content":
-    "We're transparent about how our tools work and what data we collect (which is none).",
-  "about.team.title": "Our Story",
+    "ツールの動作方法と収集するデータについて透明です（実際にはありません）。",
+
+  "about.team.title": "私たちのストーリー",
   "about.team.content":
-    "Started by developers, for developers. We experienced firsthand the frustration of needing quick tools but having to install software or deal with complicated interfaces.",
-  "about.cta.title": "Get Involved",
+    "開発者によって開始され、開発者のために作られました。 быстрыйツールが必要ですが、ソフトウェアをインストール하거나複雑なインターフェース Dealする必要があります。",
+
+  "about.cta.title": "参加する",
   "about.cta.content":
-    "Have suggestions for new tools or improvements? We'd love to hear from you!",
-  "about.cta.button": "Contact Us",
+    "新しいツールや改善のための提案がありますか？ Hear from you!",
+  "about.cta.button": "お問い合わせ",
 };

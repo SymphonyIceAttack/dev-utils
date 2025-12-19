@@ -1,10 +1,10 @@
 export const terms = {
-  "terms.title": "Terms of Service - Free Online Developer Tools",
+  "terms.title": "Nutzungsbedingungen - Kostenlose Online-Entwicklertools",
   "terms.description":
-    "Terms of service for our free online developer tools. Simple, fair terms for using our developer utilities.",
+    "Nutzungsbedingungen für unsere kostenlosen Online-Entwicklertools. Einfache, faire Bedingungen für die Nutzung unserer Entwickler-Utilities.",
   "terms.keywords":
-    "terms of service, terms and conditions, developer tools terms, user agreement",
-  "terms.heading": "Terms of Service",
+    "nutzungsbedingungen, geschäftsbedingungen, entwicklertools bedingungen, nutzervereinbarung",
+  "terms.heading": "Nutzungsbedingungen",
   "terms.lastUpdated": "Last updated: December 15, 2025",
   "terms.intro":
     'These Terms of Service ("Terms") govern your use of our developer tools website and services. By using our tools, you agree to these terms.',

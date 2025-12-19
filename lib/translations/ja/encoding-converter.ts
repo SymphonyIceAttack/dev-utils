@@ -25,79 +25,83 @@ export const encodingConverter = {
   "encodingConverter.error.invalidInput":
     "選択したエンコーディングで無効な入力",
 
+  // Encoding names for dropdowns
+  "encodingConverter.encodings.utf8": "UTF-8",
+  "encodingConverter.encodings.utf16": "UTF-16",
+  "encodingConverter.encodings.ascii": "ASCII",
+  "encodingConverter.encodings.iso88591": "ISO-8859-1",
+  "encodingConverter.encodings.hex": "十六進数",
+  "encodingConverter.encodings.binary": "二進数",
+  "encodingConverter.encodings.unicodeEscape": "Unicodeエスケープ",
+
   // SEO Content
   "encodingConverter.seo.title":
-    "What is Character Encoding? How Does it Work?",
+    "文字エンコーディングとは何か？それはどのように動作しますか？",
   "encodingConverter.seo.description":
-    '<strong className="text-foreground">Character encoding</strong> is a system that maps characters to bytes for storage and transmission. Our implementation uses JavaScript\'s built-in TextEncoder/TextDecoder APIs with custom handlers for hex, binary, and Unicode escape formats. Different encodings like UTF-8, GBK, and ISO-8859-1 represent characters differently, which can cause "mojibake" (garbled text) when data is decoded with the wrong encoding.',
+    '<strong className="text-foreground">文字エンコーディング</strong>は、文字をバイトにマッピングして保存と送信を行うシステムです。私たちの実装は、JavaScriptの組み込みTextEncoder/TextDecoder APIを使用し、十六進数、バイナリ、Unicodeエスケープフォーマット用のカスタムハンドラーを備えています。UTF-8、GBK、ISO-8859-1などの異なるエンコーディングは、文字を異なる方法で表現するため、データを誤ったエンコーディングでデコードすると「文字化け」（ぐれたテキスト）が発生可能性があります。',
 
-  "encodingConverter.techTitle": "Technical Implementation",
-  "encodingConverter.tech.coreLogic": "Core Conversion Logic:",
+  "encodingConverter.techTitle": "技術実装",
+  "encodingConverter.tech.coreLogic": "コア変換ロジック：",
   "encodingConverter.tech.logic1":
-    "TextEncoder/TextDecoder for UTF-8/UTF-16 processing",
+    "UTF-8/UTF-16処理のためのTextEncoder/TextDecoder",
   "encodingConverter.tech.logic2":
-    "Custom hex/binary conversion with proper byte alignment",
+    "適切なバイトアライメントを使用したカスタム十六進数/バイナリ変換",
   "encodingConverter.tech.logic3":
-    "Unicode escape sequence parsing (\\uXXXX format)",
-  "encodingConverter.tech.logic4":
-    "Surrogate pair handling for emoji (0x10000-0x10FFFF)",
-  "encodingConverter.tech.logic5":
-    "Character-by-character processing with error recovery",
+    "Unicodeエケープシーケンス解析（\\uXXXXフォーマット）",
+  "encodingConverter.tech.logic4": "絵文字の代理ペア処理（0x10000-0x10FFFF）",
+  "encodingConverter.tech.logic5": "エラー回復機能付き文字単位処理",
 
-  "encodingConverter.tech.supported": "Supported Encodings:",
+  "encodingConverter.tech.supported": "サポートされるエンコーディング：",
   "encodingConverter.tech.utf8":
-    "UTF-8: 1-4 bytes per character, backward compatible with ASCII",
+    "UTF-8：文字あたり1-4バイト、ASCIIと後方互換性あり",
   "encodingConverter.tech.utf16":
-    "UTF-16: 2 or 4 bytes per character (BMP + surrogate pairs)",
+    "UTF-16：文字あたり2または4バイト（BMP + 代理ペア）",
   "encodingConverter.tech.ascii":
-    "ASCII: 7-bit encoding (0-127), subset of UTF-8",
+    "ASCII：7ビットエンコーディング（0-127）、UTF-8のサブセット",
   "encodingConverter.tech.iso":
-    "ISO-8859-1: 8-bit encoding for Western European languages",
-  "encodingConverter.tech.hex":
-    "Hex: Two-digit hexadecimal representation of each byte",
+    "ISO-8859-1：西ヨーロッパ言語の8ビットエンコーディング",
+  "encodingConverter.tech.hex": "十六進数：各バイトの2桁十六進数表現",
   "encodingConverter.tech.binary":
-    "Binary: 8-bit binary representation separated by spaces",
+    "バイナリ：スペースで区切られた8ビットバイナリ表現",
 
-  "encodingConverter.featuresTitle": "Key Features",
-  "encodingConverter.feature.multi.title": "Multi-Encoding",
-  "encodingConverter.feature.multi.desc":
-    "Support for UTF-8, GBK, Latin-1 and more",
-  "encodingConverter.feature.realtime.title": "Real-time Conversion",
-  "encodingConverter.feature.realtime.desc": "Instant preview as you type",
-  "encodingConverter.feature.format.title": "Format Support",
+  "encodingConverter.featuresTitle": "主要機能",
+  "encodingConverter.feature.multi.title": "マルチエンコーディング",
+  "encodingConverter.feature.multi.desc": "UTF-8、GBK、Latin-1などをサポート",
+  "encodingConverter.feature.realtime.title": "リアルタイム変換",
+  "encodingConverter.feature.realtime.desc": "入力中に即座にプレビュー",
+  "encodingConverter.feature.format.title": "フォーマットサポート",
   "encodingConverter.feature.format.desc":
-    "Text, Hex, Base64 and Unicode formats",
-  "encodingConverter.feature.privacy.title": "100% Private",
-  "encodingConverter.feature.privacy.desc":
-    "All processing happens in your browser",
+    "テキスト、十六進数、Base64、Unicodeフォーマット",
+  "encodingConverter.feature.privacy.title": "100% プライベート",
+  "encodingConverter.feature.privacy.desc": "すべての処理はブラウザ内で実行",
 
-  "encodingConverter.useCasesTitle": "Common Use Cases & Usage Boundaries",
+  "encodingConverter.useCasesTitle": "一般的な使用例と使用境界",
   "encodingConverter.useCase.garbled":
-    "Fixing garbled text from incorrect encoding",
+    "不正なエンコーディングによる文字化けテキストの修正",
   "encodingConverter.useCase.garbledDesc":
-    "✅ Essential - Most common use case for recovering readable text",
-  "encodingConverter.useCase.gbk": "Converting legacy GBK data to UTF-8",
+    "✅ 必須 - 可読テキストを復元する最も一般的な使用例",
+  "encodingConverter.useCase.gbk": "レガシーGBKデータをUTF-8に変換",
   "encodingConverter.useCase.gbkDesc":
-    "✅ Recommended - UTF-8 is the web standard and most compatible",
-  "encodingConverter.useCase.debug": "Debugging character encoding issues",
+    "✅ 推奨 - UTF-8はWeb標準で、最も互換性が高い",
+  "encodingConverter.useCase.debug": "文字エンコーディング問題のデバッグ",
   "encodingConverter.useCase.debugDesc":
-    "✅ Perfect - Hex view helps identify encoding problems",
-  "encodingConverter.useCase.hex": "Viewing hex representation of text",
+    "✅ 完璧 - 十六進数ビューがエンコーディング問題の特定に役立",
+  "encodingConverter.useCase.hex": "テキストの十六進数表現の表示",
   "encodingConverter.useCase.hexDesc":
-    "✅ Useful - Debugging and data analysis applications",
-  "encodingConverter.useCase.unicode": "Converting between Unicode formats",
+    "✅ 有用 - デバッグとデータ分析アプリケーション向け",
+  "encodingConverter.useCase.unicode": "Unicodeフォーマット間の変換",
   "encodingConverter.useCase.unicodeDesc":
-    "⚠️ Context-dependent - Ensure target system supports the format",
+    "⚠️ 文脈依存 - ターゲットシステムがフォーマットをサポートすることを確認",
 
-  "encodingConverter.faqTitle": "Frequently Asked Questions",
-  "encodingConverter.faq.q1":
-    "What is the difference between UTF-8 and UTF-16?",
+  "encodingConverter.faqTitle": "よくある質問",
+  "encodingConverter.faq.q1": "UTF-8とUTF-16の違いは何ですか？",
   "encodingConverter.faq.a1":
-    "UTF-8 uses 1-4 bytes per character and is backward compatible with ASCII. UTF-16 uses 2 or 4 bytes. UTF-8 is more common on the web, while UTF-16 is used internally by Windows and Java.",
-  "encodingConverter.faq.q2": "How do I fix garbled Chinese text?",
+    "UTF-8は文字あたり1-4バイトを使用し、ASCIIと後方互換性があります。UTF-16は2または4バイトを使用します。UTF-8はWeb上でより一般的ですが、UTF-16はWindowsとJavaの内部で使用されます。",
+  "encodingConverter.faq.q2":
+    "文字化けした中国語のテキストを修正するにはどうすればよいですか？",
   "encodingConverter.faq.a2":
-    "Garbled Chinese usually means the text was encoded in GBK but decoded as UTF-8 (or vice versa). Try converting from the original encoding to UTF-8.",
-  "encodingConverter.faq.q3": "Is my data secure?",
+    "中国語の文字化けは通常、テキストがGBKでエンコーディングされたがUTF-8でデコードされた（または逆）の意味します。元のエンコーディングからUTF-8への変換を試してください。",
+  "encodingConverter.faq.q3": "私のデータは安全ですか？",
   "encodingConverter.faq.a3":
-    "Yes, all encoding conversion happens locally in your browser. Your data is never sent to any server.",
+    "はい、すべてのエンコーディング変換はブラウザ内でローカルに実行されます。データがサーバーに送信されることはありません。",
 };

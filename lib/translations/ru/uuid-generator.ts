@@ -29,82 +29,87 @@ export const uuidGenerator = {
   "uuidGenerator.option.braces": "С фигурными скобками",
 
   // Examples
-  "uuidGenerator.examplesTitle": "UUID Examples",
+  "uuidGenerator.examplesTitle": "Примеры UUID",
   "uuidGenerator.examplesDesc":
-    'Different UUID versions and formats for various use cases. Click "Quick Run" to generate, or "Copy" to copy a UUID:',
-  "uuidGenerator.example.v4.title": "UUID v4 (Random)",
-  "uuidGenerator.example.v4.desc": "Most common for general purposes",
-  "uuidGenerator.example.v7.title": "UUID v7 (Timestamp)",
-  "uuidGenerator.example.v7.desc": "Sortable by creation time",
-  "uuidGenerator.example.v1.title": "UUID v1 (Time-based)",
-  "uuidGenerator.example.v1.desc": "Contains timestamp info",
-  "uuidGenerator.example.noHyphens.title": "UUID without hyphens",
-  "uuidGenerator.example.noHyphens.desc": "Compact format for URLs",
-  "uuidGenerator.example.uppercase.title": "UUID Uppercase",
-  "uuidGenerator.example.uppercase.desc": "All caps format",
-  "uuidGenerator.example.braces.title": "UUID with braces",
-  "uuidGenerator.example.braces.desc": "Wrapped in curly braces",
+    'Различные версии UUID и форматы для различных случаев использования. Нажмите "Быстрый запуск" для генерации или "Копировать" для копирования UUID:',
+  "uuidGenerator.example.v4.title": "UUID v4 (Случайный)",
+  "uuidGenerator.example.v4.desc": "Самый распространенный для общих целей",
+  "uuidGenerator.example.v7.title": "UUID v7 (Временная метка)",
+  "uuidGenerator.example.v7.desc": "Сортируемый по времени создания",
+  "uuidGenerator.example.v1.title": "UUID v1 (На основе времени)",
+  "uuidGenerator.example.v1.desc": "Содержит информацию о временной метке",
+  "uuidGenerator.example.noHyphens.title": "UUID без дефисов",
+  "uuidGenerator.example.noHyphens.desc": "Компактный формат для URL",
+  "uuidGenerator.example.uppercase.title": "UUID заглавными буквами",
+  "uuidGenerator.example.uppercase.desc": "Все заглавными буквами",
+  "uuidGenerator.example.braces.title": "UUID с фигурными скобками",
+  "uuidGenerator.example.braces.desc": "Обернуто в фигурные скобки",
 
   // SEO Content
-  "uuidGenerator.whatIsUuidTitle": "What is UUID?",
+  "uuidGenerator.whatIsUuidTitle": "Что такое UUID?",
   "uuidGenerator.whatIsUuidDesc":
-    '<strong className="text-foreground">UUID (Universally Unique Identifier)</strong> is a 128-bit identifier that is guaranteed to be unique across both time and space. UUIDs are widely used in distributed systems, databases, and applications where unique identification is required without central coordination.',
+    '<strong className="text-foreground">UUID (Universally Unique Identifier)</strong> - это 128-битный идентификатор, который гарантированно уникален как во времени, так и в пространстве. UUID широко используются в распределенных системах, базах данных и приложениях, где требуется уникальная идентификация без центральной координации.',
 
-  "uuidGenerator.techDetailsTitle": "Technical Implementation Details",
+  "uuidGenerator.techDetailsTitle": "Детали технической реализации",
   "uuidGenerator.tech.webCrypto":
-    '<strong>Web Crypto API:</strong> Uses <code className="bg-background px-1 rounded">crypto.getRandomValues()</code> for cryptographically secure random number generation',
+    '<strong>Web Crypto API:</strong> Использует <code className="bg-background px-1 rounded">crypto.getRandomValues()</code> для криптографически безопасной генерации случайных чисел',
   "uuidGenerator.tech.v4Struct":
-    '<strong>UUID v4 Structure:</strong> <code className="bg-background px-1 rounded">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> where x is random hex, 4 indicates version, y is variant (8, 9, a, or b)',
+    '<strong>Структура UUID v4:</strong> <code className="bg-background px-1 rounded">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> где x - случайный hex, 4 указывает версию, y - вариант (8, 9, a, или b)',
   "uuidGenerator.tech.v7Struct":
-    "<strong>UUID v7 Structure:</strong> First 48 bits are Unix timestamp in milliseconds, followed by version bits (0111), then random data with variant bits",
+    "<strong>Структура UUID v7:</strong> Первые 48 бит - временная метка Unix в миллисекундах, затем биты версии (0111), затем случайные данные с битами варианта",
   "uuidGenerator.tech.bitManip":
-    '<strong>Bit Manipulation:</strong> <code className="bg-background px-1 rounded">bytes[6] = (bytes[6] & 0x0f) | 0x40</code> sets version 4, <code className="bg-background px-1 rounded">bytes[8] = (bytes[8] & 0x3f) | 0x80</code> sets RFC4122 variant',
+    '<strong>Манипуляция битами:</strong> <code className="bg-background px-1 rounded">bytes[6] = (bytes[6] & 0x0f) | 0x40</code> устанавливает версию 4, <code className="bg-background px-1 rounded">bytes[8] = (bytes[8] & 0x3f) | 0x80</code> устанавливает вариант RFC4122',
   "uuidGenerator.tech.collision":
-    "<strong>Collision Probability:</strong> With 122 random bits in v4, probability of collision is ~1 in 2.71 quintillion",
+    "<strong>Вероятность коллизии:</strong> С 122 случайными битами в v4, вероятность коллизии составляет ~1 из 2,71 квинтиллиона",
 
-  "uuidGenerator.featuresTitle": "Key Features",
-  "uuidGenerator.feature.rfc.title": "RFC4122 Compliant",
-  "uuidGenerator.feature.rfc.desc": "Standard UUID v1, v4, and v7 support",
-  "uuidGenerator.feature.formats.title": "Multiple Formats",
-  "uuidGenerator.feature.formats.desc": "Standard, uppercase, braces, and more",
-  "uuidGenerator.feature.bulk.title": "Bulk Generation",
-  "uuidGenerator.feature.bulk.desc": "Generate thousands of UUIDs at once",
-  "uuidGenerator.feature.privacy.title": "100% Private",
+  "uuidGenerator.featuresTitle": "Ключевые функции",
+  "uuidGenerator.feature.rfc.title": "Соответствует RFC4122",
+  "uuidGenerator.feature.rfc.desc": "Поддержка стандарта UUID v1, v4 и v7",
+  "uuidGenerator.feature.formats.title": "Множественные форматы",
+  "uuidGenerator.feature.formats.desc":
+    "Стандартный, заглавные, скобки и другие",
+  "uuidGenerator.feature.bulk.title": "Массовая генерация",
+  "uuidGenerator.feature.bulk.desc": "Генерируйте тысячи UUID за раз",
+  "uuidGenerator.feature.privacy.title": "100% Приватность",
   "uuidGenerator.feature.privacy.desc":
-    "All processing happens in your browser",
+    "Вся обработка происходит в вашем браузере",
 
-  "uuidGenerator.comparisonTitle": "UUID Versions Comparison",
-  "uuidGenerator.comparison.version": "Version",
-  "uuidGenerator.comparison.method": "Generation Method",
-  "uuidGenerator.comparison.sortable": "Sortable",
-  "uuidGenerator.comparison.bestFor": "Best For",
-  "uuidGenerator.comparison.v1.method": "Timestamp + MAC address",
-  "uuidGenerator.comparison.v1.sortable": "Partial",
-  "uuidGenerator.comparison.v1.bestFor": "Legacy systems (privacy concerns)",
-  "uuidGenerator.comparison.v4.method": "Random (122 bits)",
-  "uuidGenerator.comparison.v4.sortable": "No",
-  "uuidGenerator.comparison.v4.bestFor": "General purpose, most common",
-  "uuidGenerator.comparison.v7.method": "Unix timestamp + random",
-  "uuidGenerator.comparison.v7.sortable": "Yes",
-  "uuidGenerator.comparison.v7.bestFor": "Database PKs, time-ordered data",
+  "uuidGenerator.comparisonTitle": "Сравнение версий UUID",
+  "uuidGenerator.comparison.version": "Версия",
+  "uuidGenerator.comparison.method": "Метод генерации",
+  "uuidGenerator.comparison.sortable": "Сортируемый",
+  "uuidGenerator.comparison.bestFor": "Лучше всего для",
+  "uuidGenerator.comparison.v1.method": "Временная метка + MAC адрес",
+  "uuidGenerator.comparison.v1.sortable": "Частично",
+  "uuidGenerator.comparison.v1.bestFor":
+    "Устаревшие системы (проблемы приватности)",
+  "uuidGenerator.comparison.v4.method": "Случайный (122 бита)",
+  "uuidGenerator.comparison.v4.sortable": "Нет",
+  "uuidGenerator.comparison.v4.bestFor": "Общие цели, наиболее распространен",
+  "uuidGenerator.comparison.v7.method": "Временная метка Unix + случайный",
+  "uuidGenerator.comparison.v7.sortable": "Да",
+  "uuidGenerator.comparison.v7.bestFor":
+    "Первичные ключи БД, данные, упорядоченные по времени",
 
-  "uuidGenerator.useCasesTitle": "Common Use Cases",
-  "uuidGenerator.useCase.db": "Database primary keys in distributed systems",
+  "uuidGenerator.useCasesTitle": "Общие случаи использования",
+  "uuidGenerator.useCase.db":
+    "Первичные ключи базы данных в распределенных системах",
   "uuidGenerator.useCase.session":
-    "Session identifiers and authentication tokens",
+    "Идентификаторы сессий и токены аутентификации",
   "uuidGenerator.useCase.distributed":
-    "Distributed transaction IDs across microservices",
-  "uuidGenerator.useCase.files": "File and resource naming without collision",
-  "uuidGenerator.useCase.queue": "Message queue deduplication keys",
+    "Идентификаторы распределенных транзакций через микросервисы",
+  "uuidGenerator.useCase.files": "Именование файлов и ресурсов без коллизий",
+  "uuidGenerator.useCase.queue": "Ключи дедупликации очереди сообщений",
 
-  "uuidGenerator.faqTitle": "Frequently Asked Questions",
-  "uuidGenerator.faq.q1": "What's the difference between UUID versions?",
+  "uuidGenerator.faqTitle": "Часто задаваемые вопросы",
+  "uuidGenerator.faq.q1": "В чем разница между версиями UUID?",
   "uuidGenerator.faq.a1":
-    "v4 uses random generation, v7 includes timestamp for better sorting, v1 uses MAC address and timestamp (deprecated for privacy).",
-  "uuidGenerator.faq.q2": "Are UUIDs really unique?",
+    "v4 использует случайную генерацию, v7 включает временную метку для лучшей сортировки, v1 использует MAC адрес и временную метку (устарело из-за приватности).",
+  "uuidGenerator.faq.q2": "UUID действительно уникальны?",
   "uuidGenerator.faq.a2":
-    "Yes, the probability of generating duplicate UUIDs is extremely low. For v4, the chance of collision is negligible for practical purposes.",
-  "uuidGenerator.faq.q3": "Can I use UUIDs as primary keys?",
+    "Да, вероятность генерации дубликатов UUID крайне мала. Для v4 шанс коллизии пренебрежимо мал для практических целей.",
+  "uuidGenerator.faq.q3":
+    "Могу ли я использовать UUID в качестве первичных ключей?",
   "uuidGenerator.faq.a3":
-    "Absolutely! UUIDs are excellent for distributed systems where centralized ID generation isn't feasible.",
+    "Абсолютно! UUID отлично подходят для распределенных систем, где централизованная генерация ID непрактична.",
 };

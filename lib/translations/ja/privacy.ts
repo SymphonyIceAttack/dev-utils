@@ -1,46 +1,59 @@
 export const privacy = {
-  "privacy.title": "Privacy Policy - Free Online Developer Tools",
+  // メタタグ
+  "privacy.title": "プライバシーポリシー - 無料のオンライン開発者ツール",
   "privacy.description":
-    "Our privacy policy explains how we protect your privacy. We don't collect, store, or track any personal information.",
+    "私たちのプライバシーポリシーは、どのようにプライバシーを保護するかを説明しています。個人情報を収集、保存、追跡しません。",
   "privacy.keywords":
-    "privacy policy, data protection, privacy, developer tools privacy",
-  "privacy.heading": "Privacy Policy",
-  "privacy.lastUpdated": "Last updated: December 15, 2025",
+    "プライバシーポリシー、データ保護、プライバシー、開発者ツールプライバシー",
+
+  // ページコンテンツ
+  "privacy.heading": "プライバシーポリシー",
+  "privacy.lastUpdated": "最終更新日: 2025年12月15日",
   "privacy.intro":
-    "Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our developer tools.",
-  "privacy.dataCollection.title": "Information We Collect",
+    "あなたのプライバシーは重要です。このプライバシーポリシーは、開発者ツールを使用する際に情報をどのように収集、使用、保護するかを説明します。",
+
+  "privacy.dataCollection.title": "収集する情報",
   "privacy.dataCollection.content":
-    "We believe in privacy by design. Here's what we collect:",
+    "私たちは Privacy by Design を信じています。ここが収集内容です:",
   "privacy.dataCollection.none":
-    "Nothing. We don't collect any personal information, browsing history, or usage data.",
-  "privacy.dataUsage.title": "How We Use Information",
+    "何もありません。個人情報、ブラウザ履歴、使用データを収集しません。",
+
+  "privacy.dataUsage.title": "情報の使用方法",
   "privacy.dataUsage.content":
-    "Since we don't collect any information, there's nothing to use or process.",
-  "privacy.dataSharing.title": "Information Sharing",
+    "情報を収集しないため、使用や処理するものは何もありません。",
+
+  "privacy.dataSharing.title": "情報の共有",
   "privacy.dataSharing.content":
-    "We don't share, sell, or transfer any information because we don't collect any.",
-  "privacy.cookies.title": "Cookies and Local Storage",
+    "情報を収集しないため、共有、販売、転送は一切行いません。",
+
+  "privacy.cookies.title": "Cookie とローカルストレージ",
   "privacy.cookies.content":
-    "We use minimal local storage to remember your preferences (like theme settings) but no tracking cookies or analytics.",
+    "設定（テーマ設定など）を記憶するために最小限のローカルストレージを使用しますが、追跡 Cookie や分析はありません。",
   "privacy.cookies.optional":
-    "You can disable local storage in your browser settings without affecting tool functionality.",
-  "privacy.thirdParty.title": "Third-Party Services",
+    "ブラウザ設定でローカルストレージを無効にできますが、ツールの機能は影響を受けません。",
+
+  "privacy.thirdParty.title": "第三方サービス",
   "privacy.thirdParty.content":
-    "Our tools run entirely in your browser. We don't use any third-party analytics, advertising, or tracking services.",
-  "privacy.security.title": "Data Security",
+    "私たちのツールは完全にブラウザ内で実行されます。第三方分析、広告、追跡サービスは使用しません。",
+
+  "privacy.security.title": "データセキュリティ",
   "privacy.security.content":
-    "Since we don't store any data, there's no risk of data breaches or unauthorized access to your information.",
-  "privacy.yourRights.title": "Your Rights",
+    "データを保存しないため、 情報へのデータ侵害や不正アクセスのリスクはありません。",
+
+  "privacy.yourRights.title": "あなたの権利",
   "privacy.yourRights.content":
-    "You have complete control over your data because we don't collect any. You can use our tools anonymously without any concerns.",
-  "privacy.changes.title": "Changes to This Policy",
+    "情報を収集しないため、データに対する完全な制御权があります。顾虑なく匿名でツールを使用できます。",
+
+  "privacy.changes.title": "このポリシーの変更",
   "privacy.changes.content":
-    "We may update this policy from time to time. Any changes will be posted on this page with an updated revision date.",
-  "privacy.contact.title": "Contact Us",
+    "このポリシーを随時更新場合があります。変更は、このページに更新日 junto で投稿されます。",
+
+  "privacy.contact.title": "お問い合わせ",
   "privacy.contact.content":
-    "If you have questions about this privacy policy, please contact us:",
+    "このプライバシーポリシーに関する質問がある場合は、以下联系我们:",
   "privacy.contact.email": "email@kitty-encode.top",
-  "privacy.commitment.title": "Our Privacy Commitment",
+
+  "privacy.commitment.title": "プライバシーのコミットメント",
   "privacy.commitment.content":
-    "We are committed to protecting your privacy. Our no-data-collection approach means you can use our tools with complete confidence that your privacy is protected.",
+    "プライバシーの保護をコミットしています。No-Data-Collectionアプローチにより、プライバシーが保護されているという完全な自信を持ってツールを使用できます。",
 };

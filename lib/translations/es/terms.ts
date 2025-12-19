@@ -1,13 +1,14 @@
 export const terms = {
   // Meta tags
-  "terms.title": "Terms of Service - Free Online Developer Tools",
+  "terms.title":
+    "Términos de Servicio - Herramientas de Desarrollador Gratuitas en Línea",
   "terms.description":
-    "Terms of service for our free online developer tools. Simple, fair terms for using our developer utilities.",
+    "Términos de servicio para nuestras herramientas de desarrollador gratuitas en línea. Términos simples y justos para usar nuestras utilidades de desarrollador.",
   "terms.keywords":
-    "terms of service, terms and conditions, developer tools terms, user agreement",
+    "términos de servicio, términos y condiciones, términos de herramientas de desarrollador, acuerdo de usuario",
 
   // Page content
-  "terms.heading": "Terms of Service",
+  "terms.heading": "Términos de Servicio",
   "terms.lastUpdated": "Last updated: December 15, 2025",
 
   "terms.intro":

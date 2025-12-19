@@ -25,79 +25,93 @@ export const encodingConverter = {
   "encodingConverter.error.invalidInput":
     "Entrée invalide pour l'encodage sélectionné",
 
+  // Encoding names for dropdowns
+  "encodingConverter.encodings.utf8": "UTF-8",
+  "encodingConverter.encodings.utf16": "UTF-16",
+  "encodingConverter.encodings.ascii": "ASCII",
+  "encodingConverter.encodings.iso88591": "ISO-8859-1",
+  "encodingConverter.encodings.hex": "Hexadécimal",
+  "encodingConverter.encodings.binary": "Binaire",
+  "encodingConverter.encodings.unicodeEscape": "Échappement Unicode",
+
   // SEO Content
   "encodingConverter.seo.title":
-    "What is Character Encoding? How Does it Work?",
+    "Qu'est-ce que l'Encodage de Caractères ? Comment ça Fonctionne ?",
   "encodingConverter.seo.description":
-    '<strong className="text-foreground">Character encoding</strong> is a system that maps characters to bytes for storage and transmission. Our implementation uses JavaScript\'s built-in TextEncoder/TextDecoder APIs with custom handlers for hex, binary, and Unicode escape formats. Different encodings like UTF-8, GBK, and ISO-8859-1 represent characters differently, which can cause "mojibake" (garbled text) when data is decoded with the wrong encoding.',
+    '<strong className="text-foreground">L\'encodage de caractères</strong> est un système qui mappe les caractères vers des octets pour le stockage et la transmission. Notre implémentation utilise les APIs TextEncoder/TextDecoder intégrées de JavaScript avec des gestionnaires personnalisés pour les formats hexadécimal, binaire et d\'échappement Unicode. Différents encodages comme UTF-8, GBK et ISO-8859-1 représentent les caractères différemment, ce qui peut causer des "mojibakes" (texte corrompu) quand les données sont décodées avec le mauvais encodage.',
 
-  "encodingConverter.techTitle": "Technical Implementation",
-  "encodingConverter.tech.coreLogic": "Core Conversion Logic:",
+  "encodingConverter.techTitle": "Implémentation Technique",
+  "encodingConverter.tech.coreLogic": "Logique de Conversion Principale :",
   "encodingConverter.tech.logic1":
-    "TextEncoder/TextDecoder for UTF-8/UTF-16 processing",
+    "TextEncoder/TextDecoder pour le traitement UTF-8/UTF-16",
   "encodingConverter.tech.logic2":
-    "Custom hex/binary conversion with proper byte alignment",
+    "Conversion hexadécimal/binaire personnalisée avec alignement d'octets approprié",
   "encodingConverter.tech.logic3":
-    "Unicode escape sequence parsing (\\uXXXX format)",
+    "Analyse des séquences d'échappement Unicode (format \\uXXXX)",
   "encodingConverter.tech.logic4":
-    "Surrogate pair handling for emoji (0x10000-0x10FFFF)",
+    "Gestion des paires surrogates pour les emojis (0x10000-0x10FFFF)",
   "encodingConverter.tech.logic5":
-    "Character-by-character processing with error recovery",
+    "Traitement caractère par caractère avec récupération d'erreurs",
 
-  "encodingConverter.tech.supported": "Supported Encodings:",
+  "encodingConverter.tech.supported": "Encodages Supportés :",
   "encodingConverter.tech.utf8":
-    "UTF-8: 1-4 bytes per character, backward compatible with ASCII",
+    "UTF-8 : 1-4 octets par caractère, rétrocompatible avec ASCII",
   "encodingConverter.tech.utf16":
-    "UTF-16: 2 or 4 bytes per character (BMP + surrogate pairs)",
+    "UTF-16 : 2 ou 4 octets par caractère (BMP + paires surrogates)",
   "encodingConverter.tech.ascii":
-    "ASCII: 7-bit encoding (0-127), subset of UTF-8",
+    "ASCII : encodage 7 bits (0-127), sous-ensemble d'UTF-8",
   "encodingConverter.tech.iso":
-    "ISO-8859-1: 8-bit encoding for Western European languages",
+    "ISO-8859-1 : encodage 8 bits pour les langues d'Europe occidentale",
   "encodingConverter.tech.hex":
-    "Hex: Two-digit hexadecimal representation of each byte",
+    "Hexadécimal : représentation hexadécimale à deux chiffres de chaque octet",
   "encodingConverter.tech.binary":
-    "Binary: 8-bit binary representation separated by spaces",
+    "Binaire : représentation binaire 8 bits séparée par des espaces",
 
-  "encodingConverter.featuresTitle": "Key Features",
-  "encodingConverter.feature.multi.title": "Multi-Encoding",
+  "encodingConverter.featuresTitle": "Caractéristiques Principales",
+  "encodingConverter.feature.multi.title": "Multi-Encodage",
   "encodingConverter.feature.multi.desc":
-    "Support for UTF-8, GBK, Latin-1 and more",
-  "encodingConverter.feature.realtime.title": "Real-time Conversion",
-  "encodingConverter.feature.realtime.desc": "Instant preview as you type",
-  "encodingConverter.feature.format.title": "Format Support",
+    "Support pour UTF-8, GBK, Latin-1 et plus",
+  "encodingConverter.feature.realtime.title": "Conversion en Temps Réel",
+  "encodingConverter.feature.realtime.desc":
+    "Aperçu instantané pendant la saisie",
+  "encodingConverter.feature.format.title": "Support de Format",
   "encodingConverter.feature.format.desc":
-    "Text, Hex, Base64 and Unicode formats",
-  "encodingConverter.feature.privacy.title": "100% Private",
+    "Formats Texte, Hexadécimal, Base64 et Unicode",
+  "encodingConverter.feature.privacy.title": "100% Privé",
   "encodingConverter.feature.privacy.desc":
-    "All processing happens in your browser",
+    "Tout le traitement se fait dans votre navigateur",
 
-  "encodingConverter.useCasesTitle": "Common Use Cases & Usage Boundaries",
+  "encodingConverter.useCasesTitle":
+    "Cas d'Usage Communs et Limites d'Utilisation",
   "encodingConverter.useCase.garbled":
-    "Fixing garbled text from incorrect encoding",
+    "Correction du texte corrompu dû à un encodage incorrect",
   "encodingConverter.useCase.garbledDesc":
-    "✅ Essential - Most common use case for recovering readable text",
-  "encodingConverter.useCase.gbk": "Converting legacy GBK data to UTF-8",
+    "✅ Essentiel - Cas d'usage le plus courant pour récupérer du texte lisible",
+  "encodingConverter.useCase.gbk":
+    "Conversion des données GBK legacy vers UTF-8",
   "encodingConverter.useCase.gbkDesc":
-    "✅ Recommended - UTF-8 is the web standard and most compatible",
-  "encodingConverter.useCase.debug": "Debugging character encoding issues",
+    "✅ Recommandé - UTF-8 est la norme web et la plus compatible",
+  "encodingConverter.useCase.debug":
+    "Débogage des problèmes d'encodage de caractères",
   "encodingConverter.useCase.debugDesc":
-    "✅ Perfect - Hex view helps identify encoding problems",
-  "encodingConverter.useCase.hex": "Viewing hex representation of text",
+    "✅ Parfait - La vue hexadécimal aide à identifier les problèmes d'encodage",
+  "encodingConverter.useCase.hex":
+    "Visualisation de la représentation hexadécimale du texte",
   "encodingConverter.useCase.hexDesc":
-    "✅ Useful - Debugging and data analysis applications",
-  "encodingConverter.useCase.unicode": "Converting between Unicode formats",
+    "✅ Utile - Applications de débogage et d'analyse de données",
+  "encodingConverter.useCase.unicode": "Conversion entre formats Unicode",
   "encodingConverter.useCase.unicodeDesc":
-    "⚠️ Context-dependent - Ensure target system supports the format",
+    "⚠️ Dépendant du contexte - Assurez-vous que le système cible supporte le format",
 
-  "encodingConverter.faqTitle": "Frequently Asked Questions",
+  "encodingConverter.faqTitle": "Questions Fréquemment Posées",
   "encodingConverter.faq.q1":
-    "What is the difference between UTF-8 and UTF-16?",
+    "Quelle est la différence entre UTF-8 et UTF-16 ?",
   "encodingConverter.faq.a1":
-    "UTF-8 uses 1-4 bytes per character and is backward compatible with ASCII. UTF-16 uses 2 or 4 bytes. UTF-8 is more common on the web, while UTF-16 is used internally by Windows and Java.",
-  "encodingConverter.faq.q2": "How do I fix garbled Chinese text?",
+    "UTF-8 utilise 1-4 octets par caractère et est rétrocompatible avec ASCII. UTF-16 utilise 2 ou 4 octets. UTF-8 est plus courant sur le web, tandis qu'UTF-16 est utilisé en interne par Windows et Java.",
+  "encodingConverter.faq.q2": "Comment corriger du texte chinois corrompu ?",
   "encodingConverter.faq.a2":
-    "Garbled Chinese usually means the text was encoded in GBK but decoded as UTF-8 (or vice versa). Try converting from the original encoding to UTF-8.",
-  "encodingConverter.faq.q3": "Is my data secure?",
+    "Le chinois corrompu signifie généralement que le texte a été encodé en GBK mais décodé en UTF-8 (ou vice versa). Essayez de convertir de l'encodage original vers UTF-8.",
+  "encodingConverter.faq.q3": "Mes données sont-elles sécurisées ?",
   "encodingConverter.faq.a3":
-    "Yes, all encoding conversion happens locally in your browser. Your data is never sent to any server.",
+    "Oui, toute la conversion d'encodage se fait localement dans votre navigateur. Vos données ne sont jamais envoyées vers un serveur.",
 };

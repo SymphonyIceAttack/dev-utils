@@ -1,46 +1,59 @@
 export const privacy = {
-  "privacy.title": "Privacy Policy - Free Online Developer Tools",
+  // Meta-Tags
+  "privacy.title": "Datenschutzrichtlinie - Kostenlose Online-Entwicklertools",
   "privacy.description":
-    "Our privacy policy explains how we protect your privacy. We don't collect, store, or track any personal information.",
+    "Unsere Datenschutzrichtlinie erklärt, wie wir Ihre Privatsphäre schützen. Wir sammeln, speichern oder verfolgen keine persönlichen Informationen.",
   "privacy.keywords":
-    "privacy policy, data protection, privacy, developer tools privacy",
-  "privacy.heading": "Privacy Policy",
-  "privacy.lastUpdated": "Last updated: December 15, 2025",
+    "datenschutzrichtlinie, datenschutz, privatspähre, entwicklertools privatspähre",
+
+  // Seiteninhalt
+  "privacy.heading": "Datenschutzrichtlinie",
+  "privacy.lastUpdated": "Zuletzt aktualisiert: 15. Dezember 2025",
   "privacy.intro":
-    "Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our developer tools.",
-  "privacy.dataCollection.title": "Information We Collect",
+    "Ihre Privatsphäre ist uns wichtig. Diese Datenschutzrichtlinie erklärt, wie wir Informationen sammeln, verwenden und schützen, wenn Sie unsere Entwicklertools nutzen.",
+
+  "privacy.dataCollection.title": "Informationen, die wir sammeln",
   "privacy.dataCollection.content":
-    "We believe in privacy by design. Here's what we collect:",
+    "Wir glauben an Privacy by Design. Hier ist, was wir sammeln:",
   "privacy.dataCollection.none":
-    "Nothing. We don't collect any personal information, browsing history, or usage data.",
-  "privacy.dataUsage.title": "How We Use Information",
+    "Nichts. Wir sammeln keine persönlichen Informationen, Browserverlauf oder Nutzungsdaten.",
+
+  "privacy.dataUsage.title": "Wie wir Informationen verwenden",
   "privacy.dataUsage.content":
-    "Since we don't collect any information, there's nothing to use or process.",
-  "privacy.dataSharing.title": "Information Sharing",
+    "Da wir keine Informationen sammeln, gibt es nichts zu verwenden oder zu verarbeiten.",
+
+  "privacy.dataSharing.title": "Informations-Sharing",
   "privacy.dataSharing.content":
-    "We don't share, sell, or transfer any information because we don't collect any.",
-  "privacy.cookies.title": "Cookies and Local Storage",
+    "Wir teilen, verkaufen oder übertragen keine Informationen, da wir keine sammeln.",
+
+  "privacy.cookies.title": "Cookies und lokale Speicherung",
   "privacy.cookies.content":
-    "We use minimal local storage to remember your preferences (like theme settings) but no tracking cookies or analytics.",
+    "Wir verwenden minimale lokale Speicherung, um Ihre Einstellungen (wie Theme-Einstellungen) zu merken, aber keine Tracking-Cookies oder Analytics.",
   "privacy.cookies.optional":
-    "You can disable local storage in your browser settings without affecting tool functionality.",
-  "privacy.thirdParty.title": "Third-Party Services",
+    "Sie können die lokale Speicherung in Ihren Browser-Einstellungen deaktivieren, ohne die Tool-Funktionalität zu beeinträchtigen.",
+
+  "privacy.thirdParty.title": "Drittanbieter-Services",
   "privacy.thirdParty.content":
-    "Our tools run entirely in your browser. We don't use any third-party analytics, advertising, or tracking services.",
-  "privacy.security.title": "Data Security",
+    "Unsere Tools laufen vollständig in Ihrem Browser. Wir verwenden keine Drittanbieter-Analytics, Werbung oder Tracking-Services.",
+
+  "privacy.security.title": "Datensicherheit",
   "privacy.security.content":
-    "Since we don't store any data, there's no risk of data breaches or unauthorized access to your information.",
-  "privacy.yourRights.title": "Your Rights",
+    "Da wir keine Daten speichern, gibt es kein Risiko von Datenverletzungen oder unbefugtem Zugriff auf Ihre Informationen.",
+
+  "privacy.yourRights.title": "Ihre Rechte",
   "privacy.yourRights.content":
-    "You have complete control over your data because we don't collect any. You can use our tools anonymously without any concerns.",
-  "privacy.changes.title": "Changes to This Policy",
+    "Sie haben die vollständige Kontrolle über Ihre Daten, da wir keine sammeln. Sie können unsere Tools anonym ohne Bedenken nutzen.",
+
+  "privacy.changes.title": "Änderungen dieser Richtlinie",
   "privacy.changes.content":
-    "We may update this policy from time to time. Any changes will be posted on this page with an updated revision date.",
-  "privacy.contact.title": "Contact Us",
+    "Wir können diese Richtlinie von Zeit zu Zeit aktualisieren. Alle Änderungen werden auf dieser Seite mit einem aktualisierten Überarbeitungsdatum gepostet.",
+
+  "privacy.contact.title": "Kontaktieren Sie uns",
   "privacy.contact.content":
-    "If you have questions about this privacy policy, please contact us:",
+    "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns bitte:",
   "privacy.contact.email": "email@kitty-encode.top",
-  "privacy.commitment.title": "Our Privacy Commitment",
+
+  "privacy.commitment.title": "Unser Datenschutz-Engagement",
   "privacy.commitment.content":
-    "We are committed to protecting your privacy. Our no-data-collection approach means you can use our tools with complete confidence that your privacy is protected.",
+    "Wir sind dem Schutz Ihrer Privatsphäre verpflichtet. Unser No-Data-Collection-Ansatz bedeutet, dass Sie unsere Tools mit vollständigem Vertrauen nutzen können, dass Ihre Privatsphäre geschützt ist.",
 };

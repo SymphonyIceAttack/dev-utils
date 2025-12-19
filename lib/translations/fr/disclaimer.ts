@@ -1,13 +1,14 @@
 export const disclaimer = {
   // Meta tags
-  "disclaimer.title": "Disclaimer - Free Online Developer Tools",
+  "disclaimer.title":
+    "Avertissement - Outils de Développement Gratuits en Ligne",
   "disclaimer.description":
-    "Important disclaimer and limitations of liability for our free online developer tools and services.",
+    "Avertissement important et limitations de responsabilité pour nos outils de développement gratuits en ligne et services.",
   "disclaimer.keywords":
-    "disclaimer, limitations, liability, developer tools disclaimer, legal notice",
+    "avertissement, limitations, responsabilité, avertissement des outils développeur, avis légal",
 
   // Page content
-  "disclaimer.heading": "Disclaimer",
+  "disclaimer.heading": "Avertissement",
   "disclaimer.lastUpdated": "Last updated: December 15, 2025",
 
   "disclaimer.intro":

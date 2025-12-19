@@ -1,10 +1,9 @@
 export const terms = {
-  "terms.title": "Terms of Service - Free Online Developer Tools",
+  "terms.title": "利用規約 - 無料のオンライン開発者ツール",
   "terms.description":
-    "Terms of service for our free online developer tools. Simple, fair terms for using our developer utilities.",
-  "terms.keywords":
-    "terms of service, terms and conditions, developer tools terms, user agreement",
-  "terms.heading": "Terms of Service",
+    " 無料のオンライン開発者ツール利用規約。開発者ユーティリティの使用のためのシンプルで公正な利用規約。",
+  "terms.keywords": "利用規約、利用規約、開発者ツール利用規約、ユーザー契約",
+  "terms.heading": "利用規約",
   "terms.lastUpdated": "Last updated: December 15, 2025",
   "terms.intro":
     'These Terms of Service ("Terms") govern your use of our developer tools website and services. By using our tools, you agree to these terms.',

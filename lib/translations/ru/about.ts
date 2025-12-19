@@ -1,38 +1,47 @@
 export const about = {
-  "about.title": "About Us - Free Online Developer Tools",
+  // Мета-теги
+  "about.title": "О нас - Бесплатные онлайн инструменты для разработчиков",
   "about.description":
-    "Learn about our mission to provide free, fast, and reliable online developer tools for developers worldwide.",
+    "Узнайте о нашей миссии по предоставлению бесплатных, быстрых и надежных онлайн инструментов для разработчиков по всему миру.",
   "about.keywords":
-    "about us, developer tools, online tools, free tools, developer utilities",
-  "about.heading": "About Us",
-  "about.subheading": "Empowering developers with free, reliable tools",
+    "о нас, инструменты разработчика, онлайн инструменты, бесплатные инструменты, утилиты разработчика",
+
+  // Содержание страницы
+  "about.heading": "О нас",
+  "about.subheading":
+    "Расширяем возможности разработчиков бесплатными, надежными инструментами",
   "about.intro":
-    "We are a team of passionate developers who believe that quality tools should be accessible to everyone. Our mission is to provide fast, reliable, and completely free online developer tools that help developers work more efficiently.",
-  "about.mission.title": "Our Mission",
+    "Мы команда увлеченных разработчиков, которые считают, что качественные инструменты должны быть доступны каждому. Наша миссия - предоставлять быстрые, надежные и полностью бесплатные онлайн инструменты для разработчиков, которые помогают работать более эффективно.",
+
+  "about.mission.title": "Наша миссия",
   "about.mission.content":
-    "To democratize access to developer tools by providing high-quality, free online utilities that every developer can use without barriers.",
-  "about.vision.title": "Our Vision",
+    "Демократизировать доступ к инструментам разработчика, предоставляя высококачественные бесплатные онлайн утилиты, которые каждый разработчик может использовать без барьеров.",
+
+  "about.vision.title": "Наше видение",
   "about.vision.content":
-    "A world where every developer has access to the tools they need to build amazing things, regardless of their budget or location.",
-  "about.values.title": "Our Values",
-  "about.values.subtitle": "What drives us every day",
-  "about.values.freedom.title": "Freedom",
+    "Мир, где каждый разработчик имеет доступ к инструментам, необходимым для создания удивительных вещей, независимо от их бюджета или местоположения.",
+
+  "about.values.title": "Наши ценности",
+  "about.values.subtitle": "Что движет нами каждый день",
+  "about.values.freedom.title": "Свобода",
   "about.values.freedom.content":
-    "All our tools are completely free with no hidden costs or limitations.",
-  "about.values.quality.title": "Quality",
+    "Все наши инструменты полностью бесплатны без скрытых затрат или ограничений.",
+  "about.values.quality.title": "Качество",
   "about.values.quality.content":
-    "We prioritize accuracy, performance, and user experience in everything we build.",
-  "about.values.privacy.title": "Privacy",
+    "Мы ставим на первое место точность, производительность и пользовательский опыт во всем, что мы создаем.",
+  "about.values.privacy.title": "Конфиденциальность",
   "about.values.privacy.content":
-    "Your data stays on your device. We don't store or track any personal information.",
-  "about.values.openness.title": "Openness",
+    "Ваши данные остаются на вашем устройстве. Мы не храним и не отслеживаем личную информацию.",
+  "about.values.openness.title": "Открытость",
   "about.values.openness.content":
-    "We're transparent about how our tools work and what data we collect (which is none).",
-  "about.team.title": "Our Story",
+    "Мы прозрачно рассказываем о том, как работают наши инструменты и какие данные мы собираем (а именно никаких).",
+
+  "about.team.title": "Наша история",
   "about.team.content":
-    "Started by developers, for developers. We experienced firsthand the frustration of needing quick tools but having to install software or deal with complicated interfaces.",
-  "about.cta.title": "Get Involved",
+    "Начато разработчиками, для разработчиков. Мы испытали на собственном опыте фрустрацию от необходимости в быстрых инструментах, но необходимости устанавливать программное обеспечение или иметь дело со сложными интерфейсами.",
+
+  "about.cta.title": "Присоединяйтесь",
   "about.cta.content":
-    "Have suggestions for new tools or improvements? We'd love to hear from you!",
-  "about.cta.button": "Contact Us",
+    "Есть предложения по новым инструментам или улучшениям? Мы хотели бы услышать от вас!",
+  "about.cta.button": "Свяжитесь с нами",
 };

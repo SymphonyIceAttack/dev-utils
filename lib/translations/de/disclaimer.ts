@@ -1,10 +1,10 @@
 export const disclaimer = {
-  "disclaimer.title": "Disclaimer - Free Online Developer Tools",
+  "disclaimer.title": "Haftungsausschluss - Kostenlose Online-Entwicklertools",
   "disclaimer.description":
-    "Important disclaimer and limitations of liability for our free online developer tools and services.",
+    "Wichtiger Haftungsausschluss und Haftungsbeschränkungen für unsere kostenlosen Online-Entwicklertools und Services.",
   "disclaimer.keywords":
-    "disclaimer, limitations, liability, developer tools disclaimer, legal notice",
-  "disclaimer.heading": "Disclaimer",
+    "haftungsausschluss, beschränkungen, haftung, entwicklertools haftungsausschluss, rechtlicher hinweis",
+  "disclaimer.heading": "Haftungsausschluss",
   "disclaimer.lastUpdated": "Last updated: December 15, 2025",
   "disclaimer.intro":
     "This disclaimer governs your use of our website and developer tools. By using our services, you acknowledge that you have read and understood this disclaimer.",
