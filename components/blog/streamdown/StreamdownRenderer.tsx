@@ -27,7 +27,6 @@ function StreamdownFallback() {
 interface StreamdownRendererProps {
   content: string;
   className?: string;
-  mode?: "static" | "streaming";
   customComponents?: Record<string, unknown>;
 }
 
@@ -43,7 +42,6 @@ interface AnchorProps {
 export function StreamdownRenderer({
   content,
   className = "prose prose-lg max-w-none streamdown-content",
-  mode = "static",
   customComponents = {},
 }: StreamdownRendererProps) {
   // 通用组件配置
@@ -198,7 +196,6 @@ export function StreamdownRenderer({
     <div className={className}>
       <Suspense fallback={<StreamdownFallback />}>
         <Streamdown
-          mode={mode}
           shikiTheme={["github-light", "github-dark"]}
           components={mergedComponents}
         >
