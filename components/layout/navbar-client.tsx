@@ -349,6 +349,49 @@ export function Navbar({ lang }: NavbarProps) {
                   </Link>
                 </motion.div>
               ))}
+
+              {/* Mobile Language Selector */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                className="pt-2 mt-2 border-t-2 border-foreground/20 dark:border-primary/20"
+              >
+                <div className="px-4 py-2">
+                  <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    {t("common.language")}
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-2 px-2">
+                  {supportedLocales.map((locale, index) => (
+                    <motion.div
+                      key={locale}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: (navLinks.length + 1) * 0.1 + index * 0.05,
+                      }}
+                    >
+                      <Button
+                        variant={lang === locale ? "default" : "ghost"}
+                        size="sm"
+                        onClick={() => {
+                          handleLanguageChange(locale);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={`w-full justify-start text-xs rounded-lg border-2 transition-all ${
+                          lang === locale
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "border-transparent hover:border-foreground/30 dark:hover:border-primary/30"
+                        }`}
+                      >
+                        <Globe className="h-3 w-3 mr-2" />
+                        {languageNames[locale]}
+                      </Button>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </nav>
           </motion.div>
         )}
