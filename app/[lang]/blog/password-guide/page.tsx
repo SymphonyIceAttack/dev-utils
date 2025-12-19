@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   title: "Secure Password Generation: Best Practices Guide - KittyEncode",
   description:
     "Create strong, secure passwords with our comprehensive guide. Learn about password entropy, generation algorithms, and security recommendations.",
+  keywords:
+    "password security, secure passwords, password generation, password entropy, password strength, security best practices, cryptography, authentication",
   robots: {
     index: false,
     follow: true,

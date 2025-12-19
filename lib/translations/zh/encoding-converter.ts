@@ -24,19 +24,22 @@ export const encodingConverter = {
 
   "encodingConverter.seo.title": "什么是字符编码？它是如何工作的？",
   "encodingConverter.seo.description":
-    "<strong className=\"text-foreground\">字符编码</strong>是一种将字符映射到字节以进行存储和传输的系统。我们的实现使用 JavaScript 内置的 TextEncoder/TextDecoder API，并为十六进制、二进制和 Unicode 转义格式提供自定义处理程序。UTF-8、GBK 和 ISO-8859-1 等不同编码以不同方式表示字符，当数据使用错误的编码解码时会导致「乱码」（garbled text）。",
-  
+    '<strong className="text-foreground">字符编码</strong>是一种将字符映射到字节以进行存储和传输的系统。我们的实现使用 JavaScript 内置的 TextEncoder/TextDecoder API，并为十六进制、二进制和 Unicode 转义格式提供自定义处理程序。UTF-8、GBK 和 ISO-8859-1 等不同编码以不同方式表示字符，当数据使用错误的编码解码时会导致「乱码」（garbled text）。',
+
   "encodingConverter.techTitle": "技术实现",
   "encodingConverter.tech.coreLogic": "核心转换逻辑：",
-  "encodingConverter.tech.logic1": "TextEncoder/TextDecoder 用于 UTF-8/UTF-16 处理",
-  "encodingConverter.tech.logic2": "自定义十六进制/二进制转换，具有适当的字节对齐",
+  "encodingConverter.tech.logic1":
+    "TextEncoder/TextDecoder 用于 UTF-8/UTF-16 处理",
+  "encodingConverter.tech.logic2":
+    "自定义十六进制/二进制转换，具有适当的字节对齐",
   "encodingConverter.tech.logic3": "Unicode 转义序列解析（\\uXXXX 格式）",
   "encodingConverter.tech.logic4": "表情符号的代理对处理（0x10000-0x10FFFF）",
   "encodingConverter.tech.logic5": "逐字符处理并具有错误恢复功能",
-  
+
   "encodingConverter.tech.supported": "支持的编码：",
   "encodingConverter.tech.utf8": "UTF-8：每个字符 1-4 字节，向后兼容 ASCII",
-  "encodingConverter.tech.utf16": "UTF-16：每个字符 2 或 4 字节（BMP + 代理对）",
+  "encodingConverter.tech.utf16":
+    "UTF-16：每个字符 2 或 4 字节（BMP + 代理对）",
   "encodingConverter.tech.ascii": "ASCII：7 位编码（0-127），UTF-8 的子集",
   "encodingConverter.tech.iso": "ISO-8859-1：西欧语言的 8 位编码",
   "encodingConverter.tech.hex": "十六进制：每个字节的两位十六进制表示",
@@ -48,7 +51,8 @@ export const encodingConverter = {
   "encodingConverter.feature.realtime.title": "实时转换",
   "encodingConverter.feature.realtime.desc": "输入时即时预览",
   "encodingConverter.feature.format.title": "格式支持",
-  "encodingConverter.feature.format.desc": "文本、十六进制、Base64 和 Unicode 格式",
+  "encodingConverter.feature.format.desc":
+    "文本、十六进制、Base64 和 Unicode 格式",
   "encodingConverter.feature.privacy.title": "100% 隐私",
   "encodingConverter.feature.privacy.desc": "所有处理都在浏览器中进行",
 
@@ -58,11 +62,13 @@ export const encodingConverter = {
   "encodingConverter.useCase.gbk": "将旧版 GBK 数据转换为 UTF-8",
   "encodingConverter.useCase.gbkDesc": "✅ 推荐 - UTF-8 是 Web 标准且最兼容",
   "encodingConverter.useCase.debug": "调试字符编码问题",
-  "encodingConverter.useCase.debugDesc": "✅ 完美 - 十六进制视图有助于识别编码问题",
+  "encodingConverter.useCase.debugDesc":
+    "✅ 完美 - 十六进制视图有助于识别编码问题",
   "encodingConverter.useCase.hex": "查看文本的十六进制表示",
   "encodingConverter.useCase.hexDesc": "✅ 有用 - 调试和数据分析应用",
   "encodingConverter.useCase.unicode": "在 Unicode 格式之间转换",
-  "encodingConverter.useCase.unicodeDesc": "⚠️ 取决于上下文 - 确保目标系统支持该格式",
+  "encodingConverter.useCase.unicodeDesc":
+    "⚠️ 取决于上下文 - 确保目标系统支持该格式",
 
   "encodingConverter.faqTitle": "常见问题",
   "encodingConverter.faq.q1": "UTF-8 和 UTF-16 有什么区别？",

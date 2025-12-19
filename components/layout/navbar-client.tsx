@@ -15,8 +15,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
-import { languageNames, supportedLocales } from "@/lib/translations";
 import type { LanguageType } from "@/lib/translations";
+import { languageNames, supportedLocales } from "@/lib/translations";
 
 const navLinks = [
   { href: "", labelKey: "nav.home" },
@@ -33,6 +33,8 @@ function KittyEncodeLogo() {
       height={32}
       className="rounded-lg"
       style={{ imageRendering: "pixelated" }}
+      loading="eager"
+      fetchPriority="high"
     />
   );
 }
@@ -56,15 +58,15 @@ export function Navbar({ lang }: NavbarProps) {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      className="sticky top-0 z-50 w-full border-b-2 border-foreground/40 dark:border-primary/30 bg-card/95 backdrop-blur-sm"
-    >
+    <header className="sticky top-0 z-50 w-full border-b-2 border-foreground/40 dark:border-primary/30 bg-card/95 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         {/* Logo - with drag hint animation */}
-        <Link href="/" className="flex items-center gap-3 group" id="site-logo">
+        <Link
+          href="/"
+          id="site-logo"
+          className="flex items-center gap-3 group"
+          aria-label="返回首页"
+        >
           <motion.div
             className={`pixel-icon-box p-1.5 transition-colors relative ${
               isCatDragging ? "bg-primary/30" : "group-hover:bg-primary/20"
@@ -88,6 +90,7 @@ export function Navbar({ lang }: NavbarProps) {
             }}
             whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
             whileTap={{ scale: 0.95 }}
+            aria-describedby={isCatDragging ? "drag-hint" : undefined}
           >
             <motion.div
               animate={
@@ -350,6 +353,6 @@ export function Navbar({ lang }: NavbarProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

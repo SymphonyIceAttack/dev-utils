@@ -30,7 +30,7 @@ export const uuidGenerator = {
   // Examples
   "uuidGenerator.examplesTitle": "UUID Examples",
   "uuidGenerator.examplesDesc":
-    "Different UUID versions and formats for various use cases. Click \"Quick Run\" to generate, or \"Copy\" to copy a UUID:",
+    'Different UUID versions and formats for various use cases. Click "Quick Run" to generate, or "Copy" to copy a UUID:',
   "uuidGenerator.example.v4.title": "UUID v4 (Random)",
   "uuidGenerator.example.v4.desc": "Most common for general purposes",
   "uuidGenerator.example.v7.title": "UUID v7 (Timestamp)",
@@ -47,14 +47,19 @@ export const uuidGenerator = {
   // SEO Content
   "uuidGenerator.whatIsUuidTitle": "What is UUID?",
   "uuidGenerator.whatIsUuidDesc":
-    "<strong className=\"text-foreground\">UUID (Universally Unique Identifier)</strong> is a 128-bit identifier that is guaranteed to be unique across both time and space. UUIDs are widely used in distributed systems, databases, and applications where unique identification is required without central coordination.",
-  
+    '<strong className="text-foreground">UUID (Universally Unique Identifier)</strong> is a 128-bit identifier that is guaranteed to be unique across both time and space. UUIDs are widely used in distributed systems, databases, and applications where unique identification is required without central coordination.',
+
   "uuidGenerator.techDetailsTitle": "Technical Implementation Details",
-  "uuidGenerator.tech.webCrypto": "<strong>Web Crypto API:</strong> Uses <code className=\"bg-background px-1 rounded\">crypto.getRandomValues()</code> for cryptographically secure random number generation",
-  "uuidGenerator.tech.v4Struct": "<strong>UUID v4 Structure:</strong> <code className=\"bg-background px-1 rounded\">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> where x is random hex, 4 indicates version, y is variant (8, 9, a, or b)",
-  "uuidGenerator.tech.v7Struct": "<strong>UUID v7 Structure:</strong> First 48 bits are Unix timestamp in milliseconds, followed by version bits (0111), then random data with variant bits",
-  "uuidGenerator.tech.bitManip": "<strong>Bit Manipulation:</strong> <code className=\"bg-background px-1 rounded\">bytes[6] = (bytes[6] & 0x0f) | 0x40</code> sets version 4, <code className=\"bg-background px-1 rounded\">bytes[8] = (bytes[8] & 0x3f) | 0x80</code> sets RFC4122 variant",
-  "uuidGenerator.tech.collision": "<strong>Collision Probability:</strong> With 122 random bits in v4, probability of collision is ~1 in 2.71 quintillion",
+  "uuidGenerator.tech.webCrypto":
+    '<strong>Web Crypto API:</strong> Uses <code className="bg-background px-1 rounded">crypto.getRandomValues()</code> for cryptographically secure random number generation',
+  "uuidGenerator.tech.v4Struct":
+    '<strong>UUID v4 Structure:</strong> <code className="bg-background px-1 rounded">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> where x is random hex, 4 indicates version, y is variant (8, 9, a, or b)',
+  "uuidGenerator.tech.v7Struct":
+    "<strong>UUID v7 Structure:</strong> First 48 bits are Unix timestamp in milliseconds, followed by version bits (0111), then random data with variant bits",
+  "uuidGenerator.tech.bitManip":
+    '<strong>Bit Manipulation:</strong> <code className="bg-background px-1 rounded">bytes[6] = (bytes[6] & 0x0f) | 0x40</code> sets version 4, <code className="bg-background px-1 rounded">bytes[8] = (bytes[8] & 0x3f) | 0x80</code> sets RFC4122 variant',
+  "uuidGenerator.tech.collision":
+    "<strong>Collision Probability:</strong> With 122 random bits in v4, probability of collision is ~1 in 2.71 quintillion",
 
   "uuidGenerator.featuresTitle": "Key Features",
   "uuidGenerator.feature.rfc.title": "RFC4122 Compliant",
@@ -64,7 +69,8 @@ export const uuidGenerator = {
   "uuidGenerator.feature.bulk.title": "Bulk Generation",
   "uuidGenerator.feature.bulk.desc": "Generate thousands of UUIDs at once",
   "uuidGenerator.feature.privacy.title": "100% Private",
-  "uuidGenerator.feature.privacy.desc": "All processing happens in your browser",
+  "uuidGenerator.feature.privacy.desc":
+    "All processing happens in your browser",
 
   "uuidGenerator.comparisonTitle": "UUID Versions Comparison",
   "uuidGenerator.comparison.version": "Version",
@@ -83,16 +89,21 @@ export const uuidGenerator = {
 
   "uuidGenerator.useCasesTitle": "Common Use Cases",
   "uuidGenerator.useCase.db": "Database primary keys in distributed systems",
-  "uuidGenerator.useCase.session": "Session identifiers and authentication tokens",
-  "uuidGenerator.useCase.distributed": "Distributed transaction IDs across microservices",
+  "uuidGenerator.useCase.session":
+    "Session identifiers and authentication tokens",
+  "uuidGenerator.useCase.distributed":
+    "Distributed transaction IDs across microservices",
   "uuidGenerator.useCase.files": "File and resource naming without collision",
   "uuidGenerator.useCase.queue": "Message queue deduplication keys",
 
   "uuidGenerator.faqTitle": "Frequently Asked Questions",
   "uuidGenerator.faq.q1": "What's the difference between UUID versions?",
-  "uuidGenerator.faq.a1": "v4 uses random generation, v7 includes timestamp for better sorting, v1 uses MAC address and timestamp (deprecated for privacy).",
+  "uuidGenerator.faq.a1":
+    "v4 uses random generation, v7 includes timestamp for better sorting, v1 uses MAC address and timestamp (deprecated for privacy).",
   "uuidGenerator.faq.q2": "Are UUIDs really unique?",
-  "uuidGenerator.faq.a2": "Yes, the probability of generating duplicate UUIDs is extremely low. For v4, the chance of collision is negligible for practical purposes.",
+  "uuidGenerator.faq.a2":
+    "Yes, the probability of generating duplicate UUIDs is extremely low. For v4, the chance of collision is negligible for practical purposes.",
   "uuidGenerator.faq.q3": "Can I use UUIDs as primary keys?",
-  "uuidGenerator.faq.a3": "Absolutely! UUIDs are excellent for distributed systems where centralized ID generation isn't feasible.",
+  "uuidGenerator.faq.a3":
+    "Absolutely! UUIDs are excellent for distributed systems where centralized ID generation isn't feasible.",
 };

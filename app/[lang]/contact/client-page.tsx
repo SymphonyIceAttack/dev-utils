@@ -70,7 +70,10 @@ export function ContactPage({ lang }: ContactPageProps) {
   ];
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-12">
+    <main
+      className="container mx-auto max-w-4xl px-4 py-12"
+      aria-labelledby="contact-title"
+    >
       {/* Header */}
       <motion.div
         className="text-center mb-16"
@@ -89,7 +92,10 @@ export function ContactPage({ lang }: ContactPageProps) {
         >
           <Mail className="w-8 h-8" />
         </motion.div>
-        <h1 className="text-4xl font-bold tracking-tight mb-4">
+        <h1
+          id="contact-title"
+          className="text-4xl font-bold tracking-tight mb-4"
+        >
           {t("contact.heading", lang)}
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -285,6 +291,6 @@ export function ContactPage({ lang }: ContactPageProps) {
           </Card>
         </motion.section>
       </motion.div>
-    </div>
+    </main>
   );
 }

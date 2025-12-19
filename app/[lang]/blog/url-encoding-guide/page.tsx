@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   title: "Complete Guide to URL Encoding: Best Practices - KittyEncode",
   description:
     "Master URL encoding principles, use cases, and best practices. Learn why URL encoding is essential and how to use it correctly across different programming languages.",
+  keywords:
+    "url encoding, percent encoding, rfc3986, web development, HTTP, URL safety, query parameters, character encoding",
   robots: {
     index: false,
     follow: true,

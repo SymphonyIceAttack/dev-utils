@@ -20,7 +20,7 @@ export const layout = {
   "footer.githubProfile": "GitHub",
   "footer.tagline": "Purr-fect coding utilities with a feline touch.",
   "footer.madeWithLove": "Made with ♥ for developers.",
-  
+
   "footer.tool.urlEncoder": "URL Encoder",
   "footer.tool.base64Encoder": "Base64 Encoder",
   "footer.tool.md5Generator": "MD5 Generator",

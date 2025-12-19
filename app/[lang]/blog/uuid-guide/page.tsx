@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   title: "UUID Generation: A Developer's Complete Guide - KittyEncode",
   description:
     "Master UUID generation with this complete guide. Understand UUID versions (v1, v4, v7), best practices for database primary keys, and distributed systems.",
+  keywords:
+    "uuid, universal unique identifier, rfc4122, database primary key, distributed systems, uuid v1, uuid v4, uuid v7, identifier generation",
   robots: {
     index: false,
     follow: true,

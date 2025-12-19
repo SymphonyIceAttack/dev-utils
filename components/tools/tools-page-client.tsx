@@ -11,7 +11,7 @@ import {
   Search,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -87,39 +87,69 @@ export function ToolsPageClient({ lang }: ToolsPageClientProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const filteredTools = allTools.filter((tool) => {
-    const matchesCategory =
-      selectedCategory === "all" || tool.category === selectedCategory;
-    const matchesSearch =
-      searchQuery === "" ||
-      t(tool.titleKey).toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t(tool.descriptionKey).toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  // Performance optimization: Memoize filtered results
+  const filteredTools = useMemo(() => {
+    return allTools.filter((tool) => {
+      const matchesCategory =
+        selectedCategory === "all" || tool.category === selectedCategory;
+      const matchesSearch =
+        searchQuery === "" ||
+        t(tool.titleKey).toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t(tool.descriptionKey)
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery, t]);
+
+  // Performance optimization: Memoize callbacks
+  const handleCategoryChange = useCallback((category: string) => {
+    setSelectedCategory(category);
+  }, []);
+
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchQuery(e.target.value);
+    },
+    [],
+  );
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <main className="container mx-auto px-4 py-8" aria-labelledby="tools-title">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h1 className="text-4xl font-bold mb-4">{t("tools.title")}</h1>
+        <h1 id="tools-title" className="text-4xl font-bold mb-4">
+          {t("tools.title")}
+        </h1>
         <p className="text-lg text-muted-foreground">{t("tools.subtitle")}</p>
       </motion.div>
 
       {/* Search and Filter */}
       <div className="mb-8 space-y-4">
         <div className="relative max-w-md mx-auto">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search
+            className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
+            aria-hidden="true"
+          />
+          <label htmlFor="tool-search" className="sr-only">
+            {t("tools.search")}
+          </label>
           <input
+            id="tool-search"
             type="text"
             placeholder={t("tools.search")}
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearchChange}
             className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background text-foreground"
+            aria-describedby="search-help"
           />
+          <div id="search-help" className="sr-only">
+            {t("tools.searchHelp")}
+          </div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2">
@@ -129,8 +159,9 @@ export function ToolsPageClient({ lang }: ToolsPageClientProps) {
               variant={
                 selectedCategory === category.value ? "default" : "outline"
               }
-              onClick={() => setSelectedCategory(category.value)}
+              onClick={() => handleCategoryChange(category.value)}
               className="text-sm"
+              aria-pressed={selectedCategory === category.value}
             >
               {t(category.key)}
             </Button>
@@ -148,11 +179,14 @@ export function ToolsPageClient({ lang }: ToolsPageClientProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Link href={`/${lang}${tool.href}`}>
+              <Link href={`/${lang}${tool.href}`} aria-label={t(tool.titleKey)}>
                 <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
                   <CardHeader>
                     <div className="flex items-center space-x-3">
-                      <Icon className={`h-6 w-6 ${tool.color}`} />
+                      <Icon
+                        className={`h-6 w-6 ${tool.color}`}
+                        aria-hidden="true"
+                      />
                       <CardTitle className="text-lg">
                         {t(tool.titleKey)}
                       </CardTitle>
@@ -167,10 +201,10 @@ export function ToolsPageClient({ lang }: ToolsPageClientProps) {
       </div>
 
       {filteredTools.length === 0 && (
-        <div className="text-center py-12">
+        <div className="text-center py-12" aria-live="polite">
           <p className="text-muted-foreground">{t("tools.noResults")}</p>
         </div>
       )}
-    </div>
+    </main>
   );
 }

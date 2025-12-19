@@ -45,39 +45,53 @@ export const passwordGenerator = {
   "passwordGenerator.passphrase.separator.none": "なし",
   "passwordGenerator.option.additional": "追加オプション",
   "passwordGenerator.option.capitalize": "単語を大文字化",
-  
+
   "passwordGenerator.output.generated": "生成されたパスワード",
   "passwordGenerator.output.copyAll": "すべてコピー",
-  
+
   "passwordGenerator.presetsTitle": "パスワードプリセット",
-  "passwordGenerator.presetsDesc": "異なるセキュリティレベル用の事前設定されたパスワード設定。「クイック実行」をクリックして生成：",
+  "passwordGenerator.presetsDesc":
+    "異なるセキュリティレベル用の事前設定されたパスワード設定。「クイック実行」をクリックして生成：",
   "passwordGenerator.preset.loadOnly": "プリセットのみ読み込み",
   "passwordGenerator.preset.chars": "文字",
   "passwordGenerator.preset.symbols": "記号",
   "passwordGenerator.preset.numbers": "数字",
   "passwordGenerator.preset.upper": "大文字",
 
-  "passwordGenerator.seo.title": "なぜパスワードジェネレーターを使うのか？どのように動作するのか？",
-  "passwordGenerator.seo.desc": "強力でユニークなパスワードはセキュリティに不可欠です。このツールはWeb Crypto API（crypto.getRandomValues）を介して<strong className=\"text-foreground\">暗号学的に安全</strong>な乱数生成を使用します。",
-  
+  "passwordGenerator.seo.title":
+    "なぜパスワードジェネレーターを使うのか？どのように動作するのか？",
+  "passwordGenerator.seo.desc":
+    '強力でユニークなパスワードはセキュリティに不可欠です。このツールはWeb Crypto API（crypto.getRandomValues）を介して<strong className="text-foreground">暗号学的に安全</strong>な乱数生成を使用します。',
+
   "passwordGenerator.tech.title": "技術的実装",
   "passwordGenerator.tech.randomTitle": "ランダムパスワード生成：",
-  "passwordGenerator.tech.randomList1": "crypto.getRandomValues()を使用して暗号学的に安全なランダム性を実現",
-  "passwordGenerator.tech.randomList2": "ユーザー設定に基づいて文字プールを動的に構築",
-  "passwordGenerator.tech.randomList3": "紛らわしい文字のオプション除外（0, O, 1, l, Iで読みやすさ向上）",
-  "passwordGenerator.tech.randomList4": "均一分布により各位置の確率が等しくなることを保証",
-  "passwordGenerator.tech.randomList5": "さまざまなタイプで4〜64文字の長さをサポート",
-  
+  "passwordGenerator.tech.randomList1":
+    "crypto.getRandomValues()を使用して暗号学的に安全なランダム性を実現",
+  "passwordGenerator.tech.randomList2":
+    "ユーザー設定に基づいて文字プールを動的に構築",
+  "passwordGenerator.tech.randomList3":
+    "紛らわしい文字のオプション除外（0, O, 1, l, Iで読みやすさ向上）",
+  "passwordGenerator.tech.randomList4":
+    "均一分布により各位置の確率が等しくなることを保証",
+  "passwordGenerator.tech.randomList5":
+    "さまざまなタイプで4〜64文字の長さをサポート",
+
   "passwordGenerator.tech.passphraseTitle": "パスフレーズ生成：",
-  "passwordGenerator.tech.passphraseList1": "100以上の一般的な英単語からの辞書ベースの選択",
-  "passwordGenerator.tech.passphraseList2": "各単語は約6.6ビットのエントロピーを追加",
-  "passwordGenerator.tech.passphraseList3": "オプションの大文字化と数字/記号の追加",
-  "passwordGenerator.tech.passphraseList4": "カスタマイズ可能な区切り文字（ハイフン、アンダースコア、スペースなど）",
-  "passwordGenerator.tech.passphraseList5": "単語範囲：異なるセキュリティレベルに対応した3〜8単語",
+  "passwordGenerator.tech.passphraseList1":
+    "100以上の一般的な英単語からの辞書ベースの選択",
+  "passwordGenerator.tech.passphraseList2":
+    "各単語は約6.6ビットのエントロピーを追加",
+  "passwordGenerator.tech.passphraseList3":
+    "オプションの大文字化と数字/記号の追加",
+  "passwordGenerator.tech.passphraseList4":
+    "カスタマイズ可能な区切り文字（ハイフン、アンダースコア、スペースなど）",
+  "passwordGenerator.tech.passphraseList5":
+    "単語範囲：異なるセキュリティレベルに対応した3〜8単語",
 
   "passwordGenerator.features.title": "主な機能",
   "passwordGenerator.feature.secure.title": "暗号学的に安全",
-  "passwordGenerator.feature.secure.desc": "真のランダム性のためにWeb Crypto APIを使用",
+  "passwordGenerator.feature.secure.desc":
+    "真のランダム性のためにWeb Crypto APIを使用",
   "passwordGenerator.feature.modes.title": "複数のモード",
   "passwordGenerator.feature.modes.desc": "ランダムパスワードとパスフレーズ",
   "passwordGenerator.feature.passphrase.title": "パスフレーズサポート",
@@ -86,22 +100,33 @@ export const passwordGenerator = {
   "passwordGenerator.feature.bulk.desc": "複数のパスワードを一度に生成",
 
   "passwordGenerator.bestPractices.title": "ベストプラクティスと使用境界",
-  "passwordGenerator.bestPractices.item1": "各アカウントに固有のパスワードを使用",
-  "passwordGenerator.bestPractices.boundary1": "✅ 重要 - クレデンシャルスタッフィング攻撃を防止",
-  "passwordGenerator.bestPractices.item2": "パスワードは少なくとも12〜16文字にする",
-  "passwordGenerator.bestPractices.boundary2": "✅ 推奨 - 重要なアカウント（銀行、メール）には16文字以上",
+  "passwordGenerator.bestPractices.item1":
+    "各アカウントに固有のパスワードを使用",
+  "passwordGenerator.bestPractices.boundary1":
+    "✅ 重要 - クレデンシャルスタッフィング攻撃を防止",
+  "passwordGenerator.bestPractices.item2":
+    "パスワードは少なくとも12〜16文字にする",
+  "passwordGenerator.bestPractices.boundary2":
+    "✅ 推奨 - 重要なアカウント（銀行、メール）には16文字以上",
   "passwordGenerator.bestPractices.item3": "大文字、小文字、数字、記号を含める",
-  "passwordGenerator.bestPractices.boundary3": "✅ 重要 - エントロピーを増加させ辞書攻撃に抵抗",
-  "passwordGenerator.bestPractices.item4": "パスワードは安全なパスワードマネージャーに保存",
-  "passwordGenerator.bestPractices.boundary4": "✅ 必須 - パスワードの再利用は絶対にしない",
+  "passwordGenerator.bestPractices.boundary3":
+    "✅ 重要 - エントロピーを増加させ辞書攻撃に抵抗",
+  "passwordGenerator.bestPractices.item4":
+    "パスワードは安全なパスワードマネージャーに保存",
+  "passwordGenerator.bestPractices.boundary4":
+    "✅ 必須 - パスワードの再利用は絶対にしない",
   "passwordGenerator.bestPractices.item5": "可能な場合は二要素認証を有効にする",
-  "passwordGenerator.bestPractices.boundary5": "✅ 強く推奨 - 重要な第二のセキュリティ層を追加",
+  "passwordGenerator.bestPractices.boundary5":
+    "✅ 強く推奨 - 重要な第二のセキュリティ層を追加",
 
   "passwordGenerator.faq.title": "よくある質問",
   "passwordGenerator.faq.q1": "このパスワードジェネレーターは安全ですか？",
-  "passwordGenerator.faq.a1": "はい！暗号学的に安全な乱数を提供するWeb Crypto API（crypto.getRandomValues）を使用しています。すべての生成はブラウザ内でローカルに行われます。",
+  "passwordGenerator.faq.a1":
+    "はい！暗号学的に安全な乱数を提供するWeb Crypto API（crypto.getRandomValues）を使用しています。すべての生成はブラウザ内でローカルに行われます。",
   "passwordGenerator.faq.q2": "パスワードはどこかに保存されますか？",
-  "passwordGenerator.faq.a2": "いいえ。生成されたパスワードはブラウザ内にのみ存在し、サーバーに送信されることはありません。ページを閉じると消えます。",
+  "passwordGenerator.faq.a2":
+    "いいえ。生成されたパスワードはブラウザ内にのみ存在し、サーバーに送信されることはありません。ページを閉じると消えます。",
   "passwordGenerator.faq.q3": "強いパスワードとは何ですか？",
-  "passwordGenerator.faq.a3": "強いパスワードは長く（16文字以上）、異なる種類の文字を使用し、各アカウントに固有で、ランダム（辞書の単語に基づかない）です。",
+  "passwordGenerator.faq.a3":
+    "強いパスワードは長く（16文字以上）、異なる種類の文字を使用し、各アカウントに固有で、ランダム（辞書の単語に基づかない）です。",
 };

@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import {
   AlertCircle,
   ArrowRightLeft,
@@ -20,23 +19,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 300, damping: 24 },
-  },
-};
 
 interface Base64EncoderToolProps {
   lang: LanguageType;
@@ -80,6 +62,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
     }
     return false;
   }, [lastSpawnTime]);
+
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
@@ -209,80 +192,35 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
   }, [mode, input, output]);
 
   return (
-    <motion.div
-      className="container mx-auto max-w-6xl px-4 py-8"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
+    <div className="container mx-auto max-w-6xl px-4 py-8">
       {/* Hero Section */}
-      <motion.section className="mb-10 text-center" variants={itemVariants}>
-        <motion.div
-          className="pixel-icon-box inline-flex items-center justify-center w-16 h-16 mb-6"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-          whileHover={{
-            rotate: [0, -10, 10, 0],
-            transition: { duration: 0.5 },
-          }}
-        >
+      <section className="mb-10 text-center">
+        <div className="pixel-icon-box inline-flex items-center justify-center w-16 h-16 mb-6">
           <Key className="h-8 w-8 text-primary" />
-        </motion.div>
+        </div>
 
-        <motion.h1
-          className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
           {t("base64Encoder.pageTitle")}
-        </motion.h1>
-        <motion.p
-          className="text-lg text-muted-foreground max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           {t("base64Encoder.pageSubtitle")}
-        </motion.p>
+        </p>
 
-        <motion.div
-          className="flex flex-wrap justify-center gap-3 mt-6"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.1, delayChildren: 0.5 },
-            },
-          }}
-        >
+        <div className="flex flex-wrap justify-center gap-3 mt-6">
           {[
             t("badge.free"),
             t("badge.noSignup"),
             t("badge.offline"),
             t("badge.privacy"),
           ].map((tag) => (
-            <motion.span
-              key={tag}
-              className="pixel-badge"
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 },
-              }}
-              whileHover={{ scale: 1.1, y: -2 }}
-            >
+            <span key={tag} className="pixel-badge">
               {tag}
-            </motion.span>
+            </span>
           ))}
-        </motion.div>
-      </motion.section>
+        </div>
+      </section>
 
-      <motion.section
-        className="mb-12"
-        variants={itemVariants}
-        ref={toolSectionRef}
-      >
+      <section className="mb-12" ref={toolSectionRef}>
         <Card className="rounded-2xl overflow-hidden">
           <CardContent className="p-6">
             <Tabs
@@ -299,10 +237,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               <TabsContent value="convert" className="space-y-4">
                 <div className="flex items-center justify-between gap-4 mb-4">
                   <div className="flex flex-wrap items-center gap-3">
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                    >
+                    <div>
                       <Button
                         variant={mode === "encode" ? "default" : "outline"}
                         onClick={() => setMode("encode")}
@@ -311,11 +246,8 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                         <ArrowRightLeft className="h-4 w-4" />
                         {t("base64Encoder.encode")}
                       </Button>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                    >
+                    </div>
+                    <div>
                       <Button
                         variant={mode === "decode" ? "default" : "outline"}
                         onClick={() => setMode("decode")}
@@ -324,11 +256,8 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                         <ArrowRightLeft className="h-4 w-4" />
                         {t("base64Encoder.decode")}
                       </Button>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                    >
+                    </div>
+                    <div>
                       <Button
                         variant="outline"
                         onClick={switchMode}
@@ -337,62 +266,37 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                         <RotateCcw className="h-4 w-4" />
                         {t("base64Encoder.swap")}
                       </Button>
-                    </motion.div>
+                    </div>
                   </div>
 
                   {/* Usage Analysis Tags - 右侧 */}
-                  <motion.div
-                    className="flex flex-wrap gap-2"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <motion.div
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
-                      whileHover={{ scale: 1.05 }}
-                    >
+                  <div className="flex flex-wrap gap-2">
+                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
                       {conversionStats.totalConversions} Total
-                    </motion.div>
-                    <motion.div
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-green-500/10 text-green-600 text-xs font-medium"
-                      whileHover={{ scale: 1.05 }}
-                    >
+                    </div>
+                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-green-500/10 text-green-600 text-xs font-medium">
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                       {conversionStats.encodeCount} Encodes
-                    </motion.div>
-                    <motion.div
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-500/10 text-blue-600 text-xs font-medium"
-                      whileHover={{ scale: 1.05 }}
-                    >
+                    </div>
+                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-500/10 text-blue-600 text-xs font-medium">
                       <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                       {conversionStats.decodeCount} Decodes
-                    </motion.div>
+                    </div>
                     {conversionStats.lastUsed && (
-                      <motion.div
+                      <div
                         className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/10 text-amber-600 text-xs font-medium"
-                        whileHover={{ scale: 1.05 }}
                         title={`Last used: ${conversionStats.lastUsed.toLocaleString()}`}
                       >
                         <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
                         {conversionStats.lastUsed.toLocaleTimeString()}
-                      </motion.div>
+                      </div>
                     )}
-                  </motion.div>
+                  </div>
                 </div>
 
                 <div className="grid gap-4 lg:grid-cols-2">
-                  <motion.div
-                    className="space-y-2"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.2,
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 24,
-                    }}
-                  >
+                  <div className="space-y-2">
                     <div className="flex items-center justify-between h-8">
                       <label
                         htmlFor="base64-input"
@@ -424,39 +328,20 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                         setError(null);
                       }}
                     />
-                    <AnimatePresence>
-                      {error && (
-                        <motion.div
-                          className="flex items-start gap-2 text-sm text-destructive bg-destructive/10 p-3 rounded-xl"
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                        >
-                          <span>{error}</span>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
+                    {error && (
+                      <div className="flex items-start gap-2 text-sm text-destructive bg-destructive/10 p-3 rounded-xl">
+                        <AlertCircle className="h-4 w-4 mt-0.5" />
+                        <span>{error}</span>
+                      </div>
+                    )}
+                  </div>
 
-                  <motion.div
-                    className="space-y-2"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.3,
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 24,
-                    }}
-                  >
+                  <div className="space-y-2">
                     <div className="flex items-center justify-between h-8">
                       <span className="text-sm font-medium">
                         {t("common.output")}
                       </span>
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
+                      <div>
                         <Button
                           variant="ghost"
                           size="sm"
@@ -464,33 +349,19 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                           disabled={!output}
                           className="rounded-lg"
                         >
-                          <AnimatePresence mode="wait">
-                            {copied ? (
-                              <motion.span
-                                key="copied"
-                                className="flex items-center"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                              >
-                                <Check className="h-4 w-4 mr-1" />{" "}
-                                {t("common.copied")}
-                              </motion.span>
-                            ) : (
-                              <motion.span
-                                key="copy"
-                                className="flex items-center"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                              >
-                                <Copy className="h-4 w-4 mr-1" />{" "}
-                                {t("common.copy")}
-                              </motion.span>
-                            )}
-                          </AnimatePresence>
+                          {copied ? (
+                            <span className="flex items-center">
+                              <Check className="h-4 w-4 mr-1" />{" "}
+                              {t("common.copied")}
+                            </span>
+                          ) : (
+                            <span className="flex items-center">
+                              <Copy className="h-4 w-4 mr-1" />{" "}
+                              {t("common.copy")}
+                            </span>
+                          )}
                         </Button>
-                      </motion.div>
+                      </div>
                     </div>
                     <div
                       className={`
@@ -524,47 +395,24 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                         </div>
                       )}
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
-                <motion.div
-                  className="flex flex-wrap items-center gap-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.4,
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 24,
-                  }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
+                <div className="flex flex-wrap items-center gap-3">
+                  <div>
                     <Button
                       onClick={handleConvert}
                       className="gap-2 rounded-xl h-11"
                     >
-                      <motion.div
-                        animate={{ rotate: [0, 360] }}
-                        transition={{
-                          duration: 3,
-                          repeat: Number.POSITIVE_INFINITY,
-                          ease: "linear",
-                        }}
-                      >
+                      <div>
                         <Sparkles className="h-4 w-4" />
-                      </motion.div>
+                      </div>
                       {mode === "encode"
                         ? t("base64Encoder.encodeBtn")
                         : t("base64Encoder.decodeBtn")}
                     </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
+                  </div>
+                  <div>
                     <Button
                       variant="outline"
                       className="rounded-xl bg-transparent h-11"
@@ -576,75 +424,60 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                     >
                       {t("common.clear")}
                     </Button>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </TabsContent>
             </Tabs>
           </CardContent>
         </Card>
-      </motion.section>
+      </section>
 
       {/* Examples Section */}
-      <motion.section className="mb-12" variants={itemVariants}>
+      <section className="mb-12">
         <Card className="rounded-2xl overflow-hidden">
           <CardContent className="p-6">
-            <motion.h3
-              className="text-lg font-semibold mb-4 flex items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
               <Sparkles className="h-5 w-5" />
               {t("base64Encoder.examples")}
-            </motion.h3>
+            </h3>
             <p className="text-sm text-muted-foreground mb-6">
               {t("base64Encoder.examplesHint")} Click on any example to load it
               into the input field, or use "Quick Run" to automatically
               encode/decode:
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
-              {exampleData.map((example, index) => (
-                <motion.div
+              {exampleData.map((example) => (
+                <div
                   key={example.titleKey}
-                  className="pixel-card p-4 space-y-3 cursor-pointer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 24,
-                  }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  onClick={() => loadExample(example.data)}
+                  className="pixel-card p-4 space-y-3 relative group"
                 >
                   <div className="flex items-start justify-between">
                     <h4 className="text-sm font-semibold flex-1">
-                      {t(example.titleKey)}
+                      <button
+                        type="button"
+                        className="text-left w-full after:absolute after:inset-0 outline-none focus:ring-2 focus:ring-primary rounded-lg"
+                        onClick={() => loadExample(example.data)}
+                      >
+                        {t(example.titleKey)}
+                      </button>
                     </h4>
-                    <div className="flex gap-1 ml-2">
-                      <motion.button
+                    <div className="flex gap-1 ml-2 relative z-10">
+                      <button
+                        type="button"
                         onClick={(e) => {
                           e.stopPropagation(); // Prevent triggering parent onClick
                           loadExample(example.data);
                           // Note: Do NOT auto-convert, let user manually click convert button
                         }}
                         className="pixel-btn px-3 py-1 text-xs h-7"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                         title="Load Example Only"
                       >
-                        <motion.span
-                          animate={{ rotate: [0, 15, -15, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Number.POSITIVE_INFINITY,
-                            repeatDelay: 4,
-                          }}
-                        >
+                        <span>
                           <Sparkles className="h-3 w-3" />
-                        </motion.span>
-                      </motion.button>
-                      <motion.button
+                        </span>
+                      </button>
+                      <button
+                        type="button"
                         onClick={async (e) => {
                           e.stopPropagation(); // Prevent triggering parent onClick
                           await navigator.clipboard.writeText(example.data);
@@ -652,58 +485,49 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                           setTimeout(() => setCopied(false), 2000);
                         }}
                         className="px-3 py-1 text-xs h-7 rounded-full border-2 border-foreground/30 dark:border-primary/30 bg-transparent hover:bg-accent transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                         title="Copy"
                       >
                         <Copy className="h-3 w-3" />
-                      </motion.button>
+                      </button>
                     </div>
                   </div>
                   <p className="text-xs font-mono text-muted-foreground break-all bg-muted/30 p-2 rounded border">
                     {example.data}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </CardContent>
         </Card>
-      </motion.section>
+      </section>
 
       {/* SEO Content Section */}
-      <motion.section
-        className="mb-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariants}
-      >
-        <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
+      <section className="mb-12">
+        <h2 className="text-xl font-bold mb-4">
           {t("base64Encoder.seo.title")}
-        </motion.h2>
-        <motion.p
+        </h2>
+        <p
           className="text-muted-foreground leading-relaxed mb-6"
-          variants={itemVariants}
-          dangerouslySetInnerHTML={{ __html: t("base64Encoder.seo.description") }}
+          dangerouslySetInnerHTML={{
+            __html: t("base64Encoder.seo.description"),
+          }}
         />
 
-        <motion.div
-          className="mb-6 p-4 bg-muted/30 rounded-xl border border-border/50"
-          variants={itemVariants}
-        >
-          <h4 className="font-semibold mb-2">{t("base64Encoder.seo.techImplTitle")}</h4>
-          <p 
+        <div className="mb-6 p-4 bg-muted/30 rounded-xl border border-border/50">
+          <h4 className="font-semibold mb-2">
+            {t("base64Encoder.seo.techImplTitle")}
+          </h4>
+          <p
             className="text-sm text-muted-foreground leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: t("base64Encoder.seo.techImplDesc") }}
+            dangerouslySetInnerHTML={{
+              __html: t("base64Encoder.seo.techImplDesc"),
+            }}
           />
-        </motion.div>
+        </div>
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
+        <h3 className="text-lg font-semibold mt-8 mb-4">
           {t("base64Encoder.featuresTitle")}
-        </motion.h3>
+        </h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -723,87 +547,68 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
               desc: t("base64Encoder.feature.privacy.desc"),
             },
           ].map((feature) => (
-            <motion.div
-              key={feature.title}
-              className="pixel-card p-4"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -4 }}
-            >
+            <div key={feature.title} className="pixel-card p-4">
               <h4 className="font-semibold text-sm">{feature.title}</h4>
               <p className="text-xs text-muted-foreground mt-1">
                 {feature.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
+        <h3 className="text-lg font-semibold mt-8 mb-4">
           {t("base64Encoder.useCasesTitle")}
-        </motion.h3>
-        <motion.ul
-          className="text-muted-foreground space-y-2"
-          variants={containerVariants}
-        >
+        </h3>
+        <ul className="text-muted-foreground space-y-2">
           {[
             t("base64Encoder.useCase.images"),
             t("base64Encoder.useCase.email"),
             t("base64Encoder.useCase.db"),
             t("base64Encoder.useCase.auth"),
             t("base64Encoder.useCase.serialization"),
-          ].map((item, index) => (
-            <motion.li
-              key={item}
-              className="flex items-center gap-3 text-sm"
-              variants={itemVariants}
-              whileHover={{ x: 4 }}
-            >
-              <motion.span
-                className="w-2 h-2 bg-primary rounded-full"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-              />
+          ].map((item) => (
+            <li key={item} className="flex items-center gap-3 text-sm">
+              <span className="w-2 h-2 bg-primary rounded-full" />
               {item}
-            </motion.li>
+            </li>
           ))}
-        </motion.ul>
+        </ul>
 
-        <motion.div
-          className="mt-6 p-4 bg-muted/30 rounded-xl border border-border/50"
-          variants={itemVariants}
-        >
+        <div className="mt-6 p-4 bg-muted/30 rounded-xl border border-border/50">
           <h4 className="font-semibold mb-2">
             💻 {t("base64Encoder.techTitle")}
           </h4>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.dataUri") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.email") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.db") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.jwt") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.api") }} />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: t("base64Encoder.tech.dataUri"),
+              }}
+            />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: t("base64Encoder.tech.email"),
+              }}
+            />
+            <p
+              dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.db") }}
+            />
+            <p
+              dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.jwt") }}
+            />
+            <p
+              dangerouslySetInnerHTML={{ __html: t("base64Encoder.tech.api") }}
+            />
           </div>
-        </motion.div>
+        </div>
 
         {/* Real-World Scenarios */}
-        <motion.section
-          className="mt-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
-        >
-          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+        <section className="mt-12">
+          <h3 className="text-xl font-bold mb-6">
             {t("base64Encoder.scenarios.title")}
-          </motion.h3>
+          </h3>
 
           {/* Scenario 1 */}
-          <motion.div
-            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
-            variants={itemVariants}
-          >
+          <div className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50">
             <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                 1
@@ -815,7 +620,9 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             </p>
             <div className="bg-background p-4 rounded-lg border">
               <div className="text-sm">
-                <div className="text-muted-foreground mb-2">{t("base64Encoder.scenarios.scenario1.problem")}</div>
+                <div className="text-muted-foreground mb-2">
+                  {t("base64Encoder.scenarios.scenario1.problem")}
+                </div>
                 <div className="mb-3">
                   {t("base64Encoder.scenarios.scenario1.problemDesc")}
                 </div>
@@ -835,13 +642,10 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             <p className="text-sm text-muted-foreground mt-3">
               <strong>{t("base64Encoder.scenarios.scenario1.result")}</strong>
             </p>
-          </motion.div>
+          </div>
 
           {/* Scenario 2 */}
-          <motion.div
-            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
-            variants={itemVariants}
-          >
+          <div className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50">
             <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                 2
@@ -874,13 +678,10 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             <p className="text-sm text-muted-foreground mt-3">
               <strong>{t("base64Encoder.scenarios.scenario2.result")}</strong>
             </p>
-          </motion.div>
+          </div>
 
           {/* Scenario 3 */}
-          <motion.div
-            className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50"
-            variants={itemVariants}
-          >
+          <div className="mb-8 p-6 bg-muted/20 rounded-xl border border-border/50">
             <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                 3
@@ -917,22 +718,16 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             <p className="text-sm text-muted-foreground mt-3">
               <strong>{t("base64Encoder.scenarios.scenario3.result")}</strong>
             </p>
-          </motion.div>
-        </motion.section>
+          </div>
+        </section>
 
         {/* Step-by-Step Guide */}
-        <motion.section
-          className="mt-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
-        >
-          <motion.h3 className="text-xl font-bold mb-6" variants={itemVariants}>
+        <section className="mt-12">
+          <h3 className="text-xl font-bold mb-6">
             {t("base64Encoder.guide.title")}
-          </motion.h3>
+          </h3>
 
-          <motion.div className="space-y-4" variants={containerVariants}>
+          <div className="space-y-4">
             {[
               {
                 step: "1",
@@ -955,11 +750,9 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                 desc: t("base64Encoder.guide.step4.desc"),
               },
             ].map((item) => (
-              <motion.div
+              <div
                 key={item.step}
                 className="flex items-start gap-4 p-4 bg-muted/10 rounded-lg"
-                variants={itemVariants}
-                whileHover={{ x: 4 }}
               >
                 <span className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                   {item.step}
@@ -968,24 +761,20 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                   <h4 className="font-semibold mb-1">{item.title}</h4>
                   <p className="text-sm text-muted-foreground">{item.desc}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
-        </motion.section>
-      </motion.section>
+          </div>
+        </section>
+      </section>
 
       {/* Usage Limits & Best Practices */}
-      <motion.section className="mb-12" variants={itemVariants}>
+      <section className="mb-12">
         <Card className="rounded-2xl overflow-hidden">
           <CardContent className="p-6">
-            <motion.h3
-              className="text-lg font-semibold mb-4 flex items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
               <AlertCircle className="h-5 w-5" />
               {t("base64Encoder.limitsTitle")}
-            </motion.h3>
+            </h3>
             <div className="grid gap-6 md:grid-cols-2">
               <div>
                 <h4 className="font-semibold mb-3 text-amber-600">
@@ -994,21 +783,15 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>
-                      {t("base64Encoder.limits.sizeIncrease")}
-                    </span>
+                    <span>{t("base64Encoder.limits.sizeIncrease")}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>
-                      {t("base64Encoder.limits.largeFiles")}
-                    </span>
+                    <span>{t("base64Encoder.limits.largeFiles")}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>
-                      {t("base64Encoder.limits.notEncryption")}
-                    </span>
+                    <span>{t("base64Encoder.limits.notEncryption")}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
@@ -1023,9 +806,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>
-                      {t("base64Encoder.limits.smallBinary")}
-                    </span>
+                    <span>{t("base64Encoder.limits.smallBinary")}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
@@ -1052,66 +833,51 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
             </div>
           </CardContent>
         </Card>
-      </motion.section>
+      </section>
 
       {/* FAQ Section */}
-      <motion.section className="mb-12" variants={itemVariants}>
-        <motion.button
+      <section className="mb-12">
+        <button
+          type="button"
           onClick={() => setShowFaq(!showFaq)}
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
-          whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">{t("base64Encoder.faqTitle")}</h2>
-          <motion.div
-            animate={{ rotate: showFaq ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
+          <h2 className="text-lg font-semibold">
+            {t("base64Encoder.faqTitle")}
+          </h2>
+          <div>
             <ChevronDown className="h-5 w-5" />
-          </motion.div>
-        </motion.button>
+          </div>
+        </button>
 
-        <AnimatePresence>
-          {showFaq && (
-            <motion.div
-              className="space-y-4 pt-6 overflow-hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {[
-                {
-                  q: t("base64Encoder.faq.q1"),
-                  a: t("base64Encoder.faq.a1"),
-                },
-                {
-                  q: t("base64Encoder.faq.q2"),
-                  a: t("base64Encoder.faq.a2"),
-                },
-                {
-                  q: t("base64Encoder.faq.q3"),
-                  a: t("base64Encoder.faq.a3"),
-                },
-                {
-                  q: t("base64Encoder.faq.q4"),
-                  a: t("base64Encoder.faq.a4"),
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={faq.q}
-                  className="pixel-card p-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
-                  <p className="text-sm text-muted-foreground">{faq.a}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.section>
-    </motion.div>
+        {showFaq && (
+          <div className="space-y-4 pt-6 overflow-hidden">
+            {[
+              {
+                q: t("base64Encoder.faq.q1"),
+                a: t("base64Encoder.faq.a1"),
+              },
+              {
+                q: t("base64Encoder.faq.q2"),
+                a: t("base64Encoder.faq.a2"),
+              },
+              {
+                q: t("base64Encoder.faq.q3"),
+                a: t("base64Encoder.faq.a3"),
+              },
+              {
+                q: t("base64Encoder.faq.q4"),
+                a: t("base64Encoder.faq.a4"),
+              },
+            ].map((faq) => (
+              <div key={faq.q} className="pixel-card p-4">
+                <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
+                <p className="text-sm text-muted-foreground">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
   );
 }

@@ -56,7 +56,10 @@ export function DisclaimerPage({ lang }: DisclaimerPageProps) {
   ).split(";");
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-12">
+    <main
+      className="container mx-auto max-w-4xl px-4 py-12"
+      aria-labelledby="disclaimer-title"
+    >
       {/* Header */}
       <motion.div
         className="text-center mb-16"
@@ -75,7 +78,10 @@ export function DisclaimerPage({ lang }: DisclaimerPageProps) {
         >
           <AlertTriangle className="w-8 h-8" />
         </motion.div>
-        <h1 className="text-4xl font-bold tracking-tight mb-4">
+        <h1
+          id="disclaimer-title"
+          className="text-4xl font-bold tracking-tight mb-4"
+        >
           {t("disclaimer.heading", lang)}
         </h1>
         <p className="text-sm text-muted-foreground mb-2">
@@ -339,6 +345,6 @@ export function DisclaimerPage({ lang }: DisclaimerPageProps) {
           </Card>
         </motion.section>
       </motion.div>
-    </div>
+    </main>
   );
 }

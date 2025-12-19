@@ -29,7 +29,8 @@ export const layout = {
   "footer.tool.encodingConverter": "Convertidor de codificación",
 
   // Metadata
-  "metadata.title": "KittyEncode - Herramientas de desarrollo gratuitas en línea",
+  "metadata.title":
+    "KittyEncode - Herramientas de desarrollo gratuitas en línea",
   "metadata.description":
     "Herramientas de desarrollo gratuitas en línea para formateo JSON, codificación URL, conversión Base64, generación de hash y más. Rápido, seguro, funciona sin conexión.",
   "metadata.keywords":

@@ -43,14 +43,19 @@ export const uuidGenerator = {
 
   "uuidGenerator.whatIsUuidTitle": "什么是 UUID？",
   "uuidGenerator.whatIsUuidDesc":
-    "<strong className=\"text-foreground\">UUID（通用唯一标识符）</strong>是一个 128 位标识符，保证在时间和空间上都是唯一的。UUID 广泛用于分布式系统、数据库和需要唯一标识而无需中央协调的应用程序中。",
-  
+    '<strong className="text-foreground">UUID（通用唯一标识符）</strong>是一个 128 位标识符，保证在时间和空间上都是唯一的。UUID 广泛用于分布式系统、数据库和需要唯一标识而无需中央协调的应用程序中。',
+
   "uuidGenerator.techDetailsTitle": "技术实现细节",
-  "uuidGenerator.tech.webCrypto": "<strong>Web Crypto API：</strong> 使用 <code className=\"bg-background px-1 rounded\">crypto.getRandomValues()</code> 进行加密安全的随机数生成",
-  "uuidGenerator.tech.v4Struct": "<strong>UUID v4 结构：</strong> <code className=\"bg-background px-1 rounded\">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code>，其中 x 是随机十六进制，4 表示版本，y 是变体（8、9、a 或 b）",
-  "uuidGenerator.tech.v7Struct": "<strong>UUID v7 结构：</strong> 前 48 位是毫秒级 Unix 时间戳，然后是版本位（0111），接着是带有变体位的随机数据",
-  "uuidGenerator.tech.bitManip": "<strong>位操作：</strong> <code className=\"bg-background px-1 rounded\">bytes[6] = (bytes[6] & 0x0f) | 0x40</code> 设置版本 4，<code className=\"bg-background px-1 rounded\">bytes[8] = (bytes[8] & 0x3f) | 0x80</code> 设置 RFC4122 变体",
-  "uuidGenerator.tech.collision": "<strong>碰撞概率：</strong> v4 有 122 个随机位，碰撞概率约为 2.71 京分之一",
+  "uuidGenerator.tech.webCrypto":
+    '<strong>Web Crypto API：</strong> 使用 <code className="bg-background px-1 rounded">crypto.getRandomValues()</code> 进行加密安全的随机数生成',
+  "uuidGenerator.tech.v4Struct":
+    '<strong>UUID v4 结构：</strong> <code className="bg-background px-1 rounded">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code>，其中 x 是随机十六进制，4 表示版本，y 是变体（8、9、a 或 b）',
+  "uuidGenerator.tech.v7Struct":
+    "<strong>UUID v7 结构：</strong> 前 48 位是毫秒级 Unix 时间戳，然后是版本位（0111），接着是带有变体位的随机数据",
+  "uuidGenerator.tech.bitManip":
+    '<strong>位操作：</strong> <code className="bg-background px-1 rounded">bytes[6] = (bytes[6] & 0x0f) | 0x40</code> 设置版本 4，<code className="bg-background px-1 rounded">bytes[8] = (bytes[8] & 0x3f) | 0x80</code> 设置 RFC4122 变体',
+  "uuidGenerator.tech.collision":
+    "<strong>碰撞概率：</strong> v4 有 122 个随机位，碰撞概率约为 2.71 京分之一",
 
   "uuidGenerator.featuresTitle": "主要功能",
   "uuidGenerator.feature.rfc.title": "符合 RFC4122",
@@ -86,9 +91,12 @@ export const uuidGenerator = {
 
   "uuidGenerator.faqTitle": "常见问题",
   "uuidGenerator.faq.q1": "UUID 版本有什么区别？",
-  "uuidGenerator.faq.a1": "v4 使用随机生成，v7 包含时间戳以便更好排序，v1 使用 MAC 地址和时间戳（因隐私问题已弃用）。",
+  "uuidGenerator.faq.a1":
+    "v4 使用随机生成，v7 包含时间戳以便更好排序，v1 使用 MAC 地址和时间戳（因隐私问题已弃用）。",
   "uuidGenerator.faq.q2": "UUID 真的是唯一的吗？",
-  "uuidGenerator.faq.a2": "是的，生成重复 UUID 的概率极低。对于 v4，碰撞概率在实际使用中可以忽略不计。",
+  "uuidGenerator.faq.a2":
+    "是的，生成重复 UUID 的概率极低。对于 v4，碰撞概率在实际使用中可以忽略不计。",
   "uuidGenerator.faq.q3": "我可以使用 UUID 作为主键吗？",
-  "uuidGenerator.faq.a3": "当然可以！UUID 非常适合分布式系统，在集中式 ID 生成不可行的情况下使用。",
+  "uuidGenerator.faq.a3":
+    "当然可以！UUID 非常适合分布式系统，在集中式 ID 生成不可行的情况下使用。",
 };

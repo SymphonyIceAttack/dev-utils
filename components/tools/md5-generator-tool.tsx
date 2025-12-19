@@ -24,16 +24,16 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring" as const, stiffness: 300, damping: 24 },
+    transition: { duration: 0.3 },
   },
 };
 
@@ -599,7 +599,9 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                         }}
                         className="gap-2 rounded-xl h-11"
                       >
-                        {batchMode ? t("md5Generator.mode.single") : t("md5Generator.mode.batch")}
+                        {batchMode
+                          ? t("md5Generator.mode.single")
+                          : t("md5Generator.mode.batch")}
                       </Button>
                     </motion.div>
                   </div>
@@ -742,7 +744,8 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                           }
                           className="rounded-lg"
                         >
-                          <Copy className="h-4 w-4 mr-1" /> {t("md5Generator.copyAll")}
+                          <Copy className="h-4 w-4 mr-1" />{" "}
+                          {t("md5Generator.copyAll")}
                         </Button>
                       )}
                     </div>
@@ -813,6 +816,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                                     size="sm"
                                     onClick={() => copyToClipboardText(hash)}
                                     className="h-6 w-6 p-0"
+                                    aria-label={t("common.copy")}
                                   >
                                     <Copy className="h-3 w-3" />
                                   </Button>
@@ -915,7 +919,9 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                       transition={{ delay: 0.2 }}
                     >
                       <div className="flex items-center justify-between h-8">
-                        <span className="text-sm font-medium">{t("md5Generator.fileUpload.title")}</span>
+                        <span className="text-sm font-medium">
+                          {t("md5Generator.fileUpload.title")}
+                        </span>
                       </div>
                       <div className="border-2 border-dashed border-border rounded-xl p-8 text-center">
                         <input
@@ -954,7 +960,10 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                       </div>
                       {uploadedFileName && (
                         <p className="text-sm text-muted-foreground">
-                          {t("md5Generator.fileUpload.uploaded").replace("{name}", uploadedFileName)}
+                          {t("md5Generator.fileUpload.uploaded").replace(
+                            "{name}",
+                            uploadedFileName,
+                          )}
                         </p>
                       )}
                     </motion.div>
@@ -1115,21 +1124,26 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
               {exampleData.map((example, index) => (
                 <motion.div
                   key={example.titleKey}
-                  className="pixel-card p-4 space-y-3 cursor-pointer"
+                  className="pixel-card p-4 space-y-3 relative group"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02, y: -2 }}
-                  onClick={() => loadExample(example.data)}
                 >
                   <div className="flex items-start justify-between">
                     <h4 className="text-sm font-semibold flex-1">
-                      {t(example.titleKey)}
+                      <button
+                        type="button"
+                        className="text-left w-full after:absolute after:inset-0 outline-none focus:ring-2 focus:ring-primary rounded-lg"
+                        onClick={() => loadExample(example.data)}
+                      >
+                        {t(example.titleKey)}
+                      </button>
                     </h4>
-                    <div className="flex gap-1 ml-2">
+                    <div className="flex gap-1 ml-2 relative z-10">
                       <motion.button
                         onClick={(e) => {
-                          e.stopPropagation(); // Prevent triggering parent onClick
+                          e.stopPropagation(); // Prevent triggering parent onClick (now stretched link)
                           loadExample(example.data);
                           // Note: Do NOT auto-generate, let user manually click generate button
                         }}
@@ -1277,28 +1291,23 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
           {[
             {
               case: t("md5Generator.useCases.item1"),
-              boundary:
-                t("md5Generator.useCases.boundary1"),
+              boundary: t("md5Generator.useCases.boundary1"),
             },
             {
               case: t("md5Generator.useCases.item2"),
-              boundary:
-                t("md5Generator.useCases.boundary2"),
+              boundary: t("md5Generator.useCases.boundary2"),
             },
             {
               case: t("md5Generator.useCases.item3"),
-              boundary:
-                t("md5Generator.useCases.boundary3"),
+              boundary: t("md5Generator.useCases.boundary3"),
             },
             {
               case: t("md5Generator.useCases.item4"),
-              boundary:
-                t("md5Generator.useCases.boundary4"),
+              boundary: t("md5Generator.useCases.boundary4"),
             },
             {
               case: t("md5Generator.useCases.item5"),
-              boundary:
-                t("md5Generator.useCases.boundary5"),
+              boundary: t("md5Generator.useCases.boundary5"),
             },
           ].map((item, index) => (
             <motion.li
@@ -1331,7 +1340,9 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">{t("md5Generator.faq.title")}</h2>
+          <h2 className="text-lg font-semibold">
+            {t("md5Generator.faq.title")}
+          </h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}

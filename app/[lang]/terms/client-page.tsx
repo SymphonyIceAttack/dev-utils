@@ -54,7 +54,10 @@ export function TermsPage({ lang }: TermsPageProps) {
   const prohibitedItems = t("terms.prohibited.list", lang).split(";");
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-12">
+    <main
+      className="container mx-auto max-w-4xl px-4 py-12"
+      aria-labelledby="terms-title"
+    >
       {/* Header */}
       <motion.div
         className="text-center mb-16"
@@ -73,7 +76,7 @@ export function TermsPage({ lang }: TermsPageProps) {
         >
           <Scale className="w-8 h-8" />
         </motion.div>
-        <h1 className="text-4xl font-bold tracking-tight mb-4">
+        <h1 id="terms-title" className="text-4xl font-bold tracking-tight mb-4">
           {t("terms.heading", lang)}
         </h1>
         <p className="text-sm text-muted-foreground mb-2">
@@ -359,6 +362,6 @@ export function TermsPage({ lang }: TermsPageProps) {
           </Card>
         </motion.section>
       </motion.div>
-    </div>
+    </main>
   );
 }

@@ -23,11 +23,16 @@ export const base64Encoder = {
   "base64Encoder.error.decoding": "解码 Base64 文本时出错",
 
   "base64Encoder.techTitle": "技术实现细节",
-  "base64Encoder.tech.dataUri": "<strong>Data URI 方案：</strong> <code>data:image/png;base64,iVBORw0KGgo...</code> - 用于在 HTML/CSS 中直接嵌入图像",
-  "base64Encoder.tech.email": "<strong>电子邮件附件：</strong> 邮件系统 (SMTP) 中附件的二进制 MIME 编码",
-  "base64Encoder.tech.db": "<strong>数据库存储：</strong> 将 BLOB 转换为 TEXT 列，同时保持二进制完整性",
-  "base64Encoder.tech.jwt": "<strong>JWT 令牌：</strong> API 认证中 JSON Web 令牌的负载部分",
-  "base64Encoder.tech.api": "<strong>API 响应：</strong> 为 JSON API 响应序列化复杂对象",
+  "base64Encoder.tech.dataUri":
+    "<strong>Data URI 方案：</strong> <code>data:image/png;base64,iVBORw0KGgo...</code> - 用于在 HTML/CSS 中直接嵌入图像",
+  "base64Encoder.tech.email":
+    "<strong>电子邮件附件：</strong> 邮件系统 (SMTP) 中附件的二进制 MIME 编码",
+  "base64Encoder.tech.db":
+    "<strong>数据库存储：</strong> 将 BLOB 转换为 TEXT 列，同时保持二进制完整性",
+  "base64Encoder.tech.jwt":
+    "<strong>JWT 令牌：</strong> API 认证中 JSON Web 令牌的负载部分",
+  "base64Encoder.tech.api":
+    "<strong>API 响应：</strong> 为 JSON API 响应序列化复杂对象",
 
   "base64Encoder.featuresTitle": "主要功能",
   "base64Encoder.feature.textBinary.title": "文本和二进制",
@@ -48,19 +53,22 @@ export const base64Encoder = {
 
   "base64Encoder.limitsTitle": "使用限制和最佳实践",
   "base64Encoder.limits.limitations": "⚠️ 限制",
-  "base64Encoder.limits.sizeIncrease": "数据大小增加约 33%（每 3 字节产生 4 个字符）",
+  "base64Encoder.limits.sizeIncrease":
+    "数据大小增加约 33%（每 3 字节产生 4 个字符）",
   "base64Encoder.limits.largeFiles": "不适合大文件（请改用二进制协议）",
   "base64Encoder.limits.notEncryption": "不是加密 - 容易逆向，不要用于敏感数据",
   "base64Encoder.limits.browserMemory": "非常大的输入受浏览器内存限制",
-  
+
   "base64Encoder.limits.bestPractices": "✅ 最佳实践",
-  "base64Encoder.limits.smallBinary": "用于小型二进制数据（图像、< 10MB 的文件）",
+  "base64Encoder.limits.smallBinary":
+    "用于小型二进制数据（图像、< 10MB 的文件）",
   "base64Encoder.limits.compression": "与压缩（gzip）结合使用以提高效率",
   "base64Encoder.limits.urlSafe": "Web 应用程序使用 URL 安全的 Base64（+/-）",
   "base64Encoder.limits.validation": "解码前始终验证 Base64 输入",
 
   "base64Encoder.security.title": "🔒 安全提示",
-  "base64Encoder.security.desc": "Base64 不是加密。它不提供任何安全性或隐私保护。仅用于数据格式转换，绝不用于保护敏感信息。如需加密，请使用 AES 等正规加密算法。",
+  "base64Encoder.security.desc":
+    "Base64 不是加密。它不提供任何安全性或隐私保护。仅用于数据格式转换，绝不用于保护敏感信息。如需加密，请使用 AES 等正规加密算法。",
 
   // SEO Content
   "base64Encoder.seo.title": "什么是 Base64 编码？",
@@ -80,7 +88,8 @@ export const base64Encoder = {
   "base64Encoder.seo.howToUse2": "选择编码或解码模式并点击转换按钮",
   "base64Encoder.seo.howToUse3": "一键复制结果",
   "base64Encoder.seo.techImplTitle": "🔧 技术实现",
-  "base64Encoder.seo.techImplDesc": "我们的 Base64 编码器使用 JavaScript 内置的 <code className=\"bg-background px-1 rounded\">btoa()</code> 和 <code className=\"bg-background px-1 rounded\">atob()</code> 函数，通过 <code className=\"bg-background px-1 rounded\">encodeURIComponent()</code> 正确处理 Unicode 国际字符。该算法使用 64 字符字母表（A-Z、a-z、0-9、+、/）将每 3 个字节的二进制数据映射为 4 个 Base64 字符，并用（=）填充不完整的字节组。",
+  "base64Encoder.seo.techImplDesc":
+    '我们的 Base64 编码器使用 JavaScript 内置的 <code className="bg-background px-1 rounded">btoa()</code> 和 <code className="bg-background px-1 rounded">atob()</code> 函数，通过 <code className="bg-background px-1 rounded">encodeURIComponent()</code> 正确处理 Unicode 国际字符。该算法使用 64 字符字母表（A-Z、a-z、0-9、+、/）将每 3 个字节的二进制数据映射为 4 个 Base64 字符，并用（=）填充不完整的字节组。',
 
   "base64Encoder.faqTitle": "常见问题",
   "base64Encoder.faq.q1": "什么是 Base64 编码？",
@@ -102,9 +111,11 @@ export const base64Encoder = {
   "base64Encoder.scenarios.scenario1.desc":
     "开发者需要在电子邮件中包含一个小图标，但希望避免附件限制。",
   "base64Encoder.scenarios.scenario1.problem": "📧 问题：",
-  "base64Encoder.scenarios.scenario1.problemDesc": "邮件服务器阻止附件或收件人有大小限制",
+  "base64Encoder.scenarios.scenario1.problemDesc":
+    "邮件服务器阻止附件或收件人有大小限制",
   "base64Encoder.scenarios.scenario1.solution": "🔧 Base64 解决方案：",
-  "base64Encoder.scenarios.scenario1.solutionDesc": "将小图标（logo.png）转换为 Base64 并嵌入 HTML 邮件中",
+  "base64Encoder.scenarios.scenario1.solutionDesc":
+    "将小图标（logo.png）转换为 Base64 并嵌入 HTML 邮件中",
   "base64Encoder.scenarios.scenario1.result":
     "电子邮件显示图标而无需外部文件附件。",
   "base64Encoder.scenarios.scenario2.title": "API 认证令牌",
@@ -119,7 +130,8 @@ export const base64Encoder = {
   "base64Encoder.scenarios.scenario3.desc":
     "后端开发者需要将一个小 PDF 文件存储在 JSON 数据库字段中。",
   "base64Encoder.scenarios.scenario3.binary": "📄 二进制数据：",
-  "base64Encoder.scenarios.scenario3.binaryDesc": "document.pdf (45 KB) - 二进制格式不兼容 JSON",
+  "base64Encoder.scenarios.scenario3.binaryDesc":
+    "document.pdf (45 KB) - 二进制格式不兼容 JSON",
   "base64Encoder.scenarios.scenario3.encoding": "🔄 Base64 编码：",
   "base64Encoder.scenarios.scenario3.storage": "💾 JSON 存储：",
   "base64Encoder.scenarios.scenario3.result":

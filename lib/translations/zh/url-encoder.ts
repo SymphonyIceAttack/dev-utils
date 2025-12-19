@@ -16,7 +16,8 @@ export const urlEncoder = {
   "urlEncoder.examplesTab": "示例",
   "urlEncoder.examplesHint": "点击示例加载：",
   "urlEncoder.examplesTitle": "示例 URL",
-  "urlEncoder.examplesDesc": "点击任意示例将其加载到输入字段，或使用「快速运行」自动转换：",
+  "urlEncoder.examplesDesc":
+    "点击任意示例将其加载到输入字段，或使用「快速运行」自动转换：",
   "urlEncoder.example1.title": "查询参数",
   "urlEncoder.example2.title": "带特殊字符的 URL",
   "urlEncoder.example3.title": "API 端点",

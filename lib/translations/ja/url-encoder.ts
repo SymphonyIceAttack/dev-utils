@@ -17,7 +17,8 @@ export const urlEncoder = {
   "urlEncoder.examplesTab": "例",
   "urlEncoder.examplesHint": "Click on an example to load it:",
   "urlEncoder.examplesTitle": "Example URLs",
-  "urlEncoder.examplesDesc": "Click on any example to load it into the input field, or use \"Quick Run\" to automatically convert:",
+  "urlEncoder.examplesDesc":
+    'Click on any example to load it into the input field, or use "Quick Run" to automatically convert:',
   "urlEncoder.example1.title": "Query Parameters",
   "urlEncoder.example2.title": "URL with Special Chars",
   "urlEncoder.example3.title": "API Endpoint",
@@ -58,12 +59,14 @@ export const urlEncoder = {
   "urlEncoder.limitations.appropriate": "Appropriate For:",
   "urlEncoder.limitations.appropriateList1": "Query parameters and form data",
   "urlEncoder.limitations.appropriateList2": "API requests and web services",
-  "urlEncoder.limitations.appropriateList3": "URL parameters with special characters",
+  "urlEncoder.limitations.appropriateList3":
+    "URL parameters with special characters",
   "urlEncoder.limitations.appropriateList4": "Multilingual content in URLs",
   "urlEncoder.limitations.notSuitable": "Not Suitable For:",
   "urlEncoder.limitations.notSuitableList1": "Complete URL structure encoding",
   "urlEncoder.limitations.notSuitableList2": "Domain names or protocols",
-  "urlEncoder.limitations.notSuitableList3": "Already encoded content (double encoding)",
+  "urlEncoder.limitations.notSuitableList3":
+    "Already encoded content (double encoding)",
   "urlEncoder.limitations.notSuitableList4": "HTML entity encoding",
 
   "urlEncoder.faqTitle": "Frequently Asked Questions",

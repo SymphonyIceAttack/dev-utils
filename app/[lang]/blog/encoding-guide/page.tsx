@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   title: "Character Encoding Guide: UTF-8, GBK & Beyond - KittyEncode",
   description:
     "Understand character encoding systems, fix garbled text issues, and convert between different encodings like UTF-8, GBK, and Unicode.",
+  keywords:
+    "character encoding, UTF-8, Unicode, GBK, text encoding, internationalization, i18n, character sets, encoding conversion, text corruption",
   robots: {
     index: false,
     follow: true,

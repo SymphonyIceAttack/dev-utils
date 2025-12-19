@@ -31,24 +31,22 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring" as const, stiffness: 300, damping: 24 },
+    transition: { duration: 0.3 },
   },
 };
 
 interface EncodingConverterToolProps {
   lang: LanguageType;
 }
-
-
 
 const exampleData = [
   {
@@ -139,7 +137,7 @@ function unicodeEscapeToText(escaped: string): string {
 
 export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
   const { t } = useTranslation(lang);
-  
+
   const encodings = [
     { value: "utf-8", label: t("encodingConverter.encodings.utf8") },
     { value: "utf-16", label: t("encodingConverter.encodings.utf16") },
@@ -147,7 +145,10 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
     { value: "iso-8859-1", label: t("encodingConverter.encodings.iso88591") },
     { value: "hex", label: t("encodingConverter.encodings.hex") },
     { value: "binary", label: t("encodingConverter.encodings.binary") },
-    { value: "unicode-escape", label: t("encodingConverter.encodings.unicodeEscape") },
+    {
+      value: "unicode-escape",
+      label: t("encodingConverter.encodings.unicodeEscape"),
+    },
   ];
   const { spawnItem } = useCat();
   const [lastSpawnTime, setLastSpawnTime] = useState(0);
@@ -696,18 +697,23 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
               {exampleData.map((example, index) => (
                 <motion.div
                   key={example.titleKey}
-                  className="pixel-card p-4 space-y-3 cursor-pointer"
+                  className="pixel-card p-4 space-y-3 relative group"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02, y: -2 }}
-                  onClick={() => loadExample(example.data)}
                 >
                   <div className="flex items-start justify-between">
                     <h4 className="text-sm font-semibold flex-1">
-                      {t(example.titleKey)}
+                      <button
+                        type="button"
+                        className="text-left w-full after:absolute after:inset-0 outline-none focus:ring-2 focus:ring-primary rounded-lg"
+                        onClick={() => loadExample(example.data)}
+                      >
+                        {t(example.titleKey)}
+                      </button>
                     </h4>
-                    <div className="flex gap-1 ml-2">
+                    <div className="flex gap-1 ml-2 relative z-10">
                       <motion.button
                         onClick={(e) => {
                           e.stopPropagation(); // Prevent triggering parent onClick
@@ -770,7 +776,9 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
         <motion.p
           className="text-muted-foreground leading-relaxed mb-6"
           variants={itemVariants}
-          dangerouslySetInnerHTML={{ __html: t("encodingConverter.seo.description") }}
+          dangerouslySetInnerHTML={{
+            __html: t("encodingConverter.seo.description"),
+          }}
         />
 
         <motion.h3
@@ -797,16 +805,10 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
             <div>
               <strong>{t("encodingConverter.tech.supported")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>
-                  {t("encodingConverter.tech.utf8")}
-                </li>
-                <li>
-                  {t("encodingConverter.tech.utf16")}
-                </li>
+                <li>{t("encodingConverter.tech.utf8")}</li>
+                <li>{t("encodingConverter.tech.utf16")}</li>
                 <li>{t("encodingConverter.tech.ascii")}</li>
-                <li>
-                  {t("encodingConverter.tech.iso")}
-                </li>
+                <li>{t("encodingConverter.tech.iso")}</li>
                 <li>{t("encodingConverter.tech.hex")}</li>
                 <li>{t("encodingConverter.tech.binary")}</li>
               </ul>
@@ -915,7 +917,9 @@ export function EncodingConverterTool({ lang }: EncodingConverterToolProps) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">{t("encodingConverter.faqTitle")}</h2>
+          <h2 className="text-lg font-semibold">
+            {t("encodingConverter.faqTitle")}
+          </h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}

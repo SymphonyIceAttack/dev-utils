@@ -30,13 +30,15 @@ export const md5Generator = {
   "md5Generator.batchOutput": "批量输出",
   "md5Generator.addRow": "添加行",
   "md5Generator.copyAll": "复制全部",
-  "md5Generator.batchPlaceholder": "批量结果将显示在此处...\n您的 MD5 哈希值\n将在此显示。",
+  "md5Generator.batchPlaceholder":
+    "批量结果将显示在此处...\n您的 MD5 哈希值\n将在此显示。",
   "md5Generator.exampleInputs": "示例输入",
   "md5Generator.loadExample": "仅加载示例",
 
   "md5Generator.seo.title": "什么是 MD5 哈希？如何实现？",
-  "md5Generator.seo.desc": "<strong className=\"text-foreground\">MD5（消息摘要算法 5）</strong>是一种广泛使用的加密哈希函数，产生 128 位（16 字节）的哈希值，通常表示为 32 个十六进制字符。我们的实现使用纯 JavaScript 和位运算，对 512 位数据块执行 4 轮、每轮 16 次操作。",
-  
+  "md5Generator.seo.desc":
+    '<strong className="text-foreground">MD5（消息摘要算法 5）</strong>是一种广泛使用的加密哈希函数，产生 128 位（16 字节）的哈希值，通常表示为 32 个十六进制字符。我们的实现使用纯 JavaScript 和位运算，对 512 位数据块执行 4 轮、每轮 16 次操作。',
+
   "md5Generator.tech.title": "技术实现",
   "md5Generator.tech.coreTitle": "核心函数：",
   "md5Generator.tech.coreList1": "F(x,y,z) = (x ∧ y) ∨ (¬x ∧ z) - 第 1 轮",
@@ -62,21 +64,29 @@ export const md5Generator = {
 
   "md5Generator.useCases.title": "常见用例和使用边界",
   "md5Generator.useCases.item1": "文件完整性验证和校验",
-  "md5Generator.useCases.boundary1": "✅ 适合 - 非常适合检测传输过程中的意外文件损坏",
+  "md5Generator.useCases.boundary1":
+    "✅ 适合 - 非常适合检测传输过程中的意外文件损坏",
   "md5Generator.useCases.item2": "数据库密码存储（加盐）",
-  "md5Generator.useCases.boundary2": "⚠️ 不推荐 - 请改用 bcrypt、Argon2 或 scrypt",
+  "md5Generator.useCases.boundary2":
+    "⚠️ 不推荐 - 请改用 bcrypt、Argon2 或 scrypt",
   "md5Generator.useCases.item3": "生成唯一标识符",
-  "md5Generator.useCases.boundary3": "⚠️ 谨慎使用 - 考虑使用 UUID v4 以获得更好的唯一性保证",
+  "md5Generator.useCases.boundary3":
+    "⚠️ 谨慎使用 - 考虑使用 UUID v4 以获得更好的唯一性保证",
   "md5Generator.useCases.item4": "检测重复文件",
-  "md5Generator.useCases.boundary4": "✅ 适合 - 适用于本地系统中的非关键重复检测",
+  "md5Generator.useCases.boundary4":
+    "✅ 适合 - 适用于本地系统中的非关键重复检测",
   "md5Generator.useCases.item5": "API 签名验证",
-  "md5Generator.useCases.boundary5": "❌ 不安全 - 易受碰撞攻击，请使用 HMAC 配合 SHA-256",
+  "md5Generator.useCases.boundary5":
+    "❌ 不安全 - 易受碰撞攻击，请使用 HMAC 配合 SHA-256",
 
   "md5Generator.faq.title": "常见问题",
   "md5Generator.faq.q1": "32 位和 16 位 MD5 有什么区别？",
-  "md5Generator.faq.a1": "32 位 MD5 是完整哈希（32 个十六进制字符）。16 位 MD5 取完整哈希的中间 16 个字符，有时用于较短的校验和。",
+  "md5Generator.faq.a1":
+    "32 位 MD5 是完整哈希（32 个十六进制字符）。16 位 MD5 取完整哈希的中间 16 个字符，有时用于较短的校验和。",
   "md5Generator.faq.q2": "MD5 对密码安全吗？",
-  "md5Generator.faq.a2": "由于已知漏洞，不建议单独使用 MD5 进行密码哈希。请使用 bcrypt 或 Argon2 等现代算法来保护密码安全。",
+  "md5Generator.faq.a2":
+    "由于已知漏洞，不建议单独使用 MD5 进行密码哈希。请使用 bcrypt 或 Argon2 等现代算法来保护密码安全。",
   "md5Generator.faq.q3": "使用此工具时我的数据安全吗？",
-  "md5Generator.faq.a3": "是的，所有 MD5 哈希都在浏览器中本地进行。您的数据永远不会发送到任何服务器。",
+  "md5Generator.faq.a3":
+    "是的，所有 MD5 哈希都在浏览器中本地进行。您的数据永远不会发送到任何服务器。",
 };

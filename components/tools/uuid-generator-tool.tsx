@@ -1,14 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  Check,
-  ChevronDown,
-  Copy,
-  KeyRound,
-  RefreshCw,
-  Sparkles,
-} from "lucide-react";
+import { ChevronDown, Copy, KeyRound, RefreshCw, Sparkles } from "lucide-react";
 import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,7 +19,7 @@ import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
 
-const containerVariants = {
+const _containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -35,7 +27,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const _itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -148,7 +140,7 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
 
   const [uuid, setUuid] = useState("");
   const [uuids, setUuids] = useState<string[]>([]);
-  const [copied, setCopied] = useState(false);
+  const [_copied, setCopied] = useState(false);
   const [showFaq, setShowFaq] = useState(true);
   const [activeTab, setActiveTab] = useState("generate");
   const [generationStats, setGenerationStats] = useState({
@@ -203,77 +195,32 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
   }, []);
 
   return (
-    <motion.div
-      className="container mx-auto max-w-6xl px-4 py-8"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
+    <div>
       {/* Hero Section */}
-      <motion.section className="mb-10 text-center" variants={itemVariants}>
-        <motion.div
-          className="pixel-icon-box inline-flex items-center justify-center w-16 h-16 mb-6"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-          whileHover={{
-            rotate: [0, -10, 10, 0],
-            transition: { duration: 0.5 },
-          }}
-        >
+      <section>
+        <div>
           <KeyRound className="h-8 w-8 text-primary" />
-        </motion.div>
+        </div>
 
-        <motion.h1
-          className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          {t("uuidGenerator.pageTitle") || "UUID Generator"}
-        </motion.h1>
-        <motion.p
-          className="text-lg text-muted-foreground max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
+        <h1>{t("uuidGenerator.pageTitle") || "UUID Generator"}</h1>
+        <p>
           {t("uuidGenerator.pageSubtitle") ||
             "Generate universally unique identifiers instantly"}
-        </motion.p>
+        </p>
 
-        <motion.div
-          className="flex flex-wrap justify-center gap-3 mt-6"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.1, delayChildren: 0.5 },
-            },
-          }}
-        >
+        <div>
           {[
             t("badge.free"),
             t("badge.noSignup"),
             t("badge.offline"),
             t("badge.rfcCompliant"),
           ].map((tag) => (
-            <motion.span
-              key={tag}
-              className="pixel-badge"
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 },
-              }}
-              whileHover={{ scale: 1.1, y: -2 }}
-            >
-              {tag}
-            </motion.span>
+            <span key={tag}>{tag}</span>
           ))}
-        </motion.div>
-      </motion.section>
+        </div>
+      </section>
 
-      <motion.section className="mb-12" variants={itemVariants}>
+      <section>
         <Card className="rounded-2xl overflow-hidden">
           <CardContent className="p-6">
             <Tabs
@@ -292,44 +239,26 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                 </TabsList>
 
                 {/* Stats badges */}
-                <motion.div
-                  className="flex flex-wrap gap-2"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <motion.div
-                    className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
-                    whileHover={{ scale: 1.05 }}
-                  >
+                <div>
+                  <div>
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     {generationStats.totalGenerations} Generated
-                  </motion.div>
-                  <motion.div
-                    className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-cyan-500/10 text-cyan-600 text-xs font-medium"
-                    whileHover={{ scale: 1.05 }}
-                  >
+                  </div>
+                  <div>
                     <div className="w-2 h-2 bg-cyan-500 rounded-full" />
                     {generationStats.v4Count} v4
-                  </motion.div>
-                  <motion.div
-                    className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-500/10 text-purple-600 text-xs font-medium"
-                    whileHover={{ scale: 1.05 }}
-                  >
+                  </div>
+                  <div>
                     <div className="w-2 h-2 bg-purple-500 rounded-full" />
                     {generationStats.v7Count} v7
-                  </motion.div>
+                  </div>
                   {generationStats.lastUsed && (
-                    <motion.div
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/10 text-amber-600 text-xs font-medium"
-                      whileHover={{ scale: 1.05 }}
-                      title={`Last used: ${generationStats.lastUsed.toLocaleString()}`}
-                    >
+                    <div>
                       <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
                       {generationStats.lastUsed.toLocaleTimeString()}
-                    </motion.div>
+                    </div>
                   )}
-                </motion.div>
+                </div>
               </div>
 
               <TabsContent value="generate" className="space-y-4">
@@ -405,44 +334,19 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                       <span className="text-sm font-medium">
                         {t("uuidGenerator.outputLabel")}
                       </span>
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
+                      <div>
                         <Button
                           variant="ghost"
                           size="sm"
                           onClick={() => copyToClipboard(uuid)}
                           disabled={!uuid}
                           className="rounded-lg"
+                          aria-label={t("common.copy")}
                         >
-                          <AnimatePresence mode="wait">
-                            {copied ? (
-                              <motion.span
-                                key="copied"
-                                className="flex items-center"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                              >
-                                <Check className="h-4 w-4 mr-1" />{" "}
-                                {t("common.copied")}
-                              </motion.span>
-                            ) : (
-                              <motion.span
-                                key="copy"
-                                className="flex items-center"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                              >
-                                <Copy className="h-4 w-4 mr-1" />{" "}
-                                {t("common.copy")}
-                              </motion.span>
-                            )}
-                          </AnimatePresence>
+                          <Copy className="h-4 w-4 mr-1" />
+                          {t("common.copy")}
                         </Button>
-                      </motion.div>
+                      </div>
                     </div>
                     <div className="min-h-[80px] rounded-xl border-2 border-border bg-muted/30 overflow-hidden">
                       {uuid ? (
@@ -460,37 +364,19 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                   </div>
                 </div>
 
-                <motion.div
-                  className="flex flex-wrap items-center gap-3 mt-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
+                <div>
+                  <div>
                     <Button
                       onClick={handleGenerate}
                       className="gap-2 rounded-xl h-11"
                     >
-                      <motion.div
-                        animate={{ rotate: [0, 360] }}
-                        transition={{
-                          duration: 3,
-                          repeat: Number.POSITIVE_INFINITY,
-                          ease: "linear",
-                        }}
-                      >
+                      <div>
                         <Sparkles className="h-4 w-4" />
-                      </motion.div>
+                      </div>
                       {t("uuidGenerator.generateBtn")}
                     </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
+                  </div>
+                  <div>
                     <Button
                       variant="outline"
                       onClick={handleGenerate}
@@ -500,8 +386,8 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                       <RefreshCw className="h-4 w-4" />
                       {t("uuidGenerator.regenerate")}
                     </Button>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </TabsContent>
 
               <TabsContent value="bulk" className="space-y-4">
@@ -630,6 +516,7 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                                   size="sm"
                                   onClick={() => copyToClipboard(uuid)}
                                   className="h-6 w-6 p-0"
+                                  aria-label={t("common.copy")}
                                 >
                                   <Copy className="h-3 w-3" />
                                 </Button>
@@ -649,20 +536,16 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
             </Tabs>
           </CardContent>
         </Card>
-      </motion.section>
+      </section>
 
       {/* Examples Section */}
-      <motion.section className="mb-12" variants={itemVariants}>
+      <section>
         <Card className="rounded-2xl overflow-hidden">
           <CardContent className="p-6">
-            <motion.h3
-              className="text-lg font-semibold mb-4 flex items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
+            <h3>
               <Sparkles className="h-5 w-5" />
               {t("uuidGenerator.examplesTitle")}
-            </motion.h3>
+            </h3>
             <p className="text-sm text-muted-foreground mb-6">
               {t("uuidGenerator.examplesDesc")}
             </p>
@@ -705,14 +588,7 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                   format: "braces" as const,
                 },
               ].map((example, index) => (
-                <motion.div
-                  key={example.title}
-                  className="pixel-card p-4 space-y-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                >
+                <div key={index}>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <h4 className="text-sm font-semibold">{example.title}</h4>
@@ -721,36 +597,27 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                       </p>
                     </div>
                     <div className="flex gap-1 ml-2">
-                      <motion.button
+                      <button
+                        type="button"
                         onClick={() => {
                           setOptions({
                             ...options,
                             version: example.version,
                             format: example.format,
                           });
-                          setUuid(""); // Clear uuid when options change
-                          setUuids([]); // Clear uuids when options change
-                          // Note: Do NOT auto-generate, let user manually click generate button
+                          setUuid("");
+                          setUuids([]);
                         }}
                         className="pixel-btn px-3 py-1 text-xs h-7"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                         title="Load Options Only"
                       >
-                        <motion.span
-                          animate={{ rotate: [0, 15, -15, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Number.POSITIVE_INFINITY,
-                            repeatDelay: 4,
-                          }}
-                        >
+                        <span>
                           <Sparkles className="h-3 w-3" />
-                        </motion.span>
-                      </motion.button>
-                      <motion.button
+                        </span>
+                      </button>
+                      <button
+                        type="button"
                         onClick={async () => {
-                          // Generate and copy a UUID with the specified format
                           const tempOptions = {
                             ...options,
                             version: example.version,
@@ -762,63 +629,61 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
                           setTimeout(() => setCopied(false), 2000);
                         }}
                         className="px-3 py-1 text-xs h-7 rounded-full border-2 border-foreground/30 dark:border-primary/30 bg-transparent hover:bg-accent transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                         title="Copy"
                       >
                         <Copy className="h-3 w-3" />
-                      </motion.button>
+                      </button>
                     </div>
                   </div>
                   <div className="text-xs font-mono text-muted-foreground break-all bg-muted/30 p-2 rounded border">
                     {example.version} • {example.format}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </CardContent>
         </Card>
-      </motion.section>
+      </section>
 
       {/* SEO Content Section */}
-      <motion.section
-        className="mb-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariants}
-      >
-        <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          {t("uuidGenerator.whatIsUuidTitle")}
-        </motion.h2>
-        <motion.p
-          className="text-muted-foreground leading-relaxed mb-6"
-          variants={itemVariants}
-          dangerouslySetInnerHTML={{ __html: t("uuidGenerator.whatIsUuidDesc") }}
-        />
+      <section>
+        <h2>{t("uuidGenerator.whatIsUuidTitle")}</h2>
+        <p></p>
 
-        <motion.div
-          className="mt-6 p-4 bg-muted/30 rounded-xl border border-border/50"
-          variants={itemVariants}
-        >
+        <div>
           <h4 className="font-semibold mb-2">
             💻 {t("uuidGenerator.techDetailsTitle")}
           </h4>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.webCrypto") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.v4Struct") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.v7Struct") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.bitManip") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("uuidGenerator.tech.collision") }} />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: t("uuidGenerator.tech.webCrypto"),
+              }}
+            />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: t("uuidGenerator.tech.v4Struct"),
+              }}
+            />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: t("uuidGenerator.tech.v7Struct"),
+              }}
+            />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: t("uuidGenerator.tech.bitManip"),
+              }}
+            />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: t("uuidGenerator.tech.collision"),
+              }}
+            />
           </div>
-        </motion.div>
+        </div>
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("uuidGenerator.featuresTitle")}
-        </motion.h3>
+        <h3>{t("uuidGenerator.featuresTitle")}</h3>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -838,71 +703,77 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
               desc: t("uuidGenerator.feature.privacy.desc"),
             },
           ].map((feature) => (
-            <motion.div
-              key={feature.title}
-              className="pixel-card p-4"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -4 }}
-            >
+            <div key={feature.title}>
               <h4 className="font-semibold text-sm">{feature.title}</h4>
               <p className="text-xs text-muted-foreground mt-1">
                 {feature.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("uuidGenerator.comparisonTitle")}
-        </motion.h3>
+        <h3>{t("uuidGenerator.comparisonTitle")}</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left p-3 font-semibold">{t("uuidGenerator.comparison.version")}</th>
-                <th className="text-left p-3 font-semibold">
+                <th className="text-left p-3 font-semibold" scope="col">
+                  {t("uuidGenerator.comparison.version")}
+                </th>
+                <th className="text-left p-3 font-semibold" scope="col">
                   {t("uuidGenerator.comparison.method")}
                 </th>
-                <th className="text-left p-3 font-semibold">{t("uuidGenerator.comparison.sortable")}</th>
-                <th className="text-left p-3 font-semibold">{t("uuidGenerator.comparison.bestFor")}</th>
+                <th className="text-left p-3 font-semibold" scope="col">
+                  {t("uuidGenerator.comparison.sortable")}
+                </th>
+                <th className="text-left p-3 font-semibold" scope="col">
+                  {t("uuidGenerator.comparison.bestFor")}
+                </th>
               </tr>
             </thead>
             <tbody className="text-muted-foreground">
               <tr className="border-b border-border/50">
                 <td className="p-3 font-medium text-foreground">UUID v1</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v1.method")}</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v1.sortable")}</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v1.bestFor")}</td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v1.method")}
+                </td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v1.sortable")}
+                </td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v1.bestFor")}
+                </td>
               </tr>
               <tr className="border-b border-border/50">
                 <td className="p-3 font-medium text-foreground">UUID v4</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v4.method")}</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v4.sortable")}</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v4.bestFor")}</td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v4.method")}
+                </td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v4.sortable")}
+                </td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v4.bestFor")}
+                </td>
               </tr>
               <tr className="border-b border-border/50">
                 <td className="p-3 font-medium text-foreground">UUID v7</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v7.method")}</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v7.sortable")}</td>
-                <td className="p-3">{t("uuidGenerator.comparison.v7.bestFor")}</td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v7.method")}
+                </td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v7.sortable")}
+                </td>
+                <td className="p-3">
+                  {t("uuidGenerator.comparison.v7.bestFor")}
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("uuidGenerator.useCasesTitle")}
-        </motion.h3>
-        <motion.ul
-          className="text-muted-foreground space-y-2"
-          variants={containerVariants}
-        >
+        <h3>{t("uuidGenerator.useCasesTitle")}</h3>
+        <ul>
           {[
             t("uuidGenerator.useCase.db"),
             t("uuidGenerator.useCase.session"),
@@ -910,78 +781,28 @@ export function UuidGeneratorTool({ lang }: UuidGeneratorToolProps) {
             t("uuidGenerator.useCase.files"),
             t("uuidGenerator.useCase.queue"),
           ].map((item, index) => (
-            <motion.li
-              key={item}
-              className="flex items-center gap-3 text-sm"
-              variants={itemVariants}
-              whileHover={{ x: 4 }}
-            >
-              <motion.span
-                className="w-2 h-2 bg-primary rounded-full"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-              />
-              {item}
-            </motion.li>
+            <li key={index}>
+              <span>{item}</span>
+            </li>
           ))}
-        </motion.ul>
-      </motion.section>
+        </ul>
+      </section>
 
       {/* FAQ Section */}
-      <motion.section className="mb-12" variants={itemVariants}>
-        <motion.button
+      <section>
+        <button
+          type="button"
           onClick={() => setShowFaq(!showFaq)}
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
-          whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">{t("uuidGenerator.faqTitle")}</h2>
-          <motion.div
-            animate={{ rotate: showFaq ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
+          <h2 className="text-lg font-semibold">
+            {t("uuidGenerator.faqTitle")}
+          </h2>
+          <div>
             <ChevronDown className="h-5 w-5" />
-          </motion.div>
-        </motion.button>
-
-        <AnimatePresence>
-          {showFaq && (
-            <motion.div
-              className="space-y-4 pt-6 overflow-hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {[
-                {
-                  q: t("uuidGenerator.faq.q1"),
-                  a: t("uuidGenerator.faq.a1"),
-                },
-                {
-                  q: t("uuidGenerator.faq.q2"),
-                  a: t("uuidGenerator.faq.a2"),
-                },
-                {
-                  q: t("uuidGenerator.faq.q3"),
-                  a: t("uuidGenerator.faq.a3"),
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={faq.q}
-                  className="pixel-card p-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
-                  <p className="text-sm text-muted-foreground">{faq.a}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.section>
-    </motion.div>
+          </div>
+        </button>
+      </section>
+    </div>
   );
 }

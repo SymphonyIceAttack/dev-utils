@@ -16,7 +16,8 @@ export const passwordGenerator = {
   "passwordGenerator.lowercase": "Kleinbuchstaben (a-z)",
   "passwordGenerator.numbers": "Zahlen (0-9)",
   "passwordGenerator.symbols": "Symbole (!@#$%...)",
-  "passwordGenerator.excludeAmbiguous": "Mehrdeutige Zeichen ausschließen (0, O, l, 1, I)",
+  "passwordGenerator.excludeAmbiguous":
+    "Mehrdeutige Zeichen ausschließen (0, O, l, 1, I)",
   "passwordGenerator.strength": "Stärke",
   "passwordGenerator.strength.weak": "Schwach",
   "passwordGenerator.strength.fair": "Ausreichend",
@@ -45,63 +46,93 @@ export const passwordGenerator = {
   "passwordGenerator.passphrase.separator.none": "Keins",
   "passwordGenerator.option.additional": "Zusätzliche Optionen",
   "passwordGenerator.option.capitalize": "Wörter großschreiben",
-  
+
   "passwordGenerator.output.generated": "Generierte Passwörter",
   "passwordGenerator.output.copyAll": "Alle kopieren",
-  
+
   "passwordGenerator.presetsTitle": "Passwort-Voreinstellungen",
-  "passwordGenerator.presetsDesc": "Vorkonfigurierte Passworteinstellungen für verschiedene Sicherheitsstufen. Klicken Sie auf 'Schnellstart' zum Generieren:",
+  "passwordGenerator.presetsDesc":
+    "Vorkonfigurierte Passworteinstellungen für verschiedene Sicherheitsstufen. Klicken Sie auf 'Schnellstart' zum Generieren:",
   "passwordGenerator.preset.loadOnly": "Nur Voreinstellung laden",
   "passwordGenerator.preset.chars": "Zeichen",
   "passwordGenerator.preset.symbols": "Symbole",
   "passwordGenerator.preset.numbers": "Zahlen",
   "passwordGenerator.preset.upper": "Großbuchst.",
 
-  "passwordGenerator.seo.title": "Warum einen Passwort-Generator verwenden? Wie funktioniert er?",
-  "passwordGenerator.seo.desc": "Starke, einzigartige Passwörter sind für die Sicherheit unerlässlich. Dieses Tool verwendet <strong className=\"text-foreground\">kryptografisch sichere</strong> Zufallszahlengenerierung über die Web Crypto API (crypto.getRandomValues).",
-  
+  "passwordGenerator.seo.title":
+    "Warum einen Passwort-Generator verwenden? Wie funktioniert er?",
+  "passwordGenerator.seo.desc":
+    'Starke, einzigartige Passwörter sind für die Sicherheit unerlässlich. Dieses Tool verwendet <strong className="text-foreground">kryptografisch sichere</strong> Zufallszahlengenerierung über die Web Crypto API (crypto.getRandomValues).',
+
   "passwordGenerator.tech.title": "Technische Implementierung",
   "passwordGenerator.tech.randomTitle": "Zufällige Passwortgenerierung:",
-  "passwordGenerator.tech.randomList1": "Verwendet crypto.getRandomValues() für kryptografisch sichere Zufälligkeit",
-  "passwordGenerator.tech.randomList2": "Erstellt Zeichenpools dynamisch basierend auf Benutzereinstellungen",
-  "passwordGenerator.tech.randomList3": "Optionaler Ausschluss mehrdeutiger Zeichen (0, O, 1, l, I für bessere Lesbarkeit)",
-  "passwordGenerator.tech.randomList4": "Gleichmäßige Verteilung gewährleistet gleiche Wahrscheinlichkeit für jede Position",
-  "passwordGenerator.tech.randomList5": "Unterstützt Längen von 4 bis 64 Zeichen mit verschiedenen Typen",
-  
+  "passwordGenerator.tech.randomList1":
+    "Verwendet crypto.getRandomValues() für kryptografisch sichere Zufälligkeit",
+  "passwordGenerator.tech.randomList2":
+    "Erstellt Zeichenpools dynamisch basierend auf Benutzereinstellungen",
+  "passwordGenerator.tech.randomList3":
+    "Optionaler Ausschluss mehrdeutiger Zeichen (0, O, 1, l, I für bessere Lesbarkeit)",
+  "passwordGenerator.tech.randomList4":
+    "Gleichmäßige Verteilung gewährleistet gleiche Wahrscheinlichkeit für jede Position",
+  "passwordGenerator.tech.randomList5":
+    "Unterstützt Längen von 4 bis 64 Zeichen mit verschiedenen Typen",
+
   "passwordGenerator.tech.passphraseTitle": "Passphrase-Generierung:",
-  "passwordGenerator.tech.passphraseList1": "Wörterbuchbasierte Auswahl aus 100+ gängigen englischen Wörtern",
-  "passwordGenerator.tech.passphraseList2": "Jedes Wort fügt etwa 6,6 Bits Entropie hinzu",
-  "passwordGenerator.tech.passphraseList3": "Optionale Großschreibung und Hinzufügung von Zahlen/Symbolen",
-  "passwordGenerator.tech.passphraseList4": "Anpassbare Trennzeichen (Bindestrich, Unterstrich, Leerzeichen usw.)",
-  "passwordGenerator.tech.passphraseList5": "Wortbereich: 3-8 Wörter für verschiedene Sicherheitsstufen",
+  "passwordGenerator.tech.passphraseList1":
+    "Wörterbuchbasierte Auswahl aus 100+ gängigen englischen Wörtern",
+  "passwordGenerator.tech.passphraseList2":
+    "Jedes Wort fügt etwa 6,6 Bits Entropie hinzu",
+  "passwordGenerator.tech.passphraseList3":
+    "Optionale Großschreibung und Hinzufügung von Zahlen/Symbolen",
+  "passwordGenerator.tech.passphraseList4":
+    "Anpassbare Trennzeichen (Bindestrich, Unterstrich, Leerzeichen usw.)",
+  "passwordGenerator.tech.passphraseList5":
+    "Wortbereich: 3-8 Wörter für verschiedene Sicherheitsstufen",
 
   "passwordGenerator.features.title": "Hauptfunktionen",
   "passwordGenerator.feature.secure.title": "Kryptografisch sicher",
-  "passwordGenerator.feature.secure.desc": "Verwendet Web Crypto API für echte Zufälligkeit",
+  "passwordGenerator.feature.secure.desc":
+    "Verwendet Web Crypto API für echte Zufälligkeit",
   "passwordGenerator.feature.modes.title": "Mehrere Modi",
-  "passwordGenerator.feature.modes.desc": "Zufällige Passwörter und Passphrasen",
+  "passwordGenerator.feature.modes.desc":
+    "Zufällige Passwörter und Passphrasen",
   "passwordGenerator.feature.passphrase.title": "Passphrase-Unterstützung",
-  "passwordGenerator.feature.passphrase.desc": "Leicht zu merkende Wortkombinationen",
+  "passwordGenerator.feature.passphrase.desc":
+    "Leicht zu merkende Wortkombinationen",
   "passwordGenerator.feature.bulk.title": "Massengenerierung",
-  "passwordGenerator.feature.bulk.desc": "Generieren Sie mehrere Passwörter gleichzeitig",
+  "passwordGenerator.feature.bulk.desc":
+    "Generieren Sie mehrere Passwörter gleichzeitig",
 
   "passwordGenerator.bestPractices.title": "Best Practices und Nutzungsgrenzen",
-  "passwordGenerator.bestPractices.item1": "Verwenden Sie ein eindeutiges Passwort für jedes Konto",
-  "passwordGenerator.bestPractices.boundary1": "✅ Kritisch - Verhindert Credential-Stuffing-Angriffe",
-  "passwordGenerator.bestPractices.item2": "Passwörter sollten mindestens 12-16 Zeichen haben",
-  "passwordGenerator.bestPractices.boundary2": "✅ Empfohlen - 16+ Zeichen für wichtige Konten (Bank, E-Mail)",
-  "passwordGenerator.bestPractices.item3": "Verwenden Sie Groß-, Kleinbuchstaben, Zahlen und Symbole",
-  "passwordGenerator.bestPractices.boundary3": "✅ Wichtig - Erhöht die Entropie und widersteht Wörterbuchangriffen",
-  "passwordGenerator.bestPractices.item4": "Speichern Sie Passwörter in einem sicheren Passwort-Manager",
-  "passwordGenerator.bestPractices.boundary4": "✅ Wesentlich - Verwenden Sie Passwörter niemals mehrfach",
-  "passwordGenerator.bestPractices.item5": "Aktivieren Sie die Zwei-Faktor-Authentifizierung wenn möglich",
-  "passwordGenerator.bestPractices.boundary5": "✅ Dringend empfohlen - Fügt eine kritische zweite Sicherheitsebene hinzu",
+  "passwordGenerator.bestPractices.item1":
+    "Verwenden Sie ein eindeutiges Passwort für jedes Konto",
+  "passwordGenerator.bestPractices.boundary1":
+    "✅ Kritisch - Verhindert Credential-Stuffing-Angriffe",
+  "passwordGenerator.bestPractices.item2":
+    "Passwörter sollten mindestens 12-16 Zeichen haben",
+  "passwordGenerator.bestPractices.boundary2":
+    "✅ Empfohlen - 16+ Zeichen für wichtige Konten (Bank, E-Mail)",
+  "passwordGenerator.bestPractices.item3":
+    "Verwenden Sie Groß-, Kleinbuchstaben, Zahlen und Symbole",
+  "passwordGenerator.bestPractices.boundary3":
+    "✅ Wichtig - Erhöht die Entropie und widersteht Wörterbuchangriffen",
+  "passwordGenerator.bestPractices.item4":
+    "Speichern Sie Passwörter in einem sicheren Passwort-Manager",
+  "passwordGenerator.bestPractices.boundary4":
+    "✅ Wesentlich - Verwenden Sie Passwörter niemals mehrfach",
+  "passwordGenerator.bestPractices.item5":
+    "Aktivieren Sie die Zwei-Faktor-Authentifizierung wenn möglich",
+  "passwordGenerator.bestPractices.boundary5":
+    "✅ Dringend empfohlen - Fügt eine kritische zweite Sicherheitsebene hinzu",
 
   "passwordGenerator.faq.title": "Häufig gestellte Fragen",
   "passwordGenerator.faq.q1": "Ist dieser Passwort-Generator sicher?",
-  "passwordGenerator.faq.a1": "Ja! Wir verwenden die Web Crypto API (crypto.getRandomValues), die kryptografisch sichere Zufallszahlen liefert. Alle Generierung erfolgt lokal in Ihrem Browser.",
+  "passwordGenerator.faq.a1":
+    "Ja! Wir verwenden die Web Crypto API (crypto.getRandomValues), die kryptografisch sichere Zufallszahlen liefert. Alle Generierung erfolgt lokal in Ihrem Browser.",
   "passwordGenerator.faq.q2": "Werden meine Passwörter irgendwo gespeichert?",
-  "passwordGenerator.faq.a2": "Nein. Generierte Passwörter existieren nur in Ihrem Browser und werden niemals an einen Server gesendet. Schließen Sie die Seite und sie sind weg.",
+  "passwordGenerator.faq.a2":
+    "Nein. Generierte Passwörter existieren nur in Ihrem Browser und werden niemals an einen Server gesendet. Schließen Sie die Seite und sie sind weg.",
   "passwordGenerator.faq.q3": "Was macht ein Passwort stark?",
-  "passwordGenerator.faq.a3": "Ein starkes Passwort ist lang (16+ Zeichen), verwendet verschiedene Zeichentypen, ist für jedes Konto einzigartig und zufällig (nicht auf Wörterbuchwörtern basierend).",
+  "passwordGenerator.faq.a3":
+    "Ein starkes Passwort ist lang (16+ Zeichen), verwendet verschiedene Zeichentypen, ist für jedes Konto einzigartig und zufällig (nicht auf Wörterbuchwörtern basierend).",
 };

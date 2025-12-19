@@ -78,7 +78,10 @@ export function AboutPage({ lang }: AboutPageProps) {
   ];
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-12">
+    <main
+      className="container mx-auto max-w-4xl px-4 py-12"
+      aria-labelledby="about-title"
+    >
       {/* Header */}
       <motion.div
         className="text-center mb-16"
@@ -97,7 +100,7 @@ export function AboutPage({ lang }: AboutPageProps) {
         >
           <Users className="w-8 h-8" />
         </motion.div>
-        <h1 className="text-4xl font-bold tracking-tight mb-4">
+        <h1 id="about-title" className="text-4xl font-bold tracking-tight mb-4">
           {t("about.heading", lang)}
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -166,7 +169,9 @@ export function AboutPage({ lang }: AboutPageProps) {
             <h2 className="text-2xl font-bold mb-2">
               {t("about.values.title", lang)}
             </h2>
-            <p className="text-muted-foreground">{t("about.values.subtitle", lang)}</p>
+            <p className="text-muted-foreground">
+              {t("about.values.subtitle", lang)}
+            </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -240,6 +245,6 @@ export function AboutPage({ lang }: AboutPageProps) {
           </Card>
         </motion.section>
       </motion.div>
-    </div>
+    </main>
   );
 }

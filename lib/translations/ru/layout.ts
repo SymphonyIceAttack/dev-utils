@@ -1,7 +1,8 @@
 export const layout = {
   // Footer
   "footer.copyright": "© 2025 KittyEncode",
-  "footer.builtWith": "Создано с использованием Next.js и современных технологий",
+  "footer.builtWith":
+    "Создано с использованием Next.js и современных технологий",
   "footer.company": "Компания",
   "footer.tools": "Инструменты",
   "footer.aboutUs": "О нас",
@@ -29,7 +30,8 @@ export const layout = {
   "footer.tool.encodingConverter": "Конвертер кодировок",
 
   // Metadata
-  "metadata.title": "KittyEncode - Бесплатные онлайн-инструменты для разработчиков",
+  "metadata.title":
+    "KittyEncode - Бесплатные онлайн-инструменты для разработчиков",
   "metadata.description":
     "Бесплатные онлайн-инструменты для разработчиков: форматирование JSON, кодирование URL, конвертация Base64, генерация хэшей и многое другое. Быстро, безопасно, работает офлайн.",
   "metadata.keywords":

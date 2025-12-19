@@ -12,8 +12,14 @@ const footerLinks = {
     { labelKey: "footer.tool.base64Encoder", href: "/tools/base64-encoder" },
     { labelKey: "footer.tool.md5Generator", href: "/tools/md5-generator" },
     { labelKey: "footer.tool.uuidGenerator", href: "/tools/uuid-generator" },
-    { labelKey: "footer.tool.passwordGenerator", href: "/tools/password-generator" },
-    { labelKey: "footer.tool.encodingConverter", href: "/tools/encoding-converter" },
+    {
+      labelKey: "footer.tool.passwordGenerator",
+      href: "/tools/password-generator",
+    },
+    {
+      labelKey: "footer.tool.encodingConverter",
+      href: "/tools/encoding-converter",
+    },
   ],
   company: [
     { labelKey: "footer.aboutUs", href: "/about" },

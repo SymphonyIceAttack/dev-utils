@@ -18,7 +18,8 @@ export const layout = {
   "footer.developer": "Développeur",
   "footer.sourceCode": "Code source",
   "footer.githubProfile": "GitHub",
-  "footer.tagline": "Des utilitaires de codage parfaits avec une touche féline.",
+  "footer.tagline":
+    "Des utilitaires de codage parfaits avec une touche féline.",
   "footer.madeWithLove": "Fait avec ♥ pour les développeurs.",
 
   "footer.tool.urlEncoder": "Encodeur URL",
@@ -29,7 +30,8 @@ export const layout = {
   "footer.tool.encodingConverter": "Convertisseur d'encodage",
 
   // Metadata
-  "metadata.title": "KittyEncode - Utilitaires de développement gratuits en ligne",
+  "metadata.title":
+    "KittyEncode - Utilitaires de développement gratuits en ligne",
   "metadata.description":
     "Outils de développement gratuits en ligne pour formatage JSON, encodage URL, conversion Base64, génération de hachage et plus. Rapide, sécurisé, fonctionne hors ligne.",
   "metadata.keywords":

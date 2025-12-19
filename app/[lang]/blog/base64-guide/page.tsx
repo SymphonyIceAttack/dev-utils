@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   title: "Master Base64 Encoding: From Basics to Advanced - KittyEncode",
   description:
     "Explore how Base64 encoding works and its practical applications in image embedding, data transmission, and API authentication.",
+  keywords:
+    "base64, encoding, tutorial, guide, image embedding, data transmission, API authentication",
   robots: {
     index: false,
     follow: true,

@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   title: "Text Encoding Conversion: Complete Guide - KittyEncode",
   description:
     "Master text encoding conversion between UTF-8, UTF-16, ASCII, Hex, Binary, and Unicode Escape formats. Essential guide for handling international text and data encoding.",
+  keywords:
+    "text encoding conversion, UTF-8, UTF-16, ASCII, hex encoding, binary encoding, Unicode escape, data transformation, character conversion",
   robots: {
     index: false,
     follow: true,

@@ -156,6 +156,7 @@
     @apply bg-card border-2 border-foreground/60 rounded-xl;
     box-shadow: 4px 4px 0px 0px var(--foreground);
     transition: all 0.15s ease;
+    will-change: transform, box-shadow;
   }
 
   .pixel-card:hover {
@@ -177,6 +178,7 @@
     @apply relative font-semibold border-2 border-foreground/70 bg-primary text-primary-foreground rounded-full;
     box-shadow: 3px 3px 0px 0px var(--foreground);
     transition: all 0.1s ease;
+    will-change: transform, box-shadow;
   }
 
   .pixel-btn:hover {
@@ -253,6 +255,7 @@
   .pixel-icon-box {
     @apply border-2 border-foreground/60 bg-primary/10 rounded-2xl;
     box-shadow: 3px 3px 0px 0px var(--foreground);
+    will-change: transform;
   }
 
   .dark .pixel-icon-box {

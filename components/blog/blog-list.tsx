@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Calendar, Clock, User } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { BlogPageStructuredData } from "@/components/structured-data/blog-page";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +13,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+// 优化的图片组件
+function BlogImage({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      className={className}
+      width={400}
+      height={200}
+      loading="lazy"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      style={{ objectFit: "cover" }}
+    />
+  );
+}
 
 const blogPosts = [
   {
@@ -111,26 +136,20 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      stiffness: 300,
-      damping: 24,
-    },
+    transition: { duration: 0.3 },
   },
 };
 
 const headerVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0, scale: 0.95 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-      stiffness: 300,
-      damping: 24,
-    },
+    transition: { duration: 0.4 },
   },
 };
 
@@ -141,7 +160,10 @@ export function BlogList() {
   return (
     <>
       <BlogPageStructuredData />
-      <div className="container mx-auto max-w-6xl px-4 py-12">
+      <main
+        className="container mx-auto max-w-6xl px-4 py-12"
+        aria-labelledby="blog-title"
+      >
         {/* Header */}
         <motion.div
           className="mb-12 text-center"
@@ -160,7 +182,10 @@ export function BlogList() {
           >
             <BookOpen className="w-8 h-8" />
           </motion.div>
-          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+          <h1
+            id="blog-title"
+            className="text-3xl font-bold tracking-tight md:text-4xl"
+          >
             Developer Guides
           </h1>
           <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
@@ -198,7 +223,7 @@ export function BlogList() {
                   >
                     <Card className="group h-full transition-all hover:border-accent hover:shadow-lg hover:shadow-accent/10 rounded-2xl overflow-hidden">
                       <div className="aspect-video bg-muted relative overflow-hidden">
-                        <img
+                        <BlogImage
                           src={post.image || "/placeholder.svg"}
                           alt={post.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -287,7 +312,7 @@ export function BlogList() {
                     <Card className="group transition-all hover:border-accent hover:shadow-md rounded-2xl overflow-hidden">
                       <div className="flex flex-col md:flex-row">
                         <div className="md:w-48 h-32 md:h-auto bg-muted relative overflow-hidden shrink-0">
-                          <img
+                          <BlogImage
                             src={post.image || "/placeholder.svg"}
                             alt={post.title}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -350,7 +375,7 @@ export function BlogList() {
             ))}
           </div>
         </motion.section>
-      </div>
+      </main>
     </>
   );
 }

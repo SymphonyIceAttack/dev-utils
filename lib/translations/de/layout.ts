@@ -18,7 +18,8 @@ export const layout = {
   "footer.developer": "Entwickler",
   "footer.sourceCode": "Quellcode",
   "footer.githubProfile": "GitHub",
-  "footer.tagline": "Purr-fekte Codierungsdienstprogramme mit einem Hauch von Katze.",
+  "footer.tagline":
+    "Purr-fekte Codierungsdienstprogramme mit einem Hauch von Katze.",
   "footer.madeWithLove": "Mit ♥ für Entwickler gemacht.",
 
   "footer.tool.urlEncoder": "URL-Encoder",

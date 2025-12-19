@@ -4,7 +4,10 @@
   "name": "kitty-encode",
   "keep_names": false,
   "compatibility_date": "2024-12-30",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
   // R2 incremental cache
   "r2_buckets": [
     {
@@ -24,7 +27,9 @@
   "migrations": [
     {
       "tag": "v1",
-      "new_sqlite_classes": ["DOQueueHandler"]
+      "new_sqlite_classes": [
+        "DOQueueHandler"
+      ]
     }
   ],
   // D1 Tag Cache (Next mode)
@@ -32,8 +37,8 @@
   "d1_databases": [
     {
       "binding": "NEXT_TAG_CACHE_D1",
-      "database_id": "064c7672-8cc5-4e4f-8065-ecf230b7bbcd",
-      "database_name": "next-exam-timekeeper"
+      "database_id": "a0c430b6-4278-48c4-abbb-687a4f6ed512",
+      "database_name": "next-kitty-encode"
     }
   ],
   "assets": {

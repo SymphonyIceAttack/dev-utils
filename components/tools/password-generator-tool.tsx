@@ -21,16 +21,16 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring" as const, stiffness: 300, damping: 24 },
+    transition: { duration: 0.3 },
   },
 };
 
@@ -395,11 +395,9 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
   }, []);
 
   return (
-    <motion.div
+    <main
       className="container mx-auto max-w-6xl px-4 py-8"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
+      aria-labelledby="page-title"
     >
       {/* Hero Section */}
       <motion.section className="mb-10 text-center" variants={itemVariants}>
@@ -417,6 +415,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
         </motion.div>
 
         <motion.h1
+          id="page-title"
           className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -606,7 +605,9 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium">{t("passwordGenerator.passphrase.words")}</span>
+                        <span className="text-sm font-medium">
+                          {t("passwordGenerator.passphrase.words")}
+                        </span>
                         <span className="text-sm font-mono bg-muted px-2 py-1 rounded">
                           {options.passphraseWords}
                         </span>
@@ -648,11 +649,23 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                         }}
                         className="w-full px-3 py-2 text-sm border border-border rounded-lg bg-background"
                       >
-                        <option value="-">{t("passwordGenerator.passphrase.separator.hyphen")}</option>
-                        <option value="_">{t("passwordGenerator.passphrase.separator.underscore")}</option>
-                        <option value=" ">{t("passwordGenerator.passphrase.separator.space")}</option>
-                        <option value=".">{t("passwordGenerator.passphrase.separator.period")}</option>
-                        <option value="">{t("passwordGenerator.passphrase.separator.none")}</option>
+                        <option value="-">
+                          {t("passwordGenerator.passphrase.separator.hyphen")}
+                        </option>
+                        <option value="_">
+                          {t(
+                            "passwordGenerator.passphrase.separator.underscore",
+                          )}
+                        </option>
+                        <option value=" ">
+                          {t("passwordGenerator.passphrase.separator.space")}
+                        </option>
+                        <option value=".">
+                          {t("passwordGenerator.passphrase.separator.period")}
+                        </option>
+                        <option value="">
+                          {t("passwordGenerator.passphrase.separator.none")}
+                        </option>
                       </select>
                     </div>
                   </motion.div>
@@ -837,7 +850,8 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium">
-                    {t("passwordGenerator.output.generated")} ({bulkPasswords.length})
+                    {t("passwordGenerator.output.generated")} (
+                    {bulkPasswords.length})
                   </span>
                   <Button
                     variant="ghost"
@@ -845,7 +859,8 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                     onClick={() => copyToClipboard(bulkPasswords.join("\n"))}
                     className="rounded-lg"
                   >
-                    <Copy className="h-4 w-4 mr-1" /> {t("passwordGenerator.output.copyAll")}
+                    <Copy className="h-4 w-4 mr-1" />{" "}
+                    {t("passwordGenerator.output.copyAll")}
                   </Button>
                 </div>
                 <div className="max-h-[200px] overflow-auto rounded-xl border-2 border-border bg-muted/30 p-4">
@@ -860,6 +875,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                         size="sm"
                         onClick={() => copyToClipboard(pwd)}
                         className="h-6 w-6 p-0"
+                        aria-label={t("common.copy")}
                       >
                         <Copy className="h-3 w-3" />
                       </Button>
@@ -990,9 +1006,12 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                       </h4>
                       <p className="text-xs text-muted-foreground">
                         {preset.length} {t("passwordGenerator.preset.chars")}
-                        {preset.symbols && ` • ${t("passwordGenerator.preset.symbols")}`}
-                        {preset.numbers && ` • ${t("passwordGenerator.preset.numbers")}`}
-                        {preset.uppercase && ` • ${t("passwordGenerator.preset.upper")}`}
+                        {preset.symbols &&
+                          ` • ${t("passwordGenerator.preset.symbols")}`}
+                        {preset.numbers &&
+                          ` • ${t("passwordGenerator.preset.numbers")}`}
+                        {preset.uppercase &&
+                          ` • ${t("passwordGenerator.preset.upper")}`}
                       </p>
                     </div>
                     <div className="flex gap-1 ml-2">
@@ -1070,37 +1089,21 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
             <div>
               <strong>{t("passwordGenerator.tech.randomTitle")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>
-                  {t("passwordGenerator.tech.randomList1")}
-                </li>
-                <li>
-                  {t("passwordGenerator.tech.randomList2")}
-                </li>
-                <li>
-                  {t("passwordGenerator.tech.randomList3")}
-                </li>
-                <li>
-                  {t("passwordGenerator.tech.randomList4")}
-                </li>
-                <li>
-                  {t("passwordGenerator.tech.randomList5")}
-                </li>
+                <li>{t("passwordGenerator.tech.randomList1")}</li>
+                <li>{t("passwordGenerator.tech.randomList2")}</li>
+                <li>{t("passwordGenerator.tech.randomList3")}</li>
+                <li>{t("passwordGenerator.tech.randomList4")}</li>
+                <li>{t("passwordGenerator.tech.randomList5")}</li>
               </ul>
             </div>
             <div>
               <strong>{t("passwordGenerator.tech.passphraseTitle")}</strong>
               <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>
-                  {t("passwordGenerator.tech.passphraseList1")}
-                </li>
+                <li>{t("passwordGenerator.tech.passphraseList1")}</li>
                 <li>{t("passwordGenerator.tech.passphraseList2")}</li>
                 <li>{t("passwordGenerator.tech.passphraseList3")}</li>
-                <li>
-                  {t("passwordGenerator.tech.passphraseList4")}
-                </li>
-                <li>
-                  {t("passwordGenerator.tech.passphraseList5")}
-                </li>
+                <li>{t("passwordGenerator.tech.passphraseList4")}</li>
+                <li>{t("passwordGenerator.tech.passphraseList5")}</li>
               </ul>
             </div>
           </div>
@@ -1158,28 +1161,23 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
           {[
             {
               case: t("passwordGenerator.bestPractices.item1"),
-              boundary:
-                t("passwordGenerator.bestPractices.boundary1"),
+              boundary: t("passwordGenerator.bestPractices.boundary1"),
             },
             {
               case: t("passwordGenerator.bestPractices.item2"),
-              boundary:
-                t("passwordGenerator.bestPractices.boundary2"),
+              boundary: t("passwordGenerator.bestPractices.boundary2"),
             },
             {
               case: t("passwordGenerator.bestPractices.item3"),
-              boundary:
-                t("passwordGenerator.bestPractices.boundary3"),
+              boundary: t("passwordGenerator.bestPractices.boundary3"),
             },
             {
               case: t("passwordGenerator.bestPractices.item4"),
-              boundary:
-                t("passwordGenerator.bestPractices.boundary4"),
+              boundary: t("passwordGenerator.bestPractices.boundary4"),
             },
             {
               case: t("passwordGenerator.bestPractices.item5"),
-              boundary:
-                t("passwordGenerator.bestPractices.boundary5"),
+              boundary: t("passwordGenerator.bestPractices.boundary5"),
             },
           ].map((item, index) => (
             <motion.li
@@ -1212,7 +1210,9 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
           className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
           whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
         >
-          <h2 className="text-lg font-semibold">{t("passwordGenerator.faq.title")}</h2>
+          <h2 className="text-lg font-semibold">
+            {t("passwordGenerator.faq.title")}
+          </h2>
           <motion.div
             animate={{ rotate: showFaq ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -1259,6 +1259,6 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
           )}
         </AnimatePresence>
       </motion.section>
-    </motion.div>
+    </main>
   );
 }
