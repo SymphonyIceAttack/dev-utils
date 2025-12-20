@@ -13,7 +13,6 @@ import {
 import { useCallback, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeHighlighter } from "@/components/ui/code-highlighter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { useCat } from "@/context/cat-context";
@@ -196,7 +195,7 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
     <div className="container mx-auto max-w-6xl px-4 py-8">
       {/* Hero Section */}
       <section className="mb-10 text-center">
-        <div className="pixel-icon-box inline-flex items-center justify-center w-16 h-16 mb-6">
+        <div className="inline-flex items-center justify-center w-16 h-16 mb-6 pixel-icon-box">
           <Key className="h-8 w-8 text-primary" />
         </div>
 
@@ -296,9 +295,10 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                   </div>
                 </div>
 
-                <div className="grid gap-4 lg:grid-cols-2">
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between h-8">
+                <div className="grid gap-6 lg:grid-cols-2 items-start">
+                  {/* Input area */}
+                  <div className="flex flex-col">
+                    <div className="flex items-center justify-between h-8 mb-2">
                       <label
                         htmlFor="base64-input"
                         className="text-sm font-medium"
@@ -309,12 +309,13 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                       </label>
                     </div>
                     <Textarea
+                      id="base64-input"
                       placeholder={
                         mode === "encode"
                           ? t("base64Encoder.inputPlaceholder")
                           : t("base64Encoder.inputPlaceholderBase64")
                       }
-                      className="min-h-[300px] font-mono text-sm rounded-xl"
+                      className="min-h-[220px] font-mono text-sm pixel-input resize-none rounded-xl"
                       value={input}
                       onChange={(e) => {
                         const newValue = e.target.value;
@@ -330,15 +331,16 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                       }}
                     />
                     {error && (
-                      <div className="flex items-start gap-2 text-sm text-destructive bg-destructive/10 p-3 rounded-xl">
-                        <AlertCircle className="h-4 w-4 mt-0.5" />
+                      <div className="flex items-center gap-2 text-sm text-destructive p-3 bg-destructive/10 rounded-lg border-2 border-destructive/40 mt-2">
+                        <AlertCircle className="h-4 w-4 flex-shrink-0" />
                         <span>{error}</span>
                       </div>
                     )}
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between h-8">
+                  {/* Output area */}
+                  <div className="flex flex-col">
+                    <div className="flex items-center justify-between h-8 mb-2">
                       <span className="text-sm font-medium">
                         {t("common.output")}
                       </span>
@@ -348,16 +350,22 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                           size="sm"
                           onClick={copyToClipboard}
                           disabled={!output}
-                          className="rounded-lg"
+                          className="h-8 text-xs rounded-full border-2 border-transparent hover:border-foreground/30 dark:hover:border-primary/30"
                         >
                           {copied ? (
                             <span className="flex items-center">
-                              <Check className="h-4 w-4 mr-1" />{" "}
+                              <Check
+                                className="h-3 w-3 mr-1"
+                                aria-hidden="true"
+                              />{" "}
                               {t("common.copied")}
                             </span>
                           ) : (
                             <span className="flex items-center">
-                              <Copy className="h-4 w-4 mr-1" />{" "}
+                              <Copy
+                                className="h-3 w-3 mr-1"
+                                aria-hidden="true"
+                              />{" "}
                               {t("common.copy")}
                             </span>
                           )}
@@ -366,34 +374,30 @@ export function Base64EncoderTool({ lang }: Base64EncoderToolProps) {
                     </div>
                     <div
                       className={`
-                      min-h-[300px] rounded-xl border-2 overflow-hidden transition-all duration-300
+                      min-h-[220px] p-4 text-sm font-mono whitespace-pre-wrap break-words overflow-auto rounded-xl border-2 transition-all duration-300
                       ${
                         needsUpdate
                           ? "border-amber-300 bg-amber-50/30 dark:border-amber-600/30 dark:bg-amber-950/20"
-                          : "border-foreground/20 bg-muted/30"
+                          : "border-foreground/20 dark:border-primary/20 bg-muted/30"
                       }
                     `}
                     >
                       {output ? (
-                        <div>
+                        <>
                           {needsUpdate && (
-                            <div className="flex items-center gap-2 p-3 bg-amber-100/80 dark:bg-amber-900/20 border-b border-amber-300 dark:border-amber-600/30">
+                            <div className="flex items-center gap-2 p-3 mb-4 bg-amber-100/80 dark:bg-amber-900/20 border-b border-amber-300 dark:border-amber-600/30 rounded-lg">
                               <AlertCircle className="h-4 w-4 text-amber-700 dark:text-amber-500" />
                               <span className="text-sm text-amber-800 dark:text-amber-200">
                                 {t("common.needsUpdate")}
                               </span>
                             </div>
                           )}
-                          <CodeHighlighter
-                            code={output}
-                            language="javascript"
-                            className={`min-h-[300px] max-h-[400px] ${needsUpdate ? "opacity-90" : ""}`}
-                          />
-                        </div>
+                          {output}
+                        </>
                       ) : (
-                        <div className="p-4 text-sm text-muted-foreground font-mono whitespace-pre-wrap break-words">
+                        <span className="text-muted-foreground">
                           {t("base64Encoder.outputPlaceholder")}
-                        </div>
+                        </span>
                       )}
                     </div>
                   </div>

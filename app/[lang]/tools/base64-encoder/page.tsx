@@ -1,20 +1,8 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { Base64EncoderStructuredData } from "@/components/structured-data/base64-encoder";
 import { Base64EncoderTool } from "@/components/tools/base64-encoder-tool";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
-
-// 懒加载 RelatedTools 组件，减少初始 JavaScript 负载
-const RelatedTools = dynamic(
-  () =>
-    import("@/components/tools/related-tools").then((mod) => mod.RelatedTools),
-  {
-    loading: () => (
-      <div className="h-32 animate-pulse bg-muted/20 rounded-xl" />
-    ),
-  },
-);
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
@@ -150,7 +138,6 @@ export default async function Base64EncoderPage({
     <>
       <Base64EncoderStructuredData />
       <Base64EncoderTool lang={lang as LanguageType} />
-      <RelatedTools lang={lang as LanguageType} currentTool="base64-encoder" />
     </>
   );
 }
