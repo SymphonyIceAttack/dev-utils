@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Globe, Menu, Moon, Sun, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -26,15 +27,14 @@ const navLinks = [
 
 function KittyEncodeLogo() {
   return (
-    <img
+    <Image
       src="/base-logo.png"
-      alt="KittyEncode"
+      alt="KittyEncode logo"
       width={32}
       height={32}
       className="rounded-lg"
       style={{ imageRendering: "pixelated" }}
-      loading="eager"
-      fetchPriority="high"
+      priority
     />
   );
 }

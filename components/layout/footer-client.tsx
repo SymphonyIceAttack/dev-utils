@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
@@ -27,8 +28,6 @@ const footerLinks = {
   ],
   resources: [
     { labelKey: "footer.blog", href: "/blog" },
-    { labelKey: "footer.documentation", href: "/docs" },
-    { labelKey: "footer.changelog", href: "/changelog" },
     {
       labelKey: "footer.githubProfile",
       href: "https://github.com/SymphonyIceAttack/kitty-encode",
@@ -110,9 +109,9 @@ function PixelTree({
 
 function KittyEncodeLogo() {
   return (
-    <img
+    <Image
       src="/base-logo.png"
-      alt="KittyEncode"
+      alt="KittyEncode logo"
       width={32}
       height={32}
       className="rounded-lg"
@@ -207,8 +206,11 @@ export function Footer({ lang }: FooterProps) {
                   href="https://github.com/SymphonyIceAttack/kitty-encode"
                   className="p-2 rounded-xl border-2 border-foreground/40 dark:border-primary/40 hover:bg-accent transition-colors block"
                   style={{ boxShadow: "2px 2px 0 0 var(--foreground)" }}
+                  aria-label="GitHub repository"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Github className="h-5 w-5" />
+                  <Github className="h-5 w-5" aria-hidden="true" />
                 </Link>
               </motion.div>
             </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactPageStructuredData } from "@/components/structured-data/contact-page";
 import {
   generateHreflangLinks,
   type LanguageType,
@@ -136,5 +137,10 @@ export default async function ContactPageWrapper({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  return <ContactPage lang={lang as LanguageType} />;
+  return (
+    <>
+      <ContactPageStructuredData />
+      <ContactPage lang={lang as LanguageType} />
+    </>
+  );
 }

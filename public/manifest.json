@@ -1,0 +1,28 @@
+{
+  "name": "KittyEncode",
+  "short_name": "KittyEncode",
+  "description": "Free online developer tools for encoding, hashing, and data transformation. Support for URL encoding, Base64, MD5, UUID generation, password generation, and character encoding conversion.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f5f0",
+  "theme_color": "#5a9e6f",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-light.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-dark.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["developer-tools", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+}

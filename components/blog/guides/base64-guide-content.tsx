@@ -252,7 +252,7 @@ async function encodeLargeFile(filePath) {
 
 // URL-safe Base64
 const urlSafeBuffer = Buffer.from('Hello+World/Test');
-const urlSafe = urlSafeBuffer.toString('base64').replace(/\+/g, '-').replace(//g, '_');
+const urlSafe = urlSafeBuffer.toString('base64').replace(/+/g, '-').replace(//g, '_');
 \`\`\`
 
 ### Java

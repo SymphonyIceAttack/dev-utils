@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TermsPageStructuredData } from "@/components/structured-data/terms-page";
 import {
   generateHreflangLinks,
   type LanguageType,
@@ -139,5 +140,10 @@ export default async function TermsOfServicePage({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  return <TermsPage lang={lang as LanguageType} />;
+  return (
+    <>
+      <TermsPageStructuredData />
+      <TermsPage lang={lang as LanguageType} />
+    </>
+  );
 }

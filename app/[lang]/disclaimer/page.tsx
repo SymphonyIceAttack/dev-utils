@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DisclaimerPageStructuredData } from "@/components/structured-data/disclaimer-page";
 import {
   generateHreflangLinks,
   type LanguageType,
@@ -137,5 +138,10 @@ export default async function DisclaimerPageWrapper({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  return <DisclaimerPage lang={lang as LanguageType} />;
+  return (
+    <>
+      <DisclaimerPageStructuredData />
+      <DisclaimerPage lang={lang as LanguageType} />
+    </>
+  );
 }

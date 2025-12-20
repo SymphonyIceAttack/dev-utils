@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PrivacyPageStructuredData } from "@/components/structured-data/privacy-page";
 import {
   generateHreflangLinks,
   type LanguageType,
@@ -141,5 +142,10 @@ export default async function PrivacyPolicyPage({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  return <PrivacyPage lang={lang as LanguageType} />;
+  return (
+    <>
+      <PrivacyPageStructuredData />
+      <PrivacyPage lang={lang as LanguageType} />
+    </>
+  );
 }

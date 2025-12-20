@@ -129,7 +129,7 @@ Output Process:
 
 Example Output:
 b10a8db164e0754105b7a99be72e3fe5
-|\_________/|\_________/|\_________/|\________/|
+|_________/|_________/|_________/|________/|
      A           B           C           D
    (32 bits)   (32 bits)   (32 bits)   (32 bits)
                = 128 bits total =

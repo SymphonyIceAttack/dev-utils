@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
   ArrowRight,
   BookOpen,
@@ -12,9 +11,10 @@ import {
   Type,
   Wrench,
 } from "lucide-react";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
-import Link from "next/link";
 
 interface RelatedToolsProps {
   lang: LanguageType;

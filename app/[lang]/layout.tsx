@@ -54,15 +54,16 @@ export const metadata: Metadata = {
   other: {
     "preload-image": "/base-logo.png",
   },
+  manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f5f0e6" },
     { media: "(prefers-color-scheme: dark)", color: "#1a1a2e" },
   ],
-  width: "device-width",
-  initialScale: 1,
 };
 
 export default async function RootLayout({
@@ -85,20 +86,7 @@ export default async function RootLayout({
       className={`${nunitoFont.variable} ${jetbrainsFont.variable} ${pixelFont.variable}`}
     >
       <head>
-        {/* Performance optimizations */}
         <link rel="preload" href="/base-logo.png" as="image" />
-
-        {/* Theme color for better UX */}
-        <meta
-          name="theme-color"
-          content="#f5f0e6"
-          media="(prefers-color-scheme: light)"
-        />
-        <meta
-          name="theme-color"
-          content="#1a1a2e"
-          media="(prefers-color-scheme: dark)"
-        />
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider

@@ -785,7 +785,7 @@ function validatePasswordStrength(password) {
     lowercase: /[a-z]/.test(password),
     uppercase: /[A-Z]/.test(password),
     numbers: /[0-9]/.test(password),
-    symbols: /[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/.test(password),
+    symbols: /[!@#$%^&*()_+-=[]{}|;:,.<>?]/.test(password),
     noDictionary: !isCommonPassword(password),
     noSequential: !hasSequentialChars(password),
     noRepeated: !hasRepeatedChars(password),
