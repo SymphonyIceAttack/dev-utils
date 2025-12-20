@@ -1,10 +1,26 @@
 import type { Metadata } from "next";
-import { UuidGeneratorStructuredData } from "@/components/structured-data/uuid-generator";
-import { UuidGeneratorTool } from "@/components/tools/uuid-generator-tool";
+import dynamic from "next/dynamic";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
+import { UuidGeneratorStructuredData } from "@/components/structured-data/uuid-generator";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
+
+const UuidGeneratorTool = dynamic(
+  () => import("@/components/tools/uuid-generator-tool").then((mod) => mod.UuidGeneratorTool),
+  {
+    ssr: true,
+    loading: () => (
+      <div className="container mx-auto max-w-6xl px-4 py-8" aria-busy="true">
+        <div className="animate-pulse space-y-4">
+          <div className="h-8 bg-muted rounded w-1/3 mx-auto" />
+          <div className="h-4 bg-muted rounded w-2/3 mx-auto" />
+          <div className="h-64 bg-muted rounded-2xl" />
+        </div>
+      </div>
+    ),
+  }
+);
 
 const metadataConfig = {
   en: {
