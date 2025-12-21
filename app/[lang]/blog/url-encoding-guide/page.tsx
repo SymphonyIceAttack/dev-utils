@@ -13,11 +13,11 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Complete Guide to URL Encoding: Best Practices - KittyEncode",
+  title: "URL Encoding: The RFC 3986 Engineering Reference - KittyEncode",
   description:
-    "Master URL encoding principles, use cases, and best practices. Learn why URL encoding is essential and how to use it correctly across different programming languages.",
+    "A comprehensive analysis of Percent-Encoding (RFC 3986), reserved character sets, UTF-8 byte sequences, and common security pitfalls in URL construction.",
   keywords:
-    "url encoding, percent encoding, rfc3986, web development, HTTP, URL safety, query parameters, character encoding",
+    "rfc 3986, url encoding, percent encoding, http security, query parameters, web engineering, uri syntax",
   robots: {
     index: false,
     follow: true,

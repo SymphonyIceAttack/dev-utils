@@ -13,11 +13,11 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "MD5 Hashing Tutorial: Complete Implementation Guide - KittyEncode",
+  title: "MD5: A Post-Mortem and Engineering Analysis - KittyEncode",
   description:
-    "A comprehensive guide to MD5 hashing algorithm, including how it works, security considerations, and practical use cases like file verification and checksums.",
+    "An in-depth look at the MD5 algorithm's internal structure (Merkle-Damgård), the mathematics of collision attacks, and why it persists in non-cryptographic use cases.",
   keywords:
-    "md5, hashing, cryptographic hash, file verification, checksum, data integrity, security, hash function, message digest",
+    "md5, merkle-damgard, collision attack, flame malware, cryptography engineering, checksum, data integrity",
   robots: {
     index: false,
     follow: true,

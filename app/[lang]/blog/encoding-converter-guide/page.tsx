@@ -13,11 +13,12 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Text Encoding Conversion: Complete Guide - KittyEncode",
+  title:
+    "A Low-Level Guide to Text Encodings: Hex, Binary, and Base Encodings - KittyEncode",
   description:
-    "Master text encoding conversion between UTF-8, UTF-16, ASCII, Hex, Binary, and Unicode Escape formats. Essential guide for handling international text and data encoding.",
+    "Understanding the byte-level mechanics of text representation: how ASCII, Hex, Binary, and Base64 function as different views of the same underlying data.",
   keywords:
-    "text encoding conversion, UTF-8, UTF-16, ASCII, hex encoding, binary encoding, Unicode escape, data transformation, character conversion",
+    "hex encoding, binary representation, base64, transfer encoding, serialization, byte-level, engineering guide",
   robots: {
     index: false,
     follow: true,

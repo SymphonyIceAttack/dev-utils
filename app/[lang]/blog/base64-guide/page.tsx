@@ -13,11 +13,11 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Master Base64 Encoding: From Basics to Advanced - KittyEncode",
+  title: "Base64 Encoding: The Definitive Engineering Guide - KittyEncode",
   description:
-    "Explore how Base64 encoding works and its practical applications in image embedding, data transmission, and API authentication.",
+    "A deep technical analysis of Base64 encoding algorithms, memory implications, RFC 4648 standards, and implementation best practices for engineers.",
   keywords:
-    "base64, encoding, tutorial, guide, image embedding, data transmission, API authentication",
+    "base64, rfc 4648, base64url, encoding algorithm, performance, engineering guide, nodejs buffer",
   robots: {
     index: false,
     follow: true,

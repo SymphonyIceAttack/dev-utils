@@ -13,11 +13,11 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "UUID Generation: A Developer's Complete Guide - KittyEncode",
+  title: "UUIDs in Distributed Systems: The Engineering Guide - KittyEncode",
   description:
-    "Master UUID generation with this complete guide. Understand UUID versions (v1, v4, v7), best practices for database primary keys, and distributed systems.",
+    "A deep technical comparison of UUID v4, v7 (RFC 9562), and ULIDs. Analysis of database indexing performance, collision probabilities, and entropy requirements.",
   keywords:
-    "uuid, universal unique identifier, rfc4122, database primary key, distributed systems, uuid v1, uuid v4, uuid v7, identifier generation",
+    "uuid v7, rfc 9562, ulid, distributed system identifiers, database indexing, b-tree fragmentation, uuid v4 collision",
   robots: {
     index: false,
     follow: true,

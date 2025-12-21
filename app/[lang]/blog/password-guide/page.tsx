@@ -13,11 +13,11 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Secure Password Generation: Best Practices Guide - KittyEncode",
+  title: "Password Security: Entropy, Salting, and KDFs - KittyEncode",
   description:
-    "Create strong, secure passwords with our comprehensive guide. Learn about password entropy, generation algorithms, and security recommendations.",
+    "An engineering analysis of password security mechanics: calculating entropy, preventing rainbow table attacks with salts, and slowing down GPUs with Argon2 and bcrypt.",
   keywords:
-    "password security, secure passwords, password generation, password entropy, password strength, security best practices, cryptography, authentication",
+    "argon2, bcrypt, password entropy, kdf, salt, rainbow table, nist sp 800-63b, credential stuffing",
   robots: {
     index: false,
     follow: true,

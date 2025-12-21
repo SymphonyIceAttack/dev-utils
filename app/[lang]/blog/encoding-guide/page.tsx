@@ -13,11 +13,11 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Character Encoding Guide: UTF-8, GBK & Beyond - KittyEncode",
+  title: "Character Encoding: The UTF-8 Engineering Guide - KittyEncode",
   description:
-    "Understand character encoding systems, fix garbled text issues, and convert between different encodings like UTF-8, GBK, and Unicode.",
+    "A deep dive into Unicode, UTF-8 bit layouts, Byte Order Marks (BOM), and debugging encoding corruption (mojibake) in distributed systems.",
   keywords:
-    "character encoding, UTF-8, Unicode, GBK, text encoding, internationalization, i18n, character sets, encoding conversion, text corruption",
+    "utf-8, unicode, character encoding, mojibake, byte order mark, engineering guide, text serialization, utf-16",
   robots: {
     index: false,
     follow: true,

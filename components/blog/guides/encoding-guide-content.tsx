@@ -9,169 +9,99 @@ import { extractTOCFromText, shouldShowTOC } from "@/lib/toc";
 
 // Article metadata
 const articleData = {
-  title: "Character Encoding Guide: UTF-8, GBK & Beyond",
+  title: "Unicode and UTF-8: The Architecture of Text Serialization",
   description:
-    "Character encoding is fundamental to how computers represent and process text. Understanding different encoding systems will help you handle international text, fix encoding issues, and build globally compatible applications.",
-  author: "Dev Team",
-  date: "2024-12-10",
-  readTime: "11 min",
-  tags: ["Encoding", "Guide", "Unicode"],
+    "A deep technical analysis of the Unicode Standard, the UTF-8 variable-width encoding scheme, bitwise layouts, Normalization Forms (NFC/NFD), and database implementation strategies.",
+  author: "Engineering Research",
+  date: "2024-12-21",
+  readTime: "25 min",
+  tags: ["Computer Science", "Unicode", "UTF-8", "I18n", "Database"],
   image: "/encoding-guide-pixel.jpeg",
   featured: false,
 };
 
 export function EncodingGuideContent() {
-  // Character encoding guide content in markdown format
-  const content = `# Character Encoding Guide: UTF-8, GBK & Beyond
+  const content = `# Unicode and UTF-8: The Architecture of Text Serialization
 
-Character encoding is fundamental to how computers represent and process text. Understanding different encoding systems will help you handle international text, fix encoding issues, and build globally compatible applications.
+**Abstract**
 
-## What is Character Encoding?
+The serialization of human language into binary data is one of the most complex problems in computer science. Early solutions (ASCII, ISO-8859) were fragmented and insufficient for global communication. The **Unicode Standard** unified the character space, and **UTF-8** provided a robust, backward-compatible transport layer. This report analyzes the architecture of Unicode Planes, the bitwise logic of UTF-8, the legacy burden of UTF-16 surrogate pairs, and the engineering best practices for preventing data corruption (Mojibake).
 
-Character encoding is a system that assigns numerical values to characters, allowing computers to represent and manipulate text. Different encoding systems support different character sets and have varying capabilities for international text.
+## 1. Introduction: The Character-Glyph Model
 
-### Why Encoding Matters
-- **International text:** Support for languages beyond English
-- **Data exchange:** Consistent text representation across systems
-- **Web applications:** Proper display of user content
-- **File handling:** Correct reading and writing of text files
+To process text correctly, we must decouple three distinct concepts:
+1.  **Abstract Character**: The platonic ideal of a letter (e.g., "The Latin Capital A").
+2.  **Glyph**: The visual representation (font rendering).
+3.  **Code Point**: The unique integer assigned to the character by the Unicode Consortium (e.g., \`U+0041\`).
+4.  **Encoding**: The algorithm to map the Code Point to a sequence of bits (e.g., \`0x41\`).
 
-## Common Character Encodings
+Errors occur when engineers conflate these layers, particularly assuming that 1 Character = 1 Byte.
 
-### UTF-8 (Unicode Transformation Format - 8-bit)
-- **Universal support:** Represents all Unicode characters
-- **Variable width:** 1-4 bytes per character
-- **ASCII compatible:** Backward compatible with ASCII
-- **Web standard:** Default encoding for the web
-- **Efficient:** Space-efficient for Latin text
+## 2. Unicode Architecture
 
-### UTF-16 (Unicode Transformation Format - 16-bit)
-- **Fixed or variable:** 2 or 4 bytes per character
-- **BOM:** Often includes Byte Order Mark
+### 2.1 The Code Space
+Unicode defines a code space of integers from $0$ to $10FFFF_{16}$ ($1,114,111$). This space is divided into **17 Planes** of $65,536$ characters each.
 
-### GBK (Chinese Character Set)
-- **Chinese support:** Simplified Chinese characters
-- **Backward compatible:** Extends GB2312
-- **Legacy:** Being replaced by UTF-8
-- **Regional:** Primarily used in China
+*   **Plane 0: Basic Multilingual Plane (BMP)**
+    *   Range: \`U+0000\` to \`U+FFFF\`.
+    *   Contains virtually all modern scripts (Latin, Cyrillic, Greek, CJK, Arabic).
+*   **Plane 1: Supplementary Multilingual Plane (SMP)**
+    *   Range: \`U+10000\` to \`U+1FFFF\`.
+    *   Contains Emoji, historic scripts, and musical symbols.
 
-## Encoding Conversion Examples
+### 2.2 Normalization Forms
+A single visual character can often be represented by multiple Code Point sequences.
+*   **Canonical Equivalence**: "é" can be \`U+00E9\` (composed) or \`U+0065\` + \`U+0301\` (decomposed).
+*   **NFC (Normalization Form C)**: Prefers composed characters. Recommended for W3C and storage.
+*   **NFD (Normalization Form D)**: Decomposes everything. Useful for search/sorting (ignoring accents).
 
-### The Same Text in Different Encodings
-\`\`\`
-Text: "Hello 世界"
+**Engineering Risk**: Comparing strings without normalization leads to logic errors where visually identical strings compare as \`false\`.
 
-UTF-8:        48 65 6C 6C 6F 20 E4 B8 96 E7 95 8C
-UTF-16:       00 48 00 65 00 6C 00 6C 00 6F 00 20 4E 16 75 4C
-GBK:          48 65 6C 6C 6F 20 CA C0 BD E7
-ASCII only:   48 65 6C 6C 6F 20 (World lost)
-\`\`\`
+## 3. UTF-8 Encoding Scheme
 
-## Handling Encoding in Different Languages
+UTF-8 is a **variable-width encoding**. It uses 1 to 4 bytes to represent a Code Point. It was designed by Ken Thompson and Rob Pike to be self-synchronizing and ASCII-compatible.
 
-### JavaScript
+### 3.1 Bit Layout
+The number of bytes is determined by the leading bits of the first byte.
+
+| Bytes | Code Point Range | Bit Pattern |
+| :--- | :--- | :--- |
+| 1 | \`U+0000\` - \`U+007F\` | \`0xxxxxxx\` |
+| 2 | \`U+0080\` - \`U+07FF\` | \`110xxxxx 10xxxxxx\` |
+| 3 | \`U+0800\` - \`U+FFFF\` | \`1110xxxx 10xxxxxx 10xxxxxx\` |
+| 4 | \`U+10000\` - \`U+10FFFF\` | \`11110xxx 10xxxxxx 10xxxxxx 10xxxxxx\` |
+
+### 3.2 Architectural Advantages
+1.  **Backward Compatibility**: Any valid ASCII file is automatically a valid UTF-8 file.
+2.  **No Endianness**: UTF-8 is a byte stream. It does not require a Byte Order Mark (BOM).
+3.  **Self-Synchronization**: Leading bytes (\`11...\`) and Continuation bytes (\`10...\`) are disjoint. If a stream is corrupted or you seek to a random offset, you can identify the start of the next character immediately.
+
+## 4. The Legacy of UTF-16
+
+Java and JavaScript use UTF-16 for internal string representation. This creates a "Surrogate Pair" problem.
+*   Characters in the BMP fit in 1 unit (16 bits).
+*   Characters in Astral Planes (Emoji) require 2 units (32 bits).
+
+**The Bug**:
 \`\`\`javascript
-// UTF-8 is default in modern JavaScript
-const text = "Hello 世界";
-const bytes = new TextEncoder().encode(text);
-const decoded = new TextDecoder().decode(bytes);
-
-// Convert between encodings (Node.js)
-const iconv = require('iconv-lite');
-const gbkBuffer = iconv.encode("Hello 世界", 'gbk');
-const gbkText = iconv.decode(gbkBuffer, 'gbk');
+"💩".length // Returns 2
 \`\`\`
+This abstraction leak means naive string operations (substring, length) can split a character in half, resulting in invalid "lone surrogates."
 
-### Python
-\`\`\`python
-# UTF-8 is default in Python 3
-text = "Hello 世界"
-utf8_bytes = text.encode('utf-8')
-decoded = utf8_bytes.decode('utf-8')
+## 5. Database Engineering
 
-# Convert to GBK
-gbk_bytes = text.encode('gbk', errors='ignore')
-gbk_text = gbk_bytes.decode('gbk')
-\`\`\`
+### 5.1 The MySQL Trap
+MySQL's original \`utf8\` charset was a non-standard implementation that only supported up to 3 bytes (the BMP). It cannot store Emojis (\`U+1F...\`).
+*   **Impact**: Inserting an Emoji truncates the string or throws an error.
+*   **Solution**: Engineers must strictly use \`utf8mb4\` (UTF-8 max bytes 4) for full compliance.
 
-### Java
-\`\`\`java
-import java.nio.charset.StandardCharsets;
+### 5.2 Storage Optimization
+While UTF-8 is space-efficient for Latin text (1 byte), it is less efficient for East Asian scripts (3 bytes) compared to UTF-16 (2 bytes). However, the complexity cost of managing mixed encodings usually outweighs the storage savings.
 
-String text = "Hello 世界";
-byte[] utf8Bytes = text.getBytes(StandardCharsets.UTF_8);
-byte[] gbkBytes = text.getBytes("GBK");
+## 6. Conclusion
 
-String decoded = new String(utf8Bytes, StandardCharsets.UTF_8);
-\`\`\`
-
-## Common Encoding Problems and Solutions
-
-### Problem: Garbled Text
-**Cause:** Text encoded in one encoding, decoded in another
-
-**Example:** UTF-8 text decoded as ISO-8859-1
-
-**Solution:** Detect encoding and convert properly
-
-### Problem: Missing Characters
-**Cause:** Encoding doesn't support certain characters
-
-**Example:** Chinese characters in ASCII
-
-**Solution:** Use UTF-8 for international text
-
-### Problem: File Corruption
-**Cause:** Wrong encoding specified when reading/writing files
-
-**Solution:** Always specify encoding explicitly
-
-## Encoding Detection
-Methods to detect text encoding:
-
-- **BOM check:** Look for Byte Order Marks at file start
-- **Statistical analysis:** Analyze byte patterns for likely encoding
-- **Heuristic methods:** Check for common encoding indicators
-- **Library detection:** Use libraries like chardet
-
-## Best Practices
-1. **Always use UTF-8:** Default choice for modern applications
-2. **Specify encoding explicitly:** Never rely on system defaults
-3. **Handle encoding errors:** Use appropriate error handling
-4. **Validate input:** Check encoding before processing
-5. **Test with international text:** Include various character sets
-6. **Document encoding decisions:** Make encoding choice clear
-
-## Encoding in Web Applications
-
-### HTTP Headers
-\`\`\`
-Content-Type: text/html; charset=UTF-8
-Content-Encoding: gzip
-\`\`\`
-
-### HTML Meta Tags
-\`\`\`html
-<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-\`\`\`
-
-### Database Configuration
-\`\`\`sql
--- MySQL
-CREATE DATABASE myapp CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- PostgreSQL  
-CREATE DATABASE myapp WITH ENCODING 'UTF8';
-\`\`\`
-
-## Tools and Resources
-
-Use our **Character Encoding Converter** tool to convert between different encodings and fix garbled text issues.
-
-## Conclusion
-
-Understanding character encoding is essential for building robust, international applications. By consistently using UTF-8, properly handling encoding conversions, and following best practices, you can avoid common text processing issues and create applications that work seamlessly across different languages and platforms.`;
+The "UTF-8 Everywhere" manifesto is the consensus of the modern engineering community. By standardizing on UTF-8 for storage, transmission, and source code, systems eliminate the complexity of transcoding and the risk of Mojibake. Engineers must, however, remain vigilant about Normalization forms and the limitations of legacy string libraries in managed runtimes.
+`;
 
   const tocItems = extractTOCFromText(content);
   const showTOC = shouldShowTOC(tocItems);

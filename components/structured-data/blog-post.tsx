@@ -54,12 +54,12 @@ export function BlogPostStructuredData({
 export function UrlEncodingGuideStructuredData() {
   return (
     <BlogPostStructuredData
-      title="Complete Guide to URL Encoding: Best Practices"
-      description="Master URL encoding principles, use cases, and best practices. Learn why URL encoding is essential and how to use it correctly across different programming languages."
+      title="URL Encoding: The RFC 3986 Engineering Reference"
+      description="A comprehensive analysis of Percent-Encoding (RFC 3986), reserved character sets, UTF-8 byte sequences, and common security pitfalls in URL construction."
       url={`${siteUrl}/en/blog/url-encoding-guide`}
-      datePublished="2024-12-15"
-      author="Dev Team"
-      image="/url-encoding-tutorial.jpg"
+      datePublished="2024-12-21"
+      author="Engineering Team"
+      image="/url-encoding-guide-pixel.jpeg"
     />
   );
 }
@@ -67,12 +67,12 @@ export function UrlEncodingGuideStructuredData() {
 export function Base64GuideStructuredData() {
   return (
     <BlogPostStructuredData
-      title="Master Base64 Encoding: From Basics to Advanced"
-      description="Explore how Base64 encoding works and its practical applications in image embedding, data transmission, and API authentication."
+      title="Base64 Encoding: The Definitive Engineering Guide"
+      description="A deep technical analysis of Base64 encoding algorithms, memory implications, RFC 4648 standards, and implementation best practices for engineers."
       url={`${siteUrl}/en/blog/base64-guide`}
-      datePublished="2024-12-14"
-      author="Dev Team"
-      image="/base64-encoding-web.jpg"
+      datePublished="2024-12-21"
+      author="Engineering Team"
+      image="/base64-guide-pixel.jpeg"
     />
   );
 }
@@ -80,12 +80,12 @@ export function Base64GuideStructuredData() {
 export function Md5GuideStructuredData() {
   return (
     <BlogPostStructuredData
-      title="MD5 Hashing Tutorial: Complete Implementation Guide"
-      description="A comprehensive guide to MD5 hashing algorithm, including how it works, security considerations, and practical use cases like file verification and checksums."
+      title="MD5: A Post-Mortem and Engineering Analysis"
+      description="An in-depth look at the MD5 algorithm's internal structure (Merkle-Damgård), the mathematics of collision attacks, and why it persists in non-cryptographic use cases."
       url={`${siteUrl}/en/blog/md5-guide`}
-      datePublished="2024-12-13"
-      author="Security Team"
-      image="/hash-functions-security.jpg"
+      datePublished="2024-12-21"
+      author="Security Engineering"
+      image="/md5-guide-pixel.jpeg"
     />
   );
 }
@@ -93,12 +93,12 @@ export function Md5GuideStructuredData() {
 export function UuidGuideStructuredData() {
   return (
     <BlogPostStructuredData
-      title="UUID Generation: A Developer's Complete Guide"
-      description="Master UUID generation with this complete guide. Understand UUID versions (v1, v4, v7), best practices for database primary keys, and distributed systems."
+      title="UUIDs in Distributed Systems: The Engineering Guide"
+      description="A deep technical comparison of UUID v4, v7 (RFC 9562), and ULIDs. Analysis of database indexing performance, collision probabilities, and entropy requirements."
       url={`${siteUrl}/en/blog/uuid-guide`}
-      datePublished="2024-12-12"
-      author="Dev Team"
-      image="/uuid-database-primary-key.jpg"
+      datePublished="2024-12-21"
+      author="Engineering Team"
+      image="/uuid-guide-pixel.jpeg"
     />
   );
 }
@@ -106,12 +106,12 @@ export function UuidGuideStructuredData() {
 export function PasswordGuideStructuredData() {
   return (
     <BlogPostStructuredData
-      title="Secure Password Generation: Best Practices Guide"
-      description="Create strong, secure passwords with our comprehensive guide. Learn about password entropy, generation algorithms, and security recommendations."
+      title="Password Security: Entropy, Salting, and KDFs"
+      description="An engineering analysis of password security mechanics: calculating entropy, preventing rainbow table attacks with salts, and slowing down GPUs with Argon2 and bcrypt."
       url={`${siteUrl}/en/blog/password-guide`}
-      datePublished="2024-12-11"
-      author="Security Team"
-      image="/password-security-guide.jpg"
+      datePublished="2024-12-21"
+      author="Security Engineering"
+      image="/password-guide-pixel.jpeg"
     />
   );
 }
@@ -119,12 +119,12 @@ export function PasswordGuideStructuredData() {
 export function EncodingGuideStructuredData() {
   return (
     <BlogPostStructuredData
-      title="Character Encoding Guide: UTF-8, GBK & Beyond"
-      description="Understand character encoding systems, fix garbled text issues, and convert between different encodings like UTF-8, GBK, and Unicode."
+      title="Character Encoding: The UTF-8 Engineering Guide"
+      description="A deep dive into Unicode, UTF-8 bit layouts, Byte Order Marks (BOM), and debugging encoding corruption (mojibake) in distributed systems."
       url={`${siteUrl}/en/blog/encoding-guide`}
-      datePublished="2024-12-10"
-      author="Dev Team"
-      image="/character-encoding-guide.jpg"
+      datePublished="2024-12-21"
+      author="Engineering Team"
+      image="/encoding-guide-pixel.jpeg"
     />
   );
 }
@@ -132,12 +132,12 @@ export function EncodingGuideStructuredData() {
 export function EncodingConverterGuideStructuredData() {
   return (
     <BlogPostStructuredData
-      title="Text Encoding Conversion: Complete Guide"
-      description="Master text encoding conversion between UTF-8, UTF-16, ASCII, Hex, Binary, and Unicode Escape formats. Essential guide for handling international text and data encoding."
+      title="A Low-Level Guide to Text Encodings: Hex, Binary, and Base Encodings"
+      description="Understanding the byte-level mechanics of text representation: how ASCII, Hex, Binary, and Base64 function as different views of the same underlying data."
       url={`${siteUrl}/en/blog/encoding-converter-guide`}
-      datePublished="2024-12-16"
-      author="Dev Team"
-      image="/encoding-conversion-guide.jpg"
+      datePublished="2024-12-21"
+      author="Engineering Team"
+      image="/encoding-converter-guide-pixel.jpeg"
     />
   );
 }
