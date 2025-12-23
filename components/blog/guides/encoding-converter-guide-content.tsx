@@ -22,7 +22,13 @@ const articleData = {
   author: "Engineering Research",
   date: "2024-12-21",
   readTime: "25 min",
-  tags: ["Computer Science", "Serialization", "Binary", "Data Structures", "Encoding"],
+  tags: [
+    "Computer Science",
+    "Serialization",
+    "Binary",
+    "Data Structures",
+    "Encoding",
+  ],
   image: "/images/blog/encoding-converter-guide-pixel.jpeg",
   featured: false,
 };

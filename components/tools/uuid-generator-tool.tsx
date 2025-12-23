@@ -47,12 +47,12 @@ function generateUuidV7(): string {
   const timestamp = Date.now();
   const timestampBytes = new Uint8Array(6);
 
-  timestampBytes[0] = (timestamp >> 40) & 0xFF;
-  timestampBytes[1] = (timestamp >> 32) & 0xFF;
-  timestampBytes[2] = (timestamp >> 24) & 0xFF;
-  timestampBytes[3] = (timestamp >> 16) & 0xFF;
-  timestampBytes[4] = (timestamp >> 8) & 0xFF;
-  timestampBytes[5] = timestamp & 0xFF;
+  timestampBytes[0] = (timestamp >> 40) & 0xff;
+  timestampBytes[1] = (timestamp >> 32) & 0xff;
+  timestampBytes[2] = (timestamp >> 24) & 0xff;
+  timestampBytes[3] = (timestamp >> 16) & 0xff;
+  timestampBytes[4] = (timestamp >> 8) & 0xff;
+  timestampBytes[5] = timestamp & 0xff;
 
   const randomBytes = new Uint8Array(10);
   crypto.getRandomValues(randomBytes);
@@ -685,7 +685,9 @@ function SeoContentSection({ t }: { t: TranslateFn }) {
                 key={row.version}
                 className="border-b border-border/50 hover:bg-muted/30 transition-colors"
               >
-                <td className="p-3 font-medium text-foreground">{row.version}</td>
+                <td className="p-3 font-medium text-foreground">
+                  {row.version}
+                </td>
                 <td className="p-3">{row.method}</td>
                 <td className="p-3">{row.sortable}</td>
                 <td className="p-3">{row.entropy}</td>
@@ -775,7 +777,10 @@ function SeoContentSection({ t }: { t: TranslateFn }) {
       </div>
 
       {/* Security Considerations */}
-      <Card className="rounded-xl overflow-hidden mb-6 animate-fade-in" style={{ animationDelay: "1.5s" }}>
+      <Card
+        className="rounded-xl overflow-hidden mb-6 animate-fade-in"
+        style={{ animationDelay: "1.5s" }}
+      >
         <CardContent className="p-4">
           <h4 className="font-semibold mb-3 flex items-center gap-2">
             <span className="text-lg">🔐</span>
