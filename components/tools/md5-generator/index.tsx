@@ -1,15 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  AlertCircle,
-  Check,
-  ChevronDown,
-  Copy,
-  Hash,
-  RotateCcw,
-  Sparkles,
-} from "lucide-react";
+import { AlertCircle, Check, Copy, RotateCcw, Sparkles } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,39 +10,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
-import { RelatedTools } from "./related-tools";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3 },
-  },
-};
+import { Md5GeneratorExamples } from "./md5-generator-examples";
+import { Md5GeneratorFaq } from "./md5-generator-faq-ssr";
+import { Md5GeneratorHero } from "./md5-generator-hero-ssr";
+import { Md5GeneratorRelatedTools } from "./md5-generator-related-tools-ssr";
+import { Md5GeneratorSeoContent } from "./md5-generator-seo-content-ssr";
 
 interface Md5GeneratorToolProps {
-  lang: LanguageType;
+  lang?: LanguageType;
 }
 
-const exampleData = [
-  { titleKey: "md5Generator.examples.simpleText", data: "Hello World!" },
-  { titleKey: "md5Generator.examples.password", data: "MySecurePassword123" },
-  {
-    titleKey: "md5Generator.examples.fileChecksum",
-    data: "The quick brown fox jumps over the lazy dog",
-  },
-];
-
-// Simple MD5 implementation
 function md5(input: string): string {
   function rotateLeft(x: number, n: number): number {
     return (x << n) | (x >>> (32 - n));
@@ -294,7 +262,9 @@ function md5(input: string): string {
   ).toLowerCase();
 }
 
-export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
+export function Md5GeneratorTool({
+  lang = "en" as LanguageType,
+}: Md5GeneratorToolProps) {
   const { t } = useTranslation(lang);
   const { spawnItem } = useCat();
   const [lastSpawnTime, setLastSpawnTime] = useState(0);
@@ -320,7 +290,6 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
   const [batchInputs, setBatchInputs] = useState<string[]>([""]);
   const [batchOutputs, setBatchOutputs] = useState<string[]>([]);
   const [needsUpdate, setNeedsUpdate] = useState(false);
-  const [showFaq, setShowFaq] = useState(true); // 默认展开FAQ
   const [generationStats, setGenerationStats] = useState({
     totalGenerations: 0,
     uppercaseCount: 0,
@@ -333,7 +302,6 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
 
   const generateMd5 = useCallback(() => {
     if (batchMode) {
-      // Batch mode
       const validInputs = batchInputs.filter((input) => input.trim());
       if (validInputs.length === 0) {
         setBatchOutputs([]);
@@ -356,7 +324,6 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
 
       setBatchOutputs(results);
     } else {
-      // Single mode
       if (!input.trim()) {
         setOutput("");
         return;
@@ -379,7 +346,6 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
       spawnItem("keyboard");
     }
 
-    // Update statistics
     setGenerationStats((prev) => ({
       totalGenerations: prev.totalGenerations + 1,
       uppercaseCount: uppercase ? prev.uppercaseCount + 1 : prev.uppercaseCount,
@@ -388,7 +354,6 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
       lastUsed: new Date(),
     }));
 
-    // Clear the needs update flag after successful generation
     setNeedsUpdate(false);
   }, [
     input,
@@ -421,7 +386,6 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
       setInput(data);
       setActiveTab("generate");
 
-      // Only mark as needing update if the input is different from current input and we have existing output
       if (output && data !== input) {
         setNeedsUpdate(true);
       }
@@ -442,16 +406,12 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
       if (!file) return;
 
       try {
-        // For small files, read as text and hash the content
         if (file.size <= 10 * 1024 * 1024) {
-          // 10MB limit for text processing
           const text = await file.text();
           setInput(text);
           setUploadedFileName(file.name);
           setActiveTab("generate");
         } else {
-          // For larger files, we would need a different approach
-          // For now, show an error message
           alert(
             "File too large for text processing. Please use a file smaller than 10MB.",
           );
@@ -465,80 +425,12 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
   );
 
   return (
-    <motion.div
-      className="container mx-auto max-w-6xl px-4 py-8"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      {/* Hero Section */}
-      <motion.section className="mb-10 text-center" variants={itemVariants}>
-        <motion.div
-          className="pixel-icon-box inline-flex items-center justify-center w-16 h-16 mb-6"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-          whileHover={{
-            rotate: [0, -10, 10, 0],
-            transition: { duration: 0.5 },
-          }}
-        >
-          <Hash className="h-8 w-8 text-primary" />
-        </motion.div>
+    <div className="container mx-auto max-w-6xl px-4 py-8">
+      {/* Hero Section - SSR */}
+      <Md5GeneratorHero lang={lang} />
 
-        <motion.h1
-          className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          {t("md5Generator.pageTitle")}
-        </motion.h1>
-        <motion.p
-          className="text-lg text-muted-foreground max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          {t("md5Generator.pageSubtitle")}
-        </motion.p>
-
-        <motion.div
-          className="flex flex-wrap justify-center gap-3 mt-6"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.1, delayChildren: 0.5 },
-            },
-          }}
-        >
-          {[
-            t("badge.fileChecksums"),
-            t("badge.batchProcessing"),
-            t("badge.fileUpload"),
-            t("badge.privacy"),
-          ].map((tag) => (
-            <motion.span
-              key={tag}
-              className="pixel-badge"
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 },
-              }}
-              whileHover={{ scale: 1.1, y: -2 }}
-            >
-              {tag}
-            </motion.span>
-          ))}
-        </motion.div>
-      </motion.section>
-
-      <motion.section
-        className="mb-12"
-        variants={itemVariants}
-        ref={toolSectionRef}
-      >
+      {/* Tool Section */}
+      <section className="mb-12" ref={toolSectionRef}>
         <Card className="rounded-2xl overflow-hidden">
           <CardContent className="p-6">
             <Tabs
@@ -558,103 +450,67 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
               <TabsContent value="generate" className="space-y-4">
                 <div className="flex items-center justify-between gap-4 mb-4">
                   <div className="flex flex-wrap items-center gap-3">
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
+                    <Button
+                      variant={uppercase ? "default" : "outline"}
+                      onClick={() => setUppercase(!uppercase)}
+                      className="gap-2 rounded-xl h-11"
                     >
-                      <Button
-                        variant={uppercase ? "default" : "outline"}
-                        onClick={() => setUppercase(!uppercase)}
-                        className="gap-2 rounded-xl h-11"
-                      >
-                        {t("md5Generator.uppercase")}
-                      </Button>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
+                      {t("md5Generator.uppercase")}
+                    </Button>
+                    <Button
+                      variant={bit16 ? "default" : "outline"}
+                      onClick={() => setBit16(!bit16)}
+                      className="gap-2 rounded-xl h-11"
                     >
-                      <Button
-                        variant={bit16 ? "default" : "outline"}
-                        onClick={() => setBit16(!bit16)}
-                        className="gap-2 rounded-xl h-11"
-                      >
-                        {bit16
-                          ? t("md5Generator.bit16")
-                          : t("md5Generator.bit32")}
-                      </Button>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
+                      {bit16
+                        ? t("md5Generator.bit16")
+                        : t("md5Generator.bit32")}
+                    </Button>
+                    <Button
+                      variant={batchMode ? "default" : "outline"}
+                      onClick={() => {
+                        setBatchMode(!batchMode);
+                        if (!batchMode) {
+                          setBatchInputs([""]);
+                          setBatchOutputs([]);
+                          setOutput("");
+                        }
+                      }}
+                      className="gap-2 rounded-xl h-11"
                     >
-                      <Button
-                        variant={batchMode ? "default" : "outline"}
-                        onClick={() => {
-                          setBatchMode(!batchMode);
-                          if (!batchMode) {
-                            setBatchInputs([""]);
-                            setBatchOutputs([]);
-                            setOutput("");
-                          }
-                        }}
-                        className="gap-2 rounded-xl h-11"
-                      >
-                        {batchMode
-                          ? t("md5Generator.mode.single")
-                          : t("md5Generator.mode.batch")}
-                      </Button>
-                    </motion.div>
+                      {batchMode
+                        ? t("md5Generator.mode.single")
+                        : t("md5Generator.mode.batch")}
+                    </Button>
                   </div>
 
-                  {/* Usage Analysis Tags - 右侧 */}
-                  <motion.div
-                    className="flex flex-wrap gap-2"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <motion.div
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
-                      whileHover={{ scale: 1.05 }}
-                    >
+                  <div className="flex flex-wrap gap-2">
+                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
                       {generationStats.totalGenerations} Generated
-                    </motion.div>
-                    <motion.div
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-500/10 text-purple-600 text-xs font-medium"
-                      whileHover={{ scale: 1.05 }}
-                    >
+                    </div>
+                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-purple-500/10 text-purple-600 text-xs font-medium">
                       <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                       {generationStats.batchCount} Batch
-                    </motion.div>
-                    <motion.div
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-orange-500/10 text-orange-600 text-xs font-medium"
-                      whileHover={{ scale: 1.05 }}
-                    >
+                    </div>
+                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-orange-500/10 text-orange-600 text-xs font-medium">
                       <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                       {generationStats.uppercaseCount} Upper
-                    </motion.div>
+                    </div>
                     {generationStats.lastUsed && (
-                      <motion.div
+                      <div
                         className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/10 text-amber-700 text-xs font-medium"
-                        whileHover={{ scale: 1.05 }}
                         title={`Last used: ${generationStats.lastUsed.toLocaleString()}`}
                       >
                         <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
                         {generationStats.lastUsed.toLocaleTimeString()}
-                      </motion.div>
+                      </div>
                     )}
-                  </motion.div>
+                  </div>
                 </div>
 
                 <div className="grid gap-4 lg:grid-cols-2">
-                  <motion.div
-                    className="space-y-2"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
+                  <div className="space-y-2">
                     <div className="flex items-center justify-between h-8">
                       <span className="text-sm font-medium">
                         {batchMode
@@ -682,7 +538,6 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                           const newValue = e.target.value;
                           setInput(newValue);
 
-                          // Mark as needing update if input changes and we have output
                           if (newValue !== input && output) {
                             setNeedsUpdate(true);
                           }
@@ -700,7 +555,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                                 const newInputs = [...batchInputs];
                                 newInputs[index] = e.target.value;
                                 setBatchInputs(newInputs);
-                                setBatchOutputs([]); // Clear batch outputs when input changes
+                                setBatchOutputs([]);
                               }}
                             />
                             {batchInputs.length > 1 && (
@@ -722,14 +577,9 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                         ))}
                       </div>
                     )}
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    className="space-y-2"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                  >
+                  <div className="space-y-2">
                     <div className="flex items-center justify-between h-8">
                       <span className="text-sm font-medium">
                         {batchMode
@@ -745,7 +595,7 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                           }
                           className="rounded-lg"
                         >
-                          <Copy className="h-4 w-4 mr-1" />{" "}
+                          <Copy className="h-4 w-4 mr-1" />
                           {t("md5Generator.copyAll")}
                         </Button>
                       )}
@@ -832,93 +682,54 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                         )}
                       </div>
                     )}
-                  </motion.div>
+                  </div>
                 </div>
 
-                <motion.div
-                  className="flex flex-wrap items-center gap-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
+                <div className="flex flex-wrap items-center gap-3">
+                  <Button
+                    onClick={generateMd5}
+                    className="gap-2 rounded-xl h-11"
                   >
-                    <Button
-                      onClick={generateMd5}
-                      className="gap-2 rounded-xl h-11"
-                    >
-                      <motion.div
-                        animate={{ rotate: [0, 360] }}
-                        transition={{
-                          duration: 3,
-                          repeat: Number.POSITIVE_INFINITY,
-                          ease: "linear",
-                        }}
-                      >
-                        <Sparkles className="h-4 w-4" />
-                      </motion.div>
-                      {t("md5Generator.generate")}
-                    </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
+                    <Sparkles className="h-4 w-4" />
+                    {t("md5Generator.generate")}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="rounded-xl bg-transparent h-11"
+                    onClick={() => {
+                      setInput("");
+                      setOutput("");
+                    }}
                   >
-                    <Button
-                      variant="outline"
-                      className="rounded-xl bg-transparent h-11"
-                      onClick={() => {
-                        setInput("");
-                        setOutput("");
-                      }}
-                    >
-                      <RotateCcw className="h-4 w-4 mr-2" />
-                      {t("common.clear")}
-                    </Button>
-                  </motion.div>
-                </motion.div>
+                    <RotateCcw className="h-4 w-4 mr-2" />
+                    {t("common.clear")}
+                  </Button>
+                </div>
               </TabsContent>
 
               <TabsContent value="file" className="space-y-4">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4 mb-4">
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
+                    <Button
+                      variant={uppercase ? "default" : "outline"}
+                      onClick={() => setUppercase(!uppercase)}
+                      className="gap-2 rounded-xl h-11"
                     >
-                      <Button
-                        variant={uppercase ? "default" : "outline"}
-                        onClick={() => setUppercase(!uppercase)}
-                        className="gap-2 rounded-xl h-11"
-                      >
-                        {t("md5Generator.uppercase")}
-                      </Button>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
+                      {t("md5Generator.uppercase")}
+                    </Button>
+                    <Button
+                      variant={bit16 ? "default" : "outline"}
+                      onClick={() => setBit16(!bit16)}
+                      className="gap-2 rounded-xl h-11"
                     >
-                      <Button
-                        variant={bit16 ? "default" : "outline"}
-                        onClick={() => setBit16(!bit16)}
-                        className="gap-2 rounded-xl h-11"
-                      >
-                        {bit16
-                          ? t("md5Generator.bit16")
-                          : t("md5Generator.bit32")}
-                      </Button>
-                    </motion.div>
+                      {bit16
+                        ? t("md5Generator.bit16")
+                        : t("md5Generator.bit32")}
+                    </Button>
                   </div>
 
                   <div className="grid gap-4 lg:grid-cols-2">
-                    <motion.div
-                      className="space-y-2"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
+                    <div className="space-y-2">
                       <div className="flex items-center justify-between h-8">
                         <span className="text-sm font-medium">
                           {t("md5Generator.fileUpload.title")}
@@ -967,56 +778,32 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                           )}
                         </p>
                       )}
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                      className="space-y-2"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
+                    <div className="space-y-2">
                       <div className="flex items-center justify-between h-8">
                         <span className="text-sm font-medium">
                           {t("md5Generator.outputLabel")}
                         </span>
-                        <motion.div
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={copyToClipboard}
+                          disabled={!output}
+                          className="rounded-lg"
                         >
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={copyToClipboard}
-                            disabled={!output}
-                            className="rounded-lg"
-                          >
-                            <AnimatePresence mode="wait">
-                              {copied ? (
-                                <motion.span
-                                  key="copied"
-                                  className="flex items-center"
-                                  initial={{ opacity: 0, scale: 0.8 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  exit={{ opacity: 0, scale: 0.8 }}
-                                >
-                                  <Check className="h-4 w-4 mr-1" />{" "}
-                                  {t("common.copied")}
-                                </motion.span>
-                              ) : (
-                                <motion.span
-                                  key="copy"
-                                  className="flex items-center"
-                                  initial={{ opacity: 0, scale: 0.8 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  exit={{ opacity: 0, scale: 0.8 }}
-                                >
-                                  <Copy className="h-4 w-4 mr-1" />{" "}
-                                  {t("common.copy")}
-                                </motion.span>
-                              )}
-                            </AnimatePresence>
-                          </Button>
-                        </motion.div>
+                          {copied ? (
+                            <span className="flex items-center">
+                              <Check className="h-4 w-4 mr-1" />
+                              {t("common.copied")}
+                            </span>
+                          ) : (
+                            <span className="flex items-center">
+                              <Copy className="h-4 w-4 mr-1" />
+                              {t("common.copy")}
+                            </span>
+                          )}
+                        </Button>
                       </div>
                       <div
                         className={`
@@ -1050,349 +837,49 @@ export function Md5GeneratorTool({ lang }: Md5GeneratorToolProps) {
                           </div>
                         )}
                       </div>
-                    </motion.div>
+                    </div>
                   </div>
 
-                  <motion.div
-                    className="flex flex-wrap items-center gap-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Button
+                      onClick={generateMd5}
+                      className="gap-2 rounded-xl h-11"
+                      disabled={!input.trim()}
                     >
-                      <Button
-                        onClick={generateMd5}
-                        className="gap-2 rounded-xl h-11"
-                        disabled={!input.trim()}
-                      >
-                        <motion.div
-                          animate={{ rotate: [0, 360] }}
-                          transition={{
-                            duration: 3,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
-                          }}
-                        >
-                          <Sparkles className="h-4 w-4" />
-                        </motion.div>
-                        {t("md5Generator.generate")}
-                      </Button>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
+                      <Sparkles className="h-4 w-4" />
+                      {t("md5Generator.generate")}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="rounded-xl bg-transparent h-11"
+                      onClick={() => {
+                        setInput("");
+                        setOutput("");
+                        setUploadedFileName("");
+                      }}
                     >
-                      <Button
-                        variant="outline"
-                        className="rounded-xl bg-transparent h-11"
-                        onClick={() => {
-                          setInput("");
-                          setOutput("");
-                          setUploadedFileName("");
-                        }}
-                      >
-                        <RotateCcw className="h-4 w-4 mr-2" />
-                        {t("common.clear")}
-                      </Button>
-                    </motion.div>
-                  </motion.div>
+                      <RotateCcw className="h-4 w-4 mr-2" />
+                      {t("common.clear")}
+                    </Button>
+                  </div>
                 </div>
               </TabsContent>
             </Tabs>
           </CardContent>
         </Card>
-      </motion.section>
+      </section>
 
-      {/* Examples Section */}
-      <motion.section className="mb-12" variants={itemVariants}>
-        <Card className="rounded-2xl overflow-hidden">
-          <CardContent className="p-6">
-            <motion.h2
-              className="text-lg font-semibold mb-4 flex items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <Sparkles className="h-5 w-5" />
-              {t("md5Generator.exampleInputs")}
-            </motion.h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              {t("md5Generator.examplesHint")}
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {exampleData.map((example, index) => (
-                <motion.div
-                  key={example.titleKey}
-                  className="pixel-card p-4 space-y-3 relative group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                >
-                  <div className="flex items-start justify-between">
-                    <h4 className="text-sm font-semibold flex-1">
-                      <button
-                        type="button"
-                        className="text-left w-full after:absolute after:inset-0 outline-none focus:ring-2 focus:ring-primary rounded-lg"
-                        onClick={() => loadExample(example.data)}
-                      >
-                        {t(example.titleKey)}
-                      </button>
-                    </h4>
-                    <div className="flex gap-1 ml-2 relative z-10">
-                      <motion.button
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent triggering parent onClick (now stretched link)
-                          loadExample(example.data);
-                          // Note: Do NOT auto-generate, let user manually click generate button
-                        }}
-                        className="pixel-btn px-3 py-1 text-xs h-7"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        title={t("md5Generator.loadExample")}
-                      >
-                        <motion.span
-                          animate={{ rotate: [0, 15, -15, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Number.POSITIVE_INFINITY,
-                            repeatDelay: 4,
-                          }}
-                        >
-                          <Sparkles className="h-3 w-3" />
-                        </motion.span>
-                      </motion.button>
-                      <motion.button
-                        onClick={async (e) => {
-                          e.stopPropagation(); // Prevent triggering parent onClick
-                          await navigator.clipboard.writeText(example.data);
-                          setCopied(true);
-                          setTimeout(() => setCopied(false), 2000);
-                        }}
-                        className="px-3 py-1 text-xs h-7 rounded-full border-2 border-foreground/30 dark:border-primary/30 bg-transparent hover:bg-accent transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        title="Copy"
-                      >
-                        <Copy className="h-3 w-3" />
-                      </motion.button>
-                    </div>
-                  </div>
-                  <p className="text-xs font-mono text-muted-foreground break-all bg-muted/30 p-2 rounded border">
-                    {example.data}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </motion.section>
+      {/* Examples Section - Client */}
+      <Md5GeneratorExamples lang={lang} onLoadExample={loadExample} />
 
-      {/* SEO Content Section */}
-      <motion.section
-        className="mb-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariants}
-      >
-        <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          {t("md5Generator.seo.title")}
-        </motion.h2>
-        <motion.p
-          className="text-muted-foreground leading-relaxed mb-6"
-          variants={itemVariants}
-          dangerouslySetInnerHTML={{ __html: t("md5Generator.seo.desc") }}
-        />
+      {/* SEO Content Section - SSR */}
+      <Md5GeneratorSeoContent lang={lang} />
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("md5Generator.tech.title")}
-        </motion.h3>
-        <motion.div
-          className="bg-muted/30 rounded-xl p-4 mb-6"
-          variants={itemVariants}
-        >
-          <div className="grid gap-4 text-sm">
-            <div>
-              <strong>{t("md5Generator.tech.coreTitle")}</strong>
-              <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>{t("md5Generator.tech.coreList1")}</li>
-                <li>{t("md5Generator.tech.coreList2")}</li>
-                <li>{t("md5Generator.tech.coreList3")}</li>
-                <li>{t("md5Generator.tech.coreList4")}</li>
-              </ul>
-            </div>
-            <div>
-              <strong>{t("md5Generator.tech.stepsTitle")}</strong>
-              <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>{t("md5Generator.tech.stepsList1")}</li>
-                <li>{t("md5Generator.tech.stepsList2")}</li>
-                <li>{t("md5Generator.tech.stepsList3")}</li>
-                <li>{t("md5Generator.tech.stepsList4")}</li>
-                <li>{t("md5Generator.tech.stepsList5")}</li>
-              </ul>
-            </div>
-          </div>
-        </motion.div>
+      {/* FAQ Section - SSR */}
+      <Md5GeneratorFaq lang={lang} />
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("md5Generator.features.title")}
-        </motion.h3>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              title: t("md5Generator.feature.checksums.title"),
-              desc: t("md5Generator.feature.checksums.desc"),
-            },
-            {
-              title: t("md5Generator.feature.batch.title"),
-              desc: t("md5Generator.feature.batch.desc"),
-            },
-            {
-              title: t("md5Generator.feature.upload.title"),
-              desc: t("md5Generator.feature.upload.desc"),
-            },
-            {
-              title: t("md5Generator.feature.privacy.title"),
-              desc: t("md5Generator.feature.privacy.desc"),
-            },
-          ].map((feature) => (
-            <motion.div
-              key={feature.title}
-              className="pixel-card p-4"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -4 }}
-            >
-              <h4 className="font-semibold text-sm">{feature.title}</h4>
-              <p className="text-xs text-muted-foreground mt-1">
-                {feature.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("md5Generator.useCases.title")}
-        </motion.h3>
-        <motion.ul
-          className="text-muted-foreground space-y-2"
-          variants={containerVariants}
-        >
-          {[
-            {
-              case: t("md5Generator.useCases.item1"),
-              boundary: t("md5Generator.useCases.boundary1"),
-            },
-            {
-              case: t("md5Generator.useCases.item2"),
-              boundary: t("md5Generator.useCases.boundary2"),
-            },
-            {
-              case: t("md5Generator.useCases.item3"),
-              boundary: t("md5Generator.useCases.boundary3"),
-            },
-            {
-              case: t("md5Generator.useCases.item4"),
-              boundary: t("md5Generator.useCases.boundary4"),
-            },
-            {
-              case: t("md5Generator.useCases.item5"),
-              boundary: t("md5Generator.useCases.boundary5"),
-            },
-          ].map((item, index) => (
-            <motion.li
-              key={item.case}
-              className="flex items-start gap-3 text-sm"
-              variants={itemVariants}
-              whileHover={{ x: 4 }}
-            >
-              <motion.span
-                className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-              />
-              <div>
-                <div className="font-medium">{item.case}</div>
-                <div className="text-xs text-muted-foreground mt-1">
-                  {item.boundary}
-                </div>
-              </div>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </motion.section>
-
-      {/* FAQ Section */}
-      <motion.section className="mb-12" variants={itemVariants}>
-        <motion.button
-          onClick={() => setShowFaq(!showFaq)}
-          className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
-          whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-        >
-          <h2 className="text-lg font-semibold">
-            {t("md5Generator.faq.title")}
-          </h2>
-          <motion.div
-            animate={{ rotate: showFaq ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ChevronDown className="h-5 w-5" />
-          </motion.div>
-        </motion.button>
-
-        <AnimatePresence>
-          {showFaq && (
-            <motion.div
-              className="space-y-4 pt-6 overflow-hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {[
-                {
-                  q: t("md5Generator.faq.q1"),
-                  a: t("md5Generator.faq.a1"),
-                },
-                {
-                  q: t("md5Generator.faq.q2"),
-                  a: t("md5Generator.faq.a2"),
-                },
-                {
-                  q: t("md5Generator.faq.q3"),
-                  a: t("md5Generator.faq.a3"),
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={faq.q}
-                  className="pixel-card p-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
-                  <p className="text-sm text-muted-foreground">{faq.a}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.section>
-
-      {/* Related Tools & Guides */}
-      <RelatedTools lang={lang} currentTool="md5-generator" />
-    </motion.div>
+      {/* Related Tools - SSR */}
+      <Md5GeneratorRelatedTools lang={lang} currentTool="md5-generator" />
+    </div>
   );
 }

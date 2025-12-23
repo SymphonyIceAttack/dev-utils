@@ -1,14 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Check,
-  ChevronDown,
-  Copy,
-  KeyRound,
-  RefreshCw,
-  Sparkles,
-} from "lucide-react";
+import { Check, ChevronDown, Copy, RefreshCw, Sparkles } from "lucide-react";
 import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,27 +9,13 @@ import { CodeHighlighter } from "@/components/ui/code-highlighter";
 import { useCat } from "@/context/cat-context";
 import { useTranslation } from "@/hooks/use-translation";
 import type { LanguageType } from "@/lib/translations";
-import { RelatedTools } from "./related-tools";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05, delayChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3 },
-  },
-};
+import { PasswordGeneratorFaq } from "./password-generator-faq-ssr";
+import { PasswordGeneratorHero } from "./password-generator-hero-ssr";
+import { PasswordGeneratorRelatedTools } from "./password-generator-related-tools-ssr";
+import { PasswordGeneratorSeoContent } from "./password-generator-seo-content-ssr";
 
 interface PasswordGeneratorToolProps {
-  lang: LanguageType;
+  lang?: LanguageType;
 }
 
 interface PasswordOptions {
@@ -90,7 +69,6 @@ const presets = [
   },
 ];
 
-// Common English words for passphrase generation (a subset for demo purposes)
 const WORDS = [
   "apple",
   "banana",
@@ -186,7 +164,6 @@ function generatePassphrase(options: PasswordOptions): string {
     const wordIndex = array[i] % WORDS.length;
     let word = WORDS[wordIndex];
 
-    // Optionally capitalize first letter
     if (options.uppercase) {
       word = word.charAt(0).toUpperCase() + word.slice(1);
     }
@@ -196,15 +173,13 @@ function generatePassphrase(options: PasswordOptions): string {
 
   let passphrase = words.join(separator);
 
-  // Add numbers if requested
   if (options.numbers) {
     const numberArray = new Uint32Array(1);
     crypto.getRandomValues(numberArray);
-    const number = (numberArray[0] % 999) + 1; // 1-999
+    const number = (numberArray[0] % 999) + 1;
     passphrase += separator + number.toString().padStart(3, "0");
   }
 
-  // Add symbols if requested
   if (options.symbols) {
     const symbolArray = new Uint32Array(1);
     crypto.getRandomValues(symbolArray);
@@ -289,7 +264,9 @@ function getStrengthColor(strength: number): string {
   return colors[strength];
 }
 
-export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
+export function PasswordGeneratorTool({
+  lang = "en" as LanguageType,
+}: PasswordGeneratorToolProps) {
   const { t } = useTranslation(lang);
   const { spawnItem } = useCat();
   const [lastSpawnTime, setLastSpawnTime] = useState(0);
@@ -320,7 +297,6 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
   const [bulkPasswords, setBulkPasswords] = useState<string[]>([]);
   const [bulkCount, setBulkCount] = useState(5);
   const [copied, setCopied] = useState(false);
-  const [showFaq, setShowFaq] = useState(true); // 默认展开FAQ
   const [showBulk, setShowBulk] = useState(false);
   const [generationStats, setGenerationStats] = useState({
     totalGenerations: 0,
@@ -344,7 +320,6 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
       spawnItem("sparkles");
     }
 
-    // Update statistics
     setGenerationStats((prev) => ({
       totalGenerations: prev.totalGenerations + 1,
       randomCount:
@@ -361,11 +336,11 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
   const handleBulkGenerate = useCallback(() => {
     const passwords: string[] = [];
     for (let i = 0; i < bulkCount; i++) {
-      const password =
+      const pwd =
         options.mode === "passphrase"
           ? generatePassphrase(options)
           : generatePassword(options);
-      passwords.push(password);
+      passwords.push(pwd);
     }
     setBulkPasswords(passwords);
     setPassword("");
@@ -395,76 +370,21 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
     });
   }, []);
 
+  const clearPassword = useCallback(() => {
+    setPassword("");
+    setBulkPasswords([]);
+  }, []);
+
   return (
     <main
       className="container mx-auto max-w-6xl px-4 py-8"
       aria-labelledby="page-title"
     >
-      {/* Hero Section */}
-      <motion.section className="mb-10 text-center" variants={itemVariants}>
-        <motion.div
-          className="pixel-icon-box inline-flex items-center justify-center w-16 h-16 mb-6"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-          whileHover={{
-            rotate: [0, -10, 10, 0],
-            transition: { duration: 0.5 },
-          }}
-        >
-          <KeyRound className="h-8 w-8 text-primary" />
-        </motion.div>
+      {/* Hero Section - SSR */}
+      <PasswordGeneratorHero lang={lang} />
 
-        <motion.h1
-          id="page-title"
-          className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          {t("passwordGenerator.pageTitle")}
-        </motion.h1>
-        <motion.p
-          className="text-lg text-muted-foreground max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          {t("passwordGenerator.pageSubtitle")}
-        </motion.p>
-
-        <motion.div
-          className="flex flex-wrap justify-center gap-3 mt-6"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.1, delayChildren: 0.5 },
-            },
-          }}
-        >
-          {[
-            t("badge.cryptographicallySecure"),
-            t("badge.multipleModes"),
-            t("badge.passphraseSupport"),
-            t("badge.bulkGeneration"),
-          ].map((tag) => (
-            <motion.span
-              key={tag}
-              className="pixel-badge"
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 },
-              }}
-              whileHover={{ scale: 1.1, y: -2 }}
-            >
-              {tag}
-            </motion.span>
-          ))}
-        </motion.div>
-      </motion.section>
-
-      <motion.section className="mb-12" variants={itemVariants}>
+      {/* Tool Section */}
+      <section className="mb-12">
         <Card className="rounded-2xl overflow-hidden">
           <CardContent className="p-6">
             {/* Output */}
@@ -473,43 +393,38 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                 <span className="text-sm font-medium">
                   {t("passwordGenerator.outputLabel")}
                 </span>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => copyToClipboard(password)}
+                  disabled={!password}
+                  className="rounded-lg"
                 >
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => copyToClipboard(password)}
-                    disabled={!password}
-                    className="rounded-lg"
-                  >
-                    <AnimatePresence mode="wait">
-                      {copied ? (
-                        <motion.span
-                          key="copied"
-                          className="flex items-center"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                        >
-                          <Check className="h-4 w-4 mr-1" />{" "}
-                          {t("common.copied")}
-                        </motion.span>
-                      ) : (
-                        <motion.span
-                          key="copy"
-                          className="flex items-center"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                        >
-                          <Copy className="h-4 w-4 mr-1" /> {t("common.copy")}
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
-                  </Button>
-                </motion.div>
+                  <AnimatePresence mode="wait">
+                    {copied ? (
+                      <motion.span
+                        key="copied"
+                        className="flex items-center"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                      >
+                        <Check className="h-4 w-4 mr-1" />
+                        {t("common.copied")}
+                      </motion.span>
+                    ) : (
+                      <motion.span
+                        key="copy"
+                        className="flex items-center"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                      >
+                        <Copy className="h-4 w-4 mr-1" /> {t("common.copy")}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </Button>
               </div>
               <div className="min-h-[80px] rounded-xl border-2 border-border bg-muted/30 overflow-hidden">
                 {password ? (
@@ -561,38 +476,34 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                     {t("passwordGenerator.mode.label")}
                   </span>
                   <div className="grid grid-cols-2 gap-2">
-                    <motion.button
+                    <button
+                      type="button"
                       onClick={() => {
                         setOptions({ ...options, mode: "random" });
-                        setPassword(""); // Clear password when options change
-                        setBulkPasswords([]); // Clear bulk passwords when options change
+                        clearPassword();
                       }}
                       className={`px-3 py-2 text-sm font-medium rounded-lg border-2 transition-colors ${
                         options.mode === "random"
                           ? "border-primary bg-primary text-primary-foreground"
                           : "border-border hover:border-primary"
                       }`}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
                     >
                       {t("passwordGenerator.mode.random")}
-                    </motion.button>
-                    <motion.button
+                    </button>
+                    <button
+                      type="button"
                       onClick={() => {
                         setOptions({ ...options, mode: "passphrase" });
-                        setPassword(""); // Clear password when options change
-                        setBulkPasswords([]); // Clear bulk passwords when options change
+                        clearPassword();
                       }}
                       className={`px-3 py-2 text-sm font-medium rounded-lg border-2 transition-colors ${
                         options.mode === "passphrase"
                           ? "border-primary bg-primary text-primary-foreground"
                           : "border-border hover:border-primary"
                       }`}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
                     >
                       {t("passwordGenerator.mode.passphrase")}
-                    </motion.button>
+                    </button>
                   </div>
                 </div>
 
@@ -602,7 +513,6 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                     className="space-y-4"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
@@ -623,8 +533,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                             ...options,
                             passphraseWords: parseInt(e.target.value, 10),
                           });
-                          setPassword(""); // Clear password when options change
-                          setBulkPasswords([]); // Clear bulk passwords when options change
+                          clearPassword();
                         }}
                         className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                       />
@@ -645,8 +554,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                             ...options,
                             passphraseSeparator: e.target.value,
                           });
-                          setPassword(""); // Clear password when options change
-                          setBulkPasswords([]); // Clear bulk passwords when options change
+                          clearPassword();
                         }}
                         className="w-full px-3 py-2 text-sm border border-border rounded-lg bg-background"
                       >
@@ -693,8 +601,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                           ...options,
                           length: parseInt(e.target.value, 10),
                         });
-                        setPassword(""); // Clear password when options change
-                        setBulkPasswords([]); // Clear bulk passwords when options change
+                        clearPassword();
                       }}
                       className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                     />
@@ -752,8 +659,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                               ...options,
                               [opt.key]: e.target.checked,
                             });
-                            setPassword(""); // Clear password when options change
-                            setBulkPasswords([]); // Clear bulk passwords when options change
+                            clearPassword();
                           }}
                           className="w-4 h-4 rounded border-border accent-primary"
                         />
@@ -771,15 +677,14 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                   </span>
                   <div className="grid grid-cols-2 gap-2">
                     {presets.map((preset) => (
-                      <motion.button
+                      <button
+                        type="button"
                         key={preset.key}
                         onClick={() => applyPreset(preset)}
                         className="px-3 py-2 text-sm font-medium rounded-lg border-2 border-border hover:border-primary hover:bg-accent transition-colors"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
                       >
                         {t(`passwordGenerator.preset.${preset.key}`)}
-                      </motion.button>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -860,7 +765,7 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                     onClick={() => copyToClipboard(bulkPasswords.join("\n"))}
                     className="rounded-lg"
                   >
-                    <Copy className="h-4 w-4 mr-1" />{" "}
+                    <Copy className="h-4 w-4 mr-1" />
                     {t("passwordGenerator.output.copyAll")}
                   </Button>
                 </div>
@@ -887,106 +792,63 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
             )}
 
             {/* Generate button */}
-            <motion.div
-              className="flex items-center justify-between gap-3 mt-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
+            <div className="flex items-center justify-between gap-3 mt-6">
               <div className="flex flex-wrap items-center gap-3">
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
+                <Button
+                  onClick={handleGenerate}
+                  className="gap-2 rounded-xl h-11"
                 >
-                  <Button
-                    onClick={handleGenerate}
-                    className="gap-2 rounded-xl h-11"
-                  >
-                    <motion.div
-                      animate={{ rotate: [0, 360] }}
-                      transition={{
-                        duration: 3,
-                        repeat: Number.POSITIVE_INFINITY,
-                        ease: "linear",
-                      }}
-                    >
-                      <Sparkles className="h-4 w-4" />
-                    </motion.div>
-                    {t("passwordGenerator.generate")}
-                  </Button>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
+                  <Sparkles className="h-4 w-4" />
+                  {t("passwordGenerator.generate")}
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={handleGenerate}
+                  disabled={!password}
+                  className="gap-2 rounded-xl h-11"
                 >
-                  <Button
-                    variant="outline"
-                    onClick={handleGenerate}
-                    disabled={!password}
-                    className="gap-2 rounded-xl h-11"
-                  >
-                    <RefreshCw className="h-4 w-4" />
-                    {t("passwordGenerator.regenerate")}
-                  </Button>
-                </motion.div>
+                  <RefreshCw className="h-4 w-4" />
+                  {t("passwordGenerator.regenerate")}
+                </Button>
               </div>
 
-              {/* Usage Analysis Tags - 右侧 */}
-              <motion.div
-                className="flex flex-wrap gap-2"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <motion.div
-                  className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
-                  whileHover={{ scale: 1.05 }}
-                >
+              {/* Usage Analysis Tags */}
+              <div className="flex flex-wrap gap-2">
+                <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   {generationStats.totalGenerations} Generated
-                </motion.div>
-                <motion.div
-                  className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-500/10 text-blue-600 text-xs font-medium"
-                  whileHover={{ scale: 1.05 }}
-                >
+                </div>
+                <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-500/10 text-blue-600 text-xs font-medium">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                   {generationStats.randomCount} Random
-                </motion.div>
-                <motion.div
-                  className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-green-500/10 text-green-700 text-xs font-medium"
-                  whileHover={{ scale: 1.05 }}
-                >
+                </div>
+                <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-green-500/10 text-green-700 text-xs font-medium">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   {generationStats.passphraseCount} Words
-                </motion.div>
+                </div>
                 {generationStats.lastUsed && (
-                  <motion.div
+                  <div
                     className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/10 text-amber-700 text-xs font-medium"
-                    whileHover={{ scale: 1.05 }}
                     title={`Last used: ${generationStats.lastUsed.toLocaleString()}`}
                   >
                     <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
                     {generationStats.lastUsed.toLocaleTimeString()}
-                  </motion.div>
+                  </div>
                 )}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </CardContent>
         </Card>
-      </motion.section>
+      </section>
 
       {/* Presets Section */}
-      <motion.section className="mb-12" variants={itemVariants}>
+      <section className="mb-12">
         <Card className="rounded-2xl overflow-hidden">
           <CardContent className="p-6">
-            <motion.h3
-              className="text-lg font-semibold mb-4 flex items-center gap-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
               <Sparkles className="h-5 w-5" />
               {t("passwordGenerator.presetsTitle")}
-            </motion.h3>
+            </h3>
             <p className="text-sm text-muted-foreground mb-6">
               {t("passwordGenerator.presetsDesc")}
             </p>
@@ -1015,39 +877,25 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
                           ` • ${t("passwordGenerator.preset.upper")}`}
                       </p>
                     </div>
-                    <div className="flex gap-1 ml-2">
-                      <motion.button
-                        onClick={() => {
-                          setOptions({
-                            ...options,
-                            length: preset.length,
-                            uppercase: preset.uppercase,
-                            lowercase: true,
-                            numbers: preset.numbers,
-                            symbols: preset.symbols,
-                            excludeAmbiguous: preset.excludeAmbiguous,
-                          });
-                          setPassword(""); // Clear password when preset changes
-                          setBulkPasswords([]); // Clear bulk passwords when preset changes
-                          // Note: Do NOT auto-generate, let user manually click generate button
-                        }}
-                        className="pixel-btn px-3 py-1 text-xs h-7"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        title={t("passwordGenerator.preset.loadOnly")}
-                      >
-                        <motion.span
-                          animate={{ rotate: [0, 15, -15, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Number.POSITIVE_INFINITY,
-                            repeatDelay: 4,
-                          }}
-                        >
-                          <Sparkles className="h-3 w-3" />
-                        </motion.span>
-                      </motion.button>
-                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setOptions({
+                          ...options,
+                          length: preset.length,
+                          uppercase: preset.uppercase,
+                          lowercase: true,
+                          numbers: preset.numbers,
+                          symbols: preset.symbols,
+                          excludeAmbiguous: preset.excludeAmbiguous,
+                        });
+                        clearPassword();
+                      }}
+                      className="pixel-btn px-3 py-1 text-xs h-7"
+                      title={t("passwordGenerator.preset.loadOnly")}
+                    >
+                      <Sparkles className="h-3 w-3" />
+                    </button>
                   </div>
                   <div className="text-xs font-mono text-muted-foreground break-all bg-muted/30 p-2 rounded border">
                     {t("passwordGenerator.length")}: {preset.length}
@@ -1057,212 +905,19 @@ export function PasswordGeneratorTool({ lang }: PasswordGeneratorToolProps) {
             </div>
           </CardContent>
         </Card>
-      </motion.section>
+      </section>
 
-      {/* SEO Content Section */}
-      <motion.section
-        className="mb-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariants}
-      >
-        <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
-          {t("passwordGenerator.seo.title")}
-        </motion.h2>
-        <motion.p
-          className="text-muted-foreground leading-relaxed mb-6"
-          variants={itemVariants}
-          dangerouslySetInnerHTML={{ __html: t("passwordGenerator.seo.desc") }}
-        />
+      {/* SEO Content Section - SSR */}
+      <PasswordGeneratorSeoContent lang={lang} />
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("passwordGenerator.tech.title")}
-        </motion.h3>
-        <motion.div
-          className="bg-muted/30 rounded-xl p-4 mb-6"
-          variants={itemVariants}
-        >
-          <div className="grid gap-4 text-sm">
-            <div>
-              <strong>{t("passwordGenerator.tech.randomTitle")}</strong>
-              <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>{t("passwordGenerator.tech.randomList1")}</li>
-                <li>{t("passwordGenerator.tech.randomList2")}</li>
-                <li>{t("passwordGenerator.tech.randomList3")}</li>
-                <li>{t("passwordGenerator.tech.randomList4")}</li>
-                <li>{t("passwordGenerator.tech.randomList5")}</li>
-              </ul>
-            </div>
-            <div>
-              <strong>{t("passwordGenerator.tech.passphraseTitle")}</strong>
-              <ul className="list-disc list-inside text-muted-foreground mt-1 space-y-1">
-                <li>{t("passwordGenerator.tech.passphraseList1")}</li>
-                <li>{t("passwordGenerator.tech.passphraseList2")}</li>
-                <li>{t("passwordGenerator.tech.passphraseList3")}</li>
-                <li>{t("passwordGenerator.tech.passphraseList4")}</li>
-                <li>{t("passwordGenerator.tech.passphraseList5")}</li>
-              </ul>
-            </div>
-          </div>
-        </motion.div>
+      {/* FAQ Section - SSR */}
+      <PasswordGeneratorFaq lang={lang} />
 
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("passwordGenerator.features.title")}
-        </motion.h3>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              title: t("passwordGenerator.feature.secure.title"),
-              desc: t("passwordGenerator.feature.secure.desc"),
-            },
-            {
-              title: t("passwordGenerator.feature.modes.title"),
-              desc: t("passwordGenerator.feature.modes.desc"),
-            },
-            {
-              title: t("passwordGenerator.feature.passphrase.title"),
-              desc: t("passwordGenerator.feature.passphrase.desc"),
-            },
-            {
-              title: t("passwordGenerator.feature.bulk.title"),
-              desc: t("passwordGenerator.feature.bulk.desc"),
-            },
-          ].map((feature) => (
-            <motion.div
-              key={feature.title}
-              className="pixel-card p-4"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -4 }}
-            >
-              <h4 className="font-semibold text-sm">{feature.title}</h4>
-              <p className="text-xs text-muted-foreground mt-1">
-                {feature.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.h3
-          className="text-lg font-semibold mt-8 mb-4"
-          variants={itemVariants}
-        >
-          {t("passwordGenerator.bestPractices.title")}
-        </motion.h3>
-        <motion.ul
-          className="text-muted-foreground space-y-2"
-          variants={containerVariants}
-        >
-          {[
-            {
-              case: t("passwordGenerator.bestPractices.item1"),
-              boundary: t("passwordGenerator.bestPractices.boundary1"),
-            },
-            {
-              case: t("passwordGenerator.bestPractices.item2"),
-              boundary: t("passwordGenerator.bestPractices.boundary2"),
-            },
-            {
-              case: t("passwordGenerator.bestPractices.item3"),
-              boundary: t("passwordGenerator.bestPractices.boundary3"),
-            },
-            {
-              case: t("passwordGenerator.bestPractices.item4"),
-              boundary: t("passwordGenerator.bestPractices.boundary4"),
-            },
-            {
-              case: t("passwordGenerator.bestPractices.item5"),
-              boundary: t("passwordGenerator.bestPractices.boundary5"),
-            },
-          ].map((item, index) => (
-            <motion.li
-              key={item.case}
-              className="flex items-start gap-3 text-sm"
-              variants={itemVariants}
-              whileHover={{ x: 4 }}
-            >
-              <motion.span
-                className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-              />
-              <div>
-                <div className="font-medium">{item.case}</div>
-                <div className="text-xs text-muted-foreground mt-1">
-                  {item.boundary}
-                </div>
-              </div>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </motion.section>
-
-      {/* FAQ Section */}
-      <motion.section className="mb-12" variants={itemVariants}>
-        <motion.button
-          onClick={() => setShowFaq(!showFaq)}
-          className="flex items-center justify-between w-full text-left py-4 border-t-2 border-b-2 border-dashed border-foreground/25 dark:border-primary/25"
-          whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-        >
-          <h2 className="text-lg font-semibold">
-            {t("passwordGenerator.faq.title")}
-          </h2>
-          <motion.div
-            animate={{ rotate: showFaq ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ChevronDown className="h-5 w-5" />
-          </motion.div>
-        </motion.button>
-
-        <AnimatePresence>
-          {showFaq && (
-            <motion.div
-              className="space-y-4 pt-6 overflow-hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {[
-                {
-                  q: t("passwordGenerator.faq.q1"),
-                  a: t("passwordGenerator.faq.a1"),
-                },
-                {
-                  q: t("passwordGenerator.faq.q2"),
-                  a: t("passwordGenerator.faq.a2"),
-                },
-                {
-                  q: t("passwordGenerator.faq.q3"),
-                  a: t("passwordGenerator.faq.a3"),
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={faq.q}
-                  className="pixel-card p-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <h3 className="font-semibold text-sm mb-2">{faq.q}</h3>
-                  <p className="text-sm text-muted-foreground">{faq.a}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.section>
-
-      {/* Related Tools & Guides */}
-      <RelatedTools lang={lang} currentTool="password-generator" />
+      {/* Related Tools - SSR */}
+      <PasswordGeneratorRelatedTools
+        lang={lang}
+        currentTool="password-generator"
+      />
     </main>
   );
 }

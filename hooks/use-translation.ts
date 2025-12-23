@@ -1,5 +1,3 @@
-"use client";
-
 import { type LanguageType, translations } from "@/lib/translations";
 
 export function useTranslation(lang: LanguageType) {

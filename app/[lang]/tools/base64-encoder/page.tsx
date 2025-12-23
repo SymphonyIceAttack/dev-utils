@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Base64EncoderStructuredData } from "@/components/structured-data/base64-encoder";
-import { Base64EncoderTool } from "@/components/tools/base64-encoder-tool";
+import { Base64EncoderTool } from "@/components/tools/base64-encoder";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 

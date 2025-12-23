@@ -1,0 +1,146 @@
+import { Sparkles } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "@/hooks/use-translation";
+import type { LanguageType } from "@/lib/translations";
+
+interface ExampleData {
+  title: string;
+  data: string;
+}
+
+interface UrlEncoderExamplesProps {
+  lang: LanguageType;
+  onLoadExample: (data: string) => void;
+}
+
+export function UrlEncoderExamples({
+  lang,
+  onLoadExample,
+}: UrlEncoderExamplesProps) {
+  const { t } = useTranslation(lang);
+
+  const exampleUrlData: ExampleData[] = [
+    {
+      title: "Query Parameters",
+      data: "name=John Doe&email=john@example.com&message=Hello World!",
+    },
+    {
+      title: "URL with Special Chars",
+      data: "https://example.com/search?q=hello world&category=开发工具",
+    },
+    {
+      title: "API Endpoint",
+      data: "https://api.example.com/users?filter=name='test'&sort=desc",
+    },
+  ];
+
+  return (
+    <section className="mb-12">
+      <Card className="rounded-2xl overflow-hidden">
+        <CardContent className="p-6">
+          <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Sparkles className="h-5 w-5" />
+            {t("urlEncoder.examplesTitle")}
+          </h2>
+          <p className="text-sm text-muted-foreground mb-6">
+            {t("urlEncoder.examplesDesc")}
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {exampleUrlData.map((example) => (
+              <UrlEncoderExampleCard
+                key={example.title}
+                example={example}
+                onLoadExample={onLoadExample}
+                t={t}
+              />
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </section>
+  );
+}
+
+interface UrlEncoderExampleCardProps {
+  example: ExampleData;
+  onLoadExample: (data: string) => void;
+  t: (key: string) => string;
+}
+
+function UrlEncoderExampleCard({
+  example,
+  onLoadExample,
+}: UrlEncoderExampleCardProps) {
+  const copyToClipboard = async (e: React.MouseEvent | React.KeyboardEvent) => {
+    e.stopPropagation();
+    await navigator.clipboard.writeText(example.data);
+  };
+
+  return (
+    // biome-ignore lint/a11y/useSemanticElements: Container div needed to allow nested buttons
+    <div
+      role="button"
+      tabIndex={0}
+      className="pixel-card p-4 space-y-3 cursor-pointer w-full text-left"
+      onClick={() => onLoadExample(example.data)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onLoadExample(example.data);
+        }
+      }}
+    >
+      <div className="flex items-start justify-between">
+        <h4 className="text-sm font-semibold flex-1">{example.title}</h4>
+        <div className="flex gap-1 ml-2">
+          <button
+            type="button"
+            className="pixel-btn px-3 py-1 text-xs h-7 cursor-pointer inline-flex items-center"
+            onClick={(e) => {
+              e.stopPropagation();
+              onLoadExample(example.data);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onLoadExample(example.data);
+              }
+            }}
+            aria-label={`Load and convert example: ${example.title}`}
+            title="Load Example & Convert"
+          >
+            <Sparkles className="h-3 w-3" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            className="px-3 py-1 text-xs h-7 rounded-full border-2 border-foreground/30 dark:border-primary/30 bg-transparent hover:bg-accent transition-colors cursor-pointer inline-flex items-center"
+            onClick={copyToClipboard}
+            onKeyDown={copyToClipboard}
+            aria-label={`Copy example data for ${example.title}`}
+            title="Copy Example"
+          >
+            <span className="sr-only">Copy</span>
+            <svg
+              className="h-3 w-3"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p className="text-xs font-mono text-muted-foreground break-all bg-muted/30 p-2 rounded border">
+        {example.data}
+      </p>
+    </div>
+  );
+}

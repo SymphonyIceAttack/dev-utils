@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { UrlEncoderStructuredData } from "@/components/structured-data/url-encoder";
-import { UrlEncoderTool } from "@/components/tools/url-encoder-tool";
+import { UrlEncoderTool } from "@/components/tools/url-encoder";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 

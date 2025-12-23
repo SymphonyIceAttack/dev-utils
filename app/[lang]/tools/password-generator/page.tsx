@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PasswordGeneratorStructuredData } from "@/components/structured-data/password-generator";
-import { PasswordGeneratorTool } from "@/components/tools/password-generator-tool";
+import { PasswordGeneratorTool } from "@/components/tools/password-generator";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 

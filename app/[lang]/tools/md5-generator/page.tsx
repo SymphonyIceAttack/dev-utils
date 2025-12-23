@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Md5GeneratorStructuredData } from "@/components/structured-data/md5-generator";
-import { Md5GeneratorTool } from "@/components/tools/md5-generator-tool";
+import { Md5GeneratorTool } from "@/components/tools/md5-generator";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 

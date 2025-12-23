@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { EncodingConverterStructuredData } from "@/components/structured-data/encoding-converter";
-import { EncodingConverterTool } from "@/components/tools/encoding-converter-tool";
+import { EncodingConverterTool } from "@/components/tools/encoding-converter";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
 
