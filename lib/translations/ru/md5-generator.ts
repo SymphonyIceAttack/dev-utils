@@ -38,63 +38,67 @@ export const md5Generator = {
   "md5Generator.loadExample": "Load Example Only",
 
   // SEO Content
-  "md5Generator.seo.title": "What is MD5 Hashing? How is it Implemented?",
+  "md5Generator.seo.title": "Что такое хеширование MD5? Как оно реализовано?",
   "md5Generator.seo.desc":
-    '<strong className="text-foreground">MD5 (Message-Digest Algorithm 5)</strong> is a widely used cryptographic hash function that produces a 128-bit (16-byte) hash value, typically expressed as a 32-character hexadecimal number. Our implementation uses pure JavaScript with bitwise operations, performing 4 rounds of 16 operations each on 512-bit data blocks.',
+    '<strong className="text-foreground">MD5 (Message-Digest Algorithm 5)</strong> — это широко используемая криптографическая хеш-функция, которая создаёт 128-битное (16-байтовое) значение хеша, обычно выражаемое как 32-символьное шестнадцатеричное число. Наша реализация использует чистый JavaScript с побитовыми операциями, выполняя 4 раунда по 16 операций на каждом 512-битовом блоке данных.',
 
-  "md5Generator.tech.title": "Technical Implementation",
-  "md5Generator.tech.coreTitle": "Core Functions:",
-  "md5Generator.tech.coreList1": "F(x,y,z) = (x ∧ y) ∨ (¬x ∧ z) - Round 1",
-  "md5Generator.tech.coreList2": "G(x,y,z) = (x ∧ z) ∨ (y ∧ ¬z) - Round 2",
-  "md5Generator.tech.coreList3": "H(x,y,z) = x ⊕ y ⊕ z - Round 3",
-  "md5Generator.tech.coreList4": "I(x,y,z) = y ⊕ (x ∨ ¬z) - Round 4",
-  "md5Generator.tech.stepsTitle": "Processing Steps:",
+  "md5Generator.tech.title": "Техническая реализация",
+  "md5Generator.tech.coreTitle": "Основные функции:",
+  "md5Generator.tech.coreList1": "F(x,y,z) = (x ∧ y) ∨ (¬x ∧ z) - Раунд 1",
+  "md5Generator.tech.coreList2": "G(x,y,z) = (x ∧ z) ∨ (y ∧ ¬z) - Раунд 2",
+  "md5Generator.tech.coreList3": "H(x,y,z) = x ⊕ y ⊕ z - Раунд 3",
+  "md5Generator.tech.coreList4": "I(x,y,z) = y ⊕ (x ∨ ¬z) - Раунд 4",
+  "md5Generator.tech.stepsTitle": "Шаги обработки:",
   "md5Generator.tech.stepsList1":
-    "1. Message preprocessing (padding and length appending)",
-  "md5Generator.tech.stepsList2": "2. Divide message into 512-bit blocks",
+    "1. Предобработка сообщения (дополнение и добавление длины)",
+  "md5Generator.tech.stepsList2": "2. Разделить сообщение на 512-битовые блоки",
   "md5Generator.tech.stepsList3":
-    "3. Process each block through 4 rounds of 16 operations",
+    "3. Обработать каждый блок через 4 раунда по 16 операций",
   "md5Generator.tech.stepsList4":
-    "4. Use 32-bit arithmetic and bitwise operations",
+    "4. Использовать 32-битную арифметику и побитовые операции",
   "md5Generator.tech.stepsList5":
-    "5. Combine results to produce final 128-bit hash",
+    "5. Объединить результаты для получения финального 128-битного хеша",
 
-  "md5Generator.features.title": "Key Features",
-  "md5Generator.feature.checksums.title": "File Checksums",
-  "md5Generator.feature.checksums.desc": "Generate MD5 for files up to 10MB",
-  "md5Generator.feature.batch.title": "Batch Processing",
-  "md5Generator.feature.batch.desc": "Hash multiple strings simultaneously",
-  "md5Generator.feature.upload.title": "File Upload",
-  "md5Generator.feature.upload.desc": "Drag & drop files for instant hashing",
-  "md5Generator.feature.privacy.title": "100% Private",
-  "md5Generator.feature.privacy.desc": "All processing happens in your browser",
+  "md5Generator.features.title": "Ключевые функции",
+  "md5Generator.feature.checksums.title": "Контрольные суммы файлов",
+  "md5Generator.feature.checksums.desc": "Генерируйте MD5 для файлов до 10 МБ",
+  "md5Generator.feature.batch.title": "Пакетная обработка",
+  "md5Generator.feature.batch.desc": "Хешируйте несколько строк одновременно",
+  "md5Generator.feature.upload.title": "Загрузка файлов",
+  "md5Generator.feature.upload.desc":
+    "Перетаскивайте файлы для мгновенного хеширования",
+  "md5Generator.feature.privacy.title": "100% конфиденциальность",
+  "md5Generator.feature.privacy.desc":
+    "Вся обработка происходит локально в браузере",
 
-  "md5Generator.useCases.title": "Common Use Cases & Usage Boundaries",
-  "md5Generator.useCases.item1": "File integrity verification and checksums",
+  "md5Generator.useCases.title":
+    "Распространённые варианты использования и границы применения",
+  "md5Generator.useCases.item1":
+    "Проверка целостности файлов и контрольные суммы",
   "md5Generator.useCases.boundary1":
-    "✅ Suitable - Perfect for detecting accidental file corruption during transmission",
-  "md5Generator.useCases.item2": "Database password storage (with salt)",
+    "✅ Подходит - Идеально для обнаружения случайного повреждения файлов при передаче",
+  "md5Generator.useCases.item2": "Хранение паролей в базе данных (с солью)",
   "md5Generator.useCases.boundary2":
-    "⚠️ Not recommended - Use bcrypt, Argon2, or scrypt instead",
-  "md5Generator.useCases.item3": "Generating unique identifiers",
+    "⚠️ Не рекомендуется - Используйте bcrypt, Argon2 или scrypt вместо этого",
+  "md5Generator.useCases.item3": "Генерация уникальных идентификаторов",
   "md5Generator.useCases.boundary3":
-    "⚠️ Use with caution - Consider UUID v4 for better uniqueness guarantees",
-  "md5Generator.useCases.item4": "Detecting duplicate files",
+    "⚠️ Используйте с осторожностью - Рассмотрите UUID v4 для лучших гарантий уникальности",
+  "md5Generator.useCases.item4": "Обнаружение дубликатов файлов",
   "md5Generator.useCases.boundary4":
-    "✅ Suitable - Good for non-critical duplicate detection in local systems",
-  "md5Generator.useCases.item5": "API signature verification",
+    "✅ Подходит - Хорошо для некритичного обнаружения дубликатов в локальных системах",
+  "md5Generator.useCases.item5": "Проверка подписи API",
   "md5Generator.useCases.boundary5":
-    "❌ Not secure - Vulnerable to collision attacks, use HMAC with SHA-256",
+    "❌ Небезопасно - Уязвимо к атакам коллизий, используйте HMAC с SHA-256",
 
-  "md5Generator.faq.title": "Frequently Asked Questions",
-  "md5Generator.faq.q1":
-    "What is the difference between 32-bit and 16-bit MD5?",
+  "md5Generator.faq.title": "Часто Задаваемые Вопросы",
+  "md5Generator.faq.q1": "В чём разница между 32-битным и 16-битным MD5?",
   "md5Generator.faq.a1":
-    "32-bit MD5 is the full hash (32 hex characters). 16-bit MD5 takes the middle 16 characters of the full hash, sometimes used for shorter checksums.",
-  "md5Generator.faq.q2": "Is MD5 secure for passwords?",
+    "32-битный MD5 — это полный хеш (32 шестнадцатеричных символа). 16-битный MD5 берёт средние 16 символов полного хеша, иногда используется для более коротких контрольных сумм.",
+  "md5Generator.faq.q2": "Безопасен ли MD5 для паролей?",
   "md5Generator.faq.a2":
-    "MD5 alone is not recommended for password hashing due to known vulnerabilities. Use modern algorithms like bcrypt or Argon2 for password security.",
-  "md5Generator.faq.q3": "Is my data secure when using this tool?",
+    "MD5 сам по себе не рекомендуется для хеширования паролей из-за известных уязвимостей. Используйте современные алгоритмы, такие как bcrypt или Argon2, для безопасности паролей.",
+  "md5Generator.faq.q3":
+    "Безопасны ли мои данные при использовании этого инструмента?",
   "md5Generator.faq.a3":
-    "Yes, all MD5 hashing happens locally in your browser. Your data is never sent to any server.",
+    "Да, всё хеширование MD5 происходит локально в вашем браузере. Ваши данные никогда не отправляются на сервер.",
 };

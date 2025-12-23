@@ -87,89 +87,91 @@ export const base64Encoder = {
     "Base64 is NOT encryption. It provides no security or privacy. Only use for data format conversion, never for protecting sensitive information. For encryption, use proper cryptographic algorithms like AES.",
 
   // SEO Content
-  "base64Encoder.seo.title": "What is Base64 Encoding?",
+  "base64Encoder.seo.title": "Was ist Base64-Kodierung?",
   "base64Encoder.seo.description":
-    '<strong className="text-foreground">Base64 encoding</strong> is a binary-to-text encoding scheme that converts binary data into ASCII string format. It\'s widely used for encoding binary data that needs to be stored and transferred over media designed to deal with textual data. Our free online Base64 encoder/decoder tool handles text and binary data conversion instantly.',
-  "base64Encoder.seo.techImplTitle": "🔧 Technical Implementation",
+    '<strong className="text-foreground">Base64-Kodierung</strong> ist ein Binär-zu-Text-Kodierungsschema, das Binärdaten in ein ASCII-Zeichenkettenformat konvertiert. Es wird häufig verwendet, um Binärdaten zu kodieren, die über Medien gespeichert und übertragen werden müssen, die für den Umgang mit Textdaten konzipiert sind. Unser kostenloses Online-Base64-Kodierer/Dekodierer-Tool verarbeitet die Text- und Binärdatenkonvertierung sofort.',
+  "base64Encoder.seo.techImplTitle": "🔧 Technische Implementierung",
   "base64Encoder.seo.techImplDesc":
-    'Our Base64 encoder uses JavaScript\'s built-in <code className="bg-background px-1 rounded">btoa()</code> and <code className="bg-background px-1 rounded">atob()</code> functions with proper Unicode handling via <code className="bg-background px-1 rounded">encodeURIComponent()</code> for international characters. The algorithm maps every 3 bytes of binary data to 4 Base64 characters using a 64-character alphabet (A-Z, a-z, 0-9, +, /) with padding (=) for incomplete byte groups.',
+    'Unser Base64-Kodierer verwendet die eingebauten JavaScript-Funktionen <code className="bg-background px-1 rounded">btoa()</code> und <code className="bg-background px-1 rounded">atob()</code> mit richtiger Unicode-Behandlung über <code className="bg-background px-1 rounded">encodeURIComponent()</code> für internationale Zeichen. Der Algorithmus ordnet jeweils 3 Bytes Binärdaten 4 Base64-Zeichen zu, unter Verwendung eines 64-Zeichen-Alphabets (A-Z, a-z, 0-9, +, /) mit Auffüllung (=) für unvollständige Byte-Gruppen.',
 
-  "base64Encoder.seo.featuresTitle": "Key Features",
-  "base64Encoder.seo.feature1.title": "Instant Conversion",
-  "base64Encoder.seo.feature1.desc": "Real-time encoding and decoding",
-  "base64Encoder.seo.feature2.title": "Unicode Support",
+  "base64Encoder.seo.featuresTitle": "Hauptfunktionen",
+  "base64Encoder.seo.feature1.title": "Sofortige Konvertierung",
+  "base64Encoder.seo.feature1.desc": "Echtzeit-Kodierung und -Dekodierung",
+  "base64Encoder.seo.feature2.title": "Unicode-Unterstützung",
   "base64Encoder.seo.feature2.desc":
-    "Handle any character including Chinese, emoji",
-  "base64Encoder.seo.feature3.title": "URL Safe",
-  "base64Encoder.seo.feature3.desc": "Compatible with web standards",
-  "base64Encoder.seo.feature4.title": "100% Private",
+    "Verarbeitet alle Zeichen, einschließlich Chinesisch und Emoji",
+  "base64Encoder.seo.feature3.title": "URL-Sicher",
+  "base64Encoder.seo.feature3.desc": "Kompatibel mit Web-Standards",
+  "base64Encoder.seo.feature4.title": "100% Privat",
   "base64Encoder.seo.feature4.desc":
-    "All processing happens locally in browser",
-  "base64Encoder.seo.howToUseTitle": "How to Use",
+    "Alle Verarbeitungen erfolgen lokal im Browser",
+  "base64Encoder.seo.howToUseTitle": "Verwendung",
   "base64Encoder.seo.howToUse1":
-    "Enter your text or Base64 data in the input field",
+    "Geben Sie Ihren Text oder Base64-Daten in das Eingabefeld ein",
   "base64Encoder.seo.howToUse2":
-    "Choose encode or decode mode and click the convert button",
-  "base64Encoder.seo.howToUse3": "Copy the result with one click",
+    "Wählen Sie den Kodierungs- oder Dekodierungsmodus und klicken Sie auf die Konvertieren-Schaltfläche",
+  "base64Encoder.seo.howToUse3": "Kopieren Sie das Ergebnis mit einem Klick",
 
-  "base64Encoder.faqTitle": "Frequently Asked Questions",
-  "base64Encoder.faq.q1": "What is Base64 encoding?",
+  "base64Encoder.faqTitle": "Häufig Gestellte Fragen",
+  "base64Encoder.faq.q1": "Was ist Base64-Kodierung?",
   "base64Encoder.faq.a1":
-    "Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format. It's commonly used to transmit binary data over systems that can only reliably handle text, such as email or certain web APIs.",
-  "base64Encoder.faq.q2": "Is this Base64 tool free to use?",
+    "Base64 ist ein Binär-zu-Text-Kodierungsschema, das Binärdaten in einem ASCII-String-Format darstellt. Es wird häufig verwendet, um Binärdaten über Systeme zu übertragen, die zuverlässig nur Text verarbeiten können, wie E-Mail oder bestimmte Web-APIs.",
+  "base64Encoder.faq.q2": "Ist dieses Base64-Tool kostenlos?",
   "base64Encoder.faq.a2":
-    "Yes, this Base64 encoder and decoder is completely free to use. No signup or registration required. Your data is processed locally in your browser for maximum privacy and security.",
-  "base64Encoder.faq.q3": "Can I encode and decode Base64 offline?",
+    "Ja, dieser Base64-Kodierer und -Dekodierer ist vollständig kostenlos. Keine Anmeldung erforderlich. Ihre Daten werden lokal in Ihrem Browser für maximale Privatsphäre und Sicherheit verarbeitet.",
+  "base64Encoder.faq.q3": "Kann ich Base64 offline kodieren und dekodieren?",
   "base64Encoder.faq.a3":
-    "Yes, our Base64 tool works completely offline. All encoding and decoding happens in your browser using JavaScript, so you can use it without an internet connection.",
-  "base64Encoder.faq.q4": "Is my data secure when using this tool?",
+    "Ja, unser Base64-Tool funktioniert vollständig offline. Die gesamte Kodierung und Dekodierung erfolgt in Ihrem Browser mit JavaScript, sodass Sie es ohne Internetverbindung verwenden können.",
+  "base64Encoder.faq.q4":
+    "Sind meine Daten sicher bei der Verwendung dieses Tools?",
   "base64Encoder.faq.a4":
-    "Absolutely. All Base64 encoding and decoding happens locally in your browser. Your data is never sent to any server or stored anywhere, ensuring complete privacy and security.",
+    "Absolut. Die gesamte Base64-Kodierung und -Dekodierung erfolgt lokal in Ihrem Browser. Ihre Daten werden niemals an einen Server gesendet oder irgendwo gespeichert, um vollständige Privatsphäre und Sicherheit zu gewährleisten.",
 
   // Real-World Scenarios
-  "base64Encoder.scenarios.title": "Real-World Scenarios",
-  "base64Encoder.scenarios.scenario1.title": "Email Attachment Replacement",
+  "base64Encoder.scenarios.title": "Praktische Szenarien",
+  "base64Encoder.scenarios.scenario1.title": "E-Mail-Anhang-Ersatz",
   "base64Encoder.scenarios.scenario1.desc":
-    "Developer needs to include a small icon in an email but wants to avoid attachment limitations.",
+    "Ein Entwickler muss ein kleines Symbol in eine E-Mail aufnehmen, möchte aber Anhangsbeschränkungen vermeiden.",
   "base64Encoder.scenarios.scenario1.problem": "📧 Problem:",
   "base64Encoder.scenarios.scenario1.problemDesc":
-    "Email server blocks attachments or recipient has size limitations",
-  "base64Encoder.scenarios.scenario1.solution": "🔧 Base64 Solution:",
+    "E-Mail-Server blockiert Anhänge oder Empfänger hat Größenbeschränkungen",
+  "base64Encoder.scenarios.scenario1.solution": "🔧 Base64-Lösung:",
   "base64Encoder.scenarios.scenario1.solutionDesc":
-    "Convert small icon (logo.png) to Base64 and embed in HTML email",
+    "Konvertieren Sie ein kleines Symbol (logo.png) zu Base64 und betten Sie es in eine HTML-E-Mail ein",
   "base64Encoder.scenarios.scenario1.result":
-    "Result: Email displays the icon without requiring external file attachments.",
-  "base64Encoder.scenarios.scenario2.title": "API Authentication Token",
+    "Ergebnis: Die E-Mail zeigt das Symbol an, ohne externe Dateianhänge zu erfordern.",
+  "base64Encoder.scenarios.scenario2.title": "API-Authentifizierungstoken",
   "base64Encoder.scenarios.scenario2.desc":
-    "Mobile app developer needs to encode user credentials for Basic Authentication in API requests.",
-  "base64Encoder.scenarios.scenario2.credentials": "🔐 User Credentials:",
-  "base64Encoder.scenarios.scenario2.encoded": "🔑 Base64 Encoded:",
-  "base64Encoder.scenarios.scenario2.header": "📡 API Request Header:",
+    "Ein mobiler App-Entwickler muss Benutzeranmeldeinformationen für die Basisauthentifizierung in API-Anfragen kodieren.",
+  "base64Encoder.scenarios.scenario2.credentials":
+    "🔐 Benutzeranmeldeinformationen:",
+  "base64Encoder.scenarios.scenario2.encoded": "🔑 Base64-kodiert:",
+  "base64Encoder.scenarios.scenario2.header": "📡 API-Anfrage-Header:",
   "base64Encoder.scenarios.scenario2.result":
-    "Result: Credentials are safely encoded for HTTP Basic Authentication.",
-  "base64Encoder.scenarios.scenario3.title": "JSON Data with Binary Content",
+    "Ergebnis: Anmeldeinformationen werden sicher für die HTTP-Basisauthentifizierung kodiert.",
+  "base64Encoder.scenarios.scenario3.title": "JSON-Daten mit binärem Inhalt",
   "base64Encoder.scenarios.scenario3.desc":
-    "Backend developer needs to store a small PDF file in a JSON database field.",
-  "base64Encoder.scenarios.scenario3.binary": "📄 Binary Data:",
+    "Ein Backend-Entwickler muss eine kleine PDF-Datei in einem JSON-Datenbankfeld speichern.",
+  "base64Encoder.scenarios.scenario3.binary": "📄 Binärdaten:",
   "base64Encoder.scenarios.scenario3.binaryDesc":
-    "document.pdf (45 KB) - binary format not JSON-compatible",
-  "base64Encoder.scenarios.scenario3.encoding": "🔄 Base64 Encoding:",
-  "base64Encoder.scenarios.scenario3.storage": "💾 JSON Storage:",
+    "document.pdf (45 KB) - Binärformat nicht JSON-kompatibel",
+  "base64Encoder.scenarios.scenario3.encoding": "🔄 Base64-Kodierung:",
+  "base64Encoder.scenarios.scenario3.storage": "💾 JSON-Speicherung:",
   "base64Encoder.scenarios.scenario3.result":
-    "Result: Binary PDF content is now stored as text in the JSON database field.",
+    "Ergebnis: Binärer PDF-Inhalt wird jetzt als Text im JSON-Datenbankfeld gespeichert.",
 
   // Step-by-Step Guide
-  "base64Encoder.guide.title": "How to Use Base64 Encoding",
-  "base64Encoder.guide.step1.title": "Choose Encode or Decode",
+  "base64Encoder.guide.title": "Base64-Kodierung verwenden",
+  "base64Encoder.guide.step1.title": "Kodieren oder dekodieren wählen",
   "base64Encoder.guide.step1.desc":
-    "Select 'Encode' to convert text/binary to Base64, or 'Decode' to convert Base64 back to original format.",
-  "base64Encoder.guide.step2.title": "Enter Your Data",
+    "Wählen Sie 'Kodieren', um Text/Binärdaten in Base64 zu konvertieren, oder 'Dekodieren', um Base64 zurück in das Originalformat zu konvertieren.",
+  "base64Encoder.guide.step2.title": "Daten eingeben",
   "base64Encoder.guide.step2.desc":
-    "Type text or upload a file (images, documents) that you want to encode or decode.",
-  "base64Encoder.guide.step3.title": "Generate Result",
+    "Geben Sie Text ein oder laden Sie eine Datei (Bilder, Dokumente) hoch, die Sie kodieren oder dekodieren möchten.",
+  "base64Encoder.guide.step3.title": "Ergebnis generieren",
   "base64Encoder.guide.step3.desc":
-    "Click the convert button to instantly see the Base64 encoded or decoded result.",
-  "base64Encoder.guide.step4.title": "Copy & Implement",
+    "Klicken Sie auf die Konvertieren-Schaltfläche, um das Base64-kodierte oder -dekodierte Ergebnis sofort zu sehen.",
+  "base64Encoder.guide.step4.title": "Kopieren und implementieren",
   "base64Encoder.guide.step4.desc":
-    "Copy the result for use in your applications, APIs, email templates, or data storage.",
+    "Kopieren Sie das Ergebnis zur Verwendung in Ihren Anwendungen, APIs, E-Mail-Vorlagen oder Datenspeicherung.",
 };

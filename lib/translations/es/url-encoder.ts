@@ -69,54 +69,56 @@ export const urlEncoder = {
     "Already encoded content (double encoding)",
   "urlEncoder.limitations.notSuitableList4": "HTML entity encoding",
 
-  "urlEncoder.faqTitle": "Frequently Asked Questions",
-  "urlEncoder.faq.q1": "What is URL encoding?",
+  "urlEncoder.faqTitle": "Preguntas Frecuentes",
+  "urlEncoder.faq.q1": "¿Qué es la codificación URL?",
   "urlEncoder.faq.a1":
-    "URL encoding converts characters into a format that can be transmitted over the Internet. Special characters are replaced with a '%' followed by two hexadecimal digits.",
-  "urlEncoder.faq.q2": "When should I use URL encoding?",
+    "La codificación URL convierte caracteres a un formato que puede transmitirse por Internet. Los caracteres especiales se reemplazan con '%' seguido de dos dígitos hexadecimales.",
+  "urlEncoder.faq.q2": "¿Cuándo debo usar la codificación URL?",
   "urlEncoder.faq.a2":
-    "Use URL encoding when your URL contains special characters like spaces, ampersands (&), or non-ASCII characters like Chinese or Japanese text.",
-  "urlEncoder.faq.q3": "Is my data secure?",
+    "Usa la codificación URL cuando tu URL contiene caracteres especiales como espacios, ampersands (&), o caracteres no ASCII como texto en chino o japonés.",
+  "urlEncoder.faq.q3": "¿Mis datos están seguros?",
   "urlEncoder.faq.a3":
-    "Yes, all encoding and decoding happens entirely in your browser. Your data is never sent to any server.",
+    "Sí, toda la codificación y decodificación ocurre completamente en tu navegador. Tus datos nunca se envían a ningún servidor.",
 
   // Real-World Scenarios
-  "urlEncoder.scenarios.title": "Real-World Scenarios",
-  "urlEncoder.scenarios.scenario1.title": "Building API Query Strings",
+  "urlEncoder.scenarios.title": "Escenarios reales",
+  "urlEncoder.scenarios.scenario1.title":
+    "Construcción de cadenas de consulta API",
   "urlEncoder.scenarios.scenario1.desc":
-    "You're building an e-commerce search feature and need to create URL query parameters from user input.",
-  "urlEncoder.scenarios.scenario1.problem": "Problematic URL:",
-  "urlEncoder.scenarios.scenario1.solution": "Correctly Encoded URL:",
-  "urlEncoder.scenarios.scenario1.solutionLabel": "Solution:",
+    "Estás construyendo una función de búsqueda para comercio electrónico y necesitas crear parámetros de consulta URL a partir de la entrada del usuario.",
+  "urlEncoder.scenarios.scenario1.problem": "URL problemática:",
+  "urlEncoder.scenarios.scenario1.solution": "URL correctamente codificada:",
+  "urlEncoder.scenarios.scenario1.solutionLabel": "Solución:",
   "urlEncoder.scenarios.scenario1.result":
-    "Use URL encoding to handle spaces, apostrophes, and ampersands properly.",
-  "urlEncoder.scenarios.scenario2.title": "International Character Support",
+    "Usa la codificación URL para manejar correctamente espacios, apóstrofes y ampersandes.",
+  "urlEncoder.scenarios.scenario2.title":
+    "Soporte de caracteres internacionales",
   "urlEncoder.scenarios.scenario2.desc":
-    "Your web app needs to handle user searches containing Chinese, Japanese, or other Unicode characters.",
-  "urlEncoder.scenarios.scenario2.original": "Original Search Term:",
-  "urlEncoder.scenarios.scenario2.encoded": "URL Encoded:",
+    "Tu aplicación web necesita manejar búsquedas que contengan caracteres chinos, japoneses u otros caracteres Unicode.",
+  "urlEncoder.scenarios.scenario2.original": "Término de búsqueda original:",
+  "urlEncoder.scenarios.scenario2.encoded": "URL codificada:",
   "urlEncoder.scenarios.scenario2.result":
-    "Encode Unicode characters to ensure they're properly transmitted in URLs.",
-  "urlEncoder.scenarios.scenario3.title": "Social Media Sharing",
+    "Codifica caracteres Unicode para asegurar que se transmitan correctamente en las URL.",
+  "urlEncoder.scenarios.scenario3.title": "Compartir en redes sociales",
   "urlEncoder.scenarios.scenario3.desc":
-    "Creating shareable links for social media posts that include dynamic content.",
-  "urlEncoder.scenarios.scenario3.dynamic": "Dynamic Share URL:",
-  "urlEncoder.scenarios.scenario3.ready": "Social Media Ready:",
+    "Creación de enlaces compartibles para publicaciones en redes sociales que incluyen contenido dinámico.",
+  "urlEncoder.scenarios.scenario3.dynamic": "URL de compartir dinámica:",
+  "urlEncoder.scenarios.scenario3.ready": "Listo para redes sociales:",
   "urlEncoder.scenarios.scenario3.result":
-    "Encode parameters to prevent URL breaking and ensure proper social media integration.",
+    "Codifica parámetros para evitar la ruptura de URL y asegurar una integración adecuada con redes sociales.",
 
   // Step-by-Step Guide
-  "urlEncoder.guide.title": "How to Use URL Encoding",
-  "urlEncoder.guide.step1.title": "Enter Your URL or Text",
+  "urlEncoder.guide.title": "Cómo usar la codificación URL",
+  "urlEncoder.guide.step1.title": "Ingrese su URL o texto",
   "urlEncoder.guide.step1.desc":
-    "Paste your URL or enter the text that needs encoding/decoding in the input field above.",
-  "urlEncoder.guide.step2.title": "Choose Encode or Decode",
+    "Pegue su URL o ingrese el texto que necesita codificar/decodificar en el campo de entrada de arriba.",
+  "urlEncoder.guide.step2.title": "Elija Codificar o Decodificar",
   "urlEncoder.guide.step2.desc":
-    "Select 'Encode' to convert special characters, or 'Decode' to convert encoded URLs back to readable format.",
-  "urlEncoder.guide.step3.title": "Click Convert",
+    "Seleccione 'Codificar' para convertir caracteres especiales, o 'Decodificar' para convertir URLs codificadas de vuelta a formato legible.",
+  "urlEncoder.guide.step3.title": "Haga clic en Convertir",
   "urlEncoder.guide.step3.desc":
-    "Click the convert button to instantly see the encoded or decoded result in the output field.",
-  "urlEncoder.guide.step4.title": "Copy and Use",
+    "Haga clic en el botón convertir para ver instantáneamente el resultado codificado o decodificado en el campo de salida.",
+  "urlEncoder.guide.step4.title": "Copie y use",
   "urlEncoder.guide.step4.desc":
-    "Copy the result and use it in your web applications, API calls, or documentation.",
+    "Copie el resultado y úselo en sus aplicaciones web, llamadas API o documentación.",
 };

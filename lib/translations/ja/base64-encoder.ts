@@ -86,89 +86,89 @@ export const base64Encoder = {
     "Base64 is NOT encryption. It provides no security or privacy. Only use for data format conversion, never for protecting sensitive information. For encryption, use proper cryptographic algorithms like AES.",
 
   // SEO Content
-  "base64Encoder.seo.title": "What is Base64 Encoding?",
+  "base64Encoder.seo.title": "Base64エンコードとは何ですか？",
   "base64Encoder.seo.description":
-    '<strong className="text-foreground">Base64 encoding</strong> is a binary-to-text encoding scheme that converts binary data into ASCII string format. It\'s widely used for encoding binary data that needs to be stored and transferred over media designed to deal with textual data. Our free online Base64 encoder/decoder tool handles text and binary data conversion instantly.',
-  "base64Encoder.seo.techImplTitle": "🔧 Technical Implementation",
+    '<strong className="text-foreground">Base64エンコード</strong>は、バイナリデータをASCII文字列形式に変換するバイナリからテキストへのエンコーディングスキームです。テキストデータを処理するように設計されたメディアで保存および転送する必要があるバイナリデータのエンコードに広く使用されています。私たちの無料オンラインBase64エンコーダー/デコーダーツールは、テキストとバイナリデータの変換を即座に処理します。',
+  "base64Encoder.seo.techImplTitle": "🔧 技術的実装",
   "base64Encoder.seo.techImplDesc":
-    'Our Base64 encoder uses JavaScript\'s built-in <code className="bg-background px-1 rounded">btoa()</code> and <code className="bg-background px-1 rounded">atob()</code> functions with proper Unicode handling via <code className="bg-background px-1 rounded">encodeURIComponent()</code> for international characters. The algorithm maps every 3 bytes of binary data to 4 Base64 characters using a 64-character alphabet (A-Z, a-z, 0-9, +, /) with padding (=) for incomplete byte groups.',
+    '私たちのBase64エンコーダーは、国际文字のために<code className="bg-background px-1 rounded">encodeURIComponent()</code>経由で適切なUnicode処理を行い、JavaScriptの組み込み<code className="bg-background px-1 rounded">btoa()</code>と<code className="bg-background px-1 rounded">atob()</code>関数を使用しています。アルゴリズムは、3バイトのバイナリデータを4つのBase64文字にマッピングし、64文字のアルファベット（A-Z、a-z、0-9、+、/）と不完全なバイトグループの埋め込み（=）を使用します。',
 
-  "base64Encoder.seo.featuresTitle": "Key Features",
-  "base64Encoder.seo.feature1.title": "Instant Conversion",
-  "base64Encoder.seo.feature1.desc": "Real-time encoding and decoding",
-  "base64Encoder.seo.feature2.title": "Unicode Support",
-  "base64Encoder.seo.feature2.desc":
-    "Handle any character including Chinese, emoji",
-  "base64Encoder.seo.feature3.title": "URL Safe",
-  "base64Encoder.seo.feature3.desc": "Compatible with web standards",
-  "base64Encoder.seo.feature4.title": "100% Private",
-  "base64Encoder.seo.feature4.desc":
-    "All processing happens locally in browser",
-  "base64Encoder.seo.howToUseTitle": "How to Use",
+  "base64Encoder.seo.featuresTitle": "主な機能",
+  "base64Encoder.seo.feature1.title": "即座に変換",
+  "base64Encoder.seo.feature1.desc": "リアルタイムのエンコードとデコード",
+  "base64Encoder.seo.feature2.title": "Unicode対応",
+  "base64Encoder.seo.feature2.desc": "中国語、絵文字を含むあらゆる文字を処理",
+  "base64Encoder.seo.feature3.title": "URLセーフ",
+  "base64Encoder.seo.feature3.desc": "Web標準に準拠",
+  "base64Encoder.seo.feature4.title": "100%プライベート",
+  "base64Encoder.seo.feature4.desc": "すべての処理はブラウザ内でローカルに実行",
+  "base64Encoder.seo.howToUseTitle": "使用方法",
   "base64Encoder.seo.howToUse1":
-    "Enter your text or Base64 data in the input field",
+    "入力フィールドにテキストまたはBase64データを入力してください",
   "base64Encoder.seo.howToUse2":
-    "Choose encode or decode mode and click the convert button",
-  "base64Encoder.seo.howToUse3": "Copy the result with one click",
+    "エンコードまたはデコードモードを選択し、変換ボタンをクリックしてください",
+  "base64Encoder.seo.howToUse3": "ワンクリックで結果をコピー",
 
-  "base64Encoder.faqTitle": "Frequently Asked Questions",
-  "base64Encoder.faq.q1": "What is Base64 encoding?",
+  "base64Encoder.faqTitle": "よくある質問",
+  "base64Encoder.faq.q1": "Base64エンコードとは何ですか？",
   "base64Encoder.faq.a1":
-    "Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format. It's commonly used to transmit binary data over systems that can only reliably handle text, such as email or certain web APIs.",
-  "base64Encoder.faq.q2": "Is this Base64 tool free to use?",
+    "Base64は、バイナリデータをASCII文字列形式で表すバイナリからテキストへのエンコーディングスキームです。メールや特定のWeb APIなど、テキストのみを確実に処理できるシステムでバイナリデータを送信するために一般的に使用されます。",
+  "base64Encoder.faq.q2": "このBase64ツールは無料で使えますか？",
   "base64Encoder.faq.a2":
-    "Yes, this Base64 encoder and decoder is completely free to use. No signup or registration required. Your data is processed locally in your browser for maximum privacy and security.",
-  "base64Encoder.faq.q3": "Can I encode and decode Base64 offline?",
+    "はい、このBase64エンコーダーとデコーダーは完全に無料で使用できます。サインアップや登録は必要ありません。データはプライバシーとセキュリティを最大にするためにブラウザ内で処理されます。",
+  "base64Encoder.faq.q3":
+    "Base64をオフラインでエンコードおよびデコードできますか？",
   "base64Encoder.faq.a3":
-    "Yes, our Base64 tool works completely offline. All encoding and decoding happens in your browser using JavaScript, so you can use it without an internet connection.",
-  "base64Encoder.faq.q4": "Is my data secure when using this tool?",
+    "はい、私たちのBase64ツールは完全にオフラインで動作します。すべてのエンコードとデコードはJavaScriptを使用してブラウザ内で行われるため、インターネット接続なしで使用できます。",
+  "base64Encoder.faq.q4": "このツールを使用するとデータは安全ですか？",
   "base64Encoder.faq.a4":
-    "Absolutely. All Base64 encoding and decoding happens locally in your browser. Your data is never sent to any server or stored anywhere, ensuring complete privacy and security.",
+    "確かに、すべてのBase64エンコードとデコードはブラウザ内でローカルで行われます。データはサーバーにもどこにも送信されず、保存されず、完全なプライバシーとセキュリティが確保されます。",
 
   // Real-World Scenarios
-  "base64Encoder.scenarios.title": "Real-World Scenarios",
-  "base64Encoder.scenarios.scenario1.title": "Email Attachment Replacement",
+  "base64Encoder.scenarios.title": "実際のシナリオ",
+  "base64Encoder.scenarios.scenario1.title": "メール添付ファイルの代替",
   "base64Encoder.scenarios.scenario1.desc":
-    "Developer needs to include a small icon in an email but wants to avoid attachment limitations.",
-  "base64Encoder.scenarios.scenario1.problem": "📧 Problem:",
+    "開発者はメールに小さなアイコンを含める必要がありますが、添付ファイルの制限を回避したいと考えています。",
+  "base64Encoder.scenarios.scenario1.problem": "📧 問題:",
   "base64Encoder.scenarios.scenario1.problemDesc":
-    "Email server blocks attachments or recipient has size limitations",
-  "base64Encoder.scenarios.scenario1.solution": "🔧 Base64 Solution:",
+    "メールサーバーが添付ファイルをブロックするか、受信者にサイズ制限があります",
+  "base64Encoder.scenarios.scenario1.solution": "🔧 Base64解決策:",
   "base64Encoder.scenarios.scenario1.solutionDesc":
-    "Convert small icon (logo.png) to Base64 and embed in HTML email",
+    "小さなアイコン（logo.png）をBase64に変換してHTMLメールに埋め込みます",
   "base64Encoder.scenarios.scenario1.result":
-    "Result: Email displays the icon without requiring external file attachments.",
-  "base64Encoder.scenarios.scenario2.title": "API Authentication Token",
+    "結果: メールは外部のファイル附件を必要とせずにアイコンを表示します。",
+  "base64Encoder.scenarios.scenario2.title": "API認証トークン",
   "base64Encoder.scenarios.scenario2.desc":
-    "Mobile app developer needs to encode user credentials for Basic Authentication in API requests.",
-  "base64Encoder.scenarios.scenario2.credentials": "🔐 User Credentials:",
-  "base64Encoder.scenarios.scenario2.encoded": "🔑 Base64 Encoded:",
-  "base64Encoder.scenarios.scenario2.header": "📡 API Request Header:",
+    "モバイルアプリ開発者は、APIリクエストでの基本認証用にユーザー資格情報をエンコードする必要があります。",
+  "base64Encoder.scenarios.scenario2.credentials": "🔐 ユーザー資格情報:",
+  "base64Encoder.scenarios.scenario2.encoded": "🔑 Base64エンコード後:",
+  "base64Encoder.scenarios.scenario2.header": "📡 APIリクエストヘッダー:",
   "base64Encoder.scenarios.scenario2.result":
-    "Result: Credentials are safely encoded for HTTP Basic Authentication.",
-  "base64Encoder.scenarios.scenario3.title": "JSON Data with Binary Content",
+    "結果: 資格情報はHTTP基本認証用に安全にエンコードされます。",
+  "base64Encoder.scenarios.scenario3.title":
+    "バイナリコンテンツを含むJSONデータ",
   "base64Encoder.scenarios.scenario3.desc":
-    "Backend developer needs to store a small PDF file in a JSON database field.",
-  "base64Encoder.scenarios.scenario3.binary": "📄 Binary Data:",
+    "バックエンド開発者は、JSONデータベースフィールドに小さなPDFファイルを保存する必要があります。",
+  "base64Encoder.scenarios.scenario3.binary": "📄 バイナリデータ:",
   "base64Encoder.scenarios.scenario3.binaryDesc":
-    "document.pdf (45 KB) - binary format not JSON-compatible",
-  "base64Encoder.scenarios.scenario3.encoding": "🔄 Base64 Encoding:",
-  "base64Encoder.scenarios.scenario3.storage": "💾 JSON Storage:",
+    "document.pdf（45KB）- JSON互換でないバイナリ形式",
+  "base64Encoder.scenarios.scenario3.encoding": "🔄 Base64エンコード:",
+  "base64Encoder.scenarios.scenario3.storage": "💾 JSONストレージ:",
   "base64Encoder.scenarios.scenario3.result":
-    "Result: Binary PDF content is now stored as text in the JSON database field.",
+    "結果: バイナリのPDFコンテンツがJSONデータベースフィールドにテキストとして保存されるようになりました。",
 
   // Step-by-Step Guide
-  "base64Encoder.guide.title": "How to Use Base64 Encoding",
-  "base64Encoder.guide.step1.title": "Choose Encode or Decode",
+  "base64Encoder.guide.title": "Base64エンコードの使用方法",
+  "base64Encoder.guide.step1.title": "エンコードまたはデコードを選択",
   "base64Encoder.guide.step1.desc":
-    "Select 'Encode' to convert text/binary to Base64, or 'Decode' to convert Base64 back to original format.",
-  "base64Encoder.guide.step2.title": "Enter Your Data",
+    "テキスト/バイナリをBase64に変換するには「エンコード」、Base64を元の形式に戻すには「デコード」を選択します。",
+  "base64Encoder.guide.step2.title": "データを入力",
   "base64Encoder.guide.step2.desc":
-    "Type text or upload a file (images, documents) that you want to encode or decode.",
-  "base64Encoder.guide.step3.title": "Generate Result",
+    "エンコードまたはデコードしたいテキストを入力するか、画像やドキュメントなどのファイルをアップロードします。",
+  "base64Encoder.guide.step3.title": "結果を生成",
   "base64Encoder.guide.step3.desc":
-    "Click the convert button to instantly see the Base64 encoded or decoded result.",
-  "base64Encoder.guide.step4.title": "Copy & Implement",
+    "変換ボタンをクリックすると、Base64エンコードまたはデコードされた結果が即座に表示されます。",
+  "base64Encoder.guide.step4.title": "コピーして実装",
   "base64Encoder.guide.step4.desc":
-    "Copy the result for use in your applications, APIs, email templates, or data storage.",
+    "結果をコピーして、アプリケーション、API、メールテンプレート、またはデータストレージに使用してください。",
 };

@@ -69,54 +69,54 @@ export const urlEncoder = {
     "Already encoded content (double encoding)",
   "urlEncoder.limitations.notSuitableList4": "HTML entity encoding",
 
-  "urlEncoder.faqTitle": "Frequently Asked Questions",
-  "urlEncoder.faq.q1": "What is URL encoding?",
+  "urlEncoder.faqTitle": "よくある質問",
+  "urlEncoder.faq.q1": "URLエンコードとは何ですか？",
   "urlEncoder.faq.a1":
-    "URL encoding converts characters into a format that can be transmitted over the Internet. Special characters are replaced with a '%' followed by two hexadecimal digits.",
-  "urlEncoder.faq.q2": "When should I use URL encoding?",
+    "URLエンコードは、Internetを介して送信できるフォーマットに文字を変換します。特殊文字は「%」に続いて2桁の16進数で置き換えられます。",
+  "urlEncoder.faq.q2": "いつURLエンコードを使用する必要がありますか？",
   "urlEncoder.faq.a2":
-    "Use URL encoding when your URL contains special characters like spaces, ampersands (&), or non-ASCII characters like Chinese or Japanese text.",
-  "urlEncoder.faq.q3": "Is my data secure?",
+    "URLにスペース、アンパサンド（&）、中文や日文などの非ASCII文字が含まれている場合は、URLエンコードを使用してください。",
+  "urlEncoder.faq.q3": "私のデータは安全ですか？",
   "urlEncoder.faq.a3":
-    "Yes, all encoding and decoding happens entirely in your browser. Your data is never sent to any server.",
+    "はい、すべてのエンコードとデコードはブラウザ内で完全に発生します。データはサーバーに送信されません。",
 
   // Real-World Scenarios
-  "urlEncoder.scenarios.title": "Real-World Scenarios",
-  "urlEncoder.scenarios.scenario1.title": "Building API Query Strings",
+  "urlEncoder.scenarios.title": "実際のシナリオ",
+  "urlEncoder.scenarios.scenario1.title": "APIクエリ文字列の構築",
   "urlEncoder.scenarios.scenario1.desc":
-    "You're building an e-commerce search feature and need to create URL query parameters from user input.",
-  "urlEncoder.scenarios.scenario1.problem": "Problematic URL:",
-  "urlEncoder.scenarios.scenario1.solution": "Correctly Encoded URL:",
-  "urlEncoder.scenarios.scenario1.solutionLabel": "Solution:",
+    "あなたはECサイトの検索機能を構築しており、ユーザー入力からURLクエリパラメータを作成する必要があります。",
+  "urlEncoder.scenarios.scenario1.problem": "問題のあるURL:",
+  "urlEncoder.scenarios.scenario1.solution": "正しくエンコードされたURL:",
+  "urlEncoder.scenarios.scenario1.solutionLabel": "解決策:",
   "urlEncoder.scenarios.scenario1.result":
-    "Use URL encoding to handle spaces, apostrophes, and ampersands properly.",
-  "urlEncoder.scenarios.scenario2.title": "International Character Support",
+    "URLエンコーディングを使用して、スペース、アポストロフ、アンパサンドを適切に処理します。",
+  "urlEncoder.scenarios.scenario2.title": "国際文字のサポート",
   "urlEncoder.scenarios.scenario2.desc":
-    "Your web app needs to handle user searches containing Chinese, Japanese, or other Unicode characters.",
-  "urlEncoder.scenarios.scenario2.original": "Original Search Term:",
-  "urlEncoder.scenarios.scenario2.encoded": "URL Encoded:",
+    "あなたのWebアプリは、中国語、日本語、またはその他のUnicode文字を含むユーザー検索を処理する必要があります。",
+  "urlEncoder.scenarios.scenario2.original": "元の検索語:",
+  "urlEncoder.scenarios.scenario2.encoded": "URLエンコード後:",
   "urlEncoder.scenarios.scenario2.result":
-    "Encode Unicode characters to ensure they're properly transmitted in URLs.",
-  "urlEncoder.scenarios.scenario3.title": "Social Media Sharing",
+    "Unicode文字をエンコードして、URLで正しく送信されるようにします。",
+  "urlEncoder.scenarios.scenario3.title": "ソーシャルメディア共有",
   "urlEncoder.scenarios.scenario3.desc":
-    "Creating shareable links for social media posts that include dynamic content.",
-  "urlEncoder.scenarios.scenario3.dynamic": "Dynamic Share URL:",
-  "urlEncoder.scenarios.scenario3.ready": "Social Media Ready:",
+    "動的なコンテンツを含むソーシャルメディア投稿用の共有リンクを作成します。",
+  "urlEncoder.scenarios.scenario3.dynamic": "動的な共有URL:",
+  "urlEncoder.scenarios.scenario3.ready": "ソーシャルメディア対応:",
   "urlEncoder.scenarios.scenario3.result":
-    "Encode parameters to prevent URL breaking and ensure proper social media integration.",
+    "URLの破損を防ぐためにパラメータをエンコードし、ソーシャルメディアとの適切な統合を確保します。",
 
   // Step-by-Step Guide
-  "urlEncoder.guide.title": "How to Use URL Encoding",
-  "urlEncoder.guide.step1.title": "Enter Your URL or Text",
+  "urlEncoder.guide.title": "URLエンコーディングの使用方法",
+  "urlEncoder.guide.step1.title": "URLまたはテキストを入力",
   "urlEncoder.guide.step1.desc":
-    "Paste your URL or enter the text that needs encoding/decoding in the input field above.",
-  "urlEncoder.guide.step2.title": "Choose Encode or Decode",
+    "上部の入力フィールドにURLを貼り付けるか、エンコード/デコードが必要なテキストを入力してください。",
+  "urlEncoder.guide.step2.title": "エンコードまたはデコードを選択",
   "urlEncoder.guide.step2.desc":
-    "Select 'Encode' to convert special characters, or 'Decode' to convert encoded URLs back to readable format.",
-  "urlEncoder.guide.step3.title": "Click Convert",
+    "'エンコード'を選択すると特殊文字が変換され、'デコード'を選択するとエンコードされたURLが読み取り可能な形式に戻されます。",
+  "urlEncoder.guide.step3.title": "変換をクリック",
   "urlEncoder.guide.step3.desc":
-    "Click the convert button to instantly see the encoded or decoded result in the output field.",
-  "urlEncoder.guide.step4.title": "Copy and Use",
+    "変換ボタンをクリックすると、出力フィールドにエンコードまたはデコードされた結果が即座に表示されます。",
+  "urlEncoder.guide.step4.title": "コピーして使用",
   "urlEncoder.guide.step4.desc":
-    "Copy the result and use it in your web applications, API calls, or documentation.",
+    "結果をコピーして、ウェブアプリケーション、API呼び出しまたはドキュメントで使用してください。",
 };

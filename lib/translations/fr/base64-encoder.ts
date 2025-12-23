@@ -129,7 +129,7 @@ export const base64Encoder = {
     "Absolutely. All Base64 encoding and decoding happens locally in your browser. Your data is never sent to any server or stored anywhere, ensuring complete privacy and security.",
 
   // Real-World Scenarios
-  "base64Encoder.scenarios.title": "Real-World Scenarios",
+  "base64Encoder.scenarios.title": "Scénarios réels",
   "base64Encoder.scenarios.scenario1.title": "Email Attachment Replacement",
   "base64Encoder.scenarios.scenario1.desc":
     "Developer needs to include a small icon in an email but wants to avoid attachment limitations.",

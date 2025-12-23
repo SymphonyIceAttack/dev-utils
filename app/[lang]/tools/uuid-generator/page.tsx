@@ -8,7 +8,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 const UuidGeneratorTool = dynamic(
   () =>
-    import("@/components/tools/uuid-generator-tool").then(
+    import("@/components/tools/uuid-generator").then(
       (mod) => mod.UuidGeneratorTool,
     ),
   {

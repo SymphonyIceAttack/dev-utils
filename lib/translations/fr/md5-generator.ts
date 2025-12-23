@@ -87,15 +87,15 @@ export const md5Generator = {
   "md5Generator.useCases.boundary5":
     "❌ Not secure - Vulnerable to collision attacks, use HMAC with SHA-256",
 
-  "md5Generator.faq.title": "Frequently Asked Questions",
-  "md5Generator.faq.q1":
-    "What is the difference between 32-bit and 16-bit MD5?",
+  "md5Generator.faq.title": "Questions Fréquemment Posées",
+  "md5Generator.faq.q1": "Quelle est la différence entre MD5 32-bit et 16-bit?",
   "md5Generator.faq.a1":
-    "32-bit MD5 is the full hash (32 hex characters). 16-bit MD5 takes the middle 16 characters of the full hash, sometimes used for shorter checksums.",
-  "md5Generator.faq.q2": "Is MD5 secure for passwords?",
+    "MD5 32-bit est le hash complet (32 caractères hexadécimaux). MD5 16-bit prend les 16 caractères du milieu du hash complet, parfois utilisé pour des checksums plus courts.",
+  "md5Generator.faq.q2": "MD5 est-il sécurisé pour les mots de passe?",
   "md5Generator.faq.a2":
-    "MD5 alone is not recommended for password hashing due to known vulnerabilities. Use modern algorithms like bcrypt or Argon2 for password security.",
-  "md5Generator.faq.q3": "Is my data secure when using this tool?",
+    "MD5 seul n'est pas recommandé pour le hashage de mots de passe en raison de vulnérabilités connues. Utilisez des algorithmes modernes comme bcrypt ou Argon2 pour la sécurité des mots de passe.",
+  "md5Generator.faq.q3":
+    "Mes données sont-elles sécurisées lors de l'utilisation de cet outil?",
   "md5Generator.faq.a3":
-    "Yes, all MD5 hashing happens locally in your browser. Your data is never sent to any server.",
+    "Oui, tout le hashage MD5 se fait localement dans votre navigateur. Vos données ne sont jamais envoyées à un serveur.",
 };
