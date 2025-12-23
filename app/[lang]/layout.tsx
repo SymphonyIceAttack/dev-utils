@@ -9,6 +9,7 @@ import { Navbar } from "@/components/layout/navbar-client";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CatProvider } from "@/context/cat-context";
 import { LanguageProvider } from "@/context/language-context";
+import { siteUrl } from "@/lib/config";
 import type { LanguageType } from "@/lib/translations";
 import { supportedLocales } from "@/lib/translations";
 
@@ -40,9 +41,7 @@ const pixelFont = VT323({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top",
-  ),
+  metadataBase: new URL(siteUrl),
   icons: {
     icon: [
       { url: "/icon-light.png", media: "(prefers-color-scheme: light)" },

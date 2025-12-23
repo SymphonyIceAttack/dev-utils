@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Md5GeneratorStructuredData } from "@/components/structured-data/md5-generator";
 import { Md5GeneratorTool } from "@/components/tools/md5-generator";
+import { siteUrl } from "@/lib/config";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 const metadataConfig = {
   en: {
@@ -15,7 +14,7 @@ const metadataConfig = {
       title: "MD5 Hash Generator - Free Online Tool",
       description:
         "Generate MD5 checksums from text instantly. Free, secure, and works offline.",
-      url: `${baseUrl}/en/tools/md5-generator`,
+      url: `${siteUrl}/en/tools/md5-generator`,
       type: "website",
     },
   },
@@ -26,7 +25,7 @@ const metadataConfig = {
     openGraph: {
       title: "MD5 哈希生成器 - 免费在线工具",
       description: "即时从文本生成 MD5 校验和。免费、安全、离线工作。",
-      url: `${baseUrl}/zh/tools/md5-generator`,
+      url: `${siteUrl}/zh/tools/md5-generator`,
       type: "website",
     },
   },
@@ -38,7 +37,7 @@ const metadataConfig = {
       title: "MD5 ハッシュジェネレーター - 無料オンライン ツール",
       description:
         "テキストから即座にMD5チェックサムを生成。安全でオフライン動作。",
-      url: `${baseUrl}/ja/tools/md5-generator`,
+      url: `${siteUrl}/ja/tools/md5-generator`,
       type: "website",
     },
   },
@@ -50,7 +49,7 @@ const metadataConfig = {
       title: "Générateur de Hachage MD5 - Outil en Ligne Gratuit",
       description:
         "Générez des checksums MD5 à partir de texte instantanément. Gratuit et sécurisé.",
-      url: `${baseUrl}/fr/tools/md5-generator`,
+      url: `${siteUrl}/fr/tools/md5-generator`,
       type: "website",
     },
   },
@@ -62,7 +61,7 @@ const metadataConfig = {
       title: "Generador de Hash MD5 - Herramienta en Línea Gratuita",
       description:
         "Genera checksums MD5 a partir de texto al instante. Gratis y seguro.",
-      url: `${baseUrl}/es/tools/md5-generator`,
+      url: `${siteUrl}/es/tools/md5-generator`,
       type: "website",
     },
   },
@@ -74,7 +73,7 @@ const metadataConfig = {
       title: "Генератор MD5 Хеша - Бесплатный Онлайн Инструмент",
       description:
         "Генерируйте MD5 контрольные суммы из текста мгновенно. Бесплатно и безопасно.",
-      url: `${baseUrl}/ru/tools/md5-generator`,
+      url: `${siteUrl}/ru/tools/md5-generator`,
       type: "website",
     },
   },
@@ -86,7 +85,7 @@ const metadataConfig = {
       title: "MD5 Hash Generator - Kostenloses Online Tool",
       description:
         "Generieren Sie MD5-Checksummen aus Text sofort. Kostenlos und sicher.",
-      url: `${baseUrl}/de/tools/md5-generator`,
+      url: `${siteUrl}/de/tools/md5-generator`,
       type: "website",
     },
   },
@@ -108,9 +107,6 @@ export async function generateMetadata({
   const langData =
     metadataConfig[lang as keyof typeof metadataConfig] || metadataConfig.en;
   const hreflangLinks = generateHreflangLinks("/tools/md5-generator");
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
-
   return {
     title: langData.title,
     description: langData.description,
@@ -120,7 +116,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}/tools/md5-generator`,
+      canonical: `${siteUrl}/${lang}/tools/md5-generator`,
       languages: hreflangLinks,
     },
   };

@@ -4,14 +4,13 @@ import Link from "next/link";
 import { AboutPageStructuredData } from "@/components/structured-data/about-page";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { siteUrl } from "@/lib/config";
 import {
   generateHreflangLinks,
   type LanguageType,
   supportedLocales,
   t,
 } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 // Generate static params for all supported languages
 export async function generateStaticParams() {
@@ -29,7 +28,7 @@ const metadataConfig = {
       title: "About Us - Free Online Developer Tools",
       description:
         "Learn about our mission to provide free, fast, and reliable online developer tools for developers worldwide.",
-      url: `${baseUrl}/en/about`,
+      url: `${siteUrl}/en/about`,
       type: "website",
     },
   },
@@ -41,7 +40,7 @@ const metadataConfig = {
       title: "关于我们 - 免费在线开发者工具",
       description:
         "了解我们的使命：为全球开发者提供免费、快速、可靠的在线开发者工具。",
-      url: `${baseUrl}/zh/about`,
+      url: `${siteUrl}/zh/about`,
       type: "website",
     },
   },
@@ -53,7 +52,7 @@ const metadataConfig = {
       title: "私たちについて - 無料オンライン開発者ツール",
       description:
         "世界中の開発者に無料、高速、信頼できるオンライン開発者ツールを提供するミッションについて解説する。",
-      url: `${baseUrl}/ja/about`,
+      url: `${siteUrl}/ja/about`,
       type: "website",
     },
   },
@@ -65,7 +64,7 @@ const metadataConfig = {
       title: "À propos de nous - Outils de développeur en ligne gratuits",
       description:
         "Découvrez notre mission de fournir des outils de développeur en ligne gratuits, rapides et fiables pour les développeurs du monde entier.",
-      url: `${baseUrl}/fr/about`,
+      url: `${siteUrl}/fr/about`,
       type: "website",
     },
   },
@@ -79,7 +78,7 @@ const metadataConfig = {
         "Acerca de Nosotros - Herramientas de Desarrollador Gratuitas en Línea",
       description:
         "Conoce nuestra misión de proporcionar herramientas de desarrollador gratuitas, rápidas y confiables para desarrolladores de todo el mundo.",
-      url: `${baseUrl}/es/about`,
+      url: `${siteUrl}/es/about`,
       type: "website",
     },
   },
@@ -91,7 +90,7 @@ const metadataConfig = {
       title: "О нас - Бесплатные онлайн инструменты для разработчиков",
       description:
         "Узнайте о нашей миссии по предоставлению бесплатных, быстрых и надежных онлайн инструментов для разработчиков по всему миру.",
-      url: `${baseUrl}/ru/about`,
+      url: `${siteUrl}/ru/about`,
       type: "website",
     },
   },
@@ -103,7 +102,7 @@ const metadataConfig = {
       title: "Über Uns - Kostenlose Online Entwicklertools",
       description:
         "Erfahren Sie mehr über unsere Mission, kostenlose, schnelle und zuverlässige Online-Entwicklertools für Entwickler weltweit bereitzustellen.",
-      url: `${baseUrl}/de/about`,
+      url: `${siteUrl}/de/about`,
       type: "website",
     },
   },
@@ -130,7 +129,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}/about`,
+      canonical: `${siteUrl}/${lang}/about`,
       languages: hreflangLinks,
     },
   };

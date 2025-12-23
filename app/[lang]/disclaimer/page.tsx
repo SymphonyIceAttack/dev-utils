@@ -8,14 +8,13 @@ import {
 import type { Metadata } from "next";
 import { DisclaimerPageStructuredData } from "@/components/structured-data/disclaimer-page";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { siteUrl } from "@/lib/config";
 import {
   generateHreflangLinks,
   type LanguageType,
   supportedLocales,
   t,
 } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 export async function generateStaticParams() {
   return supportedLocales.map((lang) => ({
@@ -32,7 +31,7 @@ const metadataConfig = {
       title: "Disclaimer - Free Online Developer Tools",
       description:
         "Important disclaimer and limitations of liability for our free online developer tools and services.",
-      url: `${baseUrl}/en/disclaimer`,
+      url: `${siteUrl}/en/disclaimer`,
       type: "website",
     },
   },
@@ -42,7 +41,7 @@ const metadataConfig = {
     openGraph: {
       title: "免责声明 - 免费在线开发者工具",
       description: "我们免费在线开发者工具和服务的重要免责声明和责任限制。",
-      url: `${baseUrl}/zh/disclaimer`,
+      url: `${siteUrl}/zh/disclaimer`,
       type: "website",
     },
   },
@@ -54,7 +53,7 @@ const metadataConfig = {
       title: "免責事項 - 無料オンライン開発者ツール",
       description:
         "無料のオンライン開発者ツールおよびサービスに関する重要な免責事項と責任の制限。",
-      url: `${baseUrl}/ja/disclaimer`,
+      url: `${siteUrl}/ja/disclaimer`,
       type: "website",
     },
   },
@@ -66,7 +65,7 @@ const metadataConfig = {
       title: "Avertissement - Outils de Développeur en Ligne Gratuits",
       description:
         "Avertissement important et limitations de responsabilité pour nos outils et services de développeur en ligne gratuits.",
-      url: `${baseUrl}/fr/disclaimer`,
+      url: `${siteUrl}/fr/disclaimer`,
       type: "website",
     },
   },
@@ -80,7 +79,7 @@ const metadataConfig = {
         "Descargo de Responsabilidad - Herramientas de Desarrollador Gratuitas en Línea",
       description:
         "Descargo de responsabilidad importante y limitaciones de responsabilidad para nuestras herramientas y servicios de desarrollador gratuitos en línea.",
-      url: `${baseUrl}/es/disclaimer`,
+      url: `${siteUrl}/es/disclaimer`,
       type: "website",
     },
   },
@@ -94,7 +93,7 @@ const metadataConfig = {
         "Отказ от Ответственности - Бесплатные Онлайн Инструменты для Разработчиков",
       description:
         "Важный отказ от ответственности и ограничения ответственности для наших бесплатных онлайн инструментов и услуг для разработчиков.",
-      url: `${baseUrl}/ru/disclaimer`,
+      url: `${siteUrl}/ru/disclaimer`,
       type: "website",
     },
   },
@@ -106,7 +105,7 @@ const metadataConfig = {
       title: "Haftungsausschluss - Kostenlose Online Entwicklertools",
       description:
         "Wichtiger Haftungsausschluss und Haftungsbeschränkungen für unsere kostenlosen Online-Entwicklertools und -dienste.",
-      url: `${baseUrl}/de/disclaimer`,
+      url: `${siteUrl}/de/disclaimer`,
       type: "website",
     },
   },
@@ -133,7 +132,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}/disclaimer`,
+      canonical: `${siteUrl}/${lang}/disclaimer`,
       languages: hreflangLinks,
     },
   };

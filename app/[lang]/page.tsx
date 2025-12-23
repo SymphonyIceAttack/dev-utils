@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { UrlEncoderStructuredData } from "@/components/structured-data/url-encoder";
 import { UrlEncoderTool } from "@/components/tools/url-encoder";
+import { siteUrl } from "@/lib/config";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 // Generate static params for all supported languages
 export async function generateStaticParams() {
@@ -24,7 +23,7 @@ const metadataConfig = {
       title: "URL Encoder / Decoder - Free Online Tool",
       description:
         "Encode or decode URLs instantly. Free, fast, no signup required.",
-      url: `${baseUrl}/en`,
+      url: `${siteUrl}/en`,
       type: "website",
     },
   },
@@ -36,7 +35,7 @@ const metadataConfig = {
     openGraph: {
       title: "URL 编码/解码工具 - 免费在线工具",
       description: "立即编码或解码URL。免费、快速、无需注册。",
-      url: `${baseUrl}/zh`,
+      url: `${siteUrl}/zh`,
       type: "website",
     },
   },
@@ -49,7 +48,7 @@ const metadataConfig = {
       title: "URL エンコーダー/デコーダー - 無料オンライン ツール",
       description:
         "URLを即座にエンコードまたはデコード。無料、高速、サインアップ不要。",
-      url: `${baseUrl}/ja`,
+      url: `${siteUrl}/ja`,
       type: "website",
     },
   },
@@ -62,7 +61,7 @@ const metadataConfig = {
       title: "Encodeur/Décodeur URL - Outil en ligne gratuit",
       description:
         "Encodez ou décodez les URL instantanément. Gratuit, rapide, aucune inscription requise.",
-      url: `${baseUrl}/fr`,
+      url: `${siteUrl}/fr`,
       type: "website",
     },
   },
@@ -75,7 +74,7 @@ const metadataConfig = {
       title: "Codificador/Decodificador URL - Herramienta en línea gratis",
       description:
         "Codifica o decodifica URLs instantáneamente. Gratis, rápido, sin registro requerido.",
-      url: `${baseUrl}/es`,
+      url: `${siteUrl}/es`,
       type: "website",
     },
   },
@@ -88,7 +87,7 @@ const metadataConfig = {
       title: "URL Кодер/Декодер - Бесплатный онлайн инструмент",
       description:
         "Кодируйте или декодируйте URL мгновенно. Бесплатно, быстро, без регистрации.",
-      url: `${baseUrl}/ru`,
+      url: `${siteUrl}/ru`,
       type: "website",
     },
   },
@@ -101,7 +100,7 @@ const metadataConfig = {
       title: "URL Encoder/Decoder - Kostenloses Online Tool",
       description:
         "Kodieren oder dekodieren Sie URLs sofort. Kostenlos, schnell, keine Registrierung erforderlich.",
-      url: `${baseUrl}/de`,
+      url: `${siteUrl}/de`,
       type: "website",
     },
   },
@@ -129,7 +128,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}`,
+      canonical: `${siteUrl}/${lang}`,
       languages: hreflangLinks,
     },
   };

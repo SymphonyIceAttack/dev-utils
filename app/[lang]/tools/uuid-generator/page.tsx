@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { UuidGeneratorStructuredData } from "@/components/structured-data/uuid-generator";
+import { siteUrl } from "@/lib/config";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 const UuidGeneratorTool = dynamic(
   () =>
@@ -34,7 +33,7 @@ const metadataConfig = {
       title: "UUID Generator - Free Online Tool",
       description:
         "Generate RFC4122 compliant UUID v4, v7, and v1 identifiers. Free, secure, and works offline.",
-      url: `${baseUrl}/en/tools/uuid-generator`,
+      url: `${siteUrl}/en/tools/uuid-generator`,
       type: "website",
     },
   },
@@ -46,7 +45,7 @@ const metadataConfig = {
       title: "UUID 生成器 - 免费在线工具",
       description:
         "生成符合 RFC4122 标准的 UUID v4、v7 和 v1 标识符。免费、安全、离线工作。",
-      url: `${baseUrl}/zh/tools/uuid-generator`,
+      url: `${siteUrl}/zh/tools/uuid-generator`,
       type: "website",
     },
   },
@@ -58,7 +57,7 @@ const metadataConfig = {
       title: "UUID ジェネレーター - 無料オンライン ツール",
       description:
         "RFC4122準拠のUUID v4、v7、v1識別子を生成。安全でオフライン動作。",
-      url: `${baseUrl}/ja/tools/uuid-generator`,
+      url: `${siteUrl}/ja/tools/uuid-generator`,
       type: "website",
     },
   },
@@ -71,7 +70,7 @@ const metadataConfig = {
       title: "Générateur UUID - Outil en Ligne Gratuit",
       description:
         "Générez des identifiants UUID v4, v7 et v1 conformes RFC4122. Gratuit et sécurisé.",
-      url: `${baseUrl}/fr/tools/uuid-generator`,
+      url: `${siteUrl}/fr/tools/uuid-generator`,
       type: "website",
     },
   },
@@ -84,7 +83,7 @@ const metadataConfig = {
       title: "Generador UUID - Herramienta en Línea Gratuita",
       description:
         "Genera identificadores UUID v4, v7 y v1 compatibles con RFC4122. Gratis y seguro.",
-      url: `${baseUrl}/es/tools/uuid-generator`,
+      url: `${siteUrl}/es/tools/uuid-generator`,
       type: "website",
     },
   },
@@ -97,7 +96,7 @@ const metadataConfig = {
       title: "Генератор UUID - Бесплатный Онлайн Инструмент",
       description:
         "Генерируйте идентификаторы UUID v4, v7 и v1, соответствующие RFC4122. Бесплатно и безопасно.",
-      url: `${baseUrl}/ru/tools/uuid-generator`,
+      url: `${siteUrl}/ru/tools/uuid-generator`,
       type: "website",
     },
   },
@@ -110,7 +109,7 @@ const metadataConfig = {
       title: "UUID Generator - Kostenloses Online Tool",
       description:
         "Generieren Sie RFC4122-konforme UUID v4-, v7- und v1-Identifikatoren. Kostenlos und sicher.",
-      url: `${baseUrl}/de/tools/uuid-generator`,
+      url: `${siteUrl}/de/tools/uuid-generator`,
       type: "website",
     },
   },
@@ -132,9 +131,6 @@ export async function generateMetadata({
   const langData =
     metadataConfig[lang as keyof typeof metadataConfig] || metadataConfig.en;
   const hreflangLinks = generateHreflangLinks("/tools/uuid-generator");
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
-
   return {
     title: langData.title,
     description: langData.description,
@@ -144,7 +140,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}/tools/uuid-generator`,
+      canonical: `${siteUrl}/${lang}/tools/uuid-generator`,
       languages: hreflangLinks,
     },
   };

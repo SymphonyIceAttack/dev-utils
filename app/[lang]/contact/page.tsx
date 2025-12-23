@@ -4,14 +4,13 @@ import Link from "next/link";
 import { ContactPageStructuredData } from "@/components/structured-data/contact-page";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { siteUrl } from "@/lib/config";
 import {
   generateHreflangLinks,
   type LanguageType,
   supportedLocales,
   t,
 } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 // Generate static params for all supported languages
 export async function generateStaticParams() {
@@ -29,7 +28,7 @@ const metadataConfig = {
       title: "Contact Us - Free Online Developer Tools",
       description:
         "Get in touch with us. We love hearing from developers and are here to help with any questions or suggestions.",
-      url: `${baseUrl}/en/contact`,
+      url: `${siteUrl}/en/contact`,
       type: "website",
     },
   },
@@ -41,7 +40,7 @@ const metadataConfig = {
       title: "联系我们 - 免费在线开发者工具",
       description:
         "与我们取得联系。我们喜欢听到开发者的声音，随时准备帮助解决任何问题或建议。",
-      url: `${baseUrl}/zh/contact`,
+      url: `${siteUrl}/zh/contact`,
       type: "website",
     },
   },
@@ -53,7 +52,7 @@ const metadataConfig = {
       title: "お問い合わせ - 無料オンライン開発者ツール",
       description:
         "私たちのお問い合わせてください。開発者からの声を聞くことが大好きで、あらゆる質問や提案をお手伝いする準備ができています。",
-      url: `${baseUrl}/ja/contact`,
+      url: `${siteUrl}/ja/contact`,
       type: "website",
     },
   },
@@ -65,7 +64,7 @@ const metadataConfig = {
       title: "Contactez-nous - Outils de Développeur en Ligne Gratuits",
       description:
         "Prenez contact avec nous. Nous aimons entendre les développeurs et nous sommes là pour aider avec toute question ou suggestion.",
-      url: `${baseUrl}/fr/contact`,
+      url: `${siteUrl}/fr/contact`,
       type: "website",
     },
   },
@@ -77,7 +76,7 @@ const metadataConfig = {
       title: "Contáctanos - Herramientas de Desarrollador Gratuitas en Línea",
       description:
         "Ponte en contacto con nosotros. Nos encanta escuchar de desarrolladores y estamos aquí para ayudar con cualquier pregunta o sugerencia.",
-      url: `${baseUrl}/es/contact`,
+      url: `${siteUrl}/es/contact`,
       type: "website",
     },
   },
@@ -90,7 +89,7 @@ const metadataConfig = {
         "Свяжитесь с Нами - Бесплатные Онлайн Инструменты для Разработчиков",
       description:
         "Свяжитесь с нами. Мы любим слышать от разработчиков и готовы помочь с любыми вопросами или предложениями.",
-      url: `${baseUrl}/ru/contact`,
+      url: `${siteUrl}/ru/contact`,
       type: "website",
     },
   },
@@ -102,7 +101,7 @@ const metadataConfig = {
       title: "Kontaktieren Sie Uns - Kostenlose Online Entwicklertools",
       description:
         "Nehmen Sie Kontakt mit uns auf. Wir freuen uns, von Entwicklern zu hören und sind hier, um bei Fragen oder Vorschlägen zu helfen.",
-      url: `${baseUrl}/de/contact`,
+      url: `${siteUrl}/de/contact`,
       type: "website",
     },
   },
@@ -129,7 +128,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}/contact`,
+      canonical: `${siteUrl}/${lang}/contact`,
       languages: hreflangLinks,
     },
   };

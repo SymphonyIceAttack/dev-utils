@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { EncodingConverterStructuredData } from "@/components/structured-data/encoding-converter";
 import { EncodingConverterTool } from "@/components/tools/encoding-converter";
+import { siteUrl } from "@/lib/config";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 const metadataConfig = {
   en: {
@@ -15,7 +14,7 @@ const metadataConfig = {
       title: "Character Encoding Converter - Free Online Tool",
       description:
         "Convert text between UTF-8, GBK, Hex, Binary, and Unicode. Free, fast, and works offline.",
-      url: `${baseUrl}/en/tools/encoding-converter`,
+      url: `${siteUrl}/en/tools/encoding-converter`,
       type: "website",
     },
   },
@@ -27,7 +26,7 @@ const metadataConfig = {
       title: "字符编码转换器 - 免费在线工具",
       description:
         "在 UTF-8、GBK、十六进制、二进制和 Unicode 之间转换文本。免费、快速、离线工作。",
-      url: `${baseUrl}/zh/tools/encoding-converter`,
+      url: `${siteUrl}/zh/tools/encoding-converter`,
       type: "website",
     },
   },
@@ -40,7 +39,7 @@ const metadataConfig = {
       title: "文字エンコーディングコンバーター - 無料オンライン ツール",
       description:
         "UTF-8、GBK、十六進数、バイナリ、Unicode間でテキストを変換。安全でオフライン動作。",
-      url: `${baseUrl}/ja/tools/encoding-converter`,
+      url: `${siteUrl}/ja/tools/encoding-converter`,
       type: "website",
     },
   },
@@ -53,7 +52,7 @@ const metadataConfig = {
       title: "Convertisseur d'Encodage de Caractères - Outil en Ligne Gratuit",
       description:
         "Convertissez le texte entre UTF-8, GBK, Hex, binaire et Unicode. Gratuit et sécurisé.",
-      url: `${baseUrl}/fr/tools/encoding-converter`,
+      url: `${siteUrl}/fr/tools/encoding-converter`,
       type: "website",
     },
   },
@@ -67,7 +66,7 @@ const metadataConfig = {
         "Convertidor de Codificación de Caracteres - Herramienta en Línea Gratuita",
       description:
         "Convierte texto entre UTF-8, GBK, Hex, binario y Unicode. Gratis y seguro.",
-      url: `${baseUrl}/es/tools/encoding-converter`,
+      url: `${siteUrl}/es/tools/encoding-converter`,
       type: "website",
     },
   },
@@ -79,7 +78,7 @@ const metadataConfig = {
       title: "Конвертер Кодировки Символов - Бесплатный Онлайн Инструмент",
       description:
         "Преобразуйте текст между UTF-8, GBK, Hex, Binary и Unicode. Бесплатно и безопасно.",
-      url: `${baseUrl}/ru/tools/encoding-converter`,
+      url: `${siteUrl}/ru/tools/encoding-converter`,
       type: "website",
     },
   },
@@ -91,7 +90,7 @@ const metadataConfig = {
       title: "Zeichencodierungskonverter - Kostenloses Online Tool",
       description:
         "Konvertieren Sie Text zwischen UTF-8, GBK, Hex, Binär und Unicode. Kostenlos und sicher.",
-      url: `${baseUrl}/de/tools/encoding-converter`,
+      url: `${siteUrl}/de/tools/encoding-converter`,
       type: "website",
     },
   },
@@ -113,9 +112,6 @@ export async function generateMetadata({
   const langData =
     metadataConfig[lang as keyof typeof metadataConfig] || metadataConfig.en;
   const hreflangLinks = generateHreflangLinks("/tools/encoding-converter");
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
-
   return {
     title: langData.title,
     description: langData.description,
@@ -125,7 +121,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}/tools/encoding-converter`,
+      canonical: `${siteUrl}/${lang}/tools/encoding-converter`,
       languages: hreflangLinks,
     },
   };

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { PasswordGeneratorStructuredData } from "@/components/structured-data/password-generator";
 import { PasswordGeneratorTool } from "@/components/tools/password-generator";
+import { siteUrl } from "@/lib/config";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks, supportedLocales } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 const metadataConfig = {
   en: {
@@ -15,7 +14,7 @@ const metadataConfig = {
       title: "Password Generator - Free Online Tool",
       description:
         "Create strong, secure random passwords and API keys. Free, secure, and works offline.",
-      url: `${baseUrl}/en/tools/password-generator`,
+      url: `${siteUrl}/en/tools/password-generator`,
       type: "website",
     },
   },
@@ -27,7 +26,7 @@ const metadataConfig = {
       title: "密码生成器 - 免费在线工具",
       description:
         "创建强大、安全的随机密码和 API 密钥。免费、安全、离线工作。",
-      url: `${baseUrl}/zh/tools/password-generator`,
+      url: `${siteUrl}/zh/tools/password-generator`,
       type: "website",
     },
   },
@@ -39,7 +38,7 @@ const metadataConfig = {
       title: "パスワードジェネレーター - 無料オンライン ツール",
       description:
         "强大でセキュアなランダムパスワードとAPIキーを作成。安全でオフライン動作。",
-      url: `${baseUrl}/ja/tools/password-generator`,
+      url: `${siteUrl}/ja/tools/password-generator`,
       type: "website",
     },
   },
@@ -52,7 +51,7 @@ const metadataConfig = {
       title: "Générateur de Mot de Passe - Outil en Ligne Gratuit",
       description:
         "Créez des mots de passe aléatoires forts et sécurisés et des clés API. Gratuit et sécurisé.",
-      url: `${baseUrl}/fr/tools/password-generator`,
+      url: `${siteUrl}/fr/tools/password-generator`,
       type: "website",
     },
   },
@@ -65,7 +64,7 @@ const metadataConfig = {
       title: "Generador de Contraseñas - Herramienta en Línea Gratuita",
       description:
         "Crea contraseñas aleatorias fuertes y seguras y claves API. Gratis y seguro.",
-      url: `${baseUrl}/es/tools/password-generator`,
+      url: `${siteUrl}/es/tools/password-generator`,
       type: "website",
     },
   },
@@ -78,7 +77,7 @@ const metadataConfig = {
       title: "Генератор Паролей - Бесплатный Онлайн Инструмент",
       description:
         "Создавайте сильные, безопасные случайные пароли и ключи API. Бесплатно и безопасно.",
-      url: `${baseUrl}/ru/tools/password-generator`,
+      url: `${siteUrl}/ru/tools/password-generator`,
       type: "website",
     },
   },
@@ -90,7 +89,7 @@ const metadataConfig = {
       title: "Passwort Generator - Kostenloses Online Tool",
       description:
         "Erstellen Sie starke, sichere zufällige Passwörter und API-Schlüssel. Kostenlos und sicher.",
-      url: `${baseUrl}/de/tools/password-generator`,
+      url: `${siteUrl}/de/tools/password-generator`,
       type: "website",
     },
   },
@@ -112,9 +111,6 @@ export async function generateMetadata({
   const langData =
     metadataConfig[lang as keyof typeof metadataConfig] || metadataConfig.en;
   const hreflangLinks = generateHreflangLinks("/tools/password-generator");
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
-
   return {
     title: langData.title,
     description: langData.description,
@@ -124,7 +120,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}/tools/password-generator`,
+      canonical: `${siteUrl}/${lang}/tools/password-generator`,
       languages: hreflangLinks,
     },
   };

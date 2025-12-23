@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { ToolsPageStructuredData } from "@/components/structured-data/tools-page";
 import { ToolsPageClient } from "@/components/tools/tools-page-client";
+import { siteUrl } from "@/lib/config";
 import type { LanguageType } from "@/lib/translations";
 import { generateHreflangLinks } from "@/lib/translations";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitty-encode.top";
 
 const metadataConfig = {
   en: {
@@ -15,7 +14,7 @@ const metadataConfig = {
       title: "Free Online Developer Tools - Encoding, Hashing & More",
       description:
         "Collection of free online developer tools. URL encoder, Base64, MD5, UUID generator, password generator, and encoding converter. Fast, secure, works offline.",
-      url: `${baseUrl}/en/tools`,
+      url: `${siteUrl}/en/tools`,
       type: "website",
     },
   },
@@ -27,7 +26,7 @@ const metadataConfig = {
       title: "免费在线开发者工具 - 编码、哈希等",
       description:
         "免费在线开发者工具集合。URL编码器、Base64、MD5、UUID生成器、密码生成器和编码转换器。快速、安全、离线工作。",
-      url: `${baseUrl}/zh/tools`,
+      url: `${siteUrl}/zh/tools`,
       type: "website",
     },
   },
@@ -39,7 +38,7 @@ const metadataConfig = {
       title: "無料オンライン開発者ツール - エンコーディング、ハッシュなど",
       description:
         "無料のオンライン開発者ツールのコレクション。URLエンコーダー、Base64、MD5、UUIDジェネレーター、パスワードジェネレーター、エンコーディングコンバーター。高速、安全、オフラインで動作。",
-      url: `${baseUrl}/ja/tools`,
+      url: `${siteUrl}/ja/tools`,
       type: "website",
     },
   },
@@ -53,7 +52,7 @@ const metadataConfig = {
         "Outils de Développeur en Ligne Gratuits - Encodage, Hachage et Plus",
       description:
         "Collection d'outils de développeur en ligne gratuits. Encodeur URL, Base64, MD5, générateur UUID, générateur de mot de passe et convertisseur d'encodage. Rapide, sécurisé, fonctionne hors ligne.",
-      url: `${baseUrl}/fr/tools`,
+      url: `${siteUrl}/fr/tools`,
       type: "website",
     },
   },
@@ -67,7 +66,7 @@ const metadataConfig = {
         "Herramientas de Desarrollador Gratuitas en Línea - Codificación, Hashing y Más",
       description:
         "Colección de herramientas de desarrollador en línea gratuitas. Codificador URL, Base64, MD5, generador UUID, generador de contraseñas y convertidor de codificación. Rápido, seguro, funciona sin conexión.",
-      url: `${baseUrl}/es/tools`,
+      url: `${siteUrl}/es/tools`,
       type: "website",
     },
   },
@@ -81,7 +80,7 @@ const metadataConfig = {
         "Бесплатные Онлайн Инструменты для Разработчиков - Кодирование, Хеширование и Больше",
       description:
         "Коллекция бесплатных онлайн инструментов для разработчиков. Кодировщик URL, Base64, MD5, генератор UUID, генератор паролей и конвертер кодировок. Быстро, безопасно, работает офлайн.",
-      url: `${baseUrl}/ru/tools`,
+      url: `${siteUrl}/ru/tools`,
       type: "website",
     },
   },
@@ -93,7 +92,7 @@ const metadataConfig = {
       title: "Kostenlose Online Entwicklertools - Kodierung, Hashing und Mehr",
       description:
         "Sammlung kostenloser Online-Entwicklertools. URL-Encoder, Base64, MD5, UUID-Generator, Passwort-Generator und Encoding-Konverter. Schnell, sicher, funktioniert offline.",
-      url: `${baseUrl}/de/tools`,
+      url: `${siteUrl}/de/tools`,
       type: "website",
     },
   },
@@ -118,7 +117,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `${baseUrl}/${lang}/tools`,
+      canonical: `${siteUrl}/${lang}/tools`,
       languages: hreflangLinks,
     },
   };
