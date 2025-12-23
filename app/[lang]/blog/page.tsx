@@ -3,7 +3,6 @@ import { BlogList } from "@/components/blog/blog-list";
 import { BlogPageStructuredData } from "@/components/structured-data/blog-page";
 import { BlogBreadcrumbSchema } from "@/components/structured-data/breadcrumbs";
 import { siteUrl } from "@/lib/config";
-import { generateHreflangLinks } from "@/lib/translations";
 
 // Generate static params for English only
 
@@ -71,7 +70,6 @@ export async function generateMetadata({
   const { lang } = await params;
   const langData =
     metadataConfig[lang as keyof typeof metadataConfig] || metadataConfig.en;
-  const hreflangLinks = generateHreflangLinks("/blog");
 
   return {
     title: langData.title,
@@ -90,7 +88,6 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: `${siteUrl}/${lang}/blog`,
-      languages: hreflangLinks,
     },
     openGraph: {
       type: "website",
