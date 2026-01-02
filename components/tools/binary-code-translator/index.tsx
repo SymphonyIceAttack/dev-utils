@@ -89,7 +89,7 @@ export function BinaryCodeTranslatorTool({
       setOutput(binary);
       setError(null);
       if (shouldSpawnItem()) {
-        spawnItem("sparkles");
+        spawnItem("binary");
       }
       setConversionStats((prev) => ({
         totalConversions: prev.totalConversions + 1,
@@ -117,7 +117,7 @@ export function BinaryCodeTranslatorTool({
         setOutput(text);
         setError(null);
         if (shouldSpawnItem()) {
-          spawnItem("coffee");
+          spawnItem("binary");
         }
         setConversionStats((prev) => ({
           totalConversions: prev.totalConversions + 1,

@@ -183,6 +183,44 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
       <circle cx="16" cy="14" r="2" fill="hsl(50, 90%, 75%)" />
     </svg>
   ),
+  binary: (
+    <svg width="40" height="40" viewBox="0 0 32 32">
+      <rect
+        x="6"
+        y="6"
+        width="20"
+        height="20"
+        rx="4"
+        fill="hsl(200, 60%, 45%)"
+      />
+      <rect
+        x="10"
+        y="10"
+        width="12"
+        height="12"
+        rx="2"
+        fill="hsl(200, 50%, 30%)"
+      />
+      <text
+        x="11"
+        y="17"
+        fontSize="6"
+        fontFamily="monospace"
+        fill="hsl(150, 70%, 70%)"
+      >
+        01
+      </text>
+      <text
+        x="11"
+        y="23"
+        fontSize="6"
+        fontFamily="monospace"
+        fill="hsl(150, 70%, 70%)"
+      >
+        10
+      </text>
+    </svg>
+  ),
 };
 
 const itemConfig: Record<CatItemType, { name: string; description: string }> = {
@@ -209,6 +247,10 @@ const itemConfig: Record<CatItemType, { name: string; description: string }> = {
   sparkles: {
     name: "Magic Sparkles",
     description: "Earned from Password generation",
+  },
+  binary: {
+    name: "Binary Crystal",
+    description: "Earned from Binary code translation",
   },
 };
 

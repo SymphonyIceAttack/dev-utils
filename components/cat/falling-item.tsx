@@ -182,6 +182,44 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
       <circle cx="16" cy="14" r="2" fill="hsl(50, 90%, 75%)" />
     </svg>
   ),
+  binary: (
+    <svg width="32" height="32" viewBox="0 0 32 32">
+      <rect
+        x="6"
+        y="6"
+        width="20"
+        height="20"
+        rx="4"
+        fill="hsl(200, 60%, 45%)"
+      />
+      <rect
+        x="10"
+        y="10"
+        width="12"
+        height="12"
+        rx="2"
+        fill="hsl(200, 50%, 30%)"
+      />
+      <text
+        x="11"
+        y="17"
+        fontSize="6"
+        fontFamily="monospace"
+        fill="hsl(150, 70%, 70%)"
+      >
+        01
+      </text>
+      <text
+        x="11"
+        y="23"
+        fontSize="6"
+        fontFamily="monospace"
+        fill="hsl(150, 70%, 70%)"
+      >
+        10
+      </text>
+    </svg>
+  ),
 };
 
 const itemNames: Record<CatItemType, string> = {
@@ -191,6 +229,7 @@ const itemNames: Record<CatItemType, string> = {
   keyboard: "Nature Keys",
   coffee: "Herb Tea",
   sparkles: "Magic Sparkles",
+  binary: "Binary Crystal",
 };
 
 interface FallingItemProps {

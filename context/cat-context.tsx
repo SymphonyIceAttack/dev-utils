@@ -20,6 +20,7 @@ export const CAT_ITEMS = [
   { id: "keyboard", emoji: "⌨", tool: "MD5 Generator" },
   { id: "coffee", emoji: "☕", tool: "UUID Generator" },
   { id: "sparkles", emoji: "✨", tool: "Password Generator" },
+  { id: "binary", emoji: "💠", tool: "Binary Code Translator" },
 ] as const;
 
 // Derive types from the registry
