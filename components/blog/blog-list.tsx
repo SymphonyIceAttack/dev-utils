@@ -41,6 +41,23 @@ function BlogImage({
 
 const blogPosts = [
   {
+    title: "Binary Code: The Foundation of Digital Computing",
+    description:
+      "A comprehensive technical analysis of binary number systems, bitwise operations, two's complement representation, IEEE 754 floating-point formats, and practical applications in modern computing architecture.",
+    date: "2024-12-21",
+    author: "Engineering Research",
+    tags: [
+      "Computer Science",
+      "Binary",
+      "Digital Systems",
+      "Low-Level Programming",
+    ],
+    href: "/en/blog/binary-code-guide",
+    readTime: "28 min",
+    featured: true,
+    image: "/images/blog/binary-code-guide-pixel.jpeg",
+  },
+  {
     title: "Learn URL Encoding: The Complete Guide",
     description:
       "Master URL encoding principles, use cases, and best practices. Learn why URL encoding is essential and how to use it correctly across different programming languages.",

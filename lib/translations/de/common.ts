@@ -43,6 +43,7 @@ export const common = {
   "badge.free": "Kostenlos",
   "badge.noSignup": "Ohne Anmeldung",
   "badge.offline": "Funktioniert offline",
+  "badge.instant": "Sofort",
   "badge.privacy": "Datenschutz zuerst",
   "badge.rfcCompliant": "RFC-konform",
   "badge.cryptographicallySecure": "Kryptografisch sicher",

@@ -14,11 +14,21 @@ export const tools = {
     "Инструменты, соответствующие вашим критериям, не найдены.",
 
   // Base64
-  "base64.title": "Base64 Кодер / Декодер",
-  "base64.description": "Кодируйте или декодируйте Base64 строки",
+  "tools.base64.title": "Base64 Кодер / Декодер",
+  "tools.base64.description": "Кодируйте или декодируйте Base64 строки",
   "base64.inputPlaceholder": "Введите текст для кодирования/декодирования...",
   "base64.encodeBtn": "Кодировать в Base64",
   "base64.decodeBtn": "Декодировать из Base64",
+
+  // URL Encoder
+  "tools.urlEncoder.title": "URL Кодер / Декодер",
+  "tools.urlEncoder.description":
+    "Кодируйте и декодируйте URL и параметры запроса",
+
+  // Encoding Converter
+  "tools.encodingConverter.title": "Конвертер кодировки символов",
+  "tools.encodingConverter.description":
+    "Преобразование текста между различными кодировками символов",
 
   // Hash Generator
   "hashGenerator.title": "Генератор хешей",
@@ -35,4 +45,8 @@ export const tools = {
   "colorConverter.title": "Конвертер цветов",
   "colorConverter.description":
     "Конвертируйте между форматами HEX, RGB, HSL и другими цветами",
+
+  // Related Tools
+  "relatedTools.title": "Похожие инструменты",
+  "relatedTools.description": "Другие инструменты, которые могут быть полезны",
 };

@@ -13,23 +13,19 @@ export const tools = {
   "tools.noResults": "没有找到符合条件的工具。",
 
   // Base64
-  "base64.title": "Base64 编码/解码器",
-  "base64.description": "编码或解码 Base64 字符串",
-  "base64.inputPlaceholder": "输入要编码/解码的文本...",
-  "base64.encodeBtn": "编码为 Base64",
-  "base64.decodeBtn": "从 Base64 解码",
+  "tools.base64.title": "Base64 编码/解码器",
+  "tools.base64.description": "编码或解码 Base64 字符串",
 
-  // Hash Generator
-  "hashGenerator.title": "哈希生成器",
-  "hashGenerator.description": "生成 MD5、SHA-1、SHA-256 等哈希值",
-  "hashGenerator.inputPlaceholder": "输入要哈希的文本...",
-  "hashGenerator.algorithm": "算法",
+  // Encoding Converter
+  "tools.encodingConverter.title": "字符编码转换器",
+  "tools.encodingConverter.description":
+    "在 UTF-8、GBK、ISO-8859-1 等不同字符编码间转换文本",
 
-  // Regex Tester
-  "regexTester.title": "正则表达式测试器",
-  "regexTester.description": "实时测试正则表达式的匹配结果",
+  // URL Encoder
+  "tools.urlEncoder.title": "URL 编码/解码器",
+  "tools.urlEncoder.description": "编码或解码 URL 和查询参数",
 
-  // Color Converter
-  "colorConverter.title": "颜色转换器",
-  "colorConverter.description": "在 HEX、RGB、HSL 等颜色格式之间转换",
+  // Related Tools
+  "relatedTools.title": "相关工具",
+  "relatedTools.description": "您可能会发现有用的其他工具",
 };

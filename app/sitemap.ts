@@ -11,6 +11,7 @@ const tools = [
   "encoding-converter",
   "password-generator",
   "uuid-generator",
+  "binary-code-translator",
 ];
 
 // 博客文章列表
@@ -22,6 +23,7 @@ const blogPosts = [
   "url-encoding-guide",
   "uuid-guide",
   "encoding-guide",
+  "binary-code-guide",
 ];
 
 // 静态页面列表

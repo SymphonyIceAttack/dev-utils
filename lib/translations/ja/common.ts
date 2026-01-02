@@ -42,6 +42,7 @@ export const common = {
   "badge.free": "無料",
   "badge.noSignup": "登録不要",
   "badge.offline": "オフライン対応",
+  "badge.instant": "インスタント",
   "badge.privacy": "プライバシー優先",
   "badge.rfcCompliant": "RFC準拠",
   "badge.cryptographicallySecure": "暗号学的に安全",

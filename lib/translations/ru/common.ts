@@ -43,6 +43,7 @@ export const common = {
   "badge.free": "Бесплатно",
   "badge.noSignup": "Без регистрации",
   "badge.offline": "Работает офлайн",
+  "badge.instant": "Мгновенно",
   "badge.privacy": "Конфиденциальность",
   "badge.rfcCompliant": "Соответствует RFC",
   "badge.cryptographicallySecure": "Криптографическая безопасность",

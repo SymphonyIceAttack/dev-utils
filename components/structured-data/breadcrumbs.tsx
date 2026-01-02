@@ -152,3 +152,20 @@ export function EncodingConverterGuideBreadcrumbSchema() {
     },
   ]);
 }
+
+export function BinaryCodeGuideBreadcrumbSchema() {
+  return generateBreadcrumbSchema([
+    {
+      name: "Home",
+      url: `${siteUrl}/en`,
+    },
+    {
+      name: "Developer Guides",
+      url: `${siteUrl}/en/blog`,
+    },
+    {
+      name: "Binary Code Guide",
+      url: `${siteUrl}/en/blog/binary-code-guide`,
+    },
+  ]);
+}

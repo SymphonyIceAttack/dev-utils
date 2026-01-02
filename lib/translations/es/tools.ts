@@ -14,11 +14,21 @@ export const tools = {
     "No se encontraron herramientas que coincidan con tus criterios.",
 
   // Base64
-  "base64.title": "Codificador / Decodificador Base64",
-  "base64.description": "Codifica o decodifica cadenas Base64",
+  "tools.base64.title": "Codificador / Decodificador Base64",
+  "tools.base64.description": "Codifica o decodifica cadenas Base64",
   "base64.inputPlaceholder": "Ingresa texto para codificar/decodificar...",
   "base64.encodeBtn": "Codificar a Base64",
   "base64.decodeBtn": "Decodificar de Base64",
+
+  // URL Encoder
+  "tools.urlEncoder.title": "Codificador / Decodificador de URL",
+  "tools.urlEncoder.description":
+    "Codifica y decodifica URL y parámetros de consulta",
+
+  // Encoding Converter
+  "tools.encodingConverter.title": "Convertidor de codificación de caracteres",
+  "tools.encodingConverter.description":
+    "Convierte texto entre diferentes codificaciones de caracteres",
 
   // Hash Generator
   "hashGenerator.title": "Generador de Hash",
@@ -34,4 +44,9 @@ export const tools = {
   "colorConverter.title": "Convertidor de colores",
   "colorConverter.description":
     "Convierte entre formatos HEX, RGB, HSL y otros colores",
+
+  // Related Tools
+  "relatedTools.title": "Herramientas relacionadas",
+  "relatedTools.description":
+    "Otras herramientas que podrían resultarte útiles",
 };

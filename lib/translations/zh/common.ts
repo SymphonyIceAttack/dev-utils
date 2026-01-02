@@ -41,6 +41,7 @@ export const common = {
   "badge.free": "免费",
   "badge.noSignup": "无需注册",
   "badge.offline": "离线可用",
+  "badge.instant": "即时",
   "badge.privacy": "隐私优先",
   "badge.rfcCompliant": "符合 RFC 标准",
   "badge.cryptographicallySecure": "加密安全",

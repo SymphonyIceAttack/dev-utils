@@ -1,5 +1,6 @@
 import { about } from "./about";
 import { base64Encoder } from "./base64-encoder";
+import { binaryCodeTranslator } from "./binary-code-translator";
 import { common } from "./common";
 import { contact } from "./contact";
 import { disclaimer } from "./disclaimer";
@@ -25,6 +26,7 @@ export const translations_ru: { [key: string]: string } = {
   ...encodingConverter,
   ...passwordGenerator,
   ...uuidGenerator,
+  ...binaryCodeTranslator,
   ...about,
   ...privacy,
   ...terms,

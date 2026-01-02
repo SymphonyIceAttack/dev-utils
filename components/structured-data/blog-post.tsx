@@ -109,6 +109,13 @@ const posts: Record<string, BlogPostData> = {
     author: "Engineering Team",
     image: "/images/blog/encoding-converter-guide-pixel.jpeg",
   },
+  "binary-code-guide": {
+    title: "Binary Code: The Foundation of Digital Computing",
+    description:
+      "A comprehensive technical analysis of binary number systems, bitwise operations, two's complement representation, IEEE 754 floating-point formats, and practical applications in computing.",
+    author: "Engineering Research",
+    image: "/images/blog/binary-code-guide-pixel.jpeg",
+  },
 };
 
 function getBlogPostData(slug: string): BlogPostData {
@@ -156,4 +163,8 @@ export function EncodingGuideStructuredData() {
 
 export function EncodingConverterGuideStructuredData() {
   return BlogPostDataStructuredData({ slug: "encoding-converter-guide" });
+}
+
+export function BinaryCodeGuideStructuredData() {
+  return BlogPostDataStructuredData({ slug: "binary-code-guide" });
 }

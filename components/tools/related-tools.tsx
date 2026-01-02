@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  Binary,
   BookOpen,
   Code,
   Hash,
@@ -50,6 +51,11 @@ const toolConfig = {
     titleKey: "uuidGenerator.pageTitle",
     path: "/tools/uuid-generator",
   },
+  "binary-code-translator": {
+    icon: Binary,
+    titleKey: "binaryCodeTranslator.pageTitle",
+    path: "/tools/binary-code-translator",
+  },
 };
 
 const guideConfig = {
@@ -88,6 +94,11 @@ const guideConfig = {
     titleKey: "uuidGenerator.seo.title",
     path: "/blog/uuid-guide",
   },
+  "binary-code-guide": {
+    icon: BookOpen,
+    titleKey: "binaryCodeTranslator.seoTitle",
+    path: "/blog/binary-code-guide",
+  },
 };
 
 const getRecommendedTools = (currentTool: string) => {
@@ -102,6 +113,7 @@ const getRecommendedTools = (currentTool: string) => {
     "md5-generator",
     "password-generator",
     "uuid-generator",
+    "binary-code-translator",
   ];
   const sortedTools = filteredTools
     .filter((tool) => fixedOrder.includes(tool))
@@ -113,10 +125,25 @@ const getRecommendedTools = (currentTool: string) => {
 
 const getRecommendedGuide = (currentTool: string) => {
   const guideKeys = Object.keys(guideConfig);
-  const currentGuideKey = `${currentTool.split("-")[0]}-guide`;
+
+  // Build mapping from tool names to guide names
+  const toolToGuideMap: Record<string, string> = {
+    "base64-encoder": "base64-guide",
+    "url-encoder": "url-encoding-guide",
+    "encoding-converter": "encoding-converter-guide",
+    "md5-generator": "md5-guide",
+    "password-generator": "password-guide",
+    "uuid-generator": "uuid-guide",
+    "binary-code-translator": "binary-code-guide",
+  };
+
+  const currentGuideKey = toolToGuideMap[currentTool];
 
   // If current tool has a corresponding guide, use it
-  if (guideConfig[currentGuideKey as keyof typeof guideConfig]) {
+  if (
+    currentGuideKey &&
+    guideConfig[currentGuideKey as keyof typeof guideConfig]
+  ) {
     return currentGuideKey;
   }
 
@@ -129,6 +156,7 @@ const getRecommendedGuide = (currentTool: string) => {
     "md5-guide",
     "password-guide",
     "uuid-guide",
+    "binary-code-guide",
   ];
   const availableGuides = guideKeys.filter((guide) =>
     fixedGuideOrder.includes(guide),

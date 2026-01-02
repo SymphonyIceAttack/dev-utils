@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
+  Binary,
   FileText,
   Fingerprint,
   Hash,
@@ -28,6 +29,14 @@ const allTools = [
     icon: LinkIcon,
     href: "/",
     color: "text-blue-500",
+    category: "tools.category.encoding",
+  },
+  {
+    titleKey: "binaryCodeTranslator.title",
+    descriptionKey: "binaryCodeTranslator.description",
+    icon: Binary,
+    href: "/tools/binary-code-translator",
+    color: "text-indigo-500",
     category: "tools.category.encoding",
   },
   {

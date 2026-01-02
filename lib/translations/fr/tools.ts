@@ -13,11 +13,21 @@ export const tools = {
   "tools.noResults": "Aucun outil trouvé correspondant à vos critères.",
 
   // Base64
-  "base64.title": "Encodeur / Décodeur Base64",
-  "base64.description": "Encodez ou décodez des chaînes Base64",
+  "tools.base64.title": "Encodeur / Décodeur Base64",
+  "tools.base64.description": "Encodez ou décodez des chaînes Base64",
   "base64.inputPlaceholder": "Entrez du texte à encoder/décoder...",
   "base64.encodeBtn": "Encoder en Base64",
   "base64.decodeBtn": "Décoder de Base64",
+
+  // URL Encoder
+  "tools.urlEncoder.title": "Encodeur / Décodeur d'URL",
+  "tools.urlEncoder.description":
+    "Encodez et décodez les URL et les paramètres de requête",
+
+  // Encoding Converter
+  "tools.encodingConverter.title": "Convertisseur d'encodage de caractères",
+  "tools.encodingConverter.description":
+    "Convertir du texte entre différents encodages de caractères",
 
   // Hash Generator
   "hashGenerator.title": "Générateur de Hash",
@@ -34,4 +44,8 @@ export const tools = {
   "colorConverter.title": "Convertisseur de couleurs",
   "colorConverter.description":
     "Convertir entre les formats HEX, RGB, HSL et autres couleurs",
+
+  // Related Tools
+  "relatedTools.title": "Outils connexes",
+  "relatedTools.description": "Autres outils que vous pourriez trouver utiles",
 };
