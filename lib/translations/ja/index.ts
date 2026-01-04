@@ -4,6 +4,7 @@ import { binaryCodeTranslator } from "./binary-code-translator";
 import { common } from "./common";
 import { contact } from "./contact";
 import { disclaimer } from "./disclaimer";
+import { emailTool } from "./email-tool";
 import { encodingConverter } from "./encoding-converter";
 import { home } from "./home";
 import { layout } from "./layout";
@@ -27,6 +28,7 @@ export const translations_ja: { [key: string]: string } = {
   ...passwordGenerator,
   ...uuidGenerator,
   ...binaryCodeTranslator,
+  ...emailTool,
   ...about,
   ...privacy,
   ...terms,

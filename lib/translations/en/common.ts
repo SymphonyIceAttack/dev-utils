@@ -14,6 +14,7 @@ export const common = {
   "common.success": "Success",
   "common.copy": "Copy",
   "common.copied": "Copied!",
+  "common.copyAll": "Copy All",
   "common.clear": "Clear",
   "common.paste": "Paste",
   "common.download": "Download",

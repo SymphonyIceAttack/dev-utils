@@ -116,6 +116,13 @@ const posts: Record<string, BlogPostData> = {
     author: "Engineering Research",
     image: "/images/blog/binary-code-guide-pixel.jpeg",
   },
+  "email-guide": {
+    title: "Email Address Validation: A Complete Technical Guide",
+    description:
+      "Master email validation with this comprehensive guide. Learn RFC 5322 standards, regex patterns, format verification vs existence checking, and how to build robust email validation.",
+    author: "Engineering Research",
+    image: "/images/blog/email-guide-pixel.jpeg",
+  },
 };
 
 function getBlogPostData(slug: string): BlogPostData {
@@ -167,4 +174,8 @@ export function EncodingConverterGuideStructuredData() {
 
 export function BinaryCodeGuideStructuredData() {
   return BlogPostDataStructuredData({ slug: "binary-code-guide" });
+}
+
+export function EmailGuideStructuredData() {
+  return BlogPostDataStructuredData({ slug: "email-guide" });
 }

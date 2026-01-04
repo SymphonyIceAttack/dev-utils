@@ -10,6 +10,7 @@ export const tools = {
   "tools.category.design": "Design",
   "tools.category.hashing": "Hashing",
   "tools.category.generators": "Generators",
+  "tools.category.email": "Email",
   "tools.noResults": "No tools found matching your criteria.",
 
   // Base64
@@ -24,6 +25,11 @@ export const tools = {
   // URL Encoder
   "tools.urlEncoder.title": "URL Encoder",
   "tools.urlEncoder.description": "Encode and decode URLs",
+
+  // Email Tool
+  "tools.emailTool.title": "Email Tool",
+  "tools.emailTool.description":
+    "Extract and verify email addresses from any text",
 
   // Related Tools
   "relatedTools.title": "Related Tools",

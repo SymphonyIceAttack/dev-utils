@@ -6,6 +6,7 @@ import {
   Hash,
   Key,
   Link2,
+  Mail,
   Shuffle,
   Type,
   Wrench,
@@ -56,6 +57,11 @@ const toolConfig = {
     titleKey: "binaryCodeTranslator.pageTitle",
     path: "/tools/binary-code-translator",
   },
+  "email-tool": {
+    icon: Mail,
+    titleKey: "emailTool.pageTitle",
+    path: "/tools/email-tool",
+  },
 };
 
 const guideConfig = {
@@ -99,6 +105,11 @@ const guideConfig = {
     titleKey: "binaryCodeTranslator.seoTitle",
     path: "/blog/binary-code-guide",
   },
+  "email-guide": {
+    icon: BookOpen,
+    titleKey: "emailTool.seoTitle",
+    path: "/blog/email-guide",
+  },
 };
 
 const getRecommendedTools = (currentTool: string) => {
@@ -114,6 +125,7 @@ const getRecommendedTools = (currentTool: string) => {
     "password-generator",
     "uuid-generator",
     "binary-code-translator",
+    "email-tool",
   ];
   const sortedTools = filteredTools
     .filter((tool) => fixedOrder.includes(tool))
@@ -135,6 +147,7 @@ const getRecommendedGuide = (currentTool: string) => {
     "password-generator": "password-guide",
     "uuid-generator": "uuid-guide",
     "binary-code-translator": "binary-code-guide",
+    "email-tool": "email-guide",
   };
 
   const currentGuideKey = toolToGuideMap[currentTool];
@@ -157,6 +170,7 @@ const getRecommendedGuide = (currentTool: string) => {
     "password-guide",
     "uuid-guide",
     "binary-code-guide",
+    "email-guide",
   ];
   const availableGuides = guideKeys.filter((guide) =>
     fixedGuideOrder.includes(guide),

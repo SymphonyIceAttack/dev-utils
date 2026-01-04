@@ -9,6 +9,7 @@ import {
   Key,
   KeyRound,
   Link as LinkIcon,
+  Mail,
 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useMemo, useState } from "react";
@@ -79,6 +80,14 @@ const allTools = [
     color: "text-cyan-500",
     category: "tools.category.generators",
   },
+  {
+    titleKey: "emailTool.title",
+    descriptionKey: "emailTool.description",
+    icon: Mail,
+    href: "/tools/email-tool",
+    color: "text-teal-500",
+    category: "tools.category.email",
+  },
 ];
 
 const categories = [
@@ -86,6 +95,7 @@ const categories = [
   { key: "tools.category.encoding", value: "tools.category.encoding" },
   { key: "tools.category.hashing", value: "tools.category.hashing" },
   { key: "tools.category.generators", value: "tools.category.generators" },
+  { key: "tools.category.email", value: "tools.category.email" },
 ];
 
 interface ToolsPageClientProps {

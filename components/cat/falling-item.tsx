@@ -220,6 +220,36 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
       </text>
     </svg>
   ),
+  envelope: (
+    <svg width="32" height="32" viewBox="0 0 32 32">
+      <rect
+        x="4"
+        y="8"
+        width="24"
+        height="16"
+        rx="2"
+        fill="hsl(210, 60%, 45%)"
+      />
+      <path
+        d="M4 10 L16 19 L28 10"
+        stroke="hsl(210, 50%, 35%)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M4 24 L10 18"
+        stroke="hsl(210, 50%, 35%)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M28 24 L22 18"
+        stroke="hsl(210, 50%, 35%)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+    </svg>
+  ),
 };
 
 const itemNames: Record<CatItemType, string> = {
@@ -230,6 +260,7 @@ const itemNames: Record<CatItemType, string> = {
   coffee: "Herb Tea",
   sparkles: "Magic Sparkles",
   binary: "Binary Crystal",
+  envelope: "Magic Envelope",
 };
 
 interface FallingItemProps {

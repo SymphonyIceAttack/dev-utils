@@ -41,6 +41,18 @@ function BlogImage({
 
 const blogPosts = [
   {
+    title: "Email Address Validation: A Complete Technical Guide",
+    description:
+      "Master email validation with this comprehensive guide. Learn RFC 5322 standards, regex patterns, format verification vs existence checking, and build robust email validation in any programming language.",
+    date: "2025-01-04",
+    author: "Engineering Research",
+    tags: ["Email Validation", "RFC 5322", "Web Development", "Data Quality"],
+    href: "/en/blog/email-guide",
+    readTime: "15 min",
+    featured: true,
+    image: "/images/blog/email-guide-pixel.jpeg",
+  },
+  {
     title: "Binary Code: The Foundation of Digital Computing",
     description:
       "A comprehensive technical analysis of binary number systems, bitwise operations, two's complement representation, IEEE 754 floating-point formats, and practical applications in modern computing architecture.",

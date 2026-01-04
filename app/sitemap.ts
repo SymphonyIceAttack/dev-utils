@@ -12,6 +12,7 @@ const tools = [
   "password-generator",
   "uuid-generator",
   "binary-code-translator",
+  "email-tool",
 ];
 
 // 博客文章列表
@@ -24,6 +25,7 @@ const blogPosts = [
   "uuid-guide",
   "encoding-guide",
   "binary-code-guide",
+  "email-guide",
 ];
 
 // 静态页面列表

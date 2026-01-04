@@ -221,6 +221,36 @@ const GhibliIcons: Record<CatItemType, React.ReactNode> = {
       </text>
     </svg>
   ),
+  envelope: (
+    <svg width="40" height="40" viewBox="0 0 32 32">
+      <rect
+        x="4"
+        y="8"
+        width="24"
+        height="16"
+        rx="2"
+        fill="hsl(210, 60%, 45%)"
+      />
+      <path
+        d="M4 10 L16 19 L28 10"
+        stroke="hsl(210, 50%, 35%)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M4 24 L10 18"
+        stroke="hsl(210, 50%, 35%)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M28 24 L22 18"
+        stroke="hsl(210, 50%, 35%)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+    </svg>
+  ),
 };
 
 const itemConfig: Record<CatItemType, { name: string; description: string }> = {
@@ -251,6 +281,10 @@ const itemConfig: Record<CatItemType, { name: string; description: string }> = {
   binary: {
     name: "Binary Crystal",
     description: "Earned from Binary code translation",
+  },
+  envelope: {
+    name: "Magic Envelope",
+    description: "Earned from Email extraction and verification",
   },
 };
 
