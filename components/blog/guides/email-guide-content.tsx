@@ -91,7 +91,7 @@ Yes, a regex can validate RFC 5322 format. But it is extremely complex, and for 
 For 99% of web applications, this pattern strikes the right balance:
 
 \`\`\`javascript
-const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
 \`\`\`
 
 **What it validates:**
@@ -164,7 +164,7 @@ This requires SMTP communication with the recipient is mail server.
 
 \`\`\`typescript
 function isValidEmail(email: string): boolean {
-  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
   return pattern.test(email);
 }
 
@@ -178,7 +178,7 @@ console.log(isValidEmail("test@")); // false
 import re
 
 def is_valid_email(email: str) -> bool:
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$'
     return bool(re.match(pattern, email))
 \`\`\`
 
@@ -216,7 +216,7 @@ function validateEmailRigorous(email: string): { valid: boolean; reason?: string
     return { valid: false, reason: 'Local part exceeds 64 characters' };
   }
   
-  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
   if (!pattern.test(email)) {
     return { valid: false, reason: 'Invalid format' };
   }
@@ -241,10 +241,10 @@ function validateEmailRigorous(email: string): { valid: boolean; reason?: string
 
 \`\`\`javascript
 // BAD: Rejects + addresses (used for email filtering)
-const badPattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const badPattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
 
 // BAD: Rejects subdomains
-const badPattern2 = /^[^@]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+const badPattern2 = /^[^@]+@[a-zA-Z0-9-]+.[a-zA-Z]{2,}$/;
 \`\`\`
 
 ### 6.2 Overly Permissive Validation
@@ -316,10 +316,10 @@ Complex regex patterns can be exploited with specially crafted inputs:
 
 \`\`\`javascript
 // VULNERABLE to ReDoS
-const vulnerable = /^([a-z]+)+@[a-z]+\.[a-z]+$/;
+const vulnerable = /^([a-z]+)+@[a-z]+.[a-z]+$/;
 
 // SAFER: Use a simpler pattern
-const safe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const safe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
 \`\`\`
 
 ## 9. Conclusion
