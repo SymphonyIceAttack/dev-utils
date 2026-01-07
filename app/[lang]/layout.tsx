@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   other: {
-    "google-adsense-account": "ca-pub-6087196891064352",
     "preload-image": "/base-logo.png",
   },
   manifest: "/manifest.json",
@@ -88,20 +87,25 @@ export default async function RootLayout({
     >
       <head>
         <link rel="preload" href="/base-logo.png" as="image" />
-      </head>
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-KL2K8YG0C4"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6087196891064352"
+          crossOrigin="anonymous"
+        ></Script>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-KL2K8YG0C4"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-KL2K8YG0C4');
           `}
-      </Script>
+        </Script>
+      </head>
 
       <body className="font-sans antialiased">
         <ThemeProvider
