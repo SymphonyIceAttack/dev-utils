@@ -87,11 +87,11 @@ export default async function RootLayout({
     >
       <head>
         <link rel="preload" href="/base-logo.png" as="image" />
-        <Script
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6087196891064352"
           crossOrigin="anonymous"
-        ></Script>
+        ></script>
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-KL2K8YG0C4"
