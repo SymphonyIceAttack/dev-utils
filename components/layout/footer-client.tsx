@@ -248,6 +248,22 @@ export function Footer({ lang }: FooterProps) {
                   className="hidden dark:block"
                 />
               </Link>
+              <a
+                href="https://www.nxgntools.com/tools/kittyencode?utm_source=kittyencode"
+                target="_blank"
+                rel="noopener"
+                className="inline-block mt-2"
+                aria-label="NextGen Tools Badge"
+              >
+                <Image
+                  src="https://www.nxgntools.com/api/embed/kittyencode?type=FIND_US_ON"
+                  alt="NextGen Tools Badge - The #1 AI Tools Directory & Launch Platform"
+                  width={180}
+                  height={48}
+                  className="h-auto w-auto dark:brightness-75 dark:contrast-125"
+                  unoptimized
+                />
+              </a>
             </div>
           </motion.div>
 
